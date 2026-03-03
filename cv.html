@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Page Hero ── */
+        .page-hero {
+            padding: 3rem 8rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--lavender);
+            color: var(--lavender-deep);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 0.9rem;
+        }
+
+        .page-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .page-subtitle {
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .page-subtitle .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+            display: inline-block;
+        }
+
+        /* Stats row */
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat-num {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-top: 0.25rem;
+        }
+
+
+        /* ── CV Layout ── */
+        .cv-body {
+            padding: 0.5rem 8rem 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .exp-with-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 268px;
+            gap: 3rem;
+        }
+
+        .cv-main-full {
+            max-width: 100%;
+        }
+
+        /* ── Section headers ── */
+        .cv-section {
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .cv-section.visible { opacity: 1; transform: translateY(0); }
+
+        .cv-section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .cv-section-label {
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--text-soft);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .cv-section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, #E0D8D0, transparent);
+        }
+
+        /* ── Timeline (Experience) ── */
+        .timeline {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 8px;
+            bottom: 40px;
+            width: 1.5px;
+            background: linear-gradient(to bottom, var(--lavender-deep) 0%, var(--pink) 60%, transparent 100%);
+        }
+
+        .exp-item {
+            position: relative;
+            margin-bottom: 2.25rem;
+            padding-bottom: 2.25rem;
+            border-bottom: 1px solid #F0E8E0;
+        }
+
+        .exp-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* Timeline node */
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 7px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--lavender-deep);
+            border: 2px solid var(--bg);
+            box-shadow: 0 0 0 1.5px var(--lavender-deep);
+            transition: transform 0.2s;
+        }
+
+        .exp-item:nth-child(2)::before { background: var(--mint-deep); box-shadow: 0 0 0 1.5px var(--mint-deep); }
+        .exp-item:nth-child(3)::before { background: var(--pink-deep); box-shadow: 0 0 0 1.5px var(--pink-deep); }
+        .exp-item:nth-child(4)::before { background: var(--peach-deep); box-shadow: 0 0 0 1.5px var(--peach-deep); }
+
+        .exp-item:hover::before { transform: scale(1.4); }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.35rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .exp-date {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-soft);
+            white-space: nowrap;
+            background: #EDE8E0;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            letter-spacing: 0.03em;
+        }
+
+        .exp-company {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--lavender-deep);
+            margin-bottom: 0.65rem;
+        }
+
+        .exp-item:nth-child(2) .exp-company { color: var(--mint-deep); }
+        .exp-item:nth-child(3) .exp-company { color: var(--pink-deep); }
+        .exp-item:nth-child(4) .exp-company { color: var(--peach-deep); }
+
+        .exp-desc {
+            font-size: 0.84rem;
+            color: var(--text-mid);
+            line-height: 1.72;
+        }
+
+        .exp-desc li { margin-bottom: 0.3rem; padding-left: 0.25rem; }
+        .exp-desc ul { padding-left: 1.1rem; }
+
+        /* ── Project rows ── */
+        .proj-list { display: flex; flex-direction: column; }
+
+        .proj-row {
+            display: grid;
+            grid-template-columns: 3rem 1fr;
+            gap: 1.25rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #F0E8E0;
+            align-items: start;
+        }
+
+        .proj-row:last-child { border-bottom: none; }
+
+        .proj-num {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+            line-height: 1.4;
+            padding-top: 0.05rem;
+        }
+
+        .proj-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .proj-detail {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.65rem;
+        }
+
+        .proj-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .proj-chip {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            background: var(--bg);
+            color: var(--text-soft);
+            border: 1px solid #E8E0D8;
+        }
+
+        /* ── Education + Skills + Languages ── */
+        .edu-lang-grid {
+            display: flex;
+            flex-direction: row;
+            gap: 12rem;
+            align-items: start;
+            justify-content: flex-start;
+        }
+
+        .edu-lang-grid > div {
+            flex-shrink: 0;
+        }
+
+        .edu-lang-grid > div:nth-child(1) { width: 320px; }
+        .edu-lang-grid > div:nth-child(2) { width: 640px; }
+        .edu-lang-grid > div:nth-child(3) { width: 160px; }
+
+        .edu-list { display: flex; flex-direction: column; gap: 0; }
+
+        .edu-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid #F0E8E0;
+        }
+
+        .edu-item:last-child { border-bottom: none; }
+
+        .edu-year-badge {
+            flex-shrink: 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--text-soft);
+            width: 3rem;
+            text-align: right;
+            padding-top: 0.1rem;
+        }
+
+        .edu-divider {
+            flex-shrink: 0;
+            width: 1px;
+            background: #E0D8D0;
+            align-self: stretch;
+            margin: 0.15rem 0;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .edu-school {
+            font-size: 0.8rem;
+            color: var(--text-mid);
+        }
+
+        /* Languages inline */
+        .lang-list { display: flex; flex-direction: column; }
+
+        .lang-row {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid #F0E8E0;
+        }
+
+        .lang-row:last-child { border-bottom: none; }
+
+        .lang-name {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+
+        .lang-badge {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid;
+        }
+
+        .lang-native { background: #EDEDFC; color: var(--lavender-deep); border-color: #C5B8F0; }
+        .lang-c2     { background: #E8F7F1; color: var(--mint-deep);     border-color: #A8E6CF; }
+        .lang-b2     { background: #FEF4EC; color: var(--peach-deep);    border-color: #F7C59F; }
+        .lang-b1     { background: #FEF0F4; color: var(--pink-deep);     border-color: #F5A7B8; }
+
+        /* ── Sidebar ── */
+        .cv-sidebar {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+        }
+
+        .sidebar-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .sidebar-card.visible { opacity: 1; transform: translateY(0); }
+
+        .sidebar-card-title {
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #F0E8E0;
+            letter-spacing: 0.03em;
+        }
+
+        /* Skills */
+        .skill-group { margin-bottom: 1rem; }
+        .skill-group:last-child { margin-bottom: 0; }
+
+        .skill-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+        .skill-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: var(--bg);
+            color: var(--text-mid);
+            border: 1px solid #E8E0D8;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        /* Color skill groups */
+        .skill-group-ai .skill-tag { background: #EDEDFC; color: var(--lavender-deep); border-color: #C5B8F0; }
+        .skill-group-backend .skill-tag { background: #E8F7F1; color: var(--mint-deep); border-color: #A8E6CF; }
+        .skill-group-automation .skill-tag { background: #FEF4EC; color: var(--peach-deep); border-color: #F7C59F; }
+
+
+        /* Info / Contact */
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.8rem;
+            color: var(--text-mid);
+            padding: 0.4rem 0;
+        }
+
+        .info-item svg { flex-shrink: 0; color: var(--text-soft); }
+
+        /* Availability card accent */
+        .avail-card {
+            background: linear-gradient(135deg, #EDEDFC 0%, #E8F7F1 100%);
+            border: 1px solid #D8D0F0;
+        }
+
+        .avail-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--mint-deep);
+            flex-shrink: 0;
+            animation: avail-pulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes avail-pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: 0.65; }
+        }
+
+        .avail-text {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .avail-sub {
+            font-size: 0.74rem;
+            color: var(--text-mid);
+            margin-top: 0.15rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 960px) {
+            .cv-main-full { max-width: 100%; }
+        }
+
+        @media (max-width: 900px) {
+            .edu-lang-grid { flex-wrap: wrap; }
+            .edu-lang-grid > div:nth-child(1),
+            .edu-lang-grid > div:nth-child(2) { width: calc(50% - 2rem); }
+        }
+
+        @media (max-width: 640px) {
+            .page-hero, .cv-body { padding-left: 2rem; padding-right: 2rem; }
+            .hero-stats { gap: 1.5rem; }
+            .edu-lang-grid { flex-direction: column; }
+            .edu-lang-grid > div:nth-child(1),
+            .edu-lang-grid > div:nth-child(2),
+            .edu-lang-grid > div:nth-child(3) { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="cv.html" class="nav-link active">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html#contact" class="nav-cta">Say hello</a>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div>
+            <div class="page-eyebrow">✦ Résumé</div>
+            <h1 class="page-title">Tamara <em>Martinovic</em></h1>
+            <p class="page-subtitle">
+                AI Engineer
+                <span class="dot"></span>
+                PhD
+                <span class="dot"></span>
+                Croatia
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num">10+</span>
+                    <span class="hero-stat-label">Years Research</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">PhD</span>
+                    <span class="hero-stat-label">Biotechnology</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num">100%</span>
+                    <span class="hero-stat-label">All In</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="cv-body">
+
+        <!-- Experience full width -->
+        <div class="cv-section" data-observe>
+            <div class="cv-section-title">
+                <span class="cv-section-label">Experience</span>
+                <div class="cv-section-line"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">AI Engineer</span>
+                        <span class="exp-date">Oct 2024 – Present</span>
+                    </div>
+                    <p class="exp-company">Algorise Ltd · London, UK · Remote</p>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Developing multi-agent AI systems using LangGraph to create intelligent digital workers that enhance automation and efficiency</li>
+                            <li>Building scalable, production-grade backend systems in Python, integrating cutting-edge LLM tooling and orchestration frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Laboratory Scientist</span>
+                        <span class="exp-date">Nov 2021 – Jan 2023</span>
+                    </div>
+                    <p class="exp-company">Teaching Institute of Public Health · Rijeka, Croatia</p>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Led a laboratory team, coordinating workflows and ensuring quality standards</li>
+                            <li>Performed PCR diagnostics for SARS-CoV-2 and other respiratory viruses during the COVID-19 pandemic</li>
+                            <li>Implemented new PCR techniques and interpreted results in a high-throughput diagnostic setting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Postdoctoral Researcher</span>
+                        <span class="exp-date">Aug 2018 – Aug 2020</span>
+                    </div>
+                    <p class="exp-company">University of Rijeka, Department of Biotechnology · Rijeka, Croatia</p>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Bioprospecting of the Croatian Adriatic Sea, including screening and characterisation of bioactive compounds, and bioinformatics analyses</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="exp-title">Research & Teaching Assistant</span>
+                        <span class="exp-date">Dec 2012 – Aug 2018</span>
+                    </div>
+                    <p class="exp-company">University of Rijeka, Department of Biotechnology · Rijeka, Croatia</p>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Conducted doctoral research in proteomics and glycomics, applying advanced analytical techniques to biomedical studies</li>
+                            <li>Assisted in teaching undergraduate courses and supervising laboratory work</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects + Education full width -->
+        <div class="cv-main-full">
+
+            <!-- Projects -->
+            <div class="cv-section" data-observe>
+                <div class="cv-section-title">
+                    <span class="cv-section-label">Key Projects</span>
+                    <div class="cv-section-line"></div>
+                </div>
+                <div class="proj-list">
+                    <div class="proj-row">
+                        <span class="proj-num">01</span>
+                        <div>
+                            <p class="proj-name">AI Restaurant E-Menu</p>
+                            <p class="proj-detail">Smart digital menu with AI-powered translation into 100+ languages, automated dish image generation, and a WhatsApp chatbot for menu management.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">FastAPI</span>
+                                <span class="proj-chip">Next.js</span>
+                                <span class="proj-chip">PostgreSQL</span>
+                                <span class="proj-chip">OpenAI</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-row">
+                        <span class="proj-num">02</span>
+                        <div>
+                            <p class="proj-name">Content Repurposer</p>
+                            <p class="proj-detail">n8n automation that takes a YouTube video, generates an X thread and summary via AI, then posts a Telegram notification on completion.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">n8n</span>
+                                <span class="proj-chip">LLM</span>
+                                <span class="proj-chip">Telegram API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-row">
+                        <span class="proj-num">03</span>
+                        <div>
+                            <p class="proj-name">LinkedIn Lead Pipeline</p>
+                            <p class="proj-detail">Automated pipeline that scrapes LinkedIn profiles, compiles structured lead data into Google Drive, and uses LLMs for personalised outreach.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">Python</span>
+                                <span class="proj-chip">LangChain</span>
+                                <span class="proj-chip">Google Drive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-row">
+                        <span class="proj-num">04</span>
+                        <div>
+                            <p class="proj-name">Slack → Jira Automation</p>
+                            <p class="proj-detail">Python integration that automatically creates Jira tickets from Slack messages, streamlining issue tracking and team workflows.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">Python</span>
+                                <span class="proj-chip">Slack API</span>
+                                <span class="proj-chip">Jira API</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-row">
+                        <span class="proj-num">05</span>
+                        <div>
+                            <p class="proj-name">Instagram Booking Chatbot</p>
+                            <p class="proj-detail">Built for beauty salons in Croatia. Handles bookings, rescheduling, and promos directly in Instagram DMs — where clients already are. Zero phone tag.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">Instagram API</span>
+                                <span class="proj-chip">Conversational AI</span>
+                                <span class="proj-chip">n8n</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proj-row">
+                        <span class="proj-num">06</span>
+                        <div>
+                            <p class="proj-name">Legal Claims Automation</p>
+                            <p class="proj-detail">n8n workflow integrated with Clio, used by 150,000+ law firms. Damage claims that used to require manual review now process automatically — cut from 1 hour to under a minute.</p>
+                            <div class="proj-stack">
+                                <span class="proj-chip">n8n</span>
+                                <span class="proj-chip">Clio API</span>
+                                <span class="proj-chip">Document AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education + Languages -->
+            <div class="cv-section" data-observe>
+                <div class="edu-lang-grid">
+                    <div>
+                        <div class="cv-section-title">
+                            <span class="cv-section-label">Education</span>
+                            <div class="cv-section-line"></div>
+                        </div>
+                        <div class="edu-list">
+                            <div class="edu-item">
+                                <span class="edu-year-badge">2018</span>
+                                <div class="edu-divider"></div>
+                                <div>
+                                    <p class="edu-degree">PhD — Biotechnology</p>
+                                    <p class="edu-school">University of Rijeka, Croatia</p>
+                                </div>
+                            </div>
+                            <div class="edu-item">
+                                <span class="edu-year-badge">2009</span>
+                                <div class="edu-divider"></div>
+                                <div>
+                                    <p class="edu-degree">MSc — Biomolecular Sciences</p>
+                                    <p class="edu-school">Utrecht University, Netherlands</p>
+                                </div>
+                            </div>
+                            <div class="edu-item">
+                                <span class="edu-year-badge">2007</span>
+                                <div class="edu-divider"></div>
+                                <div>
+                                    <p class="edu-degree">BSc — Biology</p>
+                                    <p class="edu-school">University College Utrecht, Netherlands</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cv-section-title">
+                            <span class="cv-section-label">Technical Skills</span>
+                            <div class="cv-section-line"></div>
+                        </div>
+                        <div class="skill-group skill-group-ai" style="margin-bottom:1.25rem;">
+                            <p class="skill-label">AI & Agents</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">LangGraph</span>
+                                <span class="skill-tag">LangChain</span>
+                                <span class="skill-tag">Multi-agent</span>
+                                <span class="skill-tag">RAG</span>
+                                <span class="skill-tag">Prompt Eng.</span>
+                                <span class="skill-tag">Vector DBs</span>
+                            </div>
+                        </div>
+                        <div class="skill-group skill-group-backend" style="margin-bottom:1.25rem;">
+                            <p class="skill-label">Backend & Dev</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Pydantic</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">REST APIs</span>
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Next.js</span>
+                            </div>
+                        </div>
+                        <div class="skill-group skill-group-automation">
+                            <p class="skill-label">Automation</p>
+                            <div class="skill-tags">
+                                <span class="skill-tag">n8n</span>
+                                <span class="skill-tag">Make</span>
+                                <span class="skill-tag">Zapier</span>
+                                <span class="skill-tag">Airtable</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cv-section-title">
+                            <span class="cv-section-label">Languages</span>
+                            <div class="cv-section-line"></div>
+                        </div>
+                        <div class="lang-list">
+                            <div class="lang-row">
+                                <span class="lang-name">Croatian</span>
+                                <span class="lang-badge lang-native">Native</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-name">English</span>
+                                <span class="lang-badge lang-c2">C2</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-name">Italian</span>
+                                <span class="lang-badge lang-b2">B2</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-name">Dutch</span>
+                                <span class="lang-badge lang-b1">B1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end cv-main-full -->
+
+    </div><!-- end cv-body -->
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            padding: 3rem 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--mint);
+            color: var(--mint-deep);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4.5vw, 3.8rem);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .page-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            color: var(--text-mid);
+            max-width: 900px;
+        }
+
+        /* Blog grid */
+        .blog-section {
+            padding: 0 3rem 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .post-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .post-card.visible { opacity: 1; transform: translateY(0); }
+        .post-card:hover   { box-shadow: 0 16px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+
+        .post-thumb {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .post-thumb-1 { background: linear-gradient(135deg, var(--card-01), var(--mint)); }
+        .post-thumb-2 { background: linear-gradient(135deg, var(--card-02), var(--pink)); }
+        .post-thumb-3 { background: linear-gradient(135deg, var(--card-03), var(--lavender)); }
+        .post-thumb-4 { background: linear-gradient(135deg, #FFF8E8, var(--yellow)); }
+        .post-thumb-img { background: none; padding: 0; overflow: hidden; }
+        .post-thumb-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+        .post-body {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-category {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+        }
+
+        .cat-ai       { background: var(--lavender); color: var(--lavender-deep); }
+        .cat-business { background: var(--mint);     color: var(--mint-deep); }
+        .cat-tools    { background: var(--peach);    color: var(--peach-deep); }
+        .cat-life     { background: var(--pink);     color: var(--pink-deep); }
+
+        .post-date {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+        }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-weight: 500;
+            line-height: 1.25;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .post-excerpt {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .post-read {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .post-read::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .post-card:hover .post-read::after { transform: translateX(4px); }
+
+        /* Coming soon card */
+        .post-card-placeholder {
+            background: var(--bg);
+            border: 2px dashed var(--border, #E8E0D8);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 280px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .post-card-placeholder.visible { opacity: 1; transform: translateY(0); }
+
+        .placeholder-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-text {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-soft);
+        }
+
+        .placeholder-sub {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-hero, .blog-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+<h1 class="page-title">Deployed <em>Thoughts</em></h1>
+        <p class="page-subtitle">On AI, automation, and the grit it takes to build things that work. Also occasionally: good music and random daily thoughts.</p>
+    </header>
+
+    <section class="blog-section">
+        <div class="section-header">
+            <span class="section-title">All posts</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="blog-grid">
+
+            <a href="blog-lab-coats-to-llms.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-img"><img src="blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+<span class="post-date">March 2026 · 6 min</span>
+                    </div>
+                    <h2 class="post-title">From mass spectrometers to LLMs</h2>
+                    <p class="post-excerpt">How a decade of biomedical research — pipettes, mass spectrometers, a PhD — turned out to be the perfect preparation for building AI systems.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 120);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

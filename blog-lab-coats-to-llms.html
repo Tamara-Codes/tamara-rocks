@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From mass spectrometers to LLMs — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-hero-img {
+            max-width: 960px;
+            margin: 0 auto 2rem;
+            padding: 0 3rem;
+        }
+
+        .post-hero-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+        .post-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--lavender);
+            color: var(--lavender-deep);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            margin-bottom: 1.75rem;
+        }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--lavender-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        /* Article */
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--lavender-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--lavender);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        /* Post footer */
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--lavender-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        .more-posts-title {
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #F0E8E0;
+        }
+
+        .more-posts-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .more-post-link {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #F8F4F0;
+            transition: color 0.2s;
+            line-height: 1.4;
+        }
+
+        .more-post-link:last-child { border-bottom: none; }
+        .more-post-link:hover { color: var(--lavender-deep); }
+
+        .more-post-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.15rem;
+        }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+<h1 class="post-title">From mass spectrometers to <em>LLMs</em></h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>March 2026</span>
+            <span class="dot"></span>
+            <span>6 min read</span>
+        </div>
+    </header>
+
+    <div class="post-hero-img">
+        <img src="blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs">
+    </div>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                I spent the better part of a decade in a lab. Not metaphorically — literally. Gloves, pipettes, centrifuges, the whole thing. My PhD was in biotechnology, and my postdoc focused on bioprospecting the Croatian Adriatic Sea: screening organisms for bioactive compounds, running bioinformatics analyses, trying to extract signal from extraordinarily noisy data.
+            </p>
+
+            <p>
+                If that sounds painstaking, it was. Science runs on patience. You design an experiment, wait days for results, and half the time the results tell you nothing useful. Then you redesign, and repeat. The loop is brutal, but it teaches you something irreplaceable: how to think rigorously about complex systems.
+            </p>
+
+            <div class="post-pullquote">
+                "The skills that make a good researcher — systematic thinking, tolerance for ambiguity, obsessive attention to detail — turn out to be exactly what good AI engineering requires."
+            </div>
+
+            <h2>The <em>pivot</em></h2>
+
+            <p>
+                In 2021, I left research to join a diagnostic lab during the pandemic. We were doing high-throughput PCR testing for COVID-19 — hundreds of samples a day, tight turnaround, no margin for error. It was stressful, unglamorous work, but it showed me something I hadn't fully appreciated before: the bottleneck in most complex workflows isn't the hard thinking. It's the repetitive, structured, rule-based tasks that surround the hard thinking.
+            </p>
+
+            <p>
+                That's the same problem I'd been watching AI get dramatically better at solving.
+            </p>
+
+            <p>
+                I started teaching myself Python seriously. Then machine learning. Then LLMs. I built small automations at first — things that saved me an hour a week at work. Then I started building for other people. Then I went all in.
+            </p>
+
+            <h2>What actually <em>transferred</em></h2>
+
+            <p>
+                People sometimes frame career transitions as starting over. I don't see it that way. Almost everything I learned as a scientist transferred directly:
+            </p>
+
+            <p>
+                <strong>Debugging is debugging.</strong> Whether it's a PCR assay that won't amplify or a LangGraph agent that keeps hitting the wrong node, the process is the same — isolate variables, form a hypothesis, test it, don't fool yourself.
+            </p>
+
+            <p>
+                <strong>Reading dense technical material quickly.</strong> Academic papers and API documentation are both written to be comprehensive rather than readable. Years of wading through journals means I can parse a technical doc in half the time it used to take me.
+            </p>
+
+            <p>
+                <strong>Working with uncertainty.</strong> In research you rarely have complete information. You build the most defensible interpretation of incomplete evidence. In AI engineering — especially when building agentic systems — you're doing exactly the same thing.
+            </p>
+
+            <h2>What I'm building <em>now</em></h2>
+
+            <p>
+                I'm currently at Algorise, building multi-agent AI systems in Python using LangGraph. The goal is intelligent digital workers: AI that doesn't just respond to prompts but actually navigates complex workflows, makes decisions, and hands off to the right system at the right time.
+            </p>
+
+            <p>
+                Alongside that, I build and ship my own projects — restaurant menu systems, booking bots, legal automation tools. Small businesses, mostly. The ones that can't afford a full engineering team but absolutely can afford to run smarter.
+            </p>
+
+            <p>
+                I'm doing all of this from Croatia, which people find surprising. I find it freeing. The timezone works for European clients. The cost of living means I can take interesting projects over safe ones. And the Adriatic is right there when I need to think.
+            </p>
+
+            <div class="post-pullquote">
+                "I build AI systems the way I used to run experiments: methodically, relentlessly, and with an embarrassing amount of enthusiasm."
+            </div>
+
+            <p>
+                If you're building something and think AI could help — or if you're just curious how a molecular biologist ended up writing agent orchestration code — I'd genuinely love to talk.
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>
