@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .page-hero {
             padding: 3rem 3rem 2rem;
@@ -215,19 +215,20 @@
     </div>
 
     <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
         <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
             <a href="blog.html" class="nav-link active">Blog</a>
-            <a href="cv.html" class="nav-link">CV</a>
+            <a href="../cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
-            <a href="index.html#contact" class="nav-cta">Say hello ✦</a>
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
         </div>
     </nav>
 
     <header class="page-hero">
-<h1 class="page-title">Deployed <em>Thoughts</em></h1>
+<h1 class="page-title">Deployed <span style="color:var(--pink-deep);">Thoughts</span></h1>
         <p class="page-subtitle">On AI, automation, and the grit it takes to build things that work. Also occasionally: good music and random daily thoughts.</p>
     </header>
 
@@ -239,14 +240,110 @@
 
         <div class="blog-grid">
 
-            <a href="blog-lab-coats-to-llms.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-img"><img src="images/blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs"></div>
+            <a href="blog-first-hackathon.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-3" style="background: linear-gradient(135deg, #E8E4FF, #C4BBF0);"></div>
                 <div class="post-body">
                     <div class="post-meta">
-<span class="post-date">March 2026 · 6 min</span>
+                        <span class="post-date">March 2026 · 6 min</span>
                     </div>
-                    <h2 class="post-title">From mass spectrometers to LLMs</h2>
-                    <p class="post-excerpt">How a decade of biomedical research — pipettes, mass spectrometers, a PhD — turned out to be the perfect preparation for building AI systems.</p>
+                    <h2 class="post-title">My First Hackathon</h2>
+                    <p class="post-excerpt">Easy peasy Friday, debugging hell Saturday, a Sunday morning chat with Claude, and a finished solution by Monday. You can't have ups without downs.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-main-to-fullstack.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-3"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">July 2025 · 5 min</span>
+                    </div>
+                    <h2 class="post-title">From main.py to Full Stack: One Year of Growth</h2>
+                    <p class="post-excerpt">Less than a year ago I wrote everything in main.py. Then I shipped a Next.js + FastAPI + Docker + Supabase app. I'm still clicking buttons just to watch it work.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-fun-developer.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-2"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">June 2025 · 5 min</span>
+                    </div>
+                    <h2 class="post-title">Why Doesn't Anyone Talk About How Fun Being a Developer Is?</h2>
+                    <p class="post-excerpt">I've met lawyers, dentists, bartenders — rarely does anyone say they love their job. Meanwhile I'm singing around the living room every time my code works. What gives?</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-ai-companionship.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-1"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">May 2025 · 5 min</span>
+                    </div>
+                    <h2 class="post-title">AI Companionship: Where Is the Line?</h2>
+                    <p class="post-excerpt">Millions use AI for emotional connection. I smiled when a model called my correction a "smart catch." The dopamine was real. So what does that actually mean?</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-remote-work.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-4"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">April 2025 · 4 min</span>
+                    </div>
+                    <h2 class="post-title">Remote Work Changed Everything</h2>
+                    <p class="post-excerpt">My daughter wants to do my job so she can pick her kid up from daycare early. She's four and has already figured out what most companies haven't.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-smurfs-and-magic.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-img"><img src="../images/smurf.webp" alt="Smurfs, Alice &amp; Magic Methods"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">March 2025 · 5 min</span>
+                    </div>
+                    <h2 class="post-title">Smurfs, Alice & Magic Methods</h2>
+                    <p class="post-excerpt">I trained a model to tell Smurfs from Gargamel in 3 minutes, stumbled into Character.AI's rabbit hole, made VS Code pretty, and fell in love with Python's dunder magic.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-dopamine.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-img"><img src="../images/sekiro.webp" alt="Code, Play, Move"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">February 2025 · 7 min</span>
+                    </div>
+                    <h2 class="post-title">Code, Play, Move: The Dopamine-Packed Recipe for a Happy Life</h2>
+                    <p class="post-excerpt">Why solving a bug feels like a boss fight victory, why I cried after running 7km, and what all your favourite activities have in common: dopamine.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-blind-chicken.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-img"><img src="../images/chicken.webp" alt="The Blind Chicken Philosophy"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">January 2025 · 6 min</span>
+                    </div>
+                    <h2 class="post-title">The Blind Chicken Philosophy</h2>
+                    <p class="post-excerpt">A Croatian proverb about persistence, the math of applying to a thousand jobs, and how networking turned a beginner's hustle into real results.</p>
+                    <span class="post-read">Read more</span>
+                </div>
+            </a>
+
+            <a href="blog-lab-coats-to-llms.html" class="post-card" data-observe>
+                <div class="post-thumb post-thumb-img"><img src="../images/blog-mass-spec-hero.png" alt="From lab coats to LLMs"></div>
+                <div class="post-body">
+                    <div class="post-meta">
+                        <span class="post-date">December 2024 · 8 min</span>
+                    </div>
+                    <h2 class="post-title">From lab coats to LLMs</h2>
+                    <p class="post-excerpt">On growing up with a Commodore 64, spending a decade as a molecular biologist, and the accidental Google course that changed everything.</p>
                     <span class="post-read">Read more</span>
                 </div>
             </a>

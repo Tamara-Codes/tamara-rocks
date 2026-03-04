@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From main.py to Full Stack — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--yellow);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .stack-box {
+            background: #F5F0FF;
+            border: 2px solid var(--lavender, #D4CCFF);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .stack-box-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--lavender-deep, #7B68C8);
+            margin-bottom: 1.25rem;
+        }
+
+        .stack-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .stack-list li {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stack-list li::before {
+            content: '▸';
+            color: var(--lavender-deep, #7B68C8);
+            font-size: 0.8rem;
+        }
+
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+            .stack-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title">From <em>main.py</em> to Full Stack: One Year of Growth</h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>July 2025</span>
+            <span class="dot"></span>
+            <span>5 min read</span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                Less than a year ago, all of my Python code lived in a single file called <code style="background:#F5F0FF; padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.9em;">main.py</code>. I wondered what Classes were all about. I didn't know what an API was. I had absolutely no knowledge of databases or Docker. I would browse GitHub every now and then — repository filled with folders, subfolders, configuration files, requirements files, test files — and wonder what kind of magic was stored in there. It looked less like code and more like an entire civilisation, and I couldn't imagine ever being the person who built one.
+            </p>
+
+            <p>
+                Then I started learning properly. Not just tutorials — actual building, actual breaking things, actual confusion, actual breakthrough. And yesterday, I shipped a fully functional application.
+            </p>
+
+            <div class="stack-box">
+                <div class="stack-box-label">The stack</div>
+                <ul class="stack-list">
+                    <li>Next.js (frontend)</li>
+                    <li>Google login via NextAuth.js</li>
+                    <li>FastAPI (backend)</li>
+                    <li>Supabase (Postgres)</li>
+                    <li>Docker (local dev)</li>
+                    <li>ngrok (public tunneling)</li>
+                </ul>
+            </div>
+
+            <p>
+                To folks in the industry, I know: this is Tuesday. This is a 5-minute scaffold. I know. But to me, less than a year ago, this was the Moon.
+            </p>
+
+            <h2>What <em>Actually</em> Changed</h2>
+
+            <p>
+                The technical growth is one thing. What I didn't anticipate was how much the <em>mental model</em> would shift.
+            </p>
+
+            <p>
+                At first I wasn't using Docker at all. I was running three terminal windows in parallel — one for the frontend, one for the backend, one for the database — and it was a permanent state of mild chaos. Tabs everywhere. "Which terminal is this?" Processes dying mysteriously. Starting over. Now I run everything with one command. One. The whole thing spins up, the services find each other, and I can think about the actual problem instead of the scaffolding.
+            </p>
+
+            <p>
+                This is what experience actually looks like, I think. Not necessarily knowing more facts, but having fewer things to worry about so your attention can go where it matters.
+            </p>
+
+            <div class="post-pullquote">
+                "I finally understand how it all works — how it comes together. It really is like magic. 🪄"
+            </div>
+
+            <h2>On <em>AI-Assisted</em> Development</h2>
+
+            <p>
+                Yes, AI wrote the frontend. I'm not going to pretend otherwise, and I don't think I need to be ashamed of it. The frontend wasn't the point. The point was the architecture: understanding how a request flows from the browser through the Next.js server to the FastAPI backend, gets authenticated, hits the database, and comes back. I did all of that myself. I configured the auth. I wrote the API routes. I set up the Docker compose file. I wired Supabase to the backend.
+            </p>
+
+            <p>
+                Understanding the system matters more than authoring every line. Any senior developer will tell you that. AI is a tool. Using it well — knowing when to reach for it, what to ask, how to evaluate what it gives you — is itself a skill.
+            </p>
+
+            <h2>The <em>Dopamine</em>, Revisited</h2>
+
+            <p>
+                I'm still riding the dopamine rush. I keep going back to the app just to click things and watch it work. I watch a button click trigger a request, the request hit the backend, the backend write a row to Supabase, the frontend update. Over and over. It doesn't get old.
+            </p>
+
+            <p>
+                I've written before about how coding triggers the same reward circuits as gaming or exercise. But there's something particular about this milestone — about looking at something genuinely complex that you built yourself and understanding every piece of it. Not just that it works, but <em>why</em> it works. That specific satisfaction doesn't come from tutorials. It comes from building something real.
+            </p>
+
+            <p>
+                The GitHub repos full of mysterious folders are a little less mysterious now. I'm slowly becoming the person who builds civilisations. 🙂
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>

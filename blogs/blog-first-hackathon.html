@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Hackathon — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--yellow);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .timeline {
+            margin: 2.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--lavender);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-day {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--lavender-deep, #7B68C8);
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-text {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title">My First <em>Hackathon</em></h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>March 2026</span>
+            <span class="dot"></span>
+            <span>6 min read</span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                Ten years ago I was training for a half marathon. When I started, I could barely run — 21 kilometres seemed like an impossible, slightly masochistic goal. I remember crying from happiness when I managed a 5km route without stopping. A few weeks later I ran 13km through rough forest terrain. A few weeks after that, I finished the half marathon. I cried again. I have a pattern.
+            </p>
+
+            <p>
+                I no longer enjoy running. Come to think of it, I never really did. I was just proving a point to myself: that I can achieve any goal I set, as long as it's realistic and I'm willing to put in the work. So when I heard about a hackathon, the comparison was immediate. If I could run 21km, I could surely build something in a weekend.
+            </p>
+
+            <h2>The <em>Setup</em></h2>
+
+            <p>
+                A hackathon using no-code and low-code AI tools — slightly outside my daily comfort zone, which made it even more appealing. I went in knowing I'd be using things I wasn't fully fluent in. The unknown was the point. I signed up feeling like a kid in a chocolate factory, brimming with the kind of naive optimism that only exists before you've actually started the work.
+            </p>
+
+            <p>
+                When the task landed on Friday afternoon, I looked at it and thought: <em>"Hah. Easy peasy. I'll be done in a few hours."</em>
+            </p>
+
+            <p>
+                I planned it all out with characteristic overconfidence. I wouldn't just write code — I'd show off the full range. Next.js frontend deployed on Vercel, Supabase for storage, and an n8n backend to tie it together. I built my dashboard on Friday evening, went to sleep without a care in the world, and mentally drafted my winner's speech. What a breeze this would be.
+            </p>
+
+            <div class="post-pullquote">
+                "I went to bed on Friday thinking I might win first prize. I went to bed on Saturday feeling like a total failure. Such is the nature of building things."
+            </div>
+
+            <h2>Saturday: <em>The Reckoning</em></h2>
+
+            <p>
+                I spent four hours debugging one node in n8n. Four hours. One node.
+            </p>
+
+            <p>
+                The rational, experienced voice in my head (borrowed from every senior developer I've ever read) said: this is normal, keep going. The irrational, exhausted voice said: what's the point, I'm never going to win anyway, might as well quit and have a nice weekend.
+            </p>
+
+            <p>
+                I listened to neither voice. Instead I thought: just one more try. Which turned into ten more tries. Which turned into a hundred more tries. Which, somewhere around 10 PM, turned into the node finally working. I had solved it.
+            </p>
+
+            <p>
+                At 10:12 PM, I broke everything again.
+            </p>
+
+            <p>
+                I went to bed around 2 AM feeling like I'd lost a fistfight with my own laptop.
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-day">Friday</div>
+                    <div class="timeline-text">Task received. Dashboard built. Misplaced confidence at an all-time high.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">Saturday</div>
+                    <div class="timeline-text">4 hours debugging one n8n node. Solved at 10 PM. Broke everything at 10:12 PM. Bed at 2 AM.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">Sunday morning</div>
+                    <div class="timeline-text">Coffee, conversation with Claude. Showed him the working code from 10 PM, described what I added, described what broke. Fixed in 5 minutes.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">Sunday evening</div>
+                    <div class="timeline-text">Friends over. Finished the work in the evening. Slept like a baby.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-day">Monday</div>
+                    <div class="timeline-text">Recorded solution videos. Submitted. Felt accomplished.</div>
+                </div>
+            </div>
+
+            <h2>Sunday: <em>The Comeback</em></h2>
+
+            <p>
+                After a proper rest I sat down with Claude on Sunday morning. I showed him the code that had worked at 10 PM. I told him what I'd added afterwards. I told him what broke. We fixed it in five minutes.
+            </p>
+
+            <p>
+                I'm not sure whether to be humbled or amused by this. Possibly both. The lesson here isn't that AI is magic — it's that fresh eyes (artificial or otherwise) and a clear problem statement can cut through hours of accumulated tunnel vision. Sleep is also, apparently, a debugging tool.
+            </p>
+
+            <p>
+                Friends came over for most of the day. I finished my work in the evening. Not perfect — nothing ever is — but functional, thoughtful, and genuinely mine. I had built something real, with real tools, over a real weekend, and it worked.
+            </p>
+
+            <h2>The <em>Moral</em></h2>
+
+            <p>
+                I submitted on Monday, recorded my solution videos, and felt the same particular kind of pride I felt crossing the finish line of that half marathon. Not pride in winning — I probably didn't — but pride in having started something hard, hit the wall, and finished anyway.
+            </p>
+
+            <p>
+                It is truly amazing what can be built in a weekend nowadays. All you need is a bit of will, a willingness to look stupid while you figure things out, and maybe a good conversation with an AI on Sunday morning when everything is broken and you can't see the forest for the trees.
+            </p>
+
+            <p>
+                You can't have ups without downs. But the ups — the moment the node works, the moment the build deploys, the moment the video is recorded and the solution is sent — those are something worth running toward. Even if you're not a runner.
+            </p>
+
+            <p>
+                I'd do it all over again in a heartbeat. 🥳
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>

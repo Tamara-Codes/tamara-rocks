@@ -577,6 +577,367 @@
             .stack-categories .stack-group:nth-child(2) { order: 4; } /* Frontend */
             .stack-categories .stack-group:nth-child(4) { order: 5; grid-column: span 2; } /* Deploy & Auth */
         }
+
+        /* ── Journey Calendar ── */
+        .journey-section {
+            padding: 0 3rem 6rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey-inner {
+            background: #fff;
+            border-radius: 28px;
+            padding: 3rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .journey-inner.visible { opacity: 1; transform: translateY(0); }
+
+        .journey-inner::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -50px;
+            width: 200px; height: 200px;
+            border-radius: 50%;
+            background: var(--pink);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .journey-inner::after {
+            content: '';
+            position: absolute;
+            bottom: -50px; left: 25%;
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            background: var(--mint);
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        .journey-top {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .journey-heading {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            line-height: 1.15;
+        }
+
+        .journey-heading em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .journey-legend {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-mid);
+        }
+
+        .legend-mark {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            flex-shrink: 0;
+        }
+
+        .legend-mark.mark-build {
+            background: var(--mint-deep);
+            transform: rotate(45deg);
+            border-radius: 1px;
+        }
+
+        .legend-mark.mark-ai {
+            background: var(--pink-deep);
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+        }
+
+        .legend-mark.mark-life {
+            background: var(--lavender-deep);
+            border-radius: 50%;
+        }
+
+        .journey-scroll {
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .journey-scroll::-webkit-scrollbar { height: 4px; }
+        .journey-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.04); border-radius: 2px; }
+        .journey-scroll::-webkit-scrollbar-thumb { background: var(--lavender); border-radius: 2px; }
+
+        .cal-wrap { display: flex; flex-direction: column; gap: 4px; min-width: max-content; user-select: none; }
+
+        .cal-months-row { height: 18px; position: relative; margin-left: 30px; }
+
+        .cal-month-label {
+            position: absolute;
+            top: 0;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+        }
+
+        .cal-grid-row { display: flex; gap: 6px; align-items: flex-start; }
+
+        .cal-day-names {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: 24px;
+            flex-shrink: 0;
+        }
+
+        .cal-day-names span {
+            font-size: 0.54rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            height: 13px;
+            line-height: 13px;
+            text-align: right;
+        }
+
+        .cal-columns { display: flex; gap: 2px; }
+
+        .cal-week { display: flex; flex-direction: column; gap: 2px; }
+
+        .cal-day {
+            width: 13px;
+            height: 13px;
+            border-radius: 2px;
+            background: rgba(26,23,20,0.07);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .cal-day.future { background: rgba(26,23,20,0.07); }
+
+        .cal-day.today {
+            box-shadow: 0 0 0 1.5px var(--pink-deep);
+            background: rgba(232,99,126,0.12);
+        }
+
+        .cal-day.has-milestone {
+            background: transparent;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        .cal-day.has-milestone:hover { transform: scale(2.2); z-index: 5; }
+
+        /* Diamond — built something */
+        .cal-day.ms-build::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 11px; height: 11px;
+            background: var(--mint-deep);
+            border-radius: 1px;
+            transform: translate(-50%,-50%) rotate(45deg);
+        }
+
+        /* Star — AI moment */
+        .cal-day.ms-ai::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 14px; height: 14px;
+            background: var(--pink-deep);
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+            transform: translate(-50%,-50%);
+        }
+
+        /* Circle — life & learning */
+        .cal-day.ms-life::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 11px; height: 11px;
+            background: var(--lavender-deep);
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        /* Shared JS tooltip (position: fixed avoids scroll clipping) */
+        .cal-tooltip {
+            position: fixed;
+            background: var(--text);
+            color: #fff;
+            font-family: 'Nunito', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            white-space: nowrap;
+            padding: 0.3rem 0.65rem;
+            border-radius: 7px;
+            pointer-events: none;
+            z-index: 500;
+            opacity: 0;
+            transition: opacity 0.12s ease;
+        }
+
+        .cal-tooltip.visible { opacity: 1; }
+
+        /* ── Milestone Modal ── */
+        .ms-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .ms-modal.open { opacity: 1; pointer-events: all; }
+
+        .ms-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(26,23,20,0.55);
+            backdrop-filter: blur(6px);
+            cursor: pointer;
+        }
+
+        .ms-panel {
+            position: relative;
+            background: #fff;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 520px;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 32px 80px rgba(26,23,20,0.25);
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+
+        .ms-modal.open .ms-panel { transform: translateY(0) scale(1); }
+
+        .ms-close {
+            position: absolute;
+            top: 0.9rem; right: 0.9rem;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(26,23,20,0.08);
+            color: var(--text-mid);
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: background 0.15s;
+        }
+
+        .ms-close:hover { background: rgba(26,23,20,0.16); }
+
+        .ms-img-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            background: var(--card-01);
+        }
+
+        .ms-img-wrap:empty { display: none; }
+
+        .ms-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+        .ms-body { padding: 1.75rem 2rem 2rem; }
+
+        .ms-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+
+        .ms-pill {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+        }
+
+        .ms-pill.pill-build { background: var(--mint);     color: var(--mint-deep); }
+        .ms-pill.pill-ai    { background: var(--pink);     color: var(--pink-deep); }
+        .ms-pill.pill-life  { background: var(--lavender); color: var(--lavender-deep); }
+
+        .ms-date { font-size: 0.7rem; font-weight: 600; color: var(--text-soft); letter-spacing: 0.04em; }
+
+        .ms-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.55rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+
+        .ms-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 1.25rem; }
+
+        .ms-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .ms-link:hover { gap: 0.55rem; }
+
+        @media (max-width: 768px) {
+            .journey-section { padding: 0 1.5rem 5rem; }
+            .journey-inner { padding: 2rem 1.5rem; }
+            .journey-top { flex-direction: column; gap: 1rem; align-items: flex-start; }
+            .ms-panel { border-radius: 20px; }
+            .ms-body { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -591,7 +952,8 @@
         <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
-            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="blogs/blog.html" class="nav-link">Blog</a>
             <a href="cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
@@ -745,6 +1107,35 @@
         </div>
     </section>
 
+    <section class="journey-section">
+        <div class="section-header">
+            <span class="section-title">My journey</span>
+            <div class="section-line"></div>
+        </div>
+        <div class="journey-inner" data-observe>
+            <div class="journey-top">
+                <h2 class="journey-heading">The <em>road</em> so far</h2>
+                <div class="journey-legend">
+                    <span class="legend-item">
+                        <span class="legend-mark mark-build"></span>
+                        Built something
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-mark mark-ai"></span>
+                        AI moment
+                    </span>
+                    <span class="legend-item">
+                        <span class="legend-mark mark-life"></span>
+                        Life &amp; Learning
+                    </span>
+                </div>
+            </div>
+            <div class="journey-scroll">
+                <div class="cal-wrap" id="journeyCalendar"></div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="contact-blobs" aria-hidden="true">
             <div class="contact-blob contact-blob-1"></div>
@@ -763,6 +1154,23 @@
         <span class="footer-text">Tamara Martinovic &copy; 2026</span>
     </footer>
 
+    <div id="milestoneModal" class="ms-modal" aria-hidden="true">
+        <div class="ms-backdrop" id="msBackdrop"></div>
+        <div class="ms-panel">
+            <button class="ms-close" id="msClose">✕</button>
+            <div class="ms-img-wrap" id="msImg"></div>
+            <div class="ms-body">
+                <div class="ms-meta">
+                    <span class="ms-pill" id="msPill"></span>
+                    <span class="ms-date" id="msDate"></span>
+                </div>
+                <h3 class="ms-title" id="msTitle"></h3>
+                <p class="ms-text" id="msText"></p>
+                <a class="ms-link" id="msLink" href="#" target="_blank" rel="noopener">View on LinkedIn →</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
@@ -773,6 +1181,575 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
+
+        // ── Milestone data ──
+        const MILESTONES = [
+            {
+                date: '2024-08-25',
+                title: 'First webpage ever',
+                body: "Instead of wasting on the couch watching Netflix, I decided to learn how to make a web page. It's very primitive, you can't click on anything (yet!), but it's pretty and I am so happy :)",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_tamara-codes-activity-7233584859170959362-vPUk'
+            },
+            {
+                date: '2024-08-27',
+                title: 'Rock, Paper, Scissors',
+                body: "And today I made a classic Rock, paper, scissors game! Isn't it cute :)",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_rock-paper-scissors-game-activity-7234317713395826688-jxsN'
+            },
+            {
+                date: '2024-08-31',
+                title: 'My first calculator',
+                body: "My calculator is not working properly, there are many things to fix, but it does the basic stuff and that is more than enough to make me feel like I can do anything! Who knew learning web development could be so much fun :)",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_calculator-activity-7235764782396538880-T-sE'
+            },
+            {
+                date: '2024-09-05',
+                title: 'Sign-up form',
+                body: "I know it doesn't do anything besides looking pretty, but maybe one day it will :)  P.S. Yes, I still have to learn responsive design, this is meant for desktop only.",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_sign-up-form-activity-7237573785799802880-3-rl'
+            },
+            {
+                date: '2024-09-17',
+                title: 'Library app — first real app',
+                body: "This time I made a real app! It's a library, you can store all your favorite books, toggle read status, edit input fields, and delete books! 182 lines of JS, 113 of CSS and 58 of HTML. I am so proud of myself :)",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_library-activity-7241923177738584064-YeSm'
+            },
+            {
+                date: '2024-09-27',
+                title: 'Tic Tac Toe — first responsive project',
+                body: "It took a lot of blood, sweat and tears, but I did it! I made a Tic Tac Toe game! It works! And it's responsive! Woohoo! Next project: The Witcher 4 :D",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_it-took-a-lot-of-blood-sweat-and-tears-activity-7245440105102950401-SVnC'
+            },
+            {
+                date: '2024-11-22',
+                title: 'Taught a model to spot Smurfs',
+                body: "I just used the fast.ai framework, wrote 20 lines of code, and managed to teach a model to differentiate between a Smurf and Gargamel. I fed it a bunch of labelled photos of both, I gave it a picture of some Smurfs and he responded with 100% accuracy. It took 3 minutes all together. How crazy is that?!",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-just-used-the-fastai-framework-wrote-activity-7265801971855478785-xeL1'
+            },
+            {
+                date: '2024-12-10',
+                title: 'D-ID talking avatar',
+                body: "How cool is this?!?! Never mind my fake teeth, it's brilliant :) Thanks to D-ID!",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_how-cool-is-this-never-mind-my-fake-teeth-activity-7272310009483452416-uHc-'
+            },
+            {
+                date: '2024-12-17',
+                title: 'Discovering Character.AI',
+                body: "Tonight I stumbled upon Character.AI. I am really shocked that something like this is allowed to be created and displayed next to a character of Elon Musk or Hercule Poirot. I do not mind, I am a modern gal, but just very surprised!",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_tonight-i-stumbled-upon-characterai-theres-activity-7274907567649095680-hX96'
+            },
+            {
+                date: '2024-12-18',
+                title: 'VS Code makeover',
+                body: "It took me almost 2 hours (stupid json, why is there no simpler way of doing this in VS Code?), but look at how beautiful it is! Now I can enjoy writing code even more 😊",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-took-me-almost-2-hours-stupid-json-why-activity-7275253589428555776-oaRK'
+            },
+            {
+                date: '2024-12-25',
+                title: 'IKEA achievement unlocked',
+                body: "I've assembled an IKEA table this evening. It was almost as satisfying as writing code 😁",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_ive-assembled-an-ikea-table-this-evening-activity-7277786838264655873-zk_5'
+            },
+            {
+                date: '2024-12-28',
+                title: 'Remote surgery via robot',
+                body: "How amazing is this?!?! A doctor performed remote surgery using a robot in Italy on a patient in China!",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_chinese-medical-team-performs-groundbreaking-activity-7278756050172850177-m94P'
+            },
+            {
+                date: '2025-01-08',
+                title: 'Hehe :)',
+                body: "Sometimes a meme says it all.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_hehe-activity-7282686852623458304-Ja2v'
+            },
+            {
+                date: '2025-01-13',
+                title: 'git ass .',
+                body: "Well I just typed 'git ass .' and it made my day 😁",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_well-i-just-typed-git-ass-and-it-made-activity-7284581440069996544-18Kz'
+            },
+            {
+                date: '2025-01-21',
+                title: 'LangGraph agent books a meeting & sends emails',
+                body: "I just scheduled a Google Meet, wrote an email draft and then sent it using Composio tools together with LangChain LangGraph's agent. So simple, yet so effective! Can't wait to experiment some more.",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-just-scheduled-a-google-meet-on-my-calendar-activity-7287579522760110080-b83l'
+            },
+            {
+                date: '2025-02-03',
+                title: 'First job as a software developer — joining Algorise',
+                body: "From a Commodore 64 to a career pivot after a decade in academia: when I first saw 'Hello, World' appear on my screen after typing just one line of code, it felt like I had just split the atom with my own hands. I no longer craved weekends out with friends — I chose to stay home and learn. And here I am. Thank you Dominic Lovric and Luka Miškić for believing in me and giving me the opportunity of a lifetime.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-can-clearly-remember-the-three-questions-activity-7292279982603530241-iWdm'
+            },
+            {
+                date: '2025-02-13',
+                title: 'FineWeb: 44 TB vs. a 1.4 MB floppy disk',
+                body: "I just found out that FineWeb, a dataset of 15 trillion tokens for LLM pretraining, requires 'only' 44 TB of disk space. It's funny to think that I used to play Prince of Persia on a 1.4 MB floppy disk. Relativity is such a curious thing.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-just-found-out-that-fineweb-a-dataset-activity-7295738916404396034-96G2'
+            },
+            {
+                date: '2025-02-19',
+                title: 'Fiber optics installed — I traveled to the future',
+                body: "I downloaded Red Dead Redemption (102GB) on PS5 in 15 minutes. When I fast forward on a YT video, it immediately loads — no little circle with percentages. I was so excited I barely slept. What witchcraft is that?!",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-finally-got-fiber-optics-installed-yesterday-activity-7297888453202001920-GLBz'
+            },
+            {
+                date: '2025-03-07',
+                title: 'Built a YouTube podcast summarizer agent',
+                body: "There are only 24h in a day, and one must sleep. My LLM ReAct agent downloads and transcribes YouTube audio, then summarizes it so I can read a short digest instead of listening. I realize this is a basic project, but I am very proud of myself considering I have been working with AI for only a couple of months. The dopamine rush is real 😊",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_there-are-unfortunately-only-24h-in-a-day-activity-7303804738804850689-ErAh'
+            },
+            {
+                date: '2025-03-18',
+                title: 'Google Easter eggs & the snipping tool I never knew existed',
+                body: "My daughter wanted to make a shooting star in playdough. I typed 'zvijezda padalica' in Google and three stars fell across my screen. Then I spent 15 min playing with Easter eggs I never knew existed. A couple of months ago I also discovered the Snipping Tool was there all along. Which rock have I been living under?! This brought me so much joy, I'm still giggling 🙃",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_today-my-child-was-playing-with-playdough-activity-7307825075087417344-GZFw'
+            },
+            {
+                date: '2025-03-20',
+                title: 'In Linux, "less" is "more"',
+                body: "Just discovered that in Linux, 'less' is 'more' — you can scroll backward, search, and save your sanity! Mark Nudelman has a great sense of humour!",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_just-discovered-that-in-linux-less-is-activity-7308392891481997314-QBab'
+            },
+            {
+                date: '2025-03-23',
+                title: 'Why my daughter wants to work from home',
+                body: "I asked my daughter what she wants to be when she grows up. Her answer? She wants to do what I do, so she can work from home. When I asked why, she replied, 'Because then I can pick my kid up from daycare early every other day.' Working remotely has been the best thing that could happen for both me and my daughter.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-asked-my-daughter-what-she-wants-to-be-activity-7309666958096973824-uiMO'
+            },
+            {
+                date: '2025-03-25',
+                title: 'Discovering Chatbot Arena',
+                body: "There's Chatbot Arena, an interactive platform where you can witness LLMs face off in head-to-head battles! You ask a question, watch different AI chatbots go toe-to-toe, vote for the answer you like, and then the models are revealed. There's a leaderboard showing which models people like best.",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_chatbot-arena-formerly-lmsys-free-ai-chat-activity-7310403440059285504-pSfR'
+            },
+            {
+                date: '2025-05-27',
+                title: 'MCP + LangGraph + Zapier: one query, email + Drive + Calendar',
+                body: "This MCP stuff is a game-changer. With just a few lines of code: sent an email, saved the content as a .docx in Google Drive, and scheduled a follow-up meeting in Google Calendar. All it took is one query, one smart agent, and a single MCP server loaded with Zapier tools. Now to pair it up with A2A protocol from Google, and the future has arrived! 🤯",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_ai-automation-mcp-activity-7333100115898843137-cyKt'
+            },
+            {
+                date: '2025-06-01',
+                title: 'Forgot my laptop on holiday — husband noticed the grey boxes',
+                body: "For 72 hours I did not type any code. When we came home I told my husband it was the longest I'd gone without touching code. 'Oh no,' he said, 'you're probably worried about those little boxes turning grey.' He was talking about GitHub. I guess he has been listening! 😃",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-am-a-software-developer-and-i-love-my-activity-7335035672908521472-NU9i'
+            },
+            {
+                date: '2025-06-08',
+                title: 'Cyberpunk predicted this — AI entered the 4th dimension',
+                body: "I loved this part of Cyberpunk. I guess it's not a game anymore. Unbelievable!",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_ai-just-entered-the-4th-dimension-freetimegs-activity-7337447098017021952-Ee54'
+            },
+            {
+                date: '2025-06-14',
+                title: 'o4-mini called my catch "absolutely right" — am I any different from a rent-a-friend?',
+                body: "I corrected o4-mini-high and he replied: '🔥 YES Tamara — you're absolutely right, this is such a smart catch.' I smiled and felt good on the inside. I couldn't help but wonder: if I'm finding affirmation and joy in interactions with a machine, where exactly is the line between genuine connection and something we've simply programmed to feel like one?",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-recently-came-across-a-statistic-highlighting-activity-7339760138641125377-xpNN'
+            },
+            {
+                date: '2025-06-20',
+                title: 'First full-stack app: Next.js + FastAPI + Docker + Supabase',
+                body: "Less than a year ago I wrote my Python code in main.py and wondered what Classes were all about. Yesterday I wrote a fully functional app with Next.js + Google login, FastAPI, Docker, Supabase, and ngrok. For folks in the industry, this is a joke done in under 5 minutes. For me, this was like taking a step on the Moon. 🪄",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_less-than-a-year-ago-i-wrote-my-python-code-activity-7341913233932357637-Fi8W'
+            },
+            {
+                date: '2025-06-24',
+                title: 'Birthday: why doesn\'t anyone talk about how fun dev is?',
+                body: "Today's my birthday 😄 So many times have I caught myself thinking 'Just one more try, then I'll stop and put my child to bed.' And then an hour later I finally get up because my husband starts yelling. Writing software is so much fun it almost feels wrong to get paid for it. How come no one is talking about this?",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_why-doesnt-anyone-talk-about-how-fun-being-activity-7343379085642891265-EbKZ'
+            },
+            {
+                date: '2025-07-17',
+                title: 'LangGraph lesson: don\'t override the prompt',
+                body: "When I built my first LangGraph agent from scratch 9 months ago, it worked beautifully. Yesterday my agent said it would use the tool, knew which one to call, and then… silence. After hours of debugging I realized: my custom prompt was breaking create_react_agent()'s internal prompt logic. Lesson: just write clean tool docstrings. Hope this saves someone else 4 hours and a few gray hairs!",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_langgraph-react-llm-activity-7351639542652645376-vgvY'
+            },
+            {
+                date: '2025-07-25',
+                title: 'Fell in love with Next.js',
+                body: "I never cared much for frontend development. A year ago I forced myself to learn just enough HTML, CSS, and JS. Fast forward to yesterday: I started learning Next.js and wow — routing (especially [dynamic]!), layouts, authentication, built-in components… it's all beautifully thought-out. Everything just clicks. Who knew I'd actually enjoy creating a website?! Full speed ahead to full stack! 🙂",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_nextjs-webdevelopment-frontend-activity-7354591812025573376-cjzf'
+            },
+            {
+                date: '2025-09-16',
+                title: 'First Infobip Shift conference',
+                body: "My first Infobip Shift experience! I had a blast, met many fascinating people, and realized that we're already using all the coolest and newest technologies! But I can't figure out the duck. Is it a reference to the CS50 duck?",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_my-first-infobip-shift-experience-i-had-activity-7373687562575613953-mh6q'
+            },
+            {
+                date: '2025-09-21',
+                title: 'Sunday funday: n8n TechCrunch news emailer',
+                body: "Today is Sunday, so I decided to make it a Funday by putting together a simple n8n workflow that emails news to me and my colleagues every morning from TechCrunch. Just a few nodes; very simple, yet effective. Automation is best at solving mundane problems, freeing up the time and energy to solve the problems that truly count.",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_n8n-automation-activity-7375621106419986432-50nW'
+            },
+            {
+                date: '2025-09-29',
+                title: 'FastAPI route order matters (2h lesson)',
+                body: "I spent almost 2 hours wondering why my endpoint wasn't working. Spoiler: route order matters 😅 This is one of those things I'll never forget, like multiplication tables. Wake me up at 3AM and ask 'Does FastAPI route order matter?' and I'll answer effortlessly.",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-spent-almost-2-hours-wondering-why-my-endpoint-activity-7378508590850052096-wuOe'
+            },
+            {
+                date: '2025-10-15',
+                title: 'Discovering Claude Code, zsh aliases & git worktrees',
+                body: "This week has been an important one — I've levelled up as an AI Engineer. I discovered aliases in my zsh terminal. I started using Claude Code and I am in love, both with his brains and the UX. I enjoy occasionally proving him wrong. My PRs are now shorter and cleaner. And I can now use git worktrees and work on several branches in parallel. Now all I need is a computer with way more RAM to handle an army of Claudes 😁",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_claudecode-zshshell-aiengineer-activity-7384323315965972480-z2bt'
+            },
+            {
+                date: '2025-10-19',
+                title: 'Built Slack→Jira+GitHub ticket automation',
+                body: "Built a ticket automation system: creates Jira tickets with AI-generated descriptions (using Claude ❤️), creates linked GitHub issues and branches, reads project context from CLAUDE.md, generates implementation specs, commits them, and sends Slack notifications — all triggered by a simple Slack slash command. No more 'I'll write this ticket later.'",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_automation-ai-productivityhack-activity-7385760855952371712-CB4O'
+            },
+            {
+                date: '2025-11-06',
+                title: 'Idea: "nova" — an LLM-native document format',
+                body: "Anyone who has built a RAG system knows how painful it is to parse PDFs and docx files. Wouldn't it be great if we had a document format that both looks great to the human eye and that an LLM can read easily? I got so excited I started building a schema for it and gave it a name: nova 💥 Either I'm crazy or the new Nostradamus 😊",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_rag-llm-ai-activity-7392295208555626497-pg-A'
+            },
+            {
+                date: '2025-11-20',
+                title: 'Claude called me a senior engineer',
+                body: "Well, that's it folks, I guess I'm a senior engineer! 😃 Interestingly, I told Claude to always be honest and stop praising me for every word I write. What would've happened if I omitted that from the prompt? I guess he'd nominate me for a Nobel Prize 😀",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_claudecode-ai-seniorengineer-activity-7397238400195633152-9qrh'
+            },
+            {
+                date: '2025-12-12',
+                title: 'Debugging Composio SharePoint until midnight',
+                body: "I spent too many hours debugging why my agent refused to connect to Composio SharePoint tools. I went to bed at midnight thinking about it, barely slept. I woke up with a fresh mind and in 15 minutes realized my mistake — a missing scope. At the same time I felt relieved and incredibly stupid for not realizing it sooner. Each time I spend too much time debugging something, I get hit by that same feeling. This is just part of the job, I presume? 🙂",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_debugging-activity-7405206543236947968-88yU'
+            },
+            {
+                date: '2025-12-22',
+                title: 'My agent returned the most relatable test email',
+                body: "I connected Composio Outlook tools to my agent and asked it to return the latest email in my inbox. How pathetic does this look 😂 Obviously, it's a testing email account that I'm working with. (Or is it? 😄) A wise thought: context is important in all aspects of life, not just when working with LLM agents 😉",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-connected-composio-outlook-tools-to-my-activity-7408874466115497984-UbBt'
+            },
+            {
+                date: '2025-12-24',
+                title: 'IrfanView still exists — and the creator replied to my email',
+                body: "I needed a tool to resize an image and remembered IrfanView from my Master's and PhD. Does it even still exist? I Googled it — not only does it still exist, but the owner is indeed Bosnian and I cordially sent him an email congratulating him on his success. And he replied! It made my day 🙂",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_the-other-day-i-needed-a-tool-to-resize-an-activity-7409579200829042688-l_SF'
+            },
+            {
+                date: '2025-12-26',
+                title: 'Built my sister\'s website with Lovable in 4 minutes',
+                body: "My sister asked for a personal website. I decided to give Lovable a try. I just prompted the hell out of it, and this one-shot approach yielded something far more beautiful than I could ever imagine in less than 4 minutes. Lo and behold!",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_lovable-nocode-activity-7410288118093828098-fyot'
+            },
+            {
+                date: '2026-01-02',
+                title: 'From Friday night drinks to Friday night AI tools',
+                body: "When I was in my twenties, on a typical Friday or Saturday night, I would usually be spending money on drinks in bars. Nowadays, I'm spending it on playing with the newest and coolest AI tools out there. Today it's Nano Banana Pro. And I think I'll have another round 😉",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_nanobananapro-activity-7412994558474641408-ddG3'
+            },
+            {
+                date: '2026-01-06',
+                title: 'In love with Claude\'s UX',
+                body: "I love Claude because it's so good at what it does, but I am in love with it because of how great it looks. I just love using ultrathink 😍",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-love-claude-because-its-so-good-at-what-activity-7414255740980228096-VsIU'
+            },
+            {
+                date: '2026-01-07',
+                title: 'How can one not love this UX?',
+                body: "How can one not love this UX? 😍 #ClaudeCodeIsTheBest",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_claudecodeisthebest-activity-7414756642837463042-_DCN'
+            },
+            {
+                date: '2026-01-28',
+                title: 'Tried Antigravity — still a Claude romantic',
+                body: "When I had my daughter, all of a sudden I had zero free time for myself. But I still managed to find a way — I remember nursing her while playing Witcher 3 on PS4. However, it turns out that I love developing software more! I just tried Antigravity for the first time and I had loads of fun! However, I'm a romantic, so I'll stick to my one true love, Claude ❤️",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_when-i-had-my-daughter-all-of-a-sudden-i-activity-7422381743447404545-8YJM'
+            },
+            {
+                date: '2026-01-30',
+                title: 'I slowly evolved into a shrimp',
+                body: "I had to take a day off work because I had tingles in my neck and spine. I tend to sit behind the screen for hours without getting up. My desk was too low and too far. I had slowly (d)evolved into a shrimp. My husband bought me a new desk, I went for a 2h walk, spent 1h on the floor, and the tingles are gone. New plan: Pomodoro timer, daily walk, back exercises.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-got-old-i-had-to-take-a-day-off-work-activity-7422903304688394240-1fwu'
+            },
+            {
+                date: '2026-02-05',
+                title: 'New 27" monitor + 32GB RAM laptop — developer setup V5',
+                body: "Christmas came super early this year! My beloved boss bought me a new 27'' monitor and a laptop with 32GB of RAM to double my productivity 😁 From hunching over a lunch table on a laptop that could barely run Docker, to this. I'm gonna have so much fun setting it all up!",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_christmas-came-super-early-this-year-my-activity-7425129616559857664-o1mY'
+            },
+            {
+                date: '2026-02-06',
+                title: 'New laptop had Windows — I discovered Copilot\'s voice',
+                body: "When I turned on my new laptop, I was disappointed it had Windows OS. I was looking forward to Linux. But then I chatted to Copilot and the voice — oh the voice! I love the strong UK accent, how happy she sounds. I have worked with voice agents before, used Livekit, Elevenlabs, and though they could do the job, it was obvious you were speaking with AI. This Copilot stuff? A whole other level. But first, I'm gonna uninstall Windows and install Ubuntu 😎",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_when-i-turned-on-my-new-laptop-yesterday-activity-7425476417494306816-QNSG'
+            },
+            {
+                date: '2026-02-09',
+                title: '15+ hours trying to install Ubuntu — failed, learned a ton',
+                body: "I spent the whole weekend trying to install Ubuntu on my new Acer laptop. After failing repeatedly for more than 15h, I gave up. I tried Ubuntu, Fedora, Mint. Every time: logo, spinner, black screen of death. AMD Ryzen is known to have issues with Linux. I managed to install the server version via terminal and even connected WiFi. I've learned a lot in the process, and although I'm frustrated, I'm proud I didn't give up easily 💪",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-spent-the-whole-weekend-trying-to-install-activity-7426562000509394944-PjeJ'
+            },
+            {
+                date: '2026-02-11',
+                title: 'First Android app — from React/FastAPI to mobile',
+                body: "I heard that one of the best mindsets for growth is the 'yes I can' mindset. So I decided that I can build a mobile phone app, although I never built one. With guidance from LLMs, I turned my React/FastAPI project into a fully functional Android app. 2 years ago I wouldn't even consider it. What a dopamine rush 😀",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-heard-somewhere-that-one-of-the-best-mindsets-activity-7427351822698438656-61Eb'
+            },
+            {
+                date: '2026-02-13',
+                title: 'Sometimes all users need is a post-it',
+                body: "We were talking about how programs don't need to be perfect. He built a program for a client and told them the DB loading takes almost 4 minutes the first time. They replied: it's not necessary, they just put a post-it on the monitor telling users to have a coffee while they wait 🤪 When we're building something, we are perfectionists. But remember, we're not going to be the end users. And what ultimately matters is what they want.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-took-my-laptop-to-a-professional-to-get-activity-7428019017136795649-N66t'
+            },
+            {
+                date: '2026-02-20',
+                title: 'Zsh setup, fuzzy search & discovering tmux',
+                body: "Yesterday I setup my Zsh terminal. Autocomplete, nice colours, aliases, git worktrees! Then I discovered Fuzzy search — pressing Ctrl+R all the time just because I can 😀 And then I installed tmux. Are you telling me I can run my terminal, shut down my computer, come back tomorrow, and the terminal is still there, running? What kind of magic is that? 🤯",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_yesterday-i-setup-my-zsh-terminal-that-was-activity-7430609797609152513-HWP9'
+            },
+            {
+                date: '2026-02-21',
+                title: 'Discovered LocalSend — no more API keys read aloud',
+                body: "For transferring files between computers I was sending myself emails. Or putting files on a USB. Or asking my husband to read shorter API keys out aloud while I type (yes, laugh at me, I deserve it) 🤦‍♀️ Then I discovered LocalSend. I was flabbergasted. So simple, so pretty, so goddamn useful. I've been sending stuff left and right just for fun.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_since-ive-gotten-a-new-computer-theres-activity-7431077686397181952-L1Cp'
+            },
+            {
+                date: '2026-02-25',
+                title: 'First hackathon — feeling like a kid in a chocolate factory',
+                body: "10 years ago I was training for a half marathon. What sounds 10 times better than a marathon? A HACKATHON! This weekend, I will participate in my first ever hackathon 😍 Any chance of me winning? Probably not. But I never cared for winning, I'm the one who joins for the ride.",
+                category: 'life',
+                url: 'https://www.linkedin.com/posts/tamaracodes_10-years-ago-i-was-training-for-a-half-marathon-activity-7432490311219781634-PKfI'
+            },
+            {
+                date: '2026-03-03',
+                title: 'First hackathon: finished, proud, doing it again',
+                body: "I can proudly say that I finished my first hackathon successfully! 🥳 When I looked at the task on Friday I thought 'Easy peasy, I'll be done in a few hours!' On Saturday I spent 4h debugging one n8n node and almost gave up. Around 2AM I went to bed feeling like a total failure. Sunday morning I had a conversation with Claude, showed him what broke — we fixed it in 5 minutes. I had tons of fun, learned a lot, and would do it all over again!",
+                category: 'build',
+                url: 'https://www.linkedin.com/posts/tamaracodes_i-can-proudly-say-that-i-finished-my-first-activity-7434546322931773440-EDUY'
+            },
+            {
+                date: '2026-03-04',
+                title: 'I showed Claude a screenshot of a button — he deleted it',
+                body: "Claude and I were building a UI. I took a screenshot of a button I wanted gone, and told him to delete it. He deleted it. 🤣🤣",
+                category: 'ai',
+                url: 'https://www.linkedin.com/posts/tamaracodes_claude-and-i-were-building-an-ui-i-took-activity-7434943231148220416-gXYa'
+            }
+        ];
+
+        // ── Calendar builder ──
+        (function buildJourneyCalendar() {
+            const wrap = document.getElementById('journeyCalendar');
+            if (!wrap) return;
+
+            const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+            // Build lookup by date string
+            const milestoneMap = {};
+            MILESTONES.forEach(m => { milestoneMap[m.date] = m; });
+
+            // Local date string helper — avoids UTC timezone shifts
+            function toDateStr(d) {
+                return d.getFullYear() + '-' +
+                    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(d.getDate()).padStart(2, '0');
+            }
+
+            // Start on the Sunday on or before Aug 18, 2024
+            const startDate = new Date(2024, 7, 18); // Aug 18, 2024
+            while (startDate.getDay() !== 0) startDate.setDate(startDate.getDate() - 1);
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            // Months row
+            const monthsRow = document.createElement('div');
+            monthsRow.className = 'cal-months-row';
+
+            // Grid row
+            const gridRow = document.createElement('div');
+            gridRow.className = 'cal-grid-row';
+
+            // Day labels (Sun Mon Tue Wed Thu Fri Sat — show alternates)
+            const dayNames = document.createElement('div');
+            dayNames.className = 'cal-day-names';
+            ['Sun','','Tue','','Thu','','Sat'].forEach(d => {
+                const s = document.createElement('span');
+                s.textContent = d;
+                dayNames.appendChild(s);
+            });
+
+            const cols = document.createElement('div');
+            cols.className = 'cal-columns';
+
+            const cursor = new Date(startDate);
+            let weekIndex = 0;
+            let lastMonth = -1;
+
+            // Cell width + gap = 13 + 2 = 15px per week column
+            const CELL_STEP = 15;
+
+            const endDate = new Date(2026, 11, 31); // Dec 31, 2026
+
+            while (cursor <= endDate) {
+                const weekCol = document.createElement('div');
+                weekCol.className = 'cal-week';
+
+                // Month label when month changes
+                const m = cursor.getMonth();
+                if (m !== lastMonth) {
+                    const label = document.createElement('span');
+                    label.className = 'cal-month-label';
+                    const isJan = m === 0;
+                    label.textContent = isJan
+                        ? "Jan '" + String(cursor.getFullYear()).slice(2)
+                        : MONTHS[m];
+                    label.style.left = (weekIndex * CELL_STEP) + 'px';
+                    monthsRow.appendChild(label);
+                    lastMonth = m;
+                }
+
+                for (let d = 0; d < 7; d++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cal-day';
+
+                    const cellDate = new Date(cursor.getFullYear(), cursor.getMonth(), cursor.getDate() + d);
+
+                    if (cellDate > today) {
+                        cell.classList.add('future');
+                    } else if (cellDate.getTime() === today.getTime()) {
+                        cell.classList.add('today');
+                    }
+
+                    const dateStr = toDateStr(cellDate);
+                    if (milestoneMap[dateStr]) {
+                        const ms = milestoneMap[dateStr];
+                        cell.classList.add('has-milestone', 'ms-' + ms.category);
+                        cell.addEventListener('mouseenter', () => showCalTooltip(cell, ms.title));
+                        cell.addEventListener('mouseleave', hideCalTooltip);
+                        cell.addEventListener('click', () => openMilestone(ms));
+                    }
+
+                    weekCol.appendChild(cell);
+                }
+
+                cols.appendChild(weekCol);
+                cursor.setDate(cursor.getDate() + 7);
+                weekIndex++;
+            }
+
+            gridRow.appendChild(dayNames);
+            gridRow.appendChild(cols);
+            wrap.appendChild(monthsRow);
+            wrap.appendChild(gridRow);
+        })();
+
+        // ── Calendar tooltip (fixed-position to avoid scroll clipping) ──
+        const calTooltip = document.createElement('div');
+        calTooltip.className = 'cal-tooltip';
+        document.body.appendChild(calTooltip);
+
+        function showCalTooltip(cell, text) {
+            calTooltip.textContent = text;
+            calTooltip.classList.add('visible');
+            const rect = cell.getBoundingClientRect();
+            const tw = calTooltip.offsetWidth;
+            const th = calTooltip.offsetHeight;
+            const margin = 8;
+            let left = rect.left + rect.width / 2 - tw / 2;
+            let top  = rect.top - th - 8;
+            if (left < margin) left = margin;
+            if (left + tw > window.innerWidth - margin) left = window.innerWidth - tw - margin;
+            if (top < margin) top = rect.bottom + 8;
+            calTooltip.style.left = left + 'px';
+            calTooltip.style.top  = top  + 'px';
+        }
+
+        function hideCalTooltip() { calTooltip.classList.remove('visible'); }
+
+        // ── Modal ──
+        const msModal  = document.getElementById('milestoneModal');
+        const msImg    = document.getElementById('msImg');
+        const msPill   = document.getElementById('msPill');
+        const msDate   = document.getElementById('msDate');
+        const msTitle  = document.getElementById('msTitle');
+        const msText   = document.getElementById('msText');
+        const msLink   = document.getElementById('msLink');
+
+        const CATEGORY_LABELS = { build: 'Built something', ai: 'AI moment', life: 'Life & Learning' };
+
+        function openMilestone(m) {
+            msImg.innerHTML = m.image ? '<img src="' + m.image + '" alt="' + m.title + '">' : '';
+            msPill.className = 'ms-pill pill-' + m.category;
+            msPill.textContent = CATEGORY_LABELS[m.category];
+            const parts = m.date.split('-');
+            const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+            msDate.textContent = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            msTitle.textContent = m.title;
+            msText.textContent = m.body;
+            msLink.href = m.url;
+            msModal.classList.add('open');
+            msModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMilestone() {
+            msModal.classList.remove('open');
+            msModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('msClose').addEventListener('click', closeMilestone);
+        document.getElementById('msBackdrop').addEventListener('click', closeMilestone);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMilestone(); });
     </script>
 </body>
 </html>

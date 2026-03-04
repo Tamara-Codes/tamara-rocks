@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>From mass spectrometers to LLMs — Tamara Martinovic</title>
+    <title>From lab coats to LLMs — Tamara Martinovic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .post-hero {
             padding: 3rem 3rem 4rem;
@@ -46,20 +46,6 @@
 
         .post-back:hover { color: var(--text); gap: 0.65rem; }
 
-        .post-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--lavender);
-            color: var(--lavender-deep);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            margin-bottom: 1.75rem;
-        }
 
         .post-title {
             font-family: 'Fraunces', serif;
@@ -74,7 +60,7 @@
         .post-title em {
             font-style: italic;
             font-weight: 300;
-            color: var(--lavender-deep);
+            color: var(--pink-deep);
         }
 
         .post-meta-row {
@@ -124,7 +110,7 @@
         .post-content h2 em {
             font-style: italic;
             font-weight: 300;
-            color: var(--lavender-deep);
+            color: var(--pink-deep);
         }
 
         .post-content strong {
@@ -172,8 +158,8 @@
         }
 
         .author-avatar {
-            width: 56px;
-            height: 56px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -183,7 +169,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 20%;
+            object-position: center 45%;
         }
 
         .author-name {
@@ -210,7 +196,7 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: uppercase;
-            color: var(--lavender-deep);
+            color: var(--pink-deep);
             text-decoration: none;
             transition: gap 0.2s;
         }
@@ -245,7 +231,7 @@
         }
 
         .more-post-link:last-child { border-bottom: none; }
-        .more-post-link:hover { color: var(--lavender-deep); }
+        .more-post-link:hover { color: var(--pink-deep); }
 
         .more-post-label {
             display: block;
@@ -272,100 +258,101 @@
     </div>
 
     <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
         <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
             <a href="blog.html" class="nav-link active">Blog</a>
-            <a href="cv.html" class="nav-link">CV</a>
+            <a href="../cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
-            <a href="index.html#contact" class="nav-cta">Say hello ✦</a>
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
         </div>
     </nav>
 
     <header class="post-hero">
         <a href="blog.html" class="post-back">← All posts</a>
-<h1 class="post-title">From mass spectrometers to <em>LLMs</em></h1>
+<h1 class="post-title">From lab coats to <em>LLMs</em></h1>
         <div class="post-meta-row">
             <span>Tamara Martinovic</span>
             <span class="dot"></span>
-            <span>March 2026</span>
+            <span>December 2024</span>
             <span class="dot"></span>
-            <span>6 min read</span>
+            <span>8 min read</span>
         </div>
     </header>
 
     <div class="post-hero-img">
-        <img src="images/blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs">
+        <img src="../images/blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs">
     </div>
 
     <div class="post-body">
         <article class="post-content">
 
             <p>
-                I spent the better part of a decade in a lab. Not metaphorically — literally. Gloves, pipettes, centrifuges, the whole thing. My PhD was in biotechnology, and my postdoc focused on bioprospecting the Croatian Adriatic Sea: screening organisms for bioactive compounds, running bioinformatics analyses, trying to extract signal from extraordinarily noisy data.
+                I can clearly remember the three questions that I was asked at my high school State Final Exam (Matura) for my informatics class:
+            </p>
+
+            <ol style="margin: 0 0 1.5rem 1.5rem; padding: 0; color: var(--text-mid); line-height: 2;">
+                <li>Name three peripheral computer parts.</li>
+                <li>What is the difference between RAM and ROM?</li>
+                <li>What is BIOS?</li>
+            </ol>
+
+            <p>
+                Of course, I passed with flying colours, as did everyone else who chose the subject as their elective. The teacher was not invested in teaching, and we spent most of our time playing Counterstrike on LAN. Growing up with a Commodore 64, I fell in love with video games at an early age. But the only contact I had with programming was in primary school, in a class called Technical Education. There, I was introduced to Logo, an educational programming language designed for beginners, known for its "turtle graphics," where users write commands to move a turtle cursor to create shapes and patterns. At 12 years old though, I didn't really care for it, I was far more drawn to biology and chemistry, the "stuff of life". Naturally, I grew up to be a molecular biologist, completely oblivious to the fact that computers could offer so much more than gaming and Internet access. Little did I know that years later, I'd find myself not in a lab, but in front of a computer screen, coding away.
             </p>
 
             <p>
-                If that sounds painstaking, it was. Science runs on patience. You design an experiment, wait days for results, and half the time the results tell you nothing useful. Then you redesign, and repeat. The loop is brutal, but it teaches you something irreplaceable: how to think rigorously about complex systems.
-            </p>
-
-            <div class="post-pullquote">
-                "The skills that make a good researcher — systematic thinking, tolerance for ambiguity, obsessive attention to detail — turn out to be exactly what good AI engineering requires."
-            </div>
-
-            <h2>The <em>pivot</em></h2>
-
-            <p>
-                In 2021, I left research to join a diagnostic lab during the pandemic. We were doing high-throughput PCR testing for COVID-19 — hundreds of samples a day, tight turnaround, no margin for error. It was stressful, unglamorous work, but it showed me something I hadn't fully appreciated before: the bottleneck in most complex workflows isn't the hard thinking. It's the repetitive, structured, rule-based tasks that surround the hard thinking.
-            </p>
-
-            <p>
-                That's the same problem I'd been watching AI get dramatically better at solving.
-            </p>
-
-            <p>
-                I started teaching myself Python seriously. Then machine learning. Then LLMs. I built small automations at first — things that saved me an hour a week at work. Then I started building for other people. Then I went all in.
-            </p>
-
-            <h2>What actually <em>transferred</em></h2>
-
-            <p>
-                People sometimes frame career transitions as starting over. I don't see it that way. Almost everything I learned as a scientist transferred directly:
-            </p>
-
-            <p>
-                <strong>Debugging is debugging.</strong> Whether it's a PCR assay that won't amplify or a LangGraph agent that keeps hitting the wrong node, the process is the same — isolate variables, form a hypothesis, test it, don't fool yourself.
-            </p>
-
-            <p>
-                <strong>Reading dense technical material quickly.</strong> Academic papers and API documentation are both written to be comprehensive rather than readable. Years of wading through journals means I can parse a technical doc in half the time it used to take me.
-            </p>
-
-            <p>
-                <strong>Working with uncertainty.</strong> In research you rarely have complete information. You build the most defensible interpretation of incomplete evidence. In AI engineering — especially when building agentic systems — you're doing exactly the same thing.
-            </p>
-
-            <h2>What I'm building <em>now</em></h2>
-
-            <p>
-                I'm currently at Algorise, building multi-agent AI systems in Python using LangGraph. The goal is intelligent digital workers: AI that doesn't just respond to prompts but actually navigates complex workflows, makes decisions, and hands off to the right system at the right time.
-            </p>
-
-            <p>
-                Alongside that, I build and ship my own projects — restaurant menu systems, booking bots, legal automation tools. Small businesses, mostly. The ones that can't afford a full engineering team but absolutely can afford to run smarter.
-            </p>
-
-            <p>
-                I'm doing all of this from Croatia, which people find surprising. I find it freeing. The timezone works for European clients. The cost of living means I can take interesting projects over safe ones. And the Adriatic is right there when I need to think.
+                My time in Academia spanned over 10 years, and while I thoroughly enjoyed all aspects of it, I was never the 'crazy scientist' from cartoons, I never became one of those researchers who lived and breathed science. I loved the constant learning, the teaching (which I enjoyed most), attending conferences, writing papers, and doing lab research, especially when I managed to get good results, which is rare in the field. I was good at what I did. I finished my PhD, even published a new method for isolating proteins using liquid chromatography. But despite all this, I never felt that passion for research that I felt I should have had.
             </p>
 
             <div class="post-pullquote">
-                "I build AI systems the way I used to run experiments: methodically, relentlessly, and with an embarrassing amount of enthusiasm."
+                "By pure coincidence, I found myself on a completely new path, with no grand plan, just an unexpected turn that would change my life forever."
             </div>
 
             <p>
-                If you're building something and think AI could help — or if you're just curious how a molecular biologist ended up writing agent orchestration code — I'd genuinely love to talk.
+                Then, by a stroke of luck, I found myself pregnant, and my postdoc project wrapped up. It was during this time that Facebook suggested something unexpected: a remote, online course from a top private university designed for women. It was free, and the live classes were on Saturday mornings, when my husband could take care of our child. The course was the famous Coursera's Google IT Support program.
+            </p>
+
+            <p>
+                At the time, I had some free time on my hands and a curiosity about computers that had been with me throughout my life. I'd always enjoyed working on computers, buying new parts, assembling them, and reinstalling my operating system. It felt like a perfect opportunity to dive deeper. And just like that, by pure coincidence, I found myself on a completely new path, with no grand plan, just an unexpected turn that would change my life forever.
+            </p>
+
+            <p>
+                I became fascinated by the world of binary code, networks, programming languages, databases, UNIX, and more. It was all so new and exciting, like Christmas every day as I unwrapped another piece of the vast and mysterious IT world.
+            </p>
+
+            <figure style="margin: 2rem 0 2.5rem; text-align: center;">
+                <img src="../images/oz.webp" alt="The yellow brick road leading to the Emerald City — Wizard of Oz" style="width: 100%; border-radius: 12px; display: block;">
+            </figure>
+
+            <h2>Hello, <em>World</em></h2>
+
+            <p>
+                After successfully completing Google's program, I dove into programming languages, with Python catching my attention in particular. When I first saw the words 'Hello, World' appear on my screen after typing just one line of code and pressing enter, I was in awe. I remember calling my husband to show him my success; it felt like I had just split the atom with my own hands. A few days later, I created a simple Guessing game that looked terrible but worked. I could write code! For years, I had thought programming was only for incredibly smart people with deep math knowledge, but I quickly realized that I could create a website in just a few hours.
+            </p>
+
+            <p>
+                I like to joke that I'm an "interdisciplinary programmer." Over the past two years, driven by my curiosity, I've explored almost everything in tech. I've learned how to make websites using HTML, CSS, and JS. I've gained experience with Git, dabbled in SQL for database queries, and gradually delved into exploratory data analysis with Python, creating charts in Tableau. I even started scraping websites for data, completing several projects and sharing them on my GitHub. It became a full-time hobby that felt incredibly rewarding. Each day, I'd spend at least an hour behind my laptop, coding. I no longer craved weekends out with friends; instead, I chose to stay home and learn. Instead of playing video games, I began making my own games. How wonderful is that? 😊
+            </p>
+
+            <h2>The <em>addiction</em></h2>
+
+            <p>
+                I dove even deeper, dedicating hours outside of my daily work to learning Python, building simple projects, and experimenting with code. Every line I wrote felt like a tiny victory, and soon I realized I was hooked. After years spent studying biological systems, coding offered me an entirely new way to solve problems, a way that felt even more rewarding. The dopamine hits I get from coding are real. I was addicted. Luckily, the drug of my choice is healthy, legal, and available daily!
+            </p>
+
+            <p>
+                It didn't take long before I knew: I had to make a change. The idea of leaving a stable career in science to start from scratch in a completely new field was daunting, but my excitement for programming outweighed my fear. I recognized that this was something I could excel at and genuinely enjoy. The only person standing in my way was myself. If I dedicate myself to studying and working hard, I know I can succeed. If I don't, I'll face setbacks; it's entirely in my hands, just my skills, my portfolio, and my commitment.
+            </p>
+
+            <div class="post-pullquote">
+                "I've come across countless stories of people with diverse backgrounds breaking into IT, and each time, I thought to myself: why can't I be one of them?"
+            </div>
+
+            <p>
+                I've come across countless YouTube videos and Reddit posts from people with diverse backgrounds successfully breaking into the IT field, and each time, I thought to myself, "Why can't I be one of them?" So, I took the leap, and here I am, one of them, on a journey I never could have imagined when I first sat down at that Commodore 64 all those years ago.
             </p>
 
         </article>
@@ -376,12 +363,12 @@
 
         <div class="author-card">
             <div class="author-avatar">
-                <img src="images/tamara.jpg" alt="Tamara Martinovic">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
             </div>
             <div>
-                <p class="author-name">Tamara Martinovic</p>
+                <p class="author-name">Tamara Martinovic, PhD</p>
                 <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
-                <a href="index.html#contact" class="author-cta">Get in touch →</a>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
             </div>
         </div>
 

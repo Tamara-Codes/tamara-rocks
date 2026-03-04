@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Doesn't Anyone Talk About How Fun Being a Developer Is? — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--yellow);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .fun-strip {
+            background: #FFF0F5;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .fun-strip-icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .fun-strip-text {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title">Why Doesn't Anyone Talk About <em>How Fun</em> Being a Developer Is?</h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>June 2025</span>
+            <span class="dot"></span>
+            <span>5 min read</span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                I have met a lot of people in my life. Lawyers, bartenders, teachers, nurses, waiters, accountants, dentists — you name it, I've probably sat across from them at a dinner table or shared a drink with them. And rarely, <em>rarely</em>, have I heard someone say that they genuinely love their job. Work, for most, feels like a means to an end. A thing you do to pay for the thing you actually want to do on the weekend.
+            </p>
+
+            <p>
+                I get it. I really do. For two years I was doing a menial job that brought me absolutely zero joy and was slowly degrading my mental capacities. I started writing code and learning about it in the evenings and on weekends, not to change careers at first — just to make my little grey cells work again. To feel something. And it felt good. It felt <strong>really</strong> good. I got hooked on the rush of pushing code to Git, just to see that sweet, sweet terminal output.
+            </p>
+
+            <div class="post-pullquote">
+                "It felt like I was starring in the movie Hackers. Does it make me look old if I reference this?"
+            </div>
+
+            <p>
+                (It might. But it was my birthday when I wrote the original LinkedIn post about this, so I get a pass for being emotional. 😄)
+            </p>
+
+            <h2>The Addiction <em>No One Warns You About</em></h2>
+
+            <p>
+                Here's what happens when you write software for a living: you start enjoying it. Then you start enjoying it a lot. Then, before you know it, you're catching yourself thinking <em>"just one more try, then I'll stop and put my child to bed"</em>. And then an hour later, your husband is yelling from the other room because it's 9 o'clock again and you're still hunched over the laptop with a triumphant grin on your face.
+            </p>
+
+            <p>
+                It used to be video games that captured my free time. Now, video games feel like a waste of time — and I say that as someone who grew up on a Commodore 64 and spent the better part of her teens playing Counterstrike on LAN. I would rather learn something new and build something that didn't exist before. The act of creation is, it turns out, far more satisfying than the act of consumption.
+            </p>
+
+            <div class="fun-strip">
+                <div class="fun-strip-icon">💡</div>
+                <div class="fun-strip-text">
+                    Writing software is so much fun it almost feels <em>wrong</em> to get paid for it. Not many people can say that about their work. I think about this a lot.
+                </div>
+            </div>
+
+            <h2>So Why Isn't <em>Everyone</em> Talking About This?</h2>
+
+            <p>
+                This is the question I can't shake. Software development is objectively one of the most engaging, stimulating, creatively rewarding activities a person can do. You're constantly learning, constantly problem-solving, constantly building things that didn't exist an hour ago. And yet the narrative around it — especially online — tends to skew toward burnout, imposter syndrome, exhausting interview loops, and the general misery of 10x engineers arguing about semicolons on the internet.
+            </p>
+
+            <p>
+                Where are all the people dancing around their living rooms after finally getting their code to work? I know they exist. I am one of them.
+            </p>
+
+            <p>
+                Are most people just working on boring projects? Is it that the fun kind of coding — the curious, exploratory, "let's figure this out" kind — gets crushed somewhere between the sprint planning and the ticket queue? Or is the fun there, and people simply don't talk about it because it sounds insufferably smug? (<em>"Oh, you love your job? How nice for you."</em>)
+            </p>
+
+            <div class="post-pullquote">
+                "I've been like Jesus, spreading the word. People don't seem to care. That's good, I suppose — otherwise I'd have to fix my own teeth, and there would be no restaurants."
+            </div>
+
+            <h2>The Honest Answer</h2>
+
+            <p>
+                I think part of it is that coding is genuinely hard to explain to someone who hasn't experienced that particular dopamine hit. Telling someone "I spent three hours debugging a race condition and I loved every second of it" sounds either deeply nerdy or slightly unhinged — possibly both. It's one of those things you have to feel to understand.
+            </p>
+
+            <p>
+                What I can say with certainty is this: if you are in a job that feels like a slow drain on your enthusiasm and intelligence, and you have even the faintest curiosity about how software works — try it. Write one small thing. A script that renames your files, a tiny web scraper, a game of rock-paper-scissors in the terminal. See how it feels when it runs. See if you want to do it again.
+            </p>
+
+            <p>
+                For me, seeing "Hello, World" appear on screen after typing a single line of Python felt like I had split the atom with my bare hands. That feeling never entirely goes away. You just get to experience it with increasingly complex things, which makes it even better.
+            </p>
+
+            <p>
+                I have no idea why more people aren't shouting this from the rooftops. But I intend to keep doing so, even if my audience of converts remains modest. Someone has to be the one telling lawyers and dentists that there's a better way. 😄
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>

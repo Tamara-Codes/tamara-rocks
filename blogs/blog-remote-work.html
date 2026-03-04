@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Work Changed Everything — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--yellow);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .win-win-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .win-card {
+            background: #F0FBF6;
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .win-card-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--mint-deep, #2D8A60);
+            margin-bottom: 0.75rem;
+        }
+
+        .win-card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.88rem;
+            color: var(--text-mid);
+            line-height: 1.8;
+        }
+
+        .win-card-list li::before {
+            content: '✓  ';
+            color: var(--mint-deep, #2D8A60);
+            font-weight: 700;
+        }
+
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+            .win-win-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title">Remote Work <em>Changed Everything</em></h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>April 2025</span>
+            <span class="dot"></span>
+            <span>4 min read</span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                I asked my daughter what she wants to be when she grows up. Her answer was immediate, practical, and — honestly — the most reasonable career advice I've ever received: she wants to do what I do, so she can work from home. When I asked why, she replied, <em>"Because then I can pick my kid up from daycare early every other day."</em>
+            </p>
+
+            <p>
+                She is four years old. She has already figured out what decades of corporate culture have managed to obscure: that flexibility is not a perk, it's a foundation. A foundation on which everything else — happiness, productivity, presence — is built.
+            </p>
+
+            <h2>The <em>Ripple Effect</em></h2>
+
+            <p>
+                Working remotely has been the best thing that could have happened for both me and my daughter. She very much dislikes kindergarten, especially now that she's stopped napping and the afternoon stretch stretches on interminably. Being able to pick her up after lunch every other day makes her extremely happy. And because she's happy, I'm happy. And when I'm in a good mood, I'm more energetic, more focused, and more creative. The ripple effect is real and measurable.
+            </p>
+
+            <p>
+                The rhythm of our days together is, I'll admit, slightly chaotic. While she's happily arranging her unicorns in elaborate social hierarchies, I'm deep in a problem. We take breaks — to soak up whatever sunshine Croatia offers in March, to get spectacularly messy baking cookies, to watch fifteen minutes of something colourful on TV. Then my husband gets home, I'm back at the desk, and once she's asleep I'll catch up on anything left for the day.
+            </p>
+
+            <div class="post-pullquote">
+                "Happy child → happy parent → better work. Companies that haven't figured this out yet are leaving productivity on the table."
+            </div>
+
+            <h2>What <em>Companies</em> Are Missing</h2>
+
+            <p>
+                I genuinely wish more companies would embrace remote work — not as an emergency measure, not as a begrudging concession, but as a deliberate choice rooted in trust. The argument against remote work has always rested on a suspicion: that given freedom, people will squander it. The data, and my lived experience, suggests the opposite.
+            </p>
+
+            <p>
+                When people are trusted with their own time, they tend to use it well. When they're able to handle a small domestic crisis at 2 PM without burning a full day of leave, they come back to their desk grateful and focused. When they can build their work around their life, rather than cramming their life into the gaps between meetings, they bring something qualitatively different to their work.
+            </p>
+
+            <div class="win-win-grid">
+                <div class="win-card">
+                    <div class="win-card-title">For the individual</div>
+                    <ul class="win-card-list">
+                        <li>Time with family</li>
+                        <li>Reduced commute stress</li>
+                        <li>Better work-life integration</li>
+                        <li>Higher job satisfaction</li>
+                    </ul>
+                </div>
+                <div class="win-card">
+                    <div class="win-card-title">For the company</div>
+                    <ul class="win-card-list">
+                        <li>More engaged employees</li>
+                        <li>Lower turnover</li>
+                        <li>Higher output per hour</li>
+                        <li>Wider talent pool</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>
+                When individuals thrive, organisations thrive. It's not complicated. It's just not always prioritised.
+            </p>
+
+            <h2>The <em>Dream</em></h2>
+
+            <p>
+                I am deeply grateful to work for a company that gets this. That looks at output rather than hours logged, that trusts me to manage my own time, and that has made it possible for me to be a better developer <em>and</em> a better parent simultaneously, rather than having to sacrifice one for the other.
+            </p>
+
+            <p>
+                The next logical step, of course, is working from Bora Bora one week and Monte Carlo the next. But I'm willing to get there gradually. For now, I'll settle for the afternoon pickup, the cookie flour on my keyboard, and a daughter who already knows exactly what kind of life she wants to build.
+            </p>
+
+            <p>
+                She's going to be very good at this. 😂
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>

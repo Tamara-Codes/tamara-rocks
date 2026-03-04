@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Page hero ── */
+        .page-hero {
+            padding: 3rem 3rem 0;
+        }
+
+        .page-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-mid);
+        }
+
+        /* ── Project selector ── */
+        .project-selector {
+            display: flex;
+            gap: 1.75rem;
+            padding: 2.5rem 3rem 0;
+        }
+
+        .proj-card {
+            border-radius: 14px;
+            padding: 1.1rem 1.6rem 1.2rem;
+            cursor: pointer;
+            border: 1.5px solid transparent;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+            text-align: left;
+            font-family: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 0 0 auto;
+        }
+
+        .proj-card-01 { background: var(--card-01); }
+        .proj-card-02 { background: var(--card-02); }
+        .proj-card-03 { background: var(--card-03); }
+
+        .proj-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .proj-card-01.active { border-color: var(--mint-deep); box-shadow: 0 6px 20px rgba(59,173,130,0.15); transform: translateY(-2px); }
+        .proj-card-02.active { border-color: var(--pink-deep); box-shadow: 0 6px 20px rgba(232,99,126,0.15); transform: translateY(-2px); }
+        .proj-card-03.active { border-color: var(--lavender-deep); box-shadow: 0 6px 20px rgba(123,107,214,0.15); transform: translateY(-2px); }
+
+        .proj-card-num {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .proj-card-01 .proj-card-num { color: var(--mint-deep); }
+        .proj-card-02 .proj-card-num { color: var(--pink-deep); }
+        .proj-card-03 .proj-card-num { color: var(--lavender-deep); }
+
+        .proj-card-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--text);
+        }
+
+        .proj-card-name em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .proj-card-visit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 0.15rem;
+            transition: color 0.15s;
+        }
+
+        .proj-card-01 .proj-card-visit { color: var(--mint-deep); opacity: 0.7; }
+        .proj-card-02 .proj-card-visit { color: var(--pink-deep); opacity: 0.7; }
+        .proj-card-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
+
+        .proj-card-visit:hover { opacity: 1; }
+
+        /* ── Panel area ── */
+        .panel-area {
+            padding: 3.5rem 3rem 6rem;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: panelIn 0.3s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        .tab-panel.active { display: block; }
+
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Panel header ── */
+        .panel-head {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(160,152,144,0.15);
+        }
+
+        .panel-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            color: var(--text);
+        }
+
+        .panel-title em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .panel-tagline {
+            font-size: 0.92rem;
+            color: var(--text-mid);
+            margin-top: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .panel-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.65rem 1.5rem;
+            border-radius: 999px;
+            white-space: nowrap;
+            border: 1.5px solid currentColor;
+            transition: background 0.18s, color 0.18s;
+            flex-shrink: 0;
+        }
+
+        .cta-mint { color: var(--mint-deep); }
+        .cta-mint:hover { background: var(--mint-deep); color: #fff; }
+        .cta-pink { color: var(--pink-deep); }
+        .cta-pink:hover { background: var(--pink-deep); color: #fff; }
+        .cta-lavender { color: var(--lavender-deep); }
+        .cta-lavender:hover { background: var(--lavender-deep); color: #fff; }
+
+        /* ── Metrics ── */
+        .metrics-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .metric-chip {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 120px;
+            background: #fff;
+            border: 1px solid rgba(160,152,144,0.12);
+        }
+
+        .metric-value {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .metric-value-mint     { color: var(--mint-deep); }
+        .metric-value-pink     { color: var(--pink-deep); }
+        .metric-value-lavender { color: var(--lavender-deep); }
+
+        .metric-label {
+            font-size: 0.7rem;
+            color: var(--text-soft);
+            font-weight: 600;
+            margin-top: 0.15rem;
+        }
+
+        /* ── Content blocks ── */
+        .panel-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .content-block {
+            background: #fff;
+            border-radius: 14px;
+            padding: 1.75rem;
+            border: 1px solid rgba(160,152,144,0.1);
+        }
+
+        .content-block.full { grid-column: 1 / -1; }
+
+        .block-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.6rem;
+        }
+
+        .block-heading {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .block-text {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+
+        /* ── Stack pills ── */
+        .stack-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+        }
+
+        .pill {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.28rem 0.8rem;
+            border-radius: 999px;
+            background: var(--bg);
+            color: var(--text-mid);
+            border: 1px solid rgba(160,152,144,0.2);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+            .project-selector { flex-direction: column; }
+            .proj-card { flex: 0 0 auto; }
+            .panel-body { grid-template-columns: 1fr; }
+            .content-block.full { grid-column: 1; }
+            .page-hero, .project-selector, .panel-area { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .panel-head { flex-direction: column; align-items: flex-start; }
+            .project-selector { padding-top: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link active">Projects</a>
+            <a href="blogs/blog.html" class="nav-link">Blog</a>
+            <a href="cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html#contact" class="nav-cta">Say hello</a>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <h1 class="page-title"><span style="color:var(--pink-deep);">Applied AI</span> Projects</h1>
+        <p class="page-subtitle">End‑to‑end AI projects — from idea to working product.</p>
+    </header>
+
+    <!-- ══ Project selector cards ══ -->
+    <div class="project-selector">
+
+        <button class="proj-card proj-card-01" data-tab="ferros-ai">
+            <p class="proj-card-num">01 / Restaurant Tech</p>
+            <h2 class="proj-card-name">Ferros <em>AI</em></h2>
+            <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
+        </button>
+
+        <button class="proj-card proj-card-02" data-tab="erin-ai">
+            <p class="proj-card-num">02 / Beauty & Wellness</p>
+            <h2 class="proj-card-name">Erin <em>AI</em></h2>
+            <a href="https://erinai.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">erinai.eu ↗</a>
+        </button>
+
+        <button class="proj-card proj-card-03" data-tab="legal-claims">
+            <p class="proj-card-num">03 / Legal Tech</p>
+            <h2 class="proj-card-name">Legal Claims <em>Automation</em></h2>
+            <a href="https://swans-delta.vercel.app" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">swans-delta.vercel.app ↗</a>
+        </button>
+
+    </div>
+
+    <!-- ══ Panel area ══ -->
+    <div class="panel-area">
+
+        <!-- TAB 1 — Ferros AI -->
+        <div class="tab-panel" id="tab-ferros-ai" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Ferros <em>AI</em></h2>
+                    <p class="panel-tagline">Owners text a change — the menu updates itself in every language, instantly.</p>
+                </div>
+                <a href="https://ferros.menu" target="_blank" rel="noopener" class="panel-cta cta-mint">
+                    Visit ferros.menu ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-mint">
+                    <span class="metric-value metric-value-mint">~30s</span>
+                    <span class="metric-label">Menu update time</span>
+                </div>
+                <div class="metric-chip metric-chip-mint">
+                    <span class="metric-value metric-value-mint">6+</span>
+                    <span class="metric-label">Languages</span>
+                </div>
+                <div class="metric-chip metric-chip-mint">
+                    <span class="metric-value metric-value-mint">0</span>
+                    <span class="metric-label">Tech setup for owners</span>
+                </div>
+                <div class="metric-chip metric-chip-mint">
+                    <span class="metric-value metric-value-mint">24/7</span>
+                    <span class="metric-label">Live availability</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label">The Problem</p>
+                    <h3 class="block-heading">Menus change daily. Updating them doesn't.</h3>
+                    <p class="block-text">Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests — but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label">The Solution</p>
+                    <h3 class="block-heading">One WhatsApp message. Live menu, instantly.</h3>
+                    <p class="block-text">The owner texts: "Add grilled sea bass — €22 — today's special." The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within 30 seconds. No dashboard, no training.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label">Technical Stack</p>
+                    <h3 class="block-heading">WhatsApp Business API → Claude → Supabase → edge-rendered menu with DeepL i18n.</h3>
+                    <div class="stack-pills">
+                        <span class="pill">WhatsApp Business API</span>
+                        <span class="pill">Claude AI</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">DeepL API</span>
+                        <span class="pill">n8n</span>
+                        <span class="pill">QR / Web</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2 — Erin AI -->
+        <div class="tab-panel" id="tab-erin-ai" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Erin <em>AI</em></h2>
+                    <p class="panel-tagline">Clients book via Instagram DMs — zero manual replies from the salon.</p>
+                </div>
+                <a href="https://erinai.eu" target="_blank" rel="noopener" class="panel-cta cta-pink">
+                    Visit erinai.eu ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-pink">
+                    <span class="metric-value metric-value-pink">80%</span>
+                    <span class="metric-label">Fewer admin DMs</span>
+                </div>
+                <div class="metric-chip metric-chip-pink">
+                    <span class="metric-value metric-value-pink">24/7</span>
+                    <span class="metric-label">Booking availability</span>
+                </div>
+                <div class="metric-chip metric-chip-pink">
+                    <span class="metric-value metric-value-pink">~2min</span>
+                    <span class="metric-label">Avg. booking time</span>
+                </div>
+                <div class="metric-chip metric-chip-pink">
+                    <span class="metric-value metric-value-pink">0</span>
+                    <span class="metric-label">Phone calls needed</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label">The Problem</p>
+                    <h3 class="block-heading">Salons live on Instagram. Bookings still live in their heads.</h3>
+                    <p class="block-text">Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads — checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label">The Solution</p>
+                    <h3 class="block-heading">Erin handles the entire booking conversation.</h3>
+                    <p class="block-text">When a client DMs, Erin responds with services, checks real-time availability via Acuity, confirms the slot, and sends a 24-hour reminder. The salon owner only sees confirmed bookings.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label">Technical Stack</p>
+                    <h3 class="block-heading">Instagram Graph API → Claude conversation agent → Acuity Scheduling → automated reminders.</h3>
+                    <div class="stack-pills">
+                        <span class="pill">Instagram Graph API</span>
+                        <span class="pill">Claude AI</span>
+                        <span class="pill">Make.com</span>
+                        <span class="pill">Acuity Scheduling</span>
+                        <span class="pill">Conversational AI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3 — Legal Claims -->
+        <div class="tab-panel" id="tab-legal-claims" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Legal Claims <em>Automation</em></h2>
+                    <p class="panel-tagline">Damage claims that took an hour now process automatically in under a minute.</p>
+                </div>
+                <a href="https://swans-delta.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-lavender">
+                    Visit project ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-lavender">
+                    <span class="metric-value metric-value-lavender">&lt;1min</span>
+                    <span class="metric-label">Per claim (was 60min)</span>
+                </div>
+                <div class="metric-chip metric-chip-lavender">
+                    <span class="metric-value metric-value-lavender">98%</span>
+                    <span class="metric-label">Extraction accuracy</span>
+                </div>
+                <div class="metric-chip metric-chip-lavender">
+                    <span class="metric-value metric-value-lavender">150k+</span>
+                    <span class="metric-label">Law firms use Clio</span>
+                </div>
+                <div class="metric-chip metric-chip-lavender">
+                    <span class="metric-value metric-value-lavender">0</span>
+                    <span class="metric-label">Manual data entry steps</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label">The Problem</p>
+                    <h3 class="block-heading">Paralegals spend an hour per claim on data entry.</h3>
+                    <p class="block-text">A personal injury law firm receives dozens of damage claim documents weekly — medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label">The Solution</p>
+                    <h3 class="block-heading">An n8n workflow that reads documents like a paralegal.</h3>
+                    <p class="block-text">A document lands in a folder → Document AI extracts text → Claude identifies and validates claim fields → the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label">Technical Stack</p>
+                    <h3 class="block-heading">Google Drive trigger → n8n → Document AI → Claude → Clio API → Slack exceptions.</h3>
+                    <div class="stack-pills">
+                        <span class="pill">n8n</span>
+                        <span class="pill">Clio API</span>
+                        <span class="pill">Google Document AI</span>
+                        <span class="pill">Claude AI</span>
+                        <span class="pill">Google Drive</span>
+                        <span class="pill">Slack API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.proj-card');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        function activateTab(tabId) {
+            cards.forEach(c => c.classList.toggle('active', c.dataset.tab === tabId));
+            panels.forEach(p => p.classList.toggle('active', p.id === `tab-${tabId}`));
+            history.replaceState(null, '', `#${tabId}`);
+        }
+
+        cards.forEach(c => c.addEventListener('click', () => activateTab(c.dataset.tab)));
+
+        function initFromHash() {
+            const hash = window.location.hash.replace('#', '');
+            const valid = ['ferros-ai', 'erin-ai', 'legal-claims'];
+            activateTab(valid.includes(hash) ? hash : 'ferros-ai');
+        }
+
+        initFromHash();
+        window.addEventListener('hashchange', initFromHash);
+    </script>
+
+</body>
+</html>

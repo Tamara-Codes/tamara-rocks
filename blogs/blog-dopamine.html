@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code, Play, Move — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        /* Article */
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--yellow);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .dopamine-strip {
+            background: #FFF8E8;
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin: 0 0 2.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .dopamine-strip-icon {
+            font-size: 1.75rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .dopamine-strip-text {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+        }
+
+        .recipe-box {
+            background: #FFF8E8;
+            border: 2px solid var(--yellow);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .recipe-box-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            margin-bottom: 1rem;
+        }
+
+        .recipe-items {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .recipe-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .recipe-item-icon { font-size: 2.5rem; }
+
+        .recipe-item-label {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Post footer */
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+            .recipe-items { gap: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title"><em>Code, Play, Move:</em> The Dopamine-Packed Recipe for a Happy Life</h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>February 2025</span>
+            <span class="dot"></span>
+            <span>7 min read</span>
+        </div>
+    </header>
+
+    <div style="max-width: 960px; margin: 0 auto 2rem; padding: 0 3rem;">
+        <img src="../images/sekiro.webp" alt="Laptop, Sekiro, controller, dumbbell and basketball — code, play, move" style="width: 100%; border-radius: 12px; display: block;">
+    </div>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                As a software developer, I spend hours staring at the screen, chasing bugs, or untangling a complex logic knot, only to suddenly see the solution click into place. It's a rush, a high that leaves me feeling on top of the world. I often catch myself singing and dancing around the living room after my code produces the result I want. But why does solving a problem feel so good? The answer lies in the fascinating chemistry of our brains.
+            </p>
+
+            <h2>What is <em>Dopamine</em>, and Why Does It Matter?</h2>
+
+            <p>🧠 <strong>Dopamine</strong> is a neurotransmitter, often nicknamed the "feel-good" chemical. It plays a key role in our brain's reward system, regulating pleasure, motivation, and reinforcement learning. When you crack a coding problem, it's not just the logic clicking; it's your brain throwing a mini dopamine party, complete with fireworks and confetti.</p>
+
+            <p>
+                When you encounter a problem, your brain enters a state of heightened activity. Neural pathways work overtime, searching for patterns and connections. Scientists call this <strong>anticipatory dopamine release</strong>. The anticipation of solving the problem primes your brain, making you hyper-focused and motivated.
+            </p>
+
+            <p>
+                The real magic happens when you find the solution. This "neurochemical celebration" doesn't just make you feel good; it strengthens the pathways you used to solve the problem, making you better equipped to tackle similar challenges in the future.
+            </p>
+
+            <h2>From Boss Fights to <em>Bug Fixes</em></h2>
+
+            <p>
+                Exactly the same thing happens when you play a video game, so no wonder they are so addictive. Every level completed, rare loot obtained, or boss defeated triggers a dopamine release. The unpredictability of these rewards amplifies the thrill, making games as addictive as they are entertaining. Similarly, in software development, the satisfaction of solving a coding challenge feels just as rewarding. The key difference? Developers are creating solutions, not consuming them.
+            </p>
+
+            <div class="post-pullquote">
+                "When I fail at Sekiro and a General kills me for the 100th time, I turn into a swearing professional. When I fail at writing code, which is 99% of the time, I do not swear once. I swear."
+            </div>
+
+            <p>
+                It is interesting to note that when I (and I believe I am speaking on behalf of the whole gaming community) fail at Sekiro, I feel angry and frustrated. This often results in me turning off the game. However, when I fail at writing code, I do not feel angry or frustrated. I do feel stupid, though. For example, I spent 10 hours trying to figure out how to do something using LangGraph's fantastic framework for multi-agentic systems. I did not swear once, I swear (pun intended 😉). I fixed it by changing something so simple that it didn't even occur to me: I simply elongated a string I was returning.
+            </p>
+
+            <p>
+                I still felt stupid, even more so once I realised what the problem was, but I felt such happiness that it didn't matter. <em>"Blessed are the fools, for theirs is the kingdom of heaven."</em>
+            </p>
+
+            <p>
+                On a more serious note, the difference in frustration between gaming and coding often comes down to emotional investment and expectations. In gaming, you're immersed in a world where immediate success or failure is highly emotional, especially in competitive or challenging situations. Failures can feel personal or unfair, triggering frustration. In contrast, coding involves a more detached, problem-solving mindset where failure is seen as part of the learning process. The longer-term, systematic approach to overcoming coding obstacles helps maintain emotional distance, making setbacks feel like opportunities to grow rather than personal defeats.
+            </p>
+
+            <h2>Sweat, Tears, and <em>Dopamine</em></h2>
+
+            <p>
+                The next in line for a good hit of dopamine is, of course, exercise. Exercise and coding both reward you with positive feelings, but the key difference is that exercise also has long-term physical health benefits, while coding fosters intellectual growth and creativity.
+            </p>
+
+            <figure style="margin: 0 0 2rem; text-align: center;">
+                <img src="../images/brain.webp" alt="A happy brain with a dopamine molecule" style="width: 100%; max-width: 480px; border-radius: 12px; display: inline-block;">
+            </figure>
+
+            <p>
+                I will never forget how I cried while walking home after successfully running 7km without stopping for the first time. I was so overwhelmed with feelings of happiness and success that I bawled my eyes out for a good while. The pace was that of a snail, but better late than never! When I was 26, I had just moved back home from The Netherlands. I was jobless and had all the free time in the world, so naturally I started learning French and joined a running school. Yes, you read that correctly: I paid money (not much, mind you) to run on the side of a car-fume-congested road with other people.
+            </p>
+
+            <p>
+                I woke up on Saturday mornings after a night of partying to go running with my schoolmates. I stuck with it and graduated with honours, finishing a half-marathon. And yes, you guessed it, I cried again.
+            </p>
+
+            <div class="post-pullquote">
+                "It's funny, I willingly ran a 21k, yet in high school my worst fear was the PE teacher who, I believe, thought he was preparing us for the Olympics."
+            </div>
+
+            <p>
+                I remember going to the gym several times a week to work out my arms and abs, just to get a good grade; we had to punch out 30 push-ups (the fake kind, on your knees, but we were teenage girls) in one minute for an A. On the last exam, I counted 34. I was ecstatic.
+            </p>
+
+            <p>
+                And last, but for shizzle not the least, the king (or queen) of dopamine hits: sex. Even if you no longer practice it, I'm sure you remember it fondly. Well, it's not dopamine itself that makes you feel good, but rather how it makes you hungry for more. Dopamine's role in sex is tied to motivation and reward. The anticipation of pleasure triggers dopamine release, and when that pleasure is achieved, the brain rewards you with a hit of dopamine, reinforcing the desire to repeat the behaviour. Over and over again 😉
+            </p>
+
+            <h2>The <em>Recipe</em></h2>
+
+            <p>
+                I guess the recipe for a happy life filled with regular dopamine hits really writes itself.
+            </p>
+
+            <p>
+                You spend 8 hours a day coding for work, dedicate an hour to physical exercise, and use the rest of your free time to unwind with games. And, if possible, have some sex. Don't forget to sleep! 😉
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>

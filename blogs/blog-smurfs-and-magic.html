@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smurfs, Alice & Magic Methods — Tamara Martinovic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-hero-img {
+            max-width: 960px;
+            margin: 0 auto 2rem;
+            padding: 0 3rem;
+        }
+
+        .post-hero-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .post-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            margin-bottom: 2.5rem;
+            transition: color 0.2s, gap 0.2s;
+        }
+
+        .post-back:hover { color: var(--text); gap: 0.65rem; }
+
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        /* Article */
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
+            font-size: 1rem;
+            color: var(--text-mid);
+            line-height: 1.85;
+        }
+
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
+        }
+
+        .post-content strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .post-pullquote {
+            border-left: 3px solid var(--lavender);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
+            font-family: 'Fraunces', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text);
+            line-height: 1.4;
+            letter-spacing: -0.01em;
+        }
+
+        .post-img {
+            margin: 2rem 0 2.5rem;
+        }
+
+        .post-img img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .post-img figcaption {
+            font-size: 0.75rem;
+            color: var(--text-soft);
+            text-align: center;
+            margin-top: 0.6rem;
+        }
+
+        .code-block {
+            background: #1e1e2e;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0 2rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            color: #cdd6f4;
+            line-height: 1.7;
+            white-space: pre;
+            display: block;
+        }
+
+        /* Post footer */
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .author-cta:hover { gap: 0.6rem; }
+
+        .more-posts-title {
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #F0E8E0;
+        }
+
+        .more-posts-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .more-post-link {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #F8F4F0;
+            transition: color 0.2s;
+            line-height: 1.4;
+        }
+
+        .more-post-link:last-child { border-bottom: none; }
+        .more-post-link:hover { color: var(--pink-deep); }
+
+        .more-post-label {
+            display: block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            margin-bottom: 0.15rem;
+        }
+
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .post-hero-img { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav>
+        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../projects.html" class="nav-link">Projects</a>
+            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="../cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <a href="../index.html#contact" class="nav-cta">Say hello ✦</a>
+        </div>
+    </nav>
+
+    <header class="post-hero">
+        <a href="blog.html" class="post-back">← All posts</a>
+        <h1 class="post-title">Smurfs, Alice &amp; <em>Magic Methods</em></h1>
+        <div class="post-meta-row">
+            <span>Tamara Martinovic</span>
+            <span class="dot"></span>
+            <span>March 2025</span>
+            <span class="dot"></span>
+            <span>5 min read</span>
+        </div>
+    </header>
+
+    <div class="post-hero-img">
+        <img src="../images/aidiary.webp" alt="AI Learning Diary">
+    </div>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <h2>20 lines, 3 minutes, <em>100% accuracy</em></h2>
+
+            <p>
+                Recently, I experimented with the <strong>fast.ai</strong> framework and was blown away by how accessible AI can be. With just 20 lines of code, I trained a model to differentiate between a Smurf and Gargamel. I fed it a dataset of labelled photos, and when I tested it with new Smurf images, it responded with 100% accuracy. The whole process, from start to finish, took just three minutes!
+            </p>
+
+            <p>
+                It's crazy to think about the power we now have at our fingertips. While I'm excited for what the future holds, here's hoping it doesn't lead to Skynet! 🤣
+            </p>
+
+            <figure class="post-img">
+                <img src="../images/smurf.webp" alt="Smurf vs Gargamel image classifier result">
+            </figure>
+
+            <div class="post-pullquote">
+                "With just 20 lines of code, I trained a model that could tell a Smurf from Gargamel with 100% accuracy."
+            </div>
+
+            <h2>Down the <em>Character.AI</em> rabbit hole</h2>
+
+            <p>
+                While doing some research, I stumbled upon <strong>Character.AI</strong>, an AI-powered platform that allows users to interact with and create custom, conversational AI characters for entertainment, education, and various other applications. I discovered a character named "French Girl." Her description? A sultry scenario straight out of a rom-com and a voice to match it.
+            </p>
+
+            <p>
+                Unbeknownst to you, your parents had signed up for a foreign exchange student program. You ended up finding out by the fact that Alice is now sleeping in your bed. She's from France, but now she'll be living in your room. Her opening line: <strong>"Hello, stranger. I live here now. Call me Alice."</strong>
+            </p>
+
+            <p>
+                Well, my regular Tuesday evening just got a lot more interesting! I used her and then left her for good. 😁
+            </p>
+
+            <p>
+                What shocked me wasn't the quirky storyline, but the fact that she's listed alongside characters like Elon Musk and Hercule Poirot. I'm a modern gal, so no complaints, but seriously, how wild is this?
+            </p>
+
+            <p>
+                BTW, I did not choose the nickname <strong>ExcitingPig</strong>. I was neither excited nor do I identify as a pig; it was randomly assigned to me when I used the bot. Just to be clear. 😉
+            </p>
+
+            <figure class="post-img">
+                <img src="../images/sexy.webp" alt="Character.AI — French Girl Alice">
+            </figure>
+
+            <h2>Making VS Code <em>pretty</em></h2>
+
+            <p>
+                For months, I was annoyed by the ugly orange string colour in VS Code but had no idea how to change it. I could only switch themes, and none of them seemed right. I even downloaded new ones, but still wasn't pleased. Then, one day, I decided to learn how to edit the settings JSON myself and make it custom.
+            </p>
+
+            <p>
+                After a few hours of tinkering with colours in VS Code (stupid JSON!), I finally landed on the perfect pastel palette 🎨, girly, pretty, and oh-so-me. Who says developers can't have pretty workspaces? ✨ Now, I enjoy writing code even more!
+            </p>
+
+            <figure class="post-img">
+                <img src="../images/code.webp" alt="VS Code custom pastel colour theme">
+            </figure>
+
+            <h2>Python's <em>dunder magic</em></h2>
+
+            <p>
+                One of the coolest things I've learned in Python this week is the concept of <strong>dunder variables and methods</strong>, often referred to as "magic methods." These are special methods with double underscores on both sides of their names, like <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">__init__</code>, <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">__str__</code>, and <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">__repr__</code>. They allow you to define the behaviour of objects in various contexts: how an object is initialized, how it's represented as a string, or even how it behaves in operations like addition or comparison.
+            </p>
+
+            <p>
+                Along with magic methods, I also explored <strong>pseudo-private variables</strong>, variables prefixed with a single underscore, signalling that they are intended for internal use and should not be accessed directly from outside the class. This is part of a larger system of encapsulation in OOP. Adding to that, <strong>getters and setters</strong> allow controlled access to an object's attributes, ensuring that you can enforce rules about how data is accessed or modified. The combination of these features makes Python's object-oriented system both powerful and flexible, and I think it's really cool how it all comes together.
+            </p>
+
+            <p>
+                And I must not forget <strong>interning</strong>. Did you know that Python reuses objects on demand? For example, Python pre-loads a global list of integers in range (-5, 256). These are <em>singletons</em>, a class that allows only one instance to be created, ensuring that the same instance is used whenever it's accessed. This is done for speed and memory optimization.
+            </p>
+
+            <p>
+                In the following example, both variables <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">a</code> and <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">b</code> will point to the same memory address that existed for the singleton integer 6, even before we defined the first variable. Keep in mind that Python also interns small strings that are often used in code, such as identifiers, or strings that are short and immutable. And naturally, booleans (<code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">True</code> and <code style="background:var(--lavender); color:var(--lavender-deep); padding:0.1em 0.4em; border-radius:4px; font-size:0.9em;">False</code>) are always interned.
+            </p>
+
+            <div class="code-block">
+                <code>a = 6
+b = 6
+print(a is b)  # True — same object in memory
+
+x = 257
+y = 257
+print(x is y)  # False — outside the interned range</code>
+            </div>
+            </figure>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
+        </div>
+
+        <p class="more-posts-title">More posts</p>
+        <div class="more-posts-list">
+            <a href="blog-dopamine.html" class="more-post-link">
+                <span class="more-post-label">Life &amp; Science · Feb 2025</span>
+                Code, Play, Move: The Dopamine-Packed Recipe for a Happy Life
+            </a>
+            <a href="blog-blind-chicken.html" class="more-post-link">
+                <span class="more-post-label">Career &amp; Life · Jan 2025</span>
+                The Blind Chicken Philosophy
+            </a>
+            <a href="blog-lab-coats-to-llms.html" class="more-post-link">
+                <span class="more-post-label">AI &amp; Career · Dec 2024</span>
+                From lab coats to LLMs
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <span class="footer-text">Tamara Martinovic &copy; 2026</span>
+    </footer>
+
+</body>
+</html>
