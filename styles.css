@@ -306,7 +306,7 @@ footer {
     .nav-links { gap: 0.6rem; }
     .nav-link { font-size: 0.72rem; }
     .nav-right { display: flex; justify-content: flex-end; }
-    .nav-cta { font-size: 0.7rem; padding: 0.35rem 0.85rem; }
+    .nav-cta { display: none; }
     .contact { margin: 2rem 1.5rem; padding: 3.5rem 2rem; }
     footer { padding: 1.5rem; }
     .blobs { display: none; }
