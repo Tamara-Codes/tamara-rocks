@@ -311,3 +311,15 @@ footer {
     footer { padding: 1.5rem; }
     .blobs { display: none; }
 }
+
+@media (max-width: 480px) {
+    nav { padding: 0.6rem 1rem; }
+    .nav-name { font-size: 0.65rem; }
+    .nav-links { gap: 0.45rem; }
+    .nav-link { font-size: 0.65rem; }
+    .contact { margin: 1.5rem 1rem; padding: 2.5rem 1.25rem; }
+    .contact-heading { font-size: 1.6rem; }
+    .contact-links { flex-direction: column; align-items: center; }
+    .contact-link { width: 100%; justify-content: center; }
+    .chatbot-btn-wrap { bottom: 1rem; right: 1rem; }
+}

@@ -363,6 +363,7 @@
             .about-teaser { padding: 0 1.5rem 5rem; }
             .about-inner { grid-template-columns: 1fr; padding: 2rem; gap: 1rem; }
             .about-quote { display: none; }
+            .about-body { max-width: 100%; }
         }
 
         /* ── Quote break ── */
@@ -408,11 +409,21 @@
                 grid-template-columns: 1fr;
                 padding: 1.5rem 1.5rem 4rem;
             }
+            .hero-eyebrow { margin-bottom: 2rem; }
             .hero-name { font-size: 2.8rem; }
             .hero-photo { display: flex; justify-content: center; }
             .photo-placeholder { width: 270px; height: 330px; border-radius: 140px 140px 120px 120px; left: 0 !important; }
             .work { padding: 2rem 1.5rem 5rem; }
             .projects { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .hero { padding: 1rem 1rem 3rem; }
+            .hero-eyebrow { margin-bottom: 1.5rem; }
+            .hero-name { font-size: 2.2rem; }
+            .work { padding: 1.5rem 1rem 4rem; }
+            .about-teaser { padding: 0 1rem 4rem; }
+            .about-inner { padding: 1.5rem; }
         }
 
         /* ── Stack ── */
