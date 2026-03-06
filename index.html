@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamara Martinovic — Forward Deployed AI Engineer</title>
+    <title>Tamara Martinovic — AI Solutions Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
@@ -177,7 +177,10 @@
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-            cursor: default;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
 
         .card.visible { opacity: 1; transform: translateY(0); }
@@ -403,6 +406,7 @@
         @media (max-width: 768px) {
             .quote-break { padding: 0 1.5rem 5rem; }
         }
+
 
         @media (max-width: 768px) {
             .hero {
@@ -964,7 +968,7 @@
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="projects.html" class="nav-link">Projects</a>
-            <a href="blogs/blog.html" class="nav-link">Blog</a>
+            <a href="blogs/blog.html" class="nav-link">My Story</a>
             <a href="cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
@@ -974,7 +978,7 @@
 
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-eyebrow">Forward Deployed AI Engineer</div>
+            <div class="hero-eyebrow">AI Solutions Engineer</div>
             <h1 class="hero-name">
                 Turning Complex Workflows into <em>Elegant Technical Wins</em>
             </h1>
@@ -994,7 +998,7 @@
                 <p class="about-eyebrow">✦ My story</p>
                 <h2 class="about-heading">From lab coats to <em>LLMs</em></h2>
                 <p class="about-body">I spent a decade doing biomedical research — pipettes, mass spectrometers, and a PhD that taught me how to untangle extraordinarily complex systems. Then AI happened, and I realised I could apply the exact same obsessive curiosity to something that ships. I've never looked back. I build AI systems the way I used to run experiments: methodically, relentlessly, and with an embarrassing amount of enthusiasm.</p>
-                <a href="blogs/blog-lab-coats-to-llms.html" class="about-link">Read my full story →</a>
+                <a href="blogs/blog.html" class="about-link">Read my full story →</a>
             </div>
             <div class="about-quote">"100% obsessed"</div>
         </div>
@@ -1012,32 +1016,37 @@
         </div>
 
         <div class="projects">
-            <div class="card card-01" data-observe>
+            <a href="projects.html" class="card card-01" data-observe>
                 <div class="card-deco"></div>
                 <p class="card-number">01 / Restaurant Tech</p>
                 <h2 class="card-title">QR Menu via WhatsApp</h2>
                 <span class="card-metric">✦ Works in any language, instantly</span>
                 <p class="card-desc">Owners update their menu by sending a WhatsApp message. The system publishes it instantly, translated into every language their guests need.</p>
                 <div class="card-tags">
-                    <span class="tag">WhatsApp API</span>
-                    <span class="tag">Multilingual AI</span>
-                    <span class="tag">QR / Web</span>
-                    <span class="tag">Hospitality</span>
+                    <span class="tag">WhatsApp Chatbot</span>
+                    <span class="tag">AI Translation</span>
+                    <span class="tag">Real-time Updates</span>
+                    <span class="tag">Dashboard</span>
+                    <span class="tag">Multi-tenant</span>
                 </div>
-            </div>
+                <img src="images/ferros-ai-dashboard.png" alt="Ferros AI dashboard" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
+            </a>
 
-            <div class="card card-02" data-observe>
+            <a href="projects.html" class="card card-02" data-observe>
                 <div class="card-deco"></div>
                 <p class="card-number">02 / Beauty & Wellness</p>
                 <h2 class="card-title">Instagram Booking Chatbot</h2>
                 <span class="card-metric">✦ Zero phone tag</span>
                 <p class="card-desc">Built for beauty salons in Croatia. Handles bookings, rescheduling, and promos directly in Instagram DMs, where clients already are.</p>
                 <div class="card-tags">
-                    <span class="tag">Instagram API</span>
-                    <span class="tag">Conversational AI</span>
-                    <span class="tag">Automation</span>
+                    <span class="tag">Instagram Chatbot</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">Calendar Integration</span>
+                    <span class="tag">Booking Automation</span>
+                    <span class="tag">Appointment Reminders</span>
                 </div>
-            </div>
+                <img src="images/erin-ai-chat.png" alt="Erin AI booking chat" style="max-width:220px;border-radius:12px;margin-top:1.5rem;display:block;margin-left:auto;margin-right:auto;">
+            </a>
 
             <div class="card card-03" data-observe>
                 <div class="card-deco"></div>
@@ -1046,11 +1055,13 @@
                 <span class="card-metric">✦ 1 hour → under 1 minute</span>
                 <p class="card-desc">An n8n workflow integrated with Clio (used by 150,000+ law firms). Damage claims that used to require manual review now process automatically.</p>
                 <div class="card-tags">
-                    <span class="tag">n8n</span>
-                    <span class="tag">Clio API</span>
-                    <span class="tag">Document AI</span>
-                    <span class="tag">Legal Tech</span>
+                    <span class="tag">PDF Intake</span>
+                    <span class="tag">OCR Extraction</span>
+                    <span class="tag">Clio Integration</span>
+                    <span class="tag">Report Generation</span>
+                    <span class="tag">Email Automation</span>
                 </div>
+                <img src="images/legal-claims-workflow.png" alt="Legal claims automation n8n workflow" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
             </div>
         </div>
     </section>
@@ -1072,9 +1083,9 @@
                     <div class="stack-pills">
                         <span class="stack-pill"><img src="https://cdn.simpleicons.org/langchain" alt="" style="width:18px;height:18px;">LangGraph</span>
                         <span class="stack-pill"><img src="https://cdn.simpleicons.org/langchain" alt="" style="width:18px;height:18px;">LangSmith</span>
-                        <span class="stack-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="#6B6560" style="flex-shrink:0"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>OpenAI</span>
-                        <span class="stack-pill"><img src="https://cdn.simpleicons.org/anthropic" alt="">Anthropic</span>
-                        <span class="stack-pill"><img src="https://cdn.simpleicons.org/googlegemini" alt="">Gemini</span>
+                        <span class="stack-pill">LLMs</span>
+                        <span class="stack-pill"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:0.6"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>Vector Databases</span>
+                        <span class="stack-pill"><img src="https://cdn.simpleicons.org/anthropic" alt="" style="width:18px;height:18px;">MCP</span>
                     </div>
                 </div>
 
@@ -1163,6 +1174,7 @@
 
     <footer>
         <span class="footer-text">Tamara Martinovic &copy; 2025</span>
+        <span class="footer-built">I ❤️ Claude Code</span>
     </footer>
 
     <div id="milestoneModal" class="ms-modal" aria-hidden="true">

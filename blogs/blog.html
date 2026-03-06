@@ -3,206 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Tamara Martinovic</title>
+    <title>My Story — Tamara Martinovic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
     <style>
-        .page-hero {
-            padding: 3rem 3rem 2rem;
+        .post-hero {
+            padding: 3rem 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
             position: relative;
             z-index: 1;
         }
 
-        .page-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--mint);
-            color: var(--mint-deep);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
+        .post-hero-img {
+            max-width: 960px;
+            margin: 0 auto 2rem;
+            padding: 0 3rem;
+        }
+
+        .post-hero-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .post-title {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text);
             margin-bottom: 1.5rem;
         }
 
-        .page-title {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(2rem, 4.5vw, 3.8rem);
-            font-weight: 500;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-
-        .page-title em {
+        .post-title em {
             font-style: italic;
             font-weight: 300;
             color: var(--pink-deep);
         }
 
-        .page-subtitle {
+        .post-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.78rem;
+            color: var(--text-soft);
+            flex-wrap: wrap;
+        }
+
+        .post-meta-row .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-soft);
+        }
+
+        /* Article */
+        .post-body {
+            padding: 0 3rem 0;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .post-content {
             font-size: 1rem;
             color: var(--text-mid);
-            max-width: 900px;
+            line-height: 1.85;
         }
 
-        /* Blog grid */
-        .blog-section {
-            padding: 0 3rem 2rem;
+        .post-content p { margin-bottom: 1.5rem; }
+        .post-content p:last-child { margin-bottom: 0; }
+
+        .post-content h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin: 2.5rem 0 1rem;
         }
 
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
+        .post-content h2 em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--pink-deep);
         }
 
-        .post-card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .post-card.visible { opacity: 1; transform: translateY(0); }
-        .post-card:hover   { box-shadow: 0 16px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
-
-        .post-thumb {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            position: relative;
-        }
-
-        .post-thumb-1 { background: linear-gradient(135deg, var(--card-01), var(--mint)); }
-        .post-thumb-2 { background: linear-gradient(135deg, var(--card-02), var(--pink)); }
-        .post-thumb-3 { background: linear-gradient(135deg, var(--card-03), var(--lavender)); }
-        .post-thumb-4 { background: linear-gradient(135deg, #FFF8E8, var(--yellow)); }
-        .post-thumb-img { background: none; padding: 0; overflow: hidden; }
-        .post-thumb-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        .post-body {
-            padding: 1.75rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .post-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .post-category {
-            font-size: 0.68rem;
+        .post-content strong {
             font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
+            color: var(--text);
         }
 
-        .cat-ai       { background: var(--lavender); color: var(--lavender-deep); }
-        .cat-business { background: var(--mint);     color: var(--mint-deep); }
-        .cat-tools    { background: var(--peach);    color: var(--peach-deep); }
-        .cat-life     { background: var(--pink);     color: var(--pink-deep); }
-
-        .post-date {
-            font-size: 0.75rem;
-            color: var(--text-soft);
-        }
-
-        .post-title {
+        .post-pullquote {
+            border-left: 3px solid var(--lavender);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 2.5rem 0;
             font-family: 'Fraunces', serif;
             font-size: 1.35rem;
-            font-weight: 500;
-            line-height: 1.25;
+            font-style: italic;
+            font-weight: 300;
             color: var(--text);
-            margin-bottom: 0.75rem;
+            line-height: 1.4;
             letter-spacing: -0.01em;
         }
 
-        .post-excerpt {
-            font-size: 0.85rem;
-            color: var(--text-mid);
-            line-height: 1.7;
-            flex: 1;
-            margin-bottom: 1.25rem;
+        /* Post footer */
+        .post-footer {
+            padding: 3rem 3rem 7rem;
+            max-width: 960px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        .post-read {
-            font-size: 0.78rem;
-            font-weight: 700;
+        .post-divider {
+            border: none;
+            border-top: 1px solid #E8E0D8;
+            margin-bottom: 2.5rem;
+        }
+
+        .author-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 45%;
+        }
+
+        .author-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--text);
+            margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .author-bio {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+            margin-bottom: 0.85rem;
+        }
+
+        .author-cta {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--pink-deep);
+            text-decoration: none;
+            transition: gap 0.2s;
         }
 
-        .post-read::after {
-            content: '→';
-            transition: transform 0.2s;
-        }
+        .author-cta:hover { gap: 0.6rem; }
 
-        .post-card:hover .post-read::after { transform: translateX(4px); }
-
-        /* Coming soon card */
-        .post-card-placeholder {
-            background: var(--bg);
-            border: 2px dashed var(--border, #E8E0D8);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 280px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .post-card-placeholder.visible { opacity: 1; transform: translateY(0); }
-
-        .placeholder-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .placeholder-text {
-            font-family: 'Fraunces', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--text-soft);
-        }
-
-        .placeholder-sub {
-            font-size: 0.8rem;
-            color: var(--text-soft);
-            margin-top: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .page-hero, .blog-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .blog-grid { grid-template-columns: 1fr; }
+        @media (max-width: 640px) {
+            .post-hero, .post-body, .post-footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .post-hero-img { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .author-card { flex-direction: column; gap: 1rem; }
         }
     </style>
 </head>
@@ -219,7 +205,7 @@
         <div class="nav-links">
             <a href="../index.html" class="nav-link">Home</a>
             <a href="../projects.html" class="nav-link">Projects</a>
-            <a href="blog.html" class="nav-link active">Blog</a>
+            <a href="blog.html" class="nav-link active">My Story</a>
             <a href="../cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
@@ -227,145 +213,105 @@
         </div>
     </nav>
 
-    <header class="page-hero">
-<h1 class="page-title">Deployed <span style="color:var(--pink-deep);">Thoughts</span></h1>
-        <p class="page-subtitle">On AI, automation, and the grit it takes to build things that work. Also occasionally: good music and random daily thoughts.</p>
+    <header class="post-hero">
+        <h1 class="post-title">From lab coats to <em>LLMs</em></h1>
     </header>
 
-    <section class="blog-section">
-        <div class="section-header">
-            <span class="section-title">All posts</span>
-            <div class="section-line"></div>
+    <div class="post-hero-img">
+        <img src="../images/blog-mass-spec-hero.png" alt="From mass spectrometers to LLMs">
+    </div>
+
+    <div class="post-body">
+        <article class="post-content">
+
+            <p>
+                I can clearly remember the three questions that I was asked at my high school State Final Exam (Matura) for my informatics class:
+            </p>
+
+            <ol style="margin: 0 0 1.5rem 1.5rem; padding: 0; color: var(--text-mid); line-height: 2;">
+                <li>Name three peripheral computer parts.</li>
+                <li>What is the difference between RAM and ROM?</li>
+                <li>What is BIOS?</li>
+            </ol>
+
+            <p>
+                Of course, I passed with flying colours, as did everyone else who chose the subject as their elective. The teacher was not invested in teaching, and we spent most of our time playing Counterstrike on LAN. Growing up with a Commodore 64, I fell in love with video games at an early age. But the only contact I had with programming was in primary school, in a class called Technical Education. There, I was introduced to Logo, an educational programming language designed for beginners, known for its "turtle graphics," where users write commands to move a turtle cursor to create shapes and patterns. At 12 years old though, I didn't really care for it, I was far more drawn to biology and chemistry, the "stuff of life". Naturally, I grew up to be a molecular biologist, completely oblivious to the fact that computers could offer so much more than gaming and Internet access. Little did I know that years later, I'd find myself not in a lab, but in front of a computer screen, coding away.
+            </p>
+
+            <p>
+                My time in Academia spanned over 10 years, and while I thoroughly enjoyed all aspects of it, I was never the 'crazy scientist' from cartoons, I never became one of those researchers who lived and breathed science. I loved the constant learning, the teaching (which I enjoyed most), attending conferences, writing papers, and doing lab research, especially when I managed to get good results, which is rare in the field. I was good at what I did. I finished my PhD, even published a new method for isolating proteins using liquid chromatography. But despite all this, I never felt that passion for research that I felt I should have had.
+            </p>
+
+            <div class="post-pullquote">
+                "By pure coincidence, I found myself on a completely new path, with no grand plan, just an unexpected turn that would change my life forever."
+            </div>
+
+            <p>
+                Then, by a stroke of luck, I found myself pregnant, and my postdoc project wrapped up. It was during this time that Facebook suggested something unexpected: a remote, online course from a top private university designed for women. It was free, and the live classes were on Saturday mornings, when my husband could take care of our child. The course was the famous Coursera's Google IT Support program.
+            </p>
+
+            <p>
+                At the time, I had some free time on my hands and a curiosity about computers that had been with me throughout my life. I'd always enjoyed working on computers, buying new parts, assembling them, and reinstalling my operating system. It felt like a perfect opportunity to dive deeper. And just like that, by pure coincidence, I found myself on a completely new path, with no grand plan, just an unexpected turn that would change my life forever.
+            </p>
+
+            <p>
+                I became fascinated by the world of binary code, networks, programming languages, databases, UNIX, and more. It was all so new and exciting, like Christmas every day as I unwrapped another piece of the vast and mysterious IT world.
+            </p>
+
+            <figure style="margin: 2rem 0 2.5rem; text-align: center;">
+                <img src="../images/oz.webp" alt="The yellow brick road leading to the Emerald City — Wizard of Oz" style="width: 100%; border-radius: 12px; display: block;">
+            </figure>
+
+            <h2>Hello, <em>World</em></h2>
+
+            <p>
+                After successfully completing Google's program, I dove into programming languages, with Python catching my attention in particular. When I first saw the words 'Hello, World' appear on my screen after typing just one line of code and pressing enter, I was in awe. I remember calling my husband to show him my success; it felt like I had just split the atom with my own hands. A few days later, I created a simple Guessing game that looked terrible but worked. I could write code! For years, I had thought programming was only for incredibly smart people with deep math knowledge, but I quickly realized that I could create a website in just a few hours.
+            </p>
+
+            <p>
+                I like to joke that I'm an "interdisciplinary programmer." Over the past two years, driven by my curiosity, I've explored almost everything in tech. I've learned how to make websites using HTML, CSS, and JS. I've gained experience with Git, dabbled in SQL for database queries, and gradually delved into exploratory data analysis with Python, creating charts in Tableau. I even started scraping websites for data, completing several projects and sharing them on my GitHub. It became a full-time hobby that felt incredibly rewarding. Each day, I'd spend at least an hour behind my laptop, coding. I no longer craved weekends out with friends; instead, I chose to stay home and learn. Instead of playing video games, I began making my own games. How wonderful is that?
+            </p>
+
+            <h2>The <em>addiction</em></h2>
+
+            <p>
+                I dove even deeper, dedicating hours outside of my daily work to learning Python, building simple projects, and experimenting with code. Every line I wrote felt like a tiny victory, and soon I realized I was hooked. After years spent studying biological systems, coding offered me an entirely new way to solve problems, a way that felt even more rewarding. The dopamine hits I get from coding are real. I was addicted. Luckily, the drug of my choice is healthy, legal, and available daily!
+            </p>
+
+            <p>
+                It didn't take long before I knew: I had to make a change. The idea of leaving a stable career in science to start from scratch in a completely new field was daunting, but my excitement for programming outweighed my fear. I recognized that this was something I could excel at and genuinely enjoy. The only person standing in my way was myself. If I dedicate myself to studying and working hard, I know I can succeed. If I don't, I'll face setbacks; it's entirely in my hands, just my skills, my portfolio, and my commitment.
+            </p>
+
+            <div class="post-pullquote">
+                "I've come across countless stories of people with diverse backgrounds breaking into IT, and each time, I thought to myself: why can't I be one of them?"
+            </div>
+
+            <p>
+                I've come across countless YouTube videos and Reddit posts from people with diverse backgrounds successfully breaking into the IT field, and each time, I thought to myself, "Why can't I be one of them?" So, I took the leap, and here I am, one of them, on a journey I never could have imagined when I first sat down at that Commodore 64 all those years ago.
+            </p>
+
+        </article>
+    </div>
+
+    <div class="post-footer">
+        <hr class="post-divider">
+
+        <div class="author-card">
+            <div class="author-avatar">
+                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+            </div>
+            <div>
+                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-bio">Building intelligent systems for businesses that want to run smarter.</p>
+                <a href="../index.html#contact" class="author-cta">Get in touch →</a>
+            </div>
         </div>
 
-        <div class="blog-grid">
-
-            <a href="blog-first-hackathon.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-3" style="background: linear-gradient(135deg, #E8E4FF, #C4BBF0);"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">March 2026 · 6 min</span>
-                    </div>
-                    <h2 class="post-title">My First Hackathon</h2>
-                    <p class="post-excerpt">Easy peasy Friday, debugging hell Saturday, a Sunday morning chat with Claude, and a finished solution by Monday. You can't have ups without downs.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-main-to-fullstack.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-3"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">July 2025 · 5 min</span>
-                    </div>
-                    <h2 class="post-title">From main.py to Full Stack: One Year of Growth</h2>
-                    <p class="post-excerpt">Less than a year ago I wrote everything in main.py. Then I shipped a Next.js + FastAPI + Docker + Supabase app. I'm still clicking buttons just to watch it work.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-fun-developer.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-2"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">June 2025 · 5 min</span>
-                    </div>
-                    <h2 class="post-title">Why Doesn't Anyone Talk About How Fun Being a Developer Is?</h2>
-                    <p class="post-excerpt">I've met lawyers, dentists, bartenders — rarely does anyone say they love their job. Meanwhile I'm singing around the living room every time my code works. What gives?</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-ai-companionship.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-1"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">May 2025 · 5 min</span>
-                    </div>
-                    <h2 class="post-title">AI Companionship: Where Is the Line?</h2>
-                    <p class="post-excerpt">Millions use AI for emotional connection. I smiled when a model called my correction a "smart catch." The dopamine was real. So what does that actually mean?</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-remote-work.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-4"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">April 2025 · 4 min</span>
-                    </div>
-                    <h2 class="post-title">Remote Work Changed Everything</h2>
-                    <p class="post-excerpt">My daughter wants to do my job so she can pick her kid up from daycare early. She's four and has already figured out what most companies haven't.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-smurfs-and-magic.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-img"><img src="../images/smurf.webp" alt="Smurfs, Alice &amp; Magic Methods"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">March 2025 · 5 min</span>
-                    </div>
-                    <h2 class="post-title">Smurfs, Alice & Magic Methods</h2>
-                    <p class="post-excerpt">I trained a model to tell Smurfs from Gargamel in 3 minutes, stumbled into Character.AI's rabbit hole, made VS Code pretty, and fell in love with Python's dunder magic.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-dopamine.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-img"><img src="../images/sekiro.webp" alt="Code, Play, Move"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">February 2025 · 7 min</span>
-                    </div>
-                    <h2 class="post-title">Code, Play, Move: The Dopamine-Packed Recipe for a Happy Life</h2>
-                    <p class="post-excerpt">Why solving a bug feels like a boss fight victory, why I cried after running 7km, and what all your favourite activities have in common: dopamine.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-blind-chicken.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-img"><img src="../images/chicken.webp" alt="The Blind Chicken Philosophy"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">January 2025 · 6 min</span>
-                    </div>
-                    <h2 class="post-title">The Blind Chicken Philosophy</h2>
-                    <p class="post-excerpt">A Croatian proverb about persistence, the math of applying to a thousand jobs, and how networking turned a beginner's hustle into real results.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-            <a href="blog-lab-coats-to-llms.html" class="post-card" data-observe>
-                <div class="post-thumb post-thumb-img"><img src="../images/blog-mass-spec-hero.png" alt="From lab coats to LLMs"></div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <span class="post-date">December 2024 · 8 min</span>
-                    </div>
-                    <h2 class="post-title">From lab coats to LLMs</h2>
-                    <p class="post-excerpt">On growing up with a Commodore 64, spending a decade as a molecular biologist, and the accidental Google course that changed everything.</p>
-                    <span class="post-read">Read more</span>
-                </div>
-            </a>
-
-
-        </div>
-    </section>
+    </div>
 
     <footer>
         <span class="footer-text">Tamara Martinovic &copy; 2025</span>
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), i * 120);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
-    </script>
 </body>
 </html>

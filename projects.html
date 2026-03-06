@@ -125,10 +125,9 @@
         /* ── Panel header ── */
         .panel-head {
             display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
             margin-bottom: 3rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid rgba(160,152,144,0.15);
@@ -308,7 +307,7 @@
         <div class="nav-links">
             <a href="index.html" class="nav-link">Home</a>
             <a href="projects.html" class="nav-link active">Projects</a>
-            <a href="blogs/blog.html" class="nav-link">Blog</a>
+            <a href="blogs/blog.html" class="nav-link">My Story</a>
             <a href="cv.html" class="nav-link">CV</a>
         </div>
         <div class="nav-right">
@@ -318,29 +317,28 @@
 
     <header class="page-hero">
         <h1 class="page-title"><span style="color:var(--pink-deep);">Applied AI</span> Projects</h1>
-        <p class="page-subtitle">End‑to‑end AI projects — from idea to working product.</p>
+        <p class="page-subtitle">From idea to working product.</p>
     </header>
 
     <!-- ══ Project selector cards ══ -->
     <div class="project-selector">
 
-        <button class="proj-card proj-card-01" data-tab="ferros-ai">
+        <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
             <p class="proj-card-num">01 / Restaurant Tech</p>
             <h2 class="proj-card-name">Ferros <em>AI</em></h2>
             <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
-        </button>
+        </div>
 
-        <button class="proj-card proj-card-02" data-tab="erin-ai">
+        <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
             <p class="proj-card-num">02 / Beauty & Wellness</p>
             <h2 class="proj-card-name">Erin <em>AI</em></h2>
             <a href="https://erinai.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">erinai.eu ↗</a>
-        </button>
+        </div>
 
-        <button class="proj-card proj-card-03" data-tab="legal-claims">
+        <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
             <p class="proj-card-num">03 / Legal Tech</p>
             <h2 class="proj-card-name">Legal Claims <em>Automation</em></h2>
-            <a href="https://swans-delta.vercel.app" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">swans-delta.vercel.app ↗</a>
-        </button>
+        </div>
 
     </div>
 
@@ -353,7 +351,7 @@
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Ferros <em>AI</em></h2>
-                    <p class="panel-tagline">Owners text a change — the menu updates itself in every language, instantly.</p>
+                    <p class="panel-tagline">Owners text a change, the menu updates itself in every language, instantly.</p>
                 </div>
                 <a href="https://ferros.menu" target="_blank" rel="noopener" class="panel-cta cta-mint">
                     Visit ferros.menu ↗
@@ -362,11 +360,11 @@
 
             <div class="metrics-row">
                 <div class="metric-chip metric-chip-mint">
-                    <span class="metric-value metric-value-mint">~30s</span>
+                    <span class="metric-value metric-value-mint">Instant</span>
                     <span class="metric-label">Menu update time</span>
                 </div>
                 <div class="metric-chip metric-chip-mint">
-                    <span class="metric-value metric-value-mint">6+</span>
+                    <span class="metric-value metric-value-mint">100+</span>
                     <span class="metric-label">Languages</span>
                 </div>
                 <div class="metric-chip metric-chip-mint">
@@ -383,25 +381,27 @@
                 <div class="content-block">
                     <p class="block-label">The Problem</p>
                     <h3 class="block-heading">Menus change daily. Updating them doesn't.</h3>
-                    <p class="block-text">Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests — but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices.</p>
+                    <p class="block-text">Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests, but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices.</p>
                 </div>
 
                 <div class="content-block">
                     <p class="block-label">The Solution</p>
                     <h3 class="block-heading">One WhatsApp message. Live menu, instantly.</h3>
-                    <p class="block-text">The owner texts: "Add grilled sea bass — €22 — today's special." The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within 30 seconds. No dashboard, no training.</p>
+                    <p class="block-text">The owner texts: "Add grilled sea bass, €22, today's special." The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within a few seconds. No dashboard, no training.</p>
                 </div>
 
                 <div class="content-block full">
                     <p class="block-label">Technical Stack</p>
-                    <h3 class="block-heading">WhatsApp Business API → Claude → Supabase → edge-rendered menu with DeepL i18n.</h3>
                     <div class="stack-pills">
-                        <span class="pill">WhatsApp Business API</span>
-                        <span class="pill">Claude AI</span>
+                        <span class="pill">Next.js</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">Clerk</span>
                         <span class="pill">Supabase</span>
-                        <span class="pill">DeepL API</span>
-                        <span class="pill">n8n</span>
-                        <span class="pill">QR / Web</span>
+                        <span class="pill">FastAPI</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">LangGraph</span>
+                        <span class="pill">Gemini</span>
+                        <span class="pill">Twilio</span>
                     </div>
                 </div>
             </div>
@@ -413,7 +413,7 @@
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Erin <em>AI</em></h2>
-                    <p class="panel-tagline">Clients book via Instagram DMs — zero manual replies from the salon.</p>
+                    <p class="panel-tagline">Clients book via Instagram DMs, zero manual replies from the salon.</p>
                 </div>
                 <a href="https://erinai.eu" target="_blank" rel="noopener" class="panel-cta cta-pink">
                     Visit erinai.eu ↗
@@ -443,7 +443,7 @@
                 <div class="content-block">
                     <p class="block-label">The Problem</p>
                     <h3 class="block-heading">Salons live on Instagram. Bookings still live in their heads.</h3>
-                    <p class="block-text">Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads — checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations.</p>
+                    <p class="block-text">Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads: checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations.</p>
                 </div>
 
                 <div class="content-block">
@@ -454,13 +454,19 @@
 
                 <div class="content-block full">
                     <p class="block-label">Technical Stack</p>
-                    <h3 class="block-heading">Instagram Graph API → Claude conversation agent → Acuity Scheduling → automated reminders.</h3>
                     <div class="stack-pills">
-                        <span class="pill">Instagram Graph API</span>
-                        <span class="pill">Claude AI</span>
-                        <span class="pill">Make.com</span>
-                        <span class="pill">Acuity Scheduling</span>
-                        <span class="pill">Conversational AI</span>
+                        <span class="pill">Next.js</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">LangGraph</span>
+                        <span class="pill">Instagram API</span>
+                        <span class="pill">Google Calendar</span>
+                        <span class="pill">Microsoft Calendar</span>
+                        <span class="pill">FastAPI</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">PDF Processing</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">n8n</span>
+                        <span class="pill">Gemini</span>
                     </div>
                 </div>
             </div>
@@ -474,9 +480,6 @@
                     <h2 class="panel-title">Legal Claims <em>Automation</em></h2>
                     <p class="panel-tagline">Damage claims that took an hour now process automatically in under a minute.</p>
                 </div>
-                <a href="https://swans-delta.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-lavender">
-                    Visit project ↗
-                </a>
             </div>
 
             <div class="metrics-row">
@@ -485,7 +488,7 @@
                     <span class="metric-label">Per claim (was 60min)</span>
                 </div>
                 <div class="metric-chip metric-chip-lavender">
-                    <span class="metric-value metric-value-lavender">98%</span>
+                    <span class="metric-value metric-value-lavender">100%</span>
                     <span class="metric-label">Extraction accuracy</span>
                 </div>
                 <div class="metric-chip metric-chip-lavender">
@@ -502,25 +505,25 @@
                 <div class="content-block">
                     <p class="block-label">The Problem</p>
                     <h3 class="block-heading">Paralegals spend an hour per claim on data entry.</h3>
-                    <p class="block-text">A personal injury law firm receives dozens of damage claim documents weekly — medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive.</p>
+                    <p class="block-text">A personal injury law firm receives dozens of damage claim documents weekly: medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive.</p>
                 </div>
 
                 <div class="content-block">
                     <p class="block-label">The Solution</p>
                     <h3 class="block-heading">An n8n workflow that reads documents like a paralegal.</h3>
-                    <p class="block-text">A document lands in a folder → Document AI extracts text → Claude identifies and validates claim fields → the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue.</p>
+                    <p class="block-text">A document lands in a folder, Document AI extracts text, Claude identifies and validates claim fields, and the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue.</p>
                 </div>
 
                 <div class="content-block full">
                     <p class="block-label">Technical Stack</p>
-                    <h3 class="block-heading">Google Drive trigger → n8n → Document AI → Claude → Clio API → Slack exceptions.</h3>
                     <div class="stack-pills">
+                        <span class="pill">Next.js</span>
+                        <span class="pill">Tailwind CSS</span>
                         <span class="pill">n8n</span>
+                        <span class="pill">Supabase</span>
                         <span class="pill">Clio API</span>
-                        <span class="pill">Google Document AI</span>
-                        <span class="pill">Claude AI</span>
-                        <span class="pill">Google Drive</span>
-                        <span class="pill">Slack API</span>
+                        <span class="pill">Gemini</span>
+                        <span class="pill">OCR</span>
                     </div>
                 </div>
             </div>
