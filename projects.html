@@ -72,6 +72,9 @@
         .proj-card-02.active { border-color: var(--pink-deep); box-shadow: 0 6px 20px rgba(232,99,126,0.15); transform: translateY(-2px); }
         .proj-card-03.active { border-color: var(--lavender-deep); box-shadow: 0 6px 20px rgba(123,107,214,0.15); transform: translateY(-2px); }
 
+        .proj-card-04 { background: var(--card-04); }
+        .proj-card-04.active { border-color: var(--teal-deep); box-shadow: 0 6px 20px rgba(26,138,138,0.15); transform: translateY(-2px); }
+
         .proj-card-num {
             font-size: 0.68rem;
             font-weight: 700;
@@ -82,6 +85,7 @@
         .proj-card-01 .proj-card-num { color: var(--mint-deep); }
         .proj-card-02 .proj-card-num { color: var(--pink-deep); }
         .proj-card-03 .proj-card-num { color: var(--lavender-deep); }
+        .proj-card-04 .proj-card-num { color: var(--teal-deep); }
 
         .proj-card-name {
             font-family: 'Fraunces', serif;
@@ -111,6 +115,7 @@
         .proj-card-01 .proj-card-visit { color: var(--mint-deep); opacity: 0.7; }
         .proj-card-02 .proj-card-visit { color: var(--pink-deep); opacity: 0.7; }
         .proj-card-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
+        .proj-card-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
 
         .proj-card-visit:hover { opacity: 1; }
 
@@ -183,6 +188,8 @@
         .cta-pink:hover { background: var(--pink-deep); color: #fff; }
         .cta-lavender { color: var(--lavender-deep); }
         .cta-lavender:hover { background: var(--lavender-deep); color: #fff; }
+        .cta-teal { color: var(--teal-deep); }
+        .cta-teal:hover { background: var(--teal-deep); color: #fff; }
 
         /* ── Metrics ── */
         .metrics-row {
@@ -215,6 +222,7 @@
         .metric-value-mint     { color: var(--mint-deep); }
         .metric-value-pink     { color: var(--pink-deep); }
         .metric-value-lavender { color: var(--lavender-deep); }
+        .metric-value-teal    { color: var(--teal-deep); }
 
         .metric-label {
             font-size: 0.7rem;
@@ -332,20 +340,26 @@
     <!-- ══ Project selector cards ══ -->
     <div class="project-selector">
 
-        <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
-            <p class="proj-card-num">01 / Restaurant Tech</p>
-            <h2 class="proj-card-name">Ferros <em>AI</em></h2>
-            <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
+        <div class="proj-card proj-card-04" data-tab="kompas-ai" role="button" tabindex="0">
+            <p class="proj-card-num">01</p>
+            <h2 class="proj-card-name">Kompas <em>AI</em></h2>
+            <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">kompasai.eu ↗</a>
         </div>
 
         <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
-            <p class="proj-card-num">02 / Beauty & Wellness</p>
+            <p class="proj-card-num">02</p>
             <h2 class="proj-card-name">Erin <em>AI</em></h2>
             <a href="https://erinai.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">erinai.eu ↗</a>
         </div>
 
+        <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
+            <p class="proj-card-num">03</p>
+            <h2 class="proj-card-name">Ferros <em>AI</em></h2>
+            <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
+        </div>
+
         <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
-            <p class="proj-card-num">03 / Legal Tech</p>
+            <p class="proj-card-num">04</p>
             <h2 class="proj-card-name">Legal Claims <em>Automation</em></h2>
         </div>
 
@@ -535,6 +549,74 @@
                         <span class="pill">OCR</span>
                     </div>
                 </div>
+
+                <div class="content-block full" style="padding:0;border:none;background:none;">
+                    <img src="images/legal-claims-workflow.png" alt="Legal claims automation n8n workflow" style="width:100%;border-radius:14px;display:block;">
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4 — Kompas AI -->
+        <div class="tab-panel" id="tab-kompas-ai" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Kompas <em>AI</em></h2>
+                    <p class="panel-tagline">An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions.</p>
+                </div>
+                <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-teal">
+                    Visit Kompas AI ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip">
+                    <span class="metric-value metric-value-teal">Daily</span>
+                    <span class="metric-label">Legislative scan</span>
+                </div>
+                <div class="metric-chip">
+                    <span class="metric-value metric-value-teal">RAG</span>
+                    <span class="metric-label">Over full law texts</span>
+                </div>
+                <div class="metric-chip">
+                    <span class="metric-value metric-value-teal">Auto</span>
+                    <span class="metric-label">Law consolidation</span>
+                </div>
+                <div class="metric-chip">
+                    <span class="metric-value metric-value-teal">Instant</span>
+                    <span class="metric-label">Email alerts</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="content-block">
+                    <p class="block-label">The Problem</p>
+                    <h3 class="block-heading">Accountants can't keep up with constant legal changes.</h3>
+                    <p class="block-text">Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label">The Solution</p>
+                    <h3 class="block-heading">AI that reads the gazette and answers your questions.</h3>
+                    <p class="block-text">Kompas scans Narodne novine daily, classifies changes with AI, and sends email alerts filtered by relevance. Its RAG-powered assistant lets accountants ask natural-language questions and get answers grounded in actual law text and official interpretations.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">Next.js</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">FastAPI</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">LangGraph</span>
+                        <span class="pill">Gemini</span>
+                        <span class="pill">pgvector</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">Resend</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -554,8 +636,8 @@
 
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
-            const valid = ['ferros-ai', 'erin-ai', 'legal-claims'];
-            activateTab(valid.includes(hash) ? hash : 'ferros-ai');
+            const valid = ['kompas-ai', 'erin-ai', 'ferros-ai', 'legal-claims'];
+            activateTab(valid.includes(hash) ? hash : 'kompas-ai');
         }
 
         initFromHash();

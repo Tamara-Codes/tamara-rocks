@@ -17,6 +17,9 @@
     --card-01: #E8F7F1;
     --card-02: #FEF0F4;
     --card-03: #EDEDFC;
+    --teal: #A8E0E6;
+    --teal-deep: #1A8A8A;
+    --card-04: #E3F5F5;
 }
 
 html { scroll-behavior: smooth; }

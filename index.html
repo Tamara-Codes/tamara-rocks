@@ -208,6 +208,7 @@
         .card-01 { background: var(--card-01); }
         .card-02 { background: var(--card-02); }
         .card-03 { background: var(--card-03); }
+        .card-04 { background: var(--card-04); }
 
         .card-number {
             font-family: 'Fraunces', serif;
@@ -220,6 +221,7 @@
         .card-01 .card-number { color: var(--mint-deep); }
         .card-02 .card-number { color: var(--pink-deep); }
         .card-03 .card-number { color: var(--lavender-deep); }
+        .card-04 .card-number { color: var(--teal-deep); }
 
         .card-title {
             font-family: 'Fraunces', serif;
@@ -247,6 +249,7 @@
         .card-01 .card-metric { background: var(--mint);     color: var(--mint-deep); }
         .card-02 .card-metric { background: var(--pink);     color: var(--pink-deep); }
         .card-03 .card-metric { background: var(--lavender); color: var(--lavender-deep); }
+        .card-04 .card-metric { background: var(--teal);     color: var(--teal-deep); }
 
         .card-desc {
             font-size: 0.9rem;
@@ -280,6 +283,7 @@
         .card-01 .card-deco { background: var(--mint); }
         .card-02 .card-deco { background: var(--pink); }
         .card-03 .card-deco { background: var(--lavender); }
+        .card-04 .card-deco { background: var(--teal); }
 
         /* ── About teaser ── */
         .about-teaser {
@@ -1035,25 +1039,25 @@
         </div>
 
         <div class="projects">
-            <a href="projects.html" class="card card-01" data-observe>
+            <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="card card-04" data-observe>
                 <div class="card-deco"></div>
-                <p class="card-number">01 / Restaurant Tech</p>
-                <h2 class="card-title">QR Menu via WhatsApp</h2>
-                <span class="card-metric">✦ Works in any language, instantly</span>
-                <p class="card-desc">Owners update their menu by sending a WhatsApp message. The system publishes it instantly, translated into every language their guests need.</p>
+                <p class="card-number">01</p>
+                <h2 class="card-title">AI Legal Monitor for Accountants</h2>
+                <span class="card-metric">✦ Daily legislative scanning</span>
+                <p class="card-desc">Kompas AI scans Croatia's official gazette daily, classifies changes with AI, and lets accountants ask natural-language questions answered from actual law text and official interpretations.</p>
                 <div class="card-tags">
-                    <span class="tag">WhatsApp Chatbot</span>
-                    <span class="tag">AI Translation</span>
-                    <span class="tag">Real-time Updates</span>
-                    <span class="tag">Dashboard</span>
-                    <span class="tag">Multi-tenant</span>
+                    <span class="tag">RAG</span>
+                    <span class="tag">LangGraph Agent</span>
+                    <span class="tag">pgvector</span>
+                    <span class="tag">Law Consolidation</span>
+                    <span class="tag">Email Alerts</span>
                 </div>
-                <img src="images/ferros-ai-dashboard.png" alt="Ferros AI dashboard" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
+                <img src="images/kompas-ai-demo.gif" alt="Kompas AI demo — AI assistant answering questions about Croatian law" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
             </a>
 
-            <a href="projects.html" class="card card-02" data-observe>
+            <a href="projects.html#erin-ai" class="card card-02" data-observe>
                 <div class="card-deco"></div>
-                <p class="card-number">02 / Beauty & Wellness</p>
+                <p class="card-number">02</p>
                 <h2 class="card-title">Instagram Booking Chatbot</h2>
                 <span class="card-metric">✦ Zero phone tag</span>
                 <p class="card-desc">Built for beauty salons in Croatia. Handles bookings, rescheduling, and promos directly in Instagram DMs, where clients already are.</p>
@@ -1067,21 +1071,21 @@
                 <img src="images/erin-ai-chat.png" alt="Erin AI booking chat" style="max-width:220px;border-radius:12px;margin-top:1.5rem;display:block;margin-left:auto;margin-right:auto;">
             </a>
 
-            <div class="card card-03" data-observe>
+            <a href="projects.html#ferros-ai" class="card card-01" data-observe>
                 <div class="card-deco"></div>
-                <p class="card-number">03 / Legal Tech</p>
-                <h2 class="card-title">Legal Claims Automation</h2>
-                <span class="card-metric">✦ 1 hour → under 1 minute</span>
-                <p class="card-desc">An n8n workflow integrated with Clio (used by 150,000+ law firms). Damage claims that used to require manual review now process automatically.</p>
+                <p class="card-number">03</p>
+                <h2 class="card-title">QR Menu via WhatsApp</h2>
+                <span class="card-metric">✦ Works in any language, instantly</span>
+                <p class="card-desc">Owners update their menu by sending a WhatsApp message. The system publishes it instantly, translated into every language their guests need.</p>
                 <div class="card-tags">
-                    <span class="tag">PDF Intake</span>
-                    <span class="tag">OCR Extraction</span>
-                    <span class="tag">Clio Integration</span>
-                    <span class="tag">Report Generation</span>
-                    <span class="tag">Email Automation</span>
+                    <span class="tag">WhatsApp Chatbot</span>
+                    <span class="tag">AI Translation</span>
+                    <span class="tag">Real-time Updates</span>
+                    <span class="tag">Dashboard</span>
+                    <span class="tag">Multi-tenant</span>
                 </div>
-                <img src="images/legal-claims-workflow.png" alt="Legal claims automation n8n workflow" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
-            </div>
+                <img src="images/ferros-ai-dashboard.png" alt="Ferros AI dashboard" style="width:100%;border-radius:12px;margin-top:1.5rem;display:block;">
+            </a>
         </div>
     </section>
 
