@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects — Tamara Martinovic</title>
+    <title data-en="Projects — Tamara Martinovic" data-hr="Projekti — Tamara Martinović">Projects — Tamara Martinovic</title>
     <meta name="description" content="Projects by Tamara Martinovic — AI tools, apps, and experiments built with LLMs and modern web technologies.">
     <link rel="canonical" href="https://tamara.rocks/projects.html">
     <meta property="og:title" content="Projects — Tamara Martinovic">
@@ -322,19 +322,24 @@
     <nav>
         <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
         <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="projects.html" class="nav-link active">Projects</a>
-            <a href="blogs/blog.html" class="nav-link">My Story</a>
-            <a href="cv.html" class="nav-link">CV</a>
+            <a href="index.html" class="nav-link" data-en="Home" data-hr="Početna">Home</a>
+            <a href="projects.html" class="nav-link active" data-en="Projects" data-hr="Projekti">Projects</a>
+            <a href="blogs/blog.html" class="nav-link" data-en="My Story" data-hr="Moja priča">My Story</a>
+            <a href="cv.html" class="nav-link" data-en="CV" data-hr="Životopis">CV</a>
         </div>
         <div class="nav-right">
-            <a href="index.html#contact" class="nav-cta">Say hello</a>
+            <div class="nav-lang" role="group" aria-label="Language">
+                <button type="button" class="lang-btn" data-lang-code="en" onclick="setLang('en')">EN</button>
+                <span class="lang-divider" aria-hidden="true">/</span>
+                <button type="button" class="lang-btn" data-lang-code="hr" onclick="setLang('hr')">HR</button>
+            </div>
+            <a href="index.html#contact" class="nav-cta" data-en="Say hello" data-hr="Javi se">Say hello</a>
         </div>
     </nav>
 
     <header class="page-hero">
-        <h1 class="page-title"><span style="color:var(--pink-deep);">Applied AI</span> Projects</h1>
-        <p class="page-subtitle">From idea to working product.</p>
+        <h1 class="page-title" data-i18n-html data-en='<span style="color:var(--pink-deep);">Applied AI</span> Projects' data-hr='<span style="color:var(--pink-deep);">Primijenjeni AI</span> projekti'><span style="color:var(--pink-deep);">Applied AI</span> Projects</h1>
+        <p class="page-subtitle" data-en="From idea to working product." data-hr="Od ideje do gotovog proizvoda.">From idea to working product.</p>
     </header>
 
     <!-- ══ Project selector cards ══ -->
@@ -360,7 +365,7 @@
 
         <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
             <p class="proj-card-num">04</p>
-            <h2 class="proj-card-name">Legal Claims <em>Automation</em></h2>
+            <h2 class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
         </div>
 
     </div>
@@ -374,47 +379,47 @@
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Ferros <em>AI</em></h2>
-                    <p class="panel-tagline">Owners text a change, the menu updates itself in every language, instantly.</p>
+                    <p class="panel-tagline" data-en="Owners text a change, the menu updates itself in every language, instantly." data-hr="Vlasnik pošalje poruku, jelovnik se odmah ažurira na svim jezicima.">Owners text a change, the menu updates itself in every language, instantly.</p>
                 </div>
-                <a href="https://ferros.menu" target="_blank" rel="noopener" class="panel-cta cta-mint">
+                <a href="https://ferros.menu" target="_blank" rel="noopener" class="panel-cta cta-mint" data-en="Visit ferros.menu ↗" data-hr="Posjeti ferros.menu ↗">
                     Visit ferros.menu ↗
                 </a>
             </div>
 
             <div class="metrics-row">
                 <div class="metric-chip metric-chip-mint">
-                    <span class="metric-value metric-value-mint">Instant</span>
-                    <span class="metric-label">Menu update time</span>
+                    <span class="metric-value metric-value-mint" data-en="Instant" data-hr="Odmah">Instant</span>
+                    <span class="metric-label" data-en="Menu update time" data-hr="Vrijeme ažuriranja jelovnika">Menu update time</span>
                 </div>
                 <div class="metric-chip metric-chip-mint">
                     <span class="metric-value metric-value-mint">100+</span>
-                    <span class="metric-label">Languages</span>
+                    <span class="metric-label" data-en="Languages" data-hr="Jezika">Languages</span>
                 </div>
                 <div class="metric-chip metric-chip-mint">
                     <span class="metric-value metric-value-mint">0</span>
-                    <span class="metric-label">Tech setup for owners</span>
+                    <span class="metric-label" data-en="Tech setup for owners" data-hr="Tehničkog podešavanja za vlasnika">Tech setup for owners</span>
                 </div>
                 <div class="metric-chip metric-chip-mint">
                     <span class="metric-value metric-value-mint">24/7</span>
-                    <span class="metric-label">Live availability</span>
+                    <span class="metric-label" data-en="Live availability" data-hr="Dostupnost uživo">Live availability</span>
                 </div>
             </div>
 
             <div class="panel-body">
                 <div class="content-block">
-                    <p class="block-label">The Problem</p>
-                    <h3 class="block-heading">Menus change daily. Updating them doesn't.</h3>
-                    <p class="block-text">Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests, but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices.</p>
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="Menus change daily. Updating them doesn't." data-hr="Jelovnici se mijenjaju svaki dan. Ažuriranje ne.">Menus change daily. Updating them doesn't.</h3>
+                    <p class="block-text" data-en="Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests, but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices." data-hr="Vlasnici malih restorana imaju sezonske jelovnike, dnevne ponude i višejezične goste, ali ažuriranje PDF jelovnika oduzima vrijeme koje nemaju. Gosti skeniraju QR kod i nađu jučerašnji jelovnik s cijenama od prošlog kvartala.">Small restaurant owners deal with seasonal menus, daily specials, and multilingual guests, but updating a PDF menu takes time they don't have. Guests scan a QR code and find yesterday's menu with last quarter's prices.</p>
                 </div>
 
                 <div class="content-block">
-                    <p class="block-label">The Solution</p>
-                    <h3 class="block-heading">One WhatsApp message. Live menu, instantly.</h3>
-                    <p class="block-text">The owner texts: "Add grilled sea bass, €22, today's special." The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within a few seconds. No dashboard, no training.</p>
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="One WhatsApp message. Live menu, instantly." data-hr="Jedna WhatsApp poruka. Jelovnik uživo, odmah.">One WhatsApp message. Live menu, instantly.</h3>
+                    <p class="block-text" data-en='The owner texts: &quot;Add grilled sea bass, €22, today&apos;s special.&quot; The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within a few seconds. No dashboard, no training.' data-hr='Vlasnik piše: &quot;Dodaj brancin na žaru, 22 €, dnevna ponuda.&quot; AI to pročita, ažurira bazu uživo, regenerira prijevode, a QR kod pokazuje promjenu u nekoliko sekundi. Bez dashboarda, bez treninga.'>The owner texts: "Add grilled sea bass, €22, today's special." The AI parses it, updates the live database, regenerates translated versions, and the QR code reflects the change within a few seconds. No dashboard, no training.</p>
                 </div>
 
                 <div class="content-block full">
-                    <p class="block-label">Technical Stack</p>
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
                     <div class="stack-pills">
                         <span class="pill">Next.js</span>
                         <span class="pill">Tailwind CSS</span>
@@ -436,9 +441,9 @@
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Erin <em>AI</em></h2>
-                    <p class="panel-tagline">Clients book via Instagram DMs, zero manual replies from the salon.</p>
+                    <p class="panel-tagline" data-en="Clients book via Instagram DMs, zero manual replies from the salon." data-hr="Klijenti rezerviraju preko Instagram poruka, bez ručnih odgovora salona.">Clients book via Instagram DMs, zero manual replies from the salon.</p>
                 </div>
-                <a href="https://erinai.eu" target="_blank" rel="noopener" class="panel-cta cta-pink">
+                <a href="https://erinai.eu" target="_blank" rel="noopener" class="panel-cta cta-pink" data-en="Visit erinai.eu ↗" data-hr="Posjeti erinai.eu ↗">
                     Visit erinai.eu ↗
                 </a>
             </div>
@@ -446,37 +451,37 @@
             <div class="metrics-row">
                 <div class="metric-chip metric-chip-pink">
                     <span class="metric-value metric-value-pink">80%</span>
-                    <span class="metric-label">Fewer admin DMs</span>
+                    <span class="metric-label" data-en="Fewer admin DMs" data-hr="Manje admin poruka">Fewer admin DMs</span>
                 </div>
                 <div class="metric-chip metric-chip-pink">
                     <span class="metric-value metric-value-pink">24/7</span>
-                    <span class="metric-label">Booking availability</span>
+                    <span class="metric-label" data-en="Booking availability" data-hr="Dostupnost rezervacija">Booking availability</span>
                 </div>
                 <div class="metric-chip metric-chip-pink">
                     <span class="metric-value metric-value-pink">~2min</span>
-                    <span class="metric-label">Avg. booking time</span>
+                    <span class="metric-label" data-en="Avg. booking time" data-hr="Prosj. vrijeme rezervacije">Avg. booking time</span>
                 </div>
                 <div class="metric-chip metric-chip-pink">
                     <span class="metric-value metric-value-pink">0</span>
-                    <span class="metric-label">Phone calls needed</span>
+                    <span class="metric-label" data-en="Phone calls needed" data-hr="Potrebnih poziva">Phone calls needed</span>
                 </div>
             </div>
 
             <div class="panel-body">
                 <div class="content-block">
-                    <p class="block-label">The Problem</p>
-                    <h3 class="block-heading">Salons live on Instagram. Bookings still live in their heads.</h3>
-                    <p class="block-text">Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads: checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations.</p>
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="Salons live on Instagram. Bookings still live in their heads." data-hr="Saloni žive na Instagramu. Rezervacije još uvijek u glavi.">Salons live on Instagram. Bookings still live in their heads.</h3>
+                    <p class="block-text" data-en="Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads: checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations." data-hr="Hrvatske vlasnice kozmetičkih salona većinu klijenata dobivaju preko Instagrama, ali ih pretvaraju u rezervacije kroz duge ručne razgovore: provjeravanje termina pješice, slanje podsjetnika u ponoć, rješavanje otkazivanja u zadnji tren.">Croatian beauty salon owners get most clients via Instagram, but convert them through long manual DM threads: checking availability by hand, sending reminders at midnight, dealing with last-minute cancellations.</p>
                 </div>
 
                 <div class="content-block">
-                    <p class="block-label">The Solution</p>
-                    <h3 class="block-heading">Erin handles the entire booking conversation.</h3>
-                    <p class="block-text">When a client DMs, Erin responds with services, checks real-time availability via Acuity, confirms the slot, and sends a 24-hour reminder. The salon owner only sees confirmed bookings.</p>
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="Erin handles the entire booking conversation." data-hr="Erin vodi cijeli razgovor za rezervaciju.">Erin handles the entire booking conversation.</h3>
+                    <p class="block-text" data-en="When a client DMs, Erin responds with services, checks real-time availability via Acuity, confirms the slot, and sends a 24-hour reminder. The salon owner only sees confirmed bookings." data-hr="Kad klijentica pošalje poruku, Erin odgovori s uslugama, u realnom vremenu provjeri termine preko Acuityja, potvrdi termin i šalje podsjetnik 24 sata prije. Vlasnica salona vidi samo potvrđene rezervacije.">When a client DMs, Erin responds with services, checks real-time availability via Acuity, confirms the slot, and sends a 24-hour reminder. The salon owner only sees confirmed bookings.</p>
                 </div>
 
                 <div class="content-block full">
-                    <p class="block-label">Technical Stack</p>
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
                     <div class="stack-pills">
                         <span class="pill">Next.js</span>
                         <span class="pill">Tailwind CSS</span>
@@ -500,45 +505,45 @@
 
             <div class="panel-head">
                 <div>
-                    <h2 class="panel-title">Legal Claims <em>Automation</em></h2>
-                    <p class="panel-tagline">Damage claims that took an hour now process automatically in under a minute.</p>
+                    <h2 class="panel-title" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
+                    <p class="panel-tagline" data-en="Damage claims that took an hour now process automatically in under a minute." data-hr="Odštetni zahtjevi koji su trajali sat vremena sada se obrađuju automatski u manje od minute.">Damage claims that took an hour now process automatically in under a minute.</p>
                 </div>
             </div>
 
             <div class="metrics-row">
                 <div class="metric-chip metric-chip-lavender">
                     <span class="metric-value metric-value-lavender">&lt;1min</span>
-                    <span class="metric-label">Per claim (was 60min)</span>
+                    <span class="metric-label" data-en="Per claim (was 60min)" data-hr="Po zahtjevu (prije 60 min)">Per claim (was 60min)</span>
                 </div>
                 <div class="metric-chip metric-chip-lavender">
                     <span class="metric-value metric-value-lavender">100%</span>
-                    <span class="metric-label">Extraction accuracy</span>
+                    <span class="metric-label" data-en="Extraction accuracy" data-hr="Točnost ekstrakcije">Extraction accuracy</span>
                 </div>
                 <div class="metric-chip metric-chip-lavender">
                     <span class="metric-value metric-value-lavender">150k+</span>
-                    <span class="metric-label">Law firms use Clio</span>
+                    <span class="metric-label" data-en="Law firms use Clio" data-hr="Odvjetničkih ureda koristi Clio">Law firms use Clio</span>
                 </div>
                 <div class="metric-chip metric-chip-lavender">
                     <span class="metric-value metric-value-lavender">0</span>
-                    <span class="metric-label">Manual data entry steps</span>
+                    <span class="metric-label" data-en="Manual data entry steps" data-hr="Koraka ručnog unosa podataka">Manual data entry steps</span>
                 </div>
             </div>
 
             <div class="panel-body">
                 <div class="content-block">
-                    <p class="block-label">The Problem</p>
-                    <h3 class="block-heading">Paralegals spend an hour per claim on data entry.</h3>
-                    <p class="block-text">A personal injury law firm receives dozens of damage claim documents weekly: medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive.</p>
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="Paralegals spend an hour per claim on data entry." data-hr="Pravni pomoćnici troše sat vremena po zahtjevu na unos podataka.">Paralegals spend an hour per claim on data entry.</h3>
+                    <p class="block-text" data-en="A personal injury law firm receives dozens of damage claim documents weekly: medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive." data-hr="Odvjetnički ured za tjelesne ozljede svaki tjedan dobiva desetke dokumenata s odštetnim zahtjevima: medicinske račune, procjene popravaka, izjave o izgubljenom dohotku. Svaki zahtijeva da pravni pomoćnik pročita, izvuče ključne brojke i ručno ih unese u Clio. Sporo, sklono greškama i skupo.">A personal injury law firm receives dozens of damage claim documents weekly: medical bills, repair estimates, lost income statements. Each requires a paralegal to read, extract key figures, and manually enter them into Clio. Slow, error-prone, and expensive.</p>
                 </div>
 
                 <div class="content-block">
-                    <p class="block-label">The Solution</p>
-                    <h3 class="block-heading">An n8n workflow that reads documents like a paralegal.</h3>
-                    <p class="block-text">A document lands in a folder, Document AI extracts text, Claude identifies and validates claim fields, and the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue.</p>
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="An n8n workflow that reads documents like a paralegal." data-hr="n8n workflow koji čita dokumente kao pravni pomoćnik.">An n8n workflow that reads documents like a paralegal.</h3>
+                    <p class="block-text" data-en="A document lands in a folder, Document AI extracts text, Claude identifies and validates claim fields, and the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue." data-hr="Dokument stigne u folder, Document AI izvadi tekst, Claude prepoznaje i provjerava polja zahtjeva, a Clio API upisuje strukturirane podatke u odgovarajući predmet. Ekstrakcije s niskom sigurnošću idu u red za ljudski pregled.">A document lands in a folder, Document AI extracts text, Claude identifies and validates claim fields, and the Clio API writes structured data to the correct matter record. Low-confidence extractions surface to a human review queue.</p>
                 </div>
 
                 <div class="content-block full">
-                    <p class="block-label">Technical Stack</p>
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
                     <div class="stack-pills">
                         <span class="pill">Next.js</span>
                         <span class="pill">Tailwind CSS</span>
@@ -562,48 +567,48 @@
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Kompas <em>AI</em></h2>
-                    <p class="panel-tagline">An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions.</p>
+                    <p class="panel-tagline" data-en="An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions." data-hr="AI asistent koji prati hrvatsko zakonodavstvo i odgovara na regulatorna pitanja računovođa.">An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions.</p>
                 </div>
-                <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-teal">
+                <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-teal" data-en="Visit Kompas AI ↗" data-hr="Posjeti Kompas AI ↗">
                     Visit Kompas AI ↗
                 </a>
             </div>
 
             <div class="metrics-row">
                 <div class="metric-chip">
-                    <span class="metric-value metric-value-teal">Daily</span>
-                    <span class="metric-label">Legislative scan</span>
+                    <span class="metric-value metric-value-teal" data-en="Daily" data-hr="Dnevno">Daily</span>
+                    <span class="metric-label" data-en="Legislative scan" data-hr="Praćenje zakona">Legislative scan</span>
                 </div>
                 <div class="metric-chip">
                     <span class="metric-value metric-value-teal">RAG</span>
-                    <span class="metric-label">Over full law texts</span>
+                    <span class="metric-label" data-en="Over full law texts" data-hr="Preko cijelog teksta zakona">Over full law texts</span>
                 </div>
                 <div class="metric-chip">
-                    <span class="metric-value metric-value-teal">Auto</span>
-                    <span class="metric-label">Law consolidation</span>
+                    <span class="metric-value metric-value-teal" data-en="Auto" data-hr="Auto">Auto</span>
+                    <span class="metric-label" data-en="Law consolidation" data-hr="Pročišćavanje zakona">Law consolidation</span>
                 </div>
                 <div class="metric-chip">
-                    <span class="metric-value metric-value-teal">Instant</span>
-                    <span class="metric-label">Email alerts</span>
+                    <span class="metric-value metric-value-teal" data-en="Instant" data-hr="Odmah">Instant</span>
+                    <span class="metric-label" data-en="Email alerts" data-hr="Email obavijesti">Email alerts</span>
                 </div>
             </div>
 
             <div class="panel-body">
 
                 <div class="content-block">
-                    <p class="block-label">The Problem</p>
-                    <h3 class="block-heading">Accountants can't keep up with constant legal changes.</h3>
-                    <p class="block-text">Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates.</p>
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="Accountants can't keep up with constant legal changes." data-hr="Računovođe ne mogu pratiti stalne zakonske promjene.">Accountants can't keep up with constant legal changes.</h3>
+                    <p class="block-text" data-en="Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates." data-hr="Narodne novine svaki dan objavljuju nove zakone i izmjene. Računovođe moraju pratiti porezne, radne i regulatorne promjene u desecima zakona — ali ručno čitanje Narodnih novina oduzima vrijeme i lako se propuste ključne izmjene.">Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates.</p>
                 </div>
 
                 <div class="content-block">
-                    <p class="block-label">The Solution</p>
-                    <h3 class="block-heading">AI that reads the gazette and answers your questions.</h3>
-                    <p class="block-text">Kompas scans Narodne novine daily, classifies changes with AI, and sends email alerts filtered by relevance. Its RAG-powered assistant lets accountants ask natural-language questions and get answers grounded in actual law text and official interpretations.</p>
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="AI that reads the gazette and answers your questions." data-hr="AI koji čita Narodne novine i odgovara na tvoja pitanja.">AI that reads the gazette and answers your questions.</h3>
+                    <p class="block-text" data-en="Kompas scans Narodne novine daily, classifies changes with AI, and sends email alerts filtered by relevance. Its RAG-powered assistant lets accountants ask natural-language questions and get answers grounded in actual law text and official interpretations." data-hr="Kompas svakodnevno prati Narodne novine, klasificira izmjene pomoću AI-ja i šalje email obavijesti filtrirane po relevantnosti. Njegov RAG asistent omogućuje računovođama da postavljaju pitanja prirodnim jezikom i dobiju odgovore utemeljene na stvarnom tekstu zakona i službenim tumačenjima.">Kompas scans Narodne novine daily, classifies changes with AI, and sends email alerts filtered by relevance. Its RAG-powered assistant lets accountants ask natural-language questions and get answers grounded in actual law text and official interpretations.</p>
                 </div>
 
                 <div class="content-block full">
-                    <p class="block-label">Technical Stack</p>
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
                     <div class="stack-pills">
                         <span class="pill">Next.js</span>
                         <span class="pill">TypeScript</span>
@@ -623,6 +628,33 @@
     </div>
 
     <script>
+        // ── Language switcher ──
+        (function() {
+            function applyLang(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-en]').forEach(el => {
+                    const v = el.getAttribute('data-' + lang);
+                    if (v == null) return;
+                    if (el.hasAttribute('data-i18n-html')) el.innerHTML = v;
+                    else el.textContent = v;
+                });
+                document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+                    const v = el.getAttribute('data-' + lang + '-placeholder');
+                    if (v != null) el.placeholder = v;
+                });
+                document.querySelectorAll('.lang-btn').forEach(b => {
+                    b.classList.toggle('active', b.dataset.langCode === lang);
+                });
+                try { localStorage.setItem('lang', lang); } catch (e) {}
+            }
+            window.setLang = applyLang;
+
+            let saved = null;
+            try { saved = localStorage.getItem('lang'); } catch (e) {}
+            const browserHr = navigator.language && navigator.language.toLowerCase().startsWith('hr');
+            applyLang(saved || (browserHr ? 'hr' : 'en'));
+        })();
+
         const cards = document.querySelectorAll('.proj-card');
         const panels = document.querySelectorAll('.tab-panel');
 
