@@ -64,7 +64,39 @@ nav {
 
 .nav-right {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
+    gap: 1rem;
+}
+
+.nav-lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-mid);
+    letter-spacing: 0.04em;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    padding: 0.2rem 0.35rem;
+    font: inherit;
+    color: var(--text-mid);
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+}
+
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active { color: var(--text); }
+
+.lang-divider {
+    color: var(--text-soft);
+    user-select: none;
 }
 
 .nav-link {
@@ -400,8 +432,10 @@ footer {
     .nav-name { font-size: 0.72rem; }
     .nav-links { gap: 0.6rem; }
     .nav-link { font-size: 0.72rem; }
-    .nav-right { display: flex; justify-content: flex-end; }
+    .nav-right { display: flex; justify-content: flex-end; gap: 0.5rem; }
     .nav-cta { display: none; }
+    .nav-lang { font-size: 0.72rem; }
+    .lang-btn { padding: 0.15rem 0.25rem; }
     .contact { margin: 2rem 1.5rem; padding: 3.5rem 2rem; }
     footer { padding: 1.5rem; }
     .blobs { display: none; }
@@ -412,6 +446,7 @@ footer {
     .nav-name { font-size: 0.65rem; }
     .nav-links { gap: 0.45rem; }
     .nav-link { font-size: 0.65rem; }
+    .nav-lang { font-size: 0.65rem; }
     .contact { margin: 1.5rem 1rem; padding: 2.5rem 1.25rem; }
     .contact-heading { font-size: 1.6rem; }
     .contact-links { flex-direction: column; align-items: center; }
