@@ -212,6 +212,92 @@ nav {
 .link-email    { background: var(--pink);     color: var(--pink-deep); }
 .link-linkedin { background: var(--mint);     color: var(--mint-deep); }
 
+.contact-subtitle {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    margin: -1.25rem 0 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-form {
+    max-width: 560px;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s;
+    box-sizing: border-box;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--pink);
+    background: rgba(255,255,255,0.09);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.form-submit {
+    align-self: center;
+    background: #fff;
+    color: var(--text);
+    border: none;
+    padding: 0.95rem 2rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 0.25rem;
+}
+
+.form-submit:hover { opacity: 0.9; }
+.form-submit:active { transform: translateY(1px); }
+
+.contact-or {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin: 2.5rem 0 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.contact-or-wink {
+    margin-left: 0.15rem;
+}
+
 
 /* ── Footer ── */
 footer {
@@ -330,5 +416,7 @@ footer {
     .contact-heading { font-size: 1.6rem; }
     .contact-links { flex-direction: column; align-items: center; }
     .contact-link { width: 100%; justify-content: center; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-submit { align-self: stretch; text-align: center; }
     .chatbot-btn-wrap { bottom: 1rem; right: 1rem; }
 }
