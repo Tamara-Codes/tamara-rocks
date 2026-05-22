@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "tamara.rocks" }],
+      "destination": "https://www.tamara.rocks/$1",
+      "permanent": true
+    }
+  ]
+}

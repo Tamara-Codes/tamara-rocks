@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tamara.rocks/sitemap.xml
+Sitemap: https://www.tamara.rocks/sitemap.xml
