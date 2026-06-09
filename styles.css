@@ -246,6 +246,7 @@ nav {
 
 .link-email    { background: var(--pink);     color: var(--pink-deep); }
 .link-linkedin { background: var(--mint);     color: var(--mint-deep); }
+.link-x        { background: var(--lavender); color: var(--lavender-deep); }
 
 .contact-subtitle {
     font-size: 0.95rem;
