@@ -75,6 +75,9 @@
         .proj-card-04 { background: var(--card-04); }
         .proj-card-04.active { border-color: var(--teal-deep); box-shadow: 0 6px 20px rgba(26,138,138,0.15); transform: translateY(-2px); }
 
+        .proj-card-05 { background: var(--card-05); }
+        .proj-card-05.active { border-color: var(--cyan-deep); box-shadow: 0 6px 20px rgba(8,145,178,0.15); transform: translateY(-2px); }
+
         .proj-card-num {
             font-size: 0.68rem;
             font-weight: 700;
@@ -86,6 +89,7 @@
         .proj-card-02 .proj-card-num { color: var(--pink-deep); }
         .proj-card-03 .proj-card-num { color: var(--lavender-deep); }
         .proj-card-04 .proj-card-num { color: var(--teal-deep); }
+        .proj-card-05 .proj-card-num { color: var(--cyan-deep); }
 
         .proj-card-name {
             font-family: 'Fraunces', serif;
@@ -116,6 +120,7 @@
         .proj-card-02 .proj-card-visit { color: var(--pink-deep); opacity: 0.7; }
         .proj-card-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
         .proj-card-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
+        .proj-card-05 .proj-card-visit { color: var(--cyan-deep); opacity: 0.7; }
 
         .proj-card-visit:hover { opacity: 1; }
 
@@ -190,6 +195,8 @@
         .cta-lavender:hover { background: var(--lavender-deep); color: #fff; }
         .cta-teal { color: var(--teal-deep); }
         .cta-teal:hover { background: var(--teal-deep); color: #fff; }
+        .cta-cyan { color: var(--cyan-deep); }
+        .cta-cyan:hover { background: var(--cyan-deep); color: #fff; }
 
         /* ── Metrics ── */
         .metrics-row {
@@ -223,6 +230,7 @@
         .metric-value-pink     { color: var(--pink-deep); }
         .metric-value-lavender { color: var(--lavender-deep); }
         .metric-value-teal    { color: var(--teal-deep); }
+        .metric-value-cyan    { color: var(--cyan-deep); }
 
         .metric-label {
             font-size: 0.7rem;
@@ -350,20 +358,26 @@
             <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">kompasai.eu ↗</a>
         </div>
 
-        <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
+        <div class="proj-card proj-card-05" data-tab="vibeordev" role="button" tabindex="0">
             <p class="proj-card-num">02</p>
+            <h2 class="proj-card-name" data-i18n-html data-en="Vibe Coder or <em>True Dev?</em>" data-hr="Vibe coder ili <em>pravi dev?</em>">Vibe Coder or <em>True Dev?</em></h2>
+            <a href="https://vibeordev.com" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">vibeordev.com ↗</a>
+        </div>
+
+        <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
+            <p class="proj-card-num">03</p>
             <h2 class="proj-card-name">Erin <em>AI</em></h2>
             <a href="https://erinai.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">erinai.eu ↗</a>
         </div>
 
         <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
-            <p class="proj-card-num">03</p>
+            <p class="proj-card-num">04</p>
             <h2 class="proj-card-name">Ferros <em>AI</em></h2>
             <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
         </div>
 
         <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
-            <p class="proj-card-num">04</p>
+            <p class="proj-card-num">05</p>
             <h2 class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
         </div>
 
@@ -371,6 +385,71 @@
 
     <!-- ══ Panel area ══ -->
     <div class="panel-area">
+
+        <!-- TAB — Vibe Coder or True Dev? -->
+        <div class="tab-panel" id="tab-vibeordev" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title" data-i18n-html data-en="Vibe Coder or <em>True Dev?</em>" data-hr="Vibe coder ili <em>pravi dev?</em>">Vibe Coder or <em>True Dev?</em></h2>
+                    <p class="panel-tagline" data-en="20 questions, 30 seconds each. Find out how well you really know what's under the hood of an LLM." data-hr="20 pitanja, 30 sekundi po pitanju. Saznaj koliko stvarno poznaješ ono što se krije ispod haube LLM-a.">20 questions, 30 seconds each. Find out how well you really know what's under the hood of an LLM.</p>
+                </div>
+                <a href="https://vibeordev.com" target="_blank" rel="noopener" class="panel-cta cta-cyan" data-en="Play at vibeordev.com ↗" data-hr="Igraj na vibeordev.com ↗">
+                    Play at vibeordev.com ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-cyan">
+                    <span class="metric-value metric-value-cyan">20</span>
+                    <span class="metric-label" data-en="Questions" data-hr="Pitanja">Questions</span>
+                </div>
+                <div class="metric-chip metric-chip-cyan">
+                    <span class="metric-value metric-value-cyan">30s</span>
+                    <span class="metric-label" data-en="Per question" data-hr="Po pitanju">Per question</span>
+                </div>
+                <div class="metric-chip metric-chip-cyan">
+                    <span class="metric-value metric-value-cyan">6</span>
+                    <span class="metric-label" data-en="Personas" data-hr="Persona">Personas</span>
+                </div>
+                <div class="metric-chip metric-chip-cyan">
+                    <span class="metric-value metric-value-cyan">Live</span>
+                    <span class="metric-label" data-en="Global leaderboard" data-hr="Globalna ljestvica">Global leaderboard</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label" data-en="The Idea" data-hr="Ideja">The Idea</p>
+                    <h3 class="block-heading" data-en="Everyone says they &quot;work with AI.&quot; Few can explain how it works." data-hr="Svi kažu da &quot;rade s AI-jem.&quot; Malo tko zna objasniti kako to radi.">Everyone says they "work with AI." Few can explain how it works.</h3>
+                    <p class="block-text" data-en="There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks — the stuff that separates a vibe coder from a true dev." data-hr="Postoji jaz između korištenja AI-ja i razumijevanja AI-ja. Pa sam taj jaz pretvorila u igru: brz, malo drzak kviz znanja koji pokriva tokenizaciju, attention, embeddinge i RAG, agente, promptanje, fine-tuning i benchmarkove — ono što razlikuje vibe codera od pravog deva.">There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks — the stuff that separates a vibe coder from a true dev.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label" data-en="How It Works" data-hr="Kako radi">How It Works</p>
+                    <h3 class="block-heading" data-en="Answer, get ranked, share your persona." data-hr="Odgovori, budi rangiran, podijeli svoju personu.">Answer, get ranked, share your persona.</h3>
+                    <p class="block-text" data-en="A 30-second timer per question keeps you honest. Your score maps to one of six personas — from Vibe Surfer to Transformer Architect — with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish." data-hr="Tajmer od 30 sekundi po pitanju drži te poštenim. Tvoj rezultat te svrstava u jednu od šest persona — od Vibe Surfera do Transformer Arhitekta — sa rezultatom koji se može podijeliti i dnevnim streakom koji te vraća. Ljestvica na Supabaseu se ažurira u stvarnom vremenu kako igrači diljem svijeta završavaju.">A 30-second timer per question keeps you honest. Your score maps to one of six personas — from Vibe Surfer to Transformer Architect — with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">React</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">Vite</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">Postgres</span>
+                        <span class="pill">Realtime Subscriptions</span>
+                        <span class="pill">Vercel</span>
+                    </div>
+                </div>
+
+                <div class="content-block full">
+                    <img src="images/vibeordev-result.png" alt="Vibe Coder or True Dev? result screen showing persona and live leaderboard" style="width:100%;border-radius:14px;display:block;">
+                </div>
+            </div>
+        </div>
 
         <!-- TAB 1 — Ferros AI -->
         <div class="tab-panel" id="tab-ferros-ai" role="tabpanel">
@@ -667,7 +746,7 @@
 
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
-            const valid = ['kompas-ai', 'erin-ai', 'ferros-ai', 'legal-claims'];
+            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims'];
             activateTab(valid.includes(hash) ? hash : 'kompas-ai');
         }
 
