@@ -362,10 +362,10 @@
     <!-- ══ Project selector cards ══ -->
     <div class="project-selector">
 
-        <div class="proj-card proj-card-04" data-tab="kompas-ai" role="button" tabindex="0">
+        <div class="proj-card proj-card-06" data-tab="welcome-book" role="button" tabindex="0">
             <p class="proj-card-num">01</p>
-            <h2 class="proj-card-name">Kompas <em>AI</em></h2>
-            <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">kompasai.eu ↗</a>
+            <h2 class="proj-card-name">Welcome <em>Book</em></h2>
+            <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">welcomebook.eu ↗</a>
         </div>
 
         <div class="proj-card proj-card-05" data-tab="vibeordev" role="button" tabindex="0">
@@ -377,13 +377,11 @@
         <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
             <p class="proj-card-num">03</p>
             <h2 class="proj-card-name">Erin <em>AI</em></h2>
-            <a href="https://erinai.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">erinai.eu ↗</a>
         </div>
 
         <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
             <p class="proj-card-num">04</p>
             <h2 class="proj-card-name">Ferros <em>AI</em></h2>
-            <a href="https://ferros.menu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">ferros.menu ↗</a>
         </div>
 
         <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
@@ -391,10 +389,9 @@
             <h2 class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
         </div>
 
-        <div class="proj-card proj-card-06" data-tab="welcome-book" role="button" tabindex="0">
+        <div class="proj-card proj-card-04" data-tab="kompas-ai" role="button" tabindex="0">
             <p class="proj-card-num">06</p>
-            <h2 class="proj-card-name">Welcome <em>Book</em></h2>
-            <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">welcomebook.eu ↗</a>
+            <h2 class="proj-card-name">Kompas <em>AI</em></h2>
         </div>
 
     </div>
@@ -475,9 +472,6 @@
                     <h2 class="panel-title">Ferros <em>AI</em></h2>
                     <p class="panel-tagline" data-en="Owners text a change, the menu updates itself in every language, instantly." data-hr="Vlasnik pošalje poruku, jelovnik se odmah ažurira na svim jezicima.">Owners text a change, the menu updates itself in every language, instantly.</p>
                 </div>
-                <a href="https://ferros.menu" target="_blank" rel="noopener" class="panel-cta cta-mint" data-en="Visit ferros.menu ↗" data-hr="Posjeti ferros.menu ↗">
-                    Visit ferros.menu ↗
-                </a>
             </div>
 
             <div class="metrics-row">
@@ -537,9 +531,6 @@
                     <h2 class="panel-title">Erin <em>AI</em></h2>
                     <p class="panel-tagline" data-en="Clients book via Instagram DMs, zero manual replies from the salon." data-hr="Klijenti rezerviraju preko Instagram poruka, bez ručnih odgovora salona.">Clients book via Instagram DMs, zero manual replies from the salon.</p>
                 </div>
-                <a href="https://erinai.eu" target="_blank" rel="noopener" class="panel-cta cta-pink" data-en="Visit erinai.eu ↗" data-hr="Posjeti erinai.eu ↗">
-                    Visit erinai.eu ↗
-                </a>
             </div>
 
             <div class="metrics-row">
@@ -663,9 +654,6 @@
                     <h2 class="panel-title">Kompas <em>AI</em></h2>
                     <p class="panel-tagline" data-en="An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions." data-hr="AI asistent koji prati hrvatsko zakonodavstvo i odgovara na regulatorna pitanja računovođa.">An AI assistant that monitors Croatian legislation and answers accountants' regulatory questions.</p>
                 </div>
-                <a href="https://lex-radar.vercel.app" target="_blank" rel="noopener" class="panel-cta cta-teal" data-en="Visit Kompas AI ↗" data-hr="Posjeti Kompas AI ↗">
-                    Visit Kompas AI ↗
-                </a>
             </div>
 
             <div class="metrics-row">
@@ -828,7 +816,7 @@
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
             const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book'];
-            activateTab(valid.includes(hash) ? hash : 'kompas-ai');
+            activateTab(valid.includes(hash) ? hash : 'welcome-book');
         }
 
         initFromHash();
