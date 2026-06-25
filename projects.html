@@ -80,6 +80,9 @@
         .proj-card-05 { background: var(--card-05); }
         .proj-card-05.active { border-color: var(--cyan-deep); box-shadow: 0 6px 20px rgba(8,145,178,0.15); transform: translateY(-2px); }
 
+        .proj-card-06 { background: var(--card-06); }
+        .proj-card-06.active { border-color: var(--sand-deep); box-shadow: 0 6px 20px rgba(194,132,62,0.15); transform: translateY(-2px); }
+
         .proj-card-num {
             font-size: 0.68rem;
             font-weight: 700;
@@ -92,6 +95,7 @@
         .proj-card-03 .proj-card-num { color: var(--lavender-deep); }
         .proj-card-04 .proj-card-num { color: var(--teal-deep); }
         .proj-card-05 .proj-card-num { color: var(--cyan-deep); }
+        .proj-card-06 .proj-card-num { color: var(--sand-deep); }
 
         .proj-card-name {
             font-family: 'Fraunces', serif;
@@ -123,6 +127,7 @@
         .proj-card-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
         .proj-card-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
         .proj-card-05 .proj-card-visit { color: var(--cyan-deep); opacity: 0.7; }
+        .proj-card-06 .proj-card-visit { color: var(--sand-deep); opacity: 0.7; }
 
         .proj-card-visit:hover { opacity: 1; }
 
@@ -199,6 +204,8 @@
         .cta-teal:hover { background: var(--teal-deep); color: #fff; }
         .cta-cyan { color: var(--cyan-deep); }
         .cta-cyan:hover { background: var(--cyan-deep); color: #fff; }
+        .cta-sand { color: var(--sand-deep); }
+        .cta-sand:hover { background: var(--sand-deep); color: #fff; }
 
         /* ── Metrics ── */
         .metrics-row {
@@ -233,6 +240,7 @@
         .metric-value-lavender { color: var(--lavender-deep); }
         .metric-value-teal    { color: var(--teal-deep); }
         .metric-value-cyan    { color: var(--cyan-deep); }
+        .metric-value-sand    { color: var(--sand-deep); }
 
         .metric-label {
             font-size: 0.7rem;
@@ -381,6 +389,12 @@
         <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
             <p class="proj-card-num">05</p>
             <h2 class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
+        </div>
+
+        <div class="proj-card proj-card-06" data-tab="welcome-book" role="button" tabindex="0">
+            <p class="proj-card-num">06</p>
+            <h2 class="proj-card-name">Welcome <em>Book</em></h2>
+            <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">welcomebook.eu ↗</a>
         </div>
 
     </div>
@@ -705,6 +719,71 @@
             </div>
         </div>
 
+        <!-- TAB — Welcome Book -->
+        <div class="tab-panel" id="tab-welcome-book" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Welcome <em>Book</em></h2>
+                    <p class="panel-tagline" data-en="One QR code in the apartment — a complete guest guide in the visitor's own language." data-hr="Jedan QR kod u apartmanu — potpuni vodič za goste na njihovom jeziku.">One QR code in the apartment — a complete guest guide in the visitor's own language.</p>
+                </div>
+                <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="panel-cta cta-sand" data-en="Visit welcomebook.eu ↗" data-hr="Posjeti welcomebook.eu ↗">
+                    Visit welcomebook.eu ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-sand">
+                    <span class="metric-value metric-value-sand">1</span>
+                    <span class="metric-label" data-en="QR code per apartment" data-hr="QR kod po apartmanu">QR code per apartment</span>
+                </div>
+                <div class="metric-chip metric-chip-sand">
+                    <span class="metric-value metric-value-sand">6</span>
+                    <span class="metric-label" data-en="Languages" data-hr="Jezika">Languages</span>
+                </div>
+                <div class="metric-chip metric-chip-sand">
+                    <span class="metric-value metric-value-sand">9</span>
+                    <span class="metric-label" data-en="Guide sections" data-hr="Sekcija vodiča">Guide sections</span>
+                </div>
+                <div class="metric-chip metric-chip-sand">
+                    <span class="metric-value metric-value-sand" data-en="Zero" data-hr="Nula">Zero</span>
+                    <span class="metric-label" data-en="Backend" data-hr="Backenda">Backend</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label" data-en="The Idea" data-hr="Ideja">The Idea</p>
+                    <h3 class="block-heading" data-en="Guests arrive with a hundred questions. One fridge magnet answers them all." data-hr="Gosti dolaze sa stotinu pitanja. Jedan magnet na hladnjaku odgovara na sva.">Guests arrive with a hundred questions. One fridge magnet answers them all.</h3>
+                    <p class="block-text" data-en="My mother-in-law rents holiday apartments on the Croatian islands of Ugljan and Pašman, and every guest asked the same things — Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts." data-hr="Moja svekrva iznajmljuje apartmane na otocima Ugljanu i Pašmanu, a svaki gost pitao je isto — lozinku za Wi-Fi, vrijeme odjave, najbližu plažu, gdje jesti, kad kreće trajekt. Zato sam izradila jedan digitalni vodič za goste: gosti skeniraju jedan QR kod u apartmanu i odmah dobiju informacije o apartmanu, cijene, kućni red, plaže, restorane, aktivnosti, red plovidbe i korisne kontakte.">My mother-in-law rents holiday apartments on the Croatian islands of Ugljan and Pašman, and every guest asked the same things — Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label" data-en="How It Works" data-hr="Kako radi">How It Works</p>
+                    <h3 class="block-heading" data-en="Scan once, read it in your own language." data-hr="Skeniraj jednom, čitaj na svom jeziku.">Scan once, read it in your own language.</h3>
+                    <p class="block-text" data-en="The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend — each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes." data-hr="Vodič prepoznaje jezik preglednika posjetitelja i automatski se otvara na njemu, uz prebacivanje između engleskog, njemačkog, talijanskog, slovenskog, poljskog i češkog. Telefon, WhatsApp i Google Maps udaljeni su jedan dodir. Nema backenda — vodič svakog vlasnika je jedna uredljiva datoteka sa sadržajem, pa se cijela stvar može klonirati za novi apartman u nekoliko minuta.">The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend — each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">React</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">Vite</span>
+                        <span class="pill">Tailwind CSS</span>
+                        <span class="pill">Mobile-first</span>
+                        <span class="pill">6-language i18n</span>
+                        <span class="pill">Static / No backend</span>
+                        <span class="pill">Vercel</span>
+                    </div>
+                </div>
+
+                <div class="content-block full" style="text-align:center;background:var(--card-06);">
+                    <img src="images/welcome-book-phone.png" alt="Welcome Book guest guide shown on a phone — Apartmani Mila home screen with Wi-Fi, house rules, apartments and beaches" style="width:100%;max-width:280px;border-radius:14px;display:inline-block;">
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -748,7 +827,7 @@
 
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
-            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims'];
+            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book'];
             activateTab(valid.includes(hash) ? hash : 'kompas-ai');
         }
 
