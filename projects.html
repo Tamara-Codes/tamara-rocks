@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Projects — Tamara Martinovic" data-hr="Projekti — Tamara Martinović">Projects — Tamara Martinovic</title>
-    <meta name="description" content="Projects by Tamara Martinovic — AI tools, apps, and experiments built with LLMs and modern web technologies.">
+    <title data-en="My Projects · Tamara Martinovic" data-hr="Moji projekti · Tamara Martinović">My Projects · Tamara Martinovic</title>
+    <meta name="description" content="Projects by Tamara Martinovic. AI tools, apps, and experiments built with LLMs and modern web technologies.">
     <link rel="canonical" href="https://www.tamara.rocks/projects.html">
-    <meta property="og:title" content="Projects — Tamara Martinovic">
-    <meta property="og:description" content="Projects by Tamara Martinovic — AI tools, apps, and experiments built with LLMs and modern web technologies.">
+    <meta property="og:title" content="My Projects · Tamara Martinovic">
+    <meta property="og:description" content="Projects by Tamara Martinovic. AI tools, apps, and experiments built with LLMs and modern web technologies.">
     <meta property="og:url" content="https://www.tamara.rocks/projects.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@codewithtamara">
     <meta name="twitter:creator" content="@codewithtamara">
-    <meta name="twitter:title" content="Projects — Tamara Martinovic">
-    <meta name="twitter:description" content="Projects by Tamara Martinovic — AI tools, apps, and experiments.">
+    <meta name="twitter:title" content="My Projects · Tamara Martinovic">
+    <meta name="twitter:description" content="Projects by Tamara Martinovic. AI tools, apps, and experiments.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
@@ -42,14 +42,15 @@
 
         /* ── Project selector ── */
         .project-selector {
-            display: flex;
-            gap: 1.75rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             padding: 2.5rem 3rem 0;
         }
 
         .proj-card {
-            border-radius: 14px;
-            padding: 1.1rem 1.6rem 1.2rem;
+            border-radius: 16px;
+            padding: 1.7rem 1.8rem 1.8rem;
             cursor: pointer;
             border: 1.5px solid transparent;
             transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
@@ -57,8 +58,7 @@
             font-family: inherit;
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
-            flex: 0 0 auto;
+            gap: 0.4rem;
         }
 
         .proj-card-01 { background: var(--card-01); }
@@ -83,6 +83,12 @@
         .proj-card-06 { background: var(--card-06); }
         .proj-card-06.active { border-color: var(--sand-deep); box-shadow: 0 6px 20px rgba(194,132,62,0.15); transform: translateY(-2px); }
 
+        .proj-card-07 { background: var(--card-07); }
+        .proj-card-07.active { border-color: var(--peach-deep); box-shadow: 0 6px 20px rgba(224,123,58,0.15); transform: translateY(-2px); }
+
+        .proj-card-08 { background: var(--card-08); }
+        .proj-card-08.active { border-color: var(--red-deep); box-shadow: 0 6px 20px rgba(214,69,60,0.15); transform: translateY(-2px); }
+
         .proj-card-num {
             font-size: 0.68rem;
             font-weight: 700;
@@ -96,10 +102,12 @@
         .proj-card-04 .proj-card-num { color: var(--teal-deep); }
         .proj-card-05 .proj-card-num { color: var(--cyan-deep); }
         .proj-card-06 .proj-card-num { color: var(--sand-deep); }
+        .proj-card-07 .proj-card-num { color: var(--peach-deep); }
+        .proj-card-08 .proj-card-num { color: var(--red-deep); }
 
         .proj-card-name {
             font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             font-weight: 500;
             letter-spacing: -0.02em;
             line-height: 1.1;
@@ -128,6 +136,8 @@
         .proj-card-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
         .proj-card-05 .proj-card-visit { color: var(--cyan-deep); opacity: 0.7; }
         .proj-card-06 .proj-card-visit { color: var(--sand-deep); opacity: 0.7; }
+        .proj-card-07 .proj-card-visit { color: var(--peach-deep); opacity: 0.7; }
+        .proj-card-08 .proj-card-visit { color: var(--red-deep); opacity: 0.7; }
 
         .proj-card-visit:hover { opacity: 1; }
 
@@ -205,6 +215,8 @@
         .cta-cyan { color: var(--cyan-deep); }
         .cta-cyan:hover { background: var(--cyan-deep); color: #fff; }
         .cta-sand { color: var(--sand-deep); }
+        .cta-peach { color: var(--peach-deep); }
+        .cta-red { color: var(--red-deep); }
         .cta-sand:hover { background: var(--sand-deep); color: #fff; }
 
         /* ── Metrics ── */
@@ -241,6 +253,8 @@
         .metric-value-teal    { color: var(--teal-deep); }
         .metric-value-cyan    { color: var(--cyan-deep); }
         .metric-value-sand    { color: var(--sand-deep); }
+        .metric-value-peach   { color: var(--peach-deep); }
+        .metric-value-red     { color: var(--red-deep); }
 
         .metric-label {
             font-size: 0.7rem;
@@ -308,21 +322,24 @@
         }
 
         /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .project-selector { grid-template-columns: repeat(3, 1fr); }
+        }
+
         @media (max-width: 860px) {
-            .project-selector { flex-direction: column; }
-            .proj-card { flex: 0 0 auto; width: 100%; }
+            .project-selector { grid-template-columns: repeat(2, 1fr); padding-top: 2rem; }
             .panel-body { grid-template-columns: 1fr; }
             .content-block.full { grid-column: 1; }
             .page-hero, .project-selector, .panel-area { padding-left: 1.5rem; padding-right: 1.5rem; }
             .panel-head { flex-direction: column; align-items: flex-start; }
-            .project-selector { padding-top: 2rem; }
             .panel-cta { white-space: normal; }
         }
 
         @media (max-width: 480px) {
             .page-hero, .project-selector, .panel-area { padding-left: 1rem; padding-right: 1rem; }
-            .proj-card { padding: 1rem 1.25rem; }
-            .proj-card-name { font-size: 1.25rem; }
+            .project-selector { gap: 0.85rem; }
+            .proj-card { padding: 1.25rem 1.25rem 1.35rem; border-radius: 14px; }
+            .proj-card-name { font-size: 1.35rem; }
             .metrics-row { gap: 0.6rem; }
             .metric-chip { min-width: 0; flex: 1 1 calc(50% - 0.3rem); }
             .panel-area { padding-bottom: 3rem; }
@@ -355,7 +372,7 @@
     </nav>
 
     <header class="page-hero">
-        <h1 class="page-title" data-i18n-html data-en='<span style="color:var(--pink-deep);">Applied AI</span> Projects' data-hr='<span style="color:var(--pink-deep);">Primijenjeni AI</span> projekti'><span style="color:var(--pink-deep);">Applied AI</span> Projects</h1>
+        <h1 class="page-title" data-i18n-html data-en='<span style="color:var(--pink-deep);">My</span> Projects' data-hr='<span style="color:var(--pink-deep);">Moji</span> projekti'><span style="color:var(--pink-deep);">My</span> Projects</h1>
         <p class="page-subtitle" data-en="From idea to working product." data-hr="Od ideje do gotovog proizvoda.">From idea to working product.</p>
     </header>
 
@@ -394,12 +411,23 @@
             <h2 class="proj-card-name">Kompas <em>AI</em></h2>
         </div>
 
+        <div class="proj-card proj-card-07" data-tab="stack-digest" role="button" tabindex="0">
+            <p class="proj-card-num">07</p>
+            <h2 class="proj-card-name">Stack <em>Digest</em></h2>
+        </div>
+
+        <div class="proj-card proj-card-08" data-tab="promptshot" role="button" tabindex="0">
+            <p class="proj-card-num">08</p>
+            <h2 class="proj-card-name">Prompt <em>Shot</em></h2>
+            <a href="https://github.com/Tamara-Codes/promptshot" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">GitHub ↗</a>
+        </div>
+
     </div>
 
     <!-- ══ Panel area ══ -->
     <div class="panel-area">
 
-        <!-- TAB — Vibe Coder or True Dev? -->
+        <!-- TAB: Vibe Coder or True Dev? -->
         <div class="tab-panel" id="tab-vibeordev" role="tabpanel">
 
             <div class="panel-head">
@@ -435,13 +463,13 @@
                 <div class="content-block">
                     <p class="block-label" data-en="The Idea" data-hr="Ideja">The Idea</p>
                     <h3 class="block-heading" data-en="Everyone says they &quot;work with AI.&quot; Few can explain how it works." data-hr="Svi kažu da &quot;rade s AI-jem.&quot; Malo tko zna objasniti kako to radi.">Everyone says they "work with AI." Few can explain how it works.</h3>
-                    <p class="block-text" data-en="There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks — the stuff that separates a vibe coder from a true dev." data-hr="Postoji jaz između korištenja AI-ja i razumijevanja AI-ja. Pa sam taj jaz pretvorila u igru: brz, malo drzak kviz znanja koji pokriva tokenizaciju, attention, embeddinge i RAG, agente, promptanje, fine-tuning i benchmarkove — ono što razlikuje vibe codera od pravog deva.">There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks — the stuff that separates a vibe coder from a true dev.</p>
+                    <p class="block-text" data-en="There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks. The stuff that separates a vibe coder from a true dev." data-hr="Postoji jaz između korištenja AI-ja i razumijevanja AI-ja. Pa sam taj jaz pretvorila u igru: brz, malo drzak kviz znanja koji pokriva tokenizaciju, attention, embeddinge i RAG, agente, promptanje, fine-tuning i benchmarkove. Ono što razlikuje vibe codera od pravog deva.">There's a gap between shipping with AI and understanding it. So I turned that gap into a game: a fast, slightly cheeky knowledge check covering tokenization, attention, embeddings & RAG, agents, prompting, fine-tuning, and benchmarks. The stuff that separates a vibe coder from a true dev.</p>
                 </div>
 
                 <div class="content-block">
                     <p class="block-label" data-en="How It Works" data-hr="Kako radi">How It Works</p>
                     <h3 class="block-heading" data-en="Answer, get ranked, share your persona." data-hr="Odgovori, budi rangiran, podijeli svoju personu.">Answer, get ranked, share your persona.</h3>
-                    <p class="block-text" data-en="A 30-second timer per question keeps you honest. Your score maps to one of six personas — from Vibe Surfer to Transformer Architect — with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish." data-hr="Tajmer od 30 sekundi po pitanju drži te poštenim. Tvoj rezultat te svrstava u jednu od šest persona — od Vibe Surfera do Transformer Arhitekta — sa rezultatom koji se može podijeliti i dnevnim streakom koji te vraća. Ljestvica na Supabaseu se ažurira u stvarnom vremenu kako igrači diljem svijeta završavaju.">A 30-second timer per question keeps you honest. Your score maps to one of six personas — from Vibe Surfer to Transformer Architect — with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish.</p>
+                    <p class="block-text" data-en="A 30-second timer per question keeps you honest. Your score maps to one of six personas, from Vibe Surfer to Transformer Architect, with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish." data-hr="Tajmer od 30 sekundi po pitanju drži te poštenim. Tvoj rezultat te svrstava u jednu od šest persona, od Vibe Surfera do Transformer Arhitekta, sa rezultatom koji se može podijeliti i dnevnim streakom koji te vraća. Ljestvica na Supabaseu se ažurira u stvarnom vremenu kako igrači diljem svijeta završavaju.">A 30-second timer per question keeps you honest. Your score maps to one of six personas, from Vibe Surfer to Transformer Architect, with a shareable result card and a daily streak to bring you back. A Supabase-backed leaderboard updates in real time as players around the world finish.</p>
                 </div>
 
                 <div class="content-block full">
@@ -464,7 +492,7 @@
             </div>
         </div>
 
-        <!-- TAB 1 — Ferros AI -->
+        <!-- TAB 1: Ferros AI -->
         <div class="tab-panel" id="tab-ferros-ai" role="tabpanel">
 
             <div class="panel-head">
@@ -523,7 +551,7 @@
             </div>
         </div>
 
-        <!-- TAB 2 — Erin AI -->
+        <!-- TAB 2: Erin AI -->
         <div class="tab-panel" id="tab-erin-ai" role="tabpanel">
 
             <div class="panel-head">
@@ -585,7 +613,7 @@
             </div>
         </div>
 
-        <!-- TAB 3 — Legal Claims -->
+        <!-- TAB 3: Legal Claims -->
         <div class="tab-panel" id="tab-legal-claims" role="tabpanel">
 
             <div class="panel-head">
@@ -646,7 +674,7 @@
             </div>
         </div>
 
-        <!-- TAB 4 — Kompas AI -->
+        <!-- TAB 4: Kompas AI -->
         <div class="tab-panel" id="tab-kompas-ai" role="tabpanel">
 
             <div class="panel-head">
@@ -680,7 +708,7 @@
                 <div class="content-block">
                     <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
                     <h3 class="block-heading" data-en="Accountants can't keep up with constant legal changes." data-hr="Računovođe ne mogu pratiti stalne zakonske promjene.">Accountants can't keep up with constant legal changes.</h3>
-                    <p class="block-text" data-en="Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates." data-hr="Narodne novine svaki dan objavljuju nove zakone i izmjene. Računovođe moraju pratiti porezne, radne i regulatorne promjene u desecima zakona — ali ručno čitanje Narodnih novina oduzima vrijeme i lako se propuste ključne izmjene.">Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws — but reading the gazette manually is time-consuming and easy to miss critical updates.</p>
+                    <p class="block-text" data-en="Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws, but reading the gazette manually is time-consuming and easy to miss critical updates." data-hr="Narodne novine svaki dan objavljuju nove zakone i izmjene. Računovođe moraju pratiti porezne, radne i regulatorne promjene u desecima zakona, ali ručno čitanje Narodnih novina oduzima vrijeme i lako se propuste ključne izmjene.">Croatia's official gazette publishes new laws and amendments daily. Accountants need to track tax, labor, and regulatory changes across dozens of laws, but reading the gazette manually is time-consuming and easy to miss critical updates.</p>
                 </div>
 
                 <div class="content-block">
@@ -707,13 +735,13 @@
             </div>
         </div>
 
-        <!-- TAB — Welcome Book -->
+        <!-- TAB: Welcome Book -->
         <div class="tab-panel" id="tab-welcome-book" role="tabpanel">
 
             <div class="panel-head">
                 <div>
                     <h2 class="panel-title">Welcome <em>Book</em></h2>
-                    <p class="panel-tagline" data-en="One QR code in the apartment — a complete guest guide in the visitor's own language." data-hr="Jedan QR kod u apartmanu — potpuni vodič za goste na njihovom jeziku.">One QR code in the apartment — a complete guest guide in the visitor's own language.</p>
+                    <p class="panel-tagline" data-en="One QR code in the apartment, a complete guest guide in the visitor's own language." data-hr="Jedan QR kod u apartmanu, potpuni vodič za goste na njihovom jeziku.">One QR code in the apartment, a complete guest guide in the visitor's own language.</p>
                 </div>
                 <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="panel-cta cta-sand" data-en="Visit welcomebook.eu ↗" data-hr="Posjeti welcomebook.eu ↗">
                     Visit welcomebook.eu ↗
@@ -743,13 +771,13 @@
                 <div class="content-block">
                     <p class="block-label" data-en="The Idea" data-hr="Ideja">The Idea</p>
                     <h3 class="block-heading" data-en="Guests arrive with a hundred questions. One fridge magnet answers them all." data-hr="Gosti dolaze sa stotinu pitanja. Jedan magnet na hladnjaku odgovara na sva.">Guests arrive with a hundred questions. One fridge magnet answers them all.</h3>
-                    <p class="block-text" data-en="My mother-in-law rents holiday apartments on the Croatian island of Pašman, and every guest asked the same things — Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts." data-hr="Moja svekrva iznajmljuje apartmane na otoku Pašmanu, a svaki gost pitao je isto — lozinku za Wi-Fi, vrijeme odjave, najbližu plažu, gdje jesti, kad kreće trajekt. Zato sam izradila jedan digitalni vodič za goste: gosti skeniraju jedan QR kod u apartmanu i odmah dobiju informacije o apartmanu, cijene, kućni red, plaže, restorane, aktivnosti, red plovidbe i korisne kontakte.">My mother-in-law rents holiday apartments on the Croatian island of Pašman, and every guest asked the same things — Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts.</p>
+                    <p class="block-text" data-en="My mother-in-law rents holiday apartments on the Croatian island of Pašman, and every guest asked the same things: Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts." data-hr="Moja svekrva iznajmljuje apartmane na otoku Pašmanu, a svaki gost pitao je isto: lozinku za Wi-Fi, vrijeme odjave, najbližu plažu, gdje jesti, kad kreće trajekt. Zato sam izradila jedan digitalni vodič za goste: gosti skeniraju jedan QR kod u apartmanu i odmah dobiju informacije o apartmanu, cijene, kućni red, plaže, restorane, aktivnosti, red plovidbe i korisne kontakte.">My mother-in-law rents holiday apartments on the Croatian island of Pašman, and every guest asked the same things: Wi-Fi password, check-out time, the nearest beach, where to eat, when the ferry leaves. So I built one digital welcome book: guests scan a single QR code in the apartment and instantly get apartment info, prices, house rules, beaches, restaurants, activities, ferry times and useful contacts.</p>
                 </div>
 
                 <div class="content-block">
                     <p class="block-label" data-en="How It Works" data-hr="Kako radi">How It Works</p>
                     <h3 class="block-heading" data-en="Scan once, read it in your own language." data-hr="Skeniraj jednom, čitaj na svom jeziku.">Scan once, read it in your own language.</h3>
-                    <p class="block-text" data-en="The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend — each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes." data-hr="Vodič prepoznaje jezik preglednika posjetitelja i automatski se otvara na njemu, uz prebacivanje između engleskog, njemačkog, talijanskog, slovenskog, poljskog i češkog. Telefon, WhatsApp i Google Maps udaljeni su jedan dodir. Nema backenda — vodič svakog vlasnika je jedna uredljiva datoteka sa sadržajem, pa se cijela stvar može klonirati za novi apartman u nekoliko minuta.">The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend — each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes.</p>
+                    <p class="block-text" data-en="The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend: each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes." data-hr="Vodič prepoznaje jezik preglednika posjetitelja i automatski se otvara na njemu, uz prebacivanje između engleskog, njemačkog, talijanskog, slovenskog, poljskog i češkog. Telefon, WhatsApp i Google Maps udaljeni su jedan dodir. Nema backenda: vodič svakog vlasnika je jedna uredljiva datoteka sa sadržajem, pa se cijela stvar može klonirati za novi apartman u nekoliko minuta.">The guide detects the visitor's browser language and opens in it automatically, with a sticky switcher across English, German, Italian, Slovenian, Polish and Czech. Phone, WhatsApp and Google Maps are all one tap away. There's no backend: each owner's guide is a single editable content file, so the whole thing can be cloned for a new apartment in minutes.</p>
                 </div>
 
                 <div class="content-block full">
@@ -767,7 +795,127 @@
                 </div>
 
                 <div class="content-block full" style="text-align:center;background:var(--card-06);">
-                    <img src="images/welcome-book-phone.png" alt="Welcome Book guest guide shown on a phone — Apartmani Mila home screen with Wi-Fi, house rules, apartments and beaches" style="width:100%;max-width:280px;border-radius:14px;display:inline-block;">
+                    <img src="images/welcome-book-phone.png" alt="Welcome Book guest guide shown on a phone, Apartmani Mila home screen with Wi-Fi, house rules, apartments and beaches" style="width:100%;max-width:280px;border-radius:14px;display:inline-block;">
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: Stack Digest -->
+        <div class="tab-panel" id="tab-stack-digest" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Stack <em>Digest</em></h2>
+                    <p class="panel-tagline" data-en="Your AI and dev tools change every day. One morning email tells you what actually matters." data-hr="Tvoji AI i dev alati mijenjaju se svaki dan. Jedan jutarnji email kaže ti što je stvarno važno.">Your AI and dev tools change every day. One morning email tells you what actually matters.</p>
+                </div>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-peach">
+                    <span class="metric-value metric-value-peach" data-en="Daily" data-hr="Dnevno">Daily</span>
+                    <span class="metric-label" data-en="Digest in your inbox" data-hr="Pregled u tvom inboxu">Digest in your inbox</span>
+                </div>
+                <div class="metric-chip metric-chip-peach">
+                    <span class="metric-value metric-value-peach">R / Y / G</span>
+                    <span class="metric-label" data-en="Severity at a glance" data-hr="Ozbiljnost na prvi pogled">Severity at a glance</span>
+                </div>
+                <div class="metric-chip metric-chip-peach">
+                    <span class="metric-value metric-value-peach">1×</span>
+                    <span class="metric-label" data-en="Rated once, for everyone" data-hr="Ocijenjeno jednom, za sve">Rated once, for everyone</span>
+                </div>
+                <div class="metric-chip metric-chip-peach">
+                    <span class="metric-value metric-value-peach">∞</span>
+                    <span class="metric-label" data-en="Tools on Founder plan" data-hr="Alata na Founder planu">Tools on Founder plan</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="Your tools change under you. You hear about it when something breaks." data-hr="Alati se mijenjaju ispod tebe. Saznaš tek kad nešto pukne.">Your tools change under you. You hear about it when something breaks.</h3>
+                    <p class="block-text" data-en="A modern app leans on a dozen AI and dev services: Anthropic, Vercel, Supabase, Clerk, OpenAI, Twilio. Each ships breaking changes, deprecations, outages and price hikes on its own schedule, and nobody has time to watch a dozen changelogs and status pages." data-hr="Moderna aplikacija oslanja se na desetak AI i dev servisa: Anthropic, Vercel, Supabase, Clerk, OpenAI, Twilio. Svaki objavljuje breaking promjene, deprecations, ispade i poskupljenja po svom rasporedu, a nitko nema vremena pratiti desetak changelogova i status stranica.">A modern app leans on a dozen AI and dev services: Anthropic, Vercel, Supabase, Clerk, OpenAI, Twilio. Each ships breaking changes, deprecations, outages and price hikes on its own schedule, and nobody has time to watch a dozen changelogs and status pages.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="One daily email, every update rated red, yellow or green." data-hr="Jedan dnevni email, svaka promjena ocijenjena crveno, žuto ili zeleno.">One daily email, every update rated red, yellow or green.</h3>
+                    <p class="block-text" data-en="Stack Digest pulls the official release notes, changelogs and status feeds for the tools you actually use, lets AI rate each update by how much it could hurt you, and emails you a single morning digest with the reds first. Pick your stack, get the signal, skip the noise." data-hr="Stack Digest dohvaća službene release notes, changelogove i status feedove za alate koje stvarno koristiš, pušta AI da ocijeni svaku promjenu prema tome koliko ti može naškoditi, i šalje ti jedan jutarnji pregled s crvenima na vrhu. Odaberi svoj stack, dobij signal, preskoči šum.">Stack Digest pulls the official release notes, changelogs and status feeds for the tools you actually use, lets AI rate each update by how much it could hurt you, and emails you a single morning digest with the reds first. Pick your stack, get the signal, skip the noise.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">Next.js</span>
+                        <span class="pill">React</span>
+                        <span class="pill">TypeScript</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">Postgres</span>
+                        <span class="pill">Inngest</span>
+                        <span class="pill">Gemini</span>
+                        <span class="pill">Resend</span>
+                        <span class="pill">Stripe</span>
+                        <span class="pill">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: PromptShot -->
+        <div class="tab-panel" id="tab-promptshot" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">Prompt <em>Shot</em></h2>
+                    <p class="panel-tagline" data-en="Draw on your screen, paste an annotated screenshot straight into your AI coding assistant." data-hr="Crtaj po ekranu, zalijepi označeni screenshot ravno u svog AI coding asistenta.">Draw on your screen, paste an annotated screenshot straight into your AI coding assistant.</p>
+                </div>
+                <a href="https://github.com/Tamara-Codes/promptshot" target="_blank" rel="noopener" class="panel-cta cta-red" data-en="View on GitHub ↗" data-hr="Pogledaj na GitHubu ↗">
+                    View on GitHub ↗
+                </a>
+            </div>
+
+            <div class="metrics-row">
+                <div class="metric-chip metric-chip-red">
+                    <span class="metric-value metric-value-red" data-en="1 key" data-hr="1 tipka">1 key</span>
+                    <span class="metric-label" data-en="Hotkey to capture" data-hr="Hotkey za snimanje">Hotkey to capture</span>
+                </div>
+                <div class="metric-chip metric-chip-red">
+                    <span class="metric-value metric-value-red" data-en="Instant" data-hr="Odmah">Instant</span>
+                    <span class="metric-label" data-en="Resident daemon, no cold start" data-hr="Rezidentni daemon, bez hladnog starta">Resident daemon, no cold start</span>
+                </div>
+                <div class="metric-chip metric-chip-red">
+                    <span class="metric-value metric-value-red">Ctrl+V</span>
+                    <span class="metric-label" data-en="Straight into your AI" data-hr="Ravno u tvoj AI">Straight into your AI</span>
+                </div>
+                <div class="metric-chip metric-chip-red">
+                    <span class="metric-value metric-value-red">MIT</span>
+                    <span class="metric-label" data-en="Open source &amp; free" data-hr="Otvoreni kod i besplatno">Open source &amp; free</span>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block">
+                    <p class="block-label" data-en="The Problem" data-hr="Problem">The Problem</p>
+                    <h3 class="block-heading" data-en="&quot;Fix this bit&quot; is hard to say in words." data-hr="&quot;Popravi ovaj dio&quot; teško je objasniti riječima.">"Fix this bit" is hard to say in words.</h3>
+                    <p class="block-text" data-en="When you ask an AI assistant to fix a UI (align this, change that angle, move this button), describing the exact spot in words is slow and vague, and a plain screenshot doesn't point at anything. Existing tools either freeze the screen, push you through a popup editor, or look like a keylogger to antivirus." data-hr="Kad tražiš AI asistenta da popravi UI (poravnaj ovo, promijeni taj kut, pomakni ovaj gumb), opisivanje točnog mjesta riječima je sporo i nejasno, a obični screenshot ne pokazuje ništa. Postojeći alati ili zamrznu ekran, ili te guraju kroz popup editor, ili antivirusu izgledaju kao keylogger.">When you ask an AI assistant to fix a UI (align this, change that angle, move this button), describing the exact spot in words is slow and vague, and a plain screenshot doesn't point at anything. Existing tools either freeze the screen, push you through a popup editor, or look like a keylogger to antivirus.</p>
+                </div>
+
+                <div class="content-block">
+                    <p class="block-label" data-en="The Solution" data-hr="Rješenje">The Solution</p>
+                    <h3 class="block-heading" data-en="Hotkey, scribble in red, paste. Done." data-hr="Hotkey, načrčkaj crveno, zalijepi. Gotovo.">Hotkey, scribble in red, paste. Done.</h3>
+                    <p class="block-text" data-en="Press the hotkey and the screen dims into a live overlay, no freeze, no popup. Draw freehand in red, hit Enter, and a clean full-colour screenshot with your marks lands on the clipboard, ready to paste into Claude. A resident daemon keeps it instant. Built in an afternoon, then open-sourced for other developers." data-hr="Pritisni hotkey i ekran se zatamni u živi overlay, bez zamrzavanja, bez popupa. Crtaj slobodnom rukom crveno, pritisni Enter, i čisti screenshot u punoj boji s tvojim oznakama završi na clipboardu, spreman za zalijepiti u Claude. Rezidentni daemon ga drži trenutnim. Napravljeno u jedno popodne, pa objavljeno kao open source za druge programere.">Press the hotkey and the screen dims into a live overlay, no freeze, no popup. Draw freehand in red, hit Enter, and a clean full-colour screenshot with your marks lands on the clipboard, ready to paste into Claude. A resident daemon keeps it instant. Built in an afternoon, then open-sourced for other developers.</p>
+                </div>
+
+                <div class="content-block full">
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">Python</span>
+                        <span class="pill">tkinter</span>
+                        <span class="pill">Pillow</span>
+                        <span class="pill">pywin32</span>
+                        <span class="pill">Win32 API</span>
+                        <span class="pill">ctypes</span>
+                        <span class="pill">Windows</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -815,7 +963,7 @@
 
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
-            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book'];
+            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book', 'stack-digest', 'promptshot'];
             activateTab(valid.includes(hash) ? hash : 'welcome-book');
         }
 

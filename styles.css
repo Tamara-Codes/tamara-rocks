@@ -25,6 +25,9 @@
     --card-05: #E6F6FB;
     --sand-deep: #C2843E;
     --card-06: #FBF3E6;
+    --card-07: #FDF0E8;
+    --red-deep: #D6453C;
+    --card-08: #FCECEA;
 }
 
 html { scroll-behavior: smooth; }
