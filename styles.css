@@ -23,11 +23,13 @@
     --cyan: #9AD8EC;
     --cyan-deep: #0891B2;
     --card-05: #E6F6FB;
-    --sand-deep: #C2843E;
-    --card-06: #FBF3E6;
+    --sand-deep: #B15FCC;
+    --card-06: #F8EAFB;
     --card-07: #FDF0E8;
     --red-deep: #D6453C;
     --card-08: #FCECEA;
+    --amber-deep: #C15B8C;
+    --card-09: #FBEAF2;
 }
 
 html { scroll-behavior: smooth; }

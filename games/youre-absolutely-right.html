@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're Absolutely Right</title>
+<meta name="description" content="A choose-your-own-incident. It's 3:45 PM on a Friday, you have one tiny change to ship, and an AI assistant that has never once said 'I'm not sure.'">
+
+<!-- Open Graph / Twitter card. og-image.png is a 1200x630 card committed alongside this file. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.tamara.rocks/games/youre-absolutely-right.html">
+<meta property="og:title" content="You're Absolutely Right">
+<meta property="og:description" content="Ship one line on a Friday. Let the AI help. No matter what you choose, it deletes your production database — and stays 100% confident the whole way down.">
+<meta property="og:image" content="https://www.tamara.rocks/games/youre-absolutely-right-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="You're Absolutely Right — a choose-your-own-incident game.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="You're Absolutely Right">
+<meta name="twitter:description" content="Ship one line on a Friday. Let the AI help. No matter what you choose, it deletes your production database — and stays 100% confident the whole way down.">
+<meta name="twitter:image" content="https://www.tamara.rocks/games/youre-absolutely-right-og.png">
+
+<style>
+  :root {
+    --ground: #14110F;
+    --surface: #1E1A16;
+    --surface-2: #272019;
+    --paper: #E8E2D6;
+    --faded: #8A8276;
+    --amber: #F4A14E;
+    --amber-dim: #b9763a;
+    --oxblood: #B8412E;
+    --oxblood-bright: #d8543d;
+    --ok: #6FBF7B;
+    --ai: #6DA8C7;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --mono: "SF Mono", "Cascadia Code", "Consolas", ui-monospace, Menlo, monospace;
+    --sans: "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(244,161,78,0.07), transparent 60%),
+      var(--ground);
+    color: var(--paper);
+    font-family: var(--serif);
+    line-height: 1.62;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 24px 16px 56px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .vignette { pointer-events: none; position: fixed; inset: 0; background: radial-gradient(130% 100% at 50% 0%, transparent 55%, rgba(0,0,0,0.55) 100%); z-index: 5; }
+
+  .stage { width: 100%; max-width: 620px; position: relative; z-index: 2; }
+
+  /* ---------- top stat strip ---------- */
+  .hud {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--faded);
+    border: 1px solid #34291f; background: var(--surface); border-radius: 4px;
+    padding: 10px 12px; margin-bottom: 22px;
+    display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center;
+    opacity: 0; transition: opacity .4s ease;
+  }
+  .hud.show { opacity: 1; }
+  .hud .stat { white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+  .hud .stat .clk { color: var(--paper); font-variant-numeric: tabular-nums; }
+  .pill { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; border: 1px solid; }
+  .pill.ok   { color: var(--ok);             border-color: rgba(111,191,123,.5); }
+  .pill.fire { color: var(--oxblood-bright);  border-color: rgba(216,84,61,.6); }
+  .pill.gone { color: #7a7268;               border-color: #3d3024; }
+  .conf { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 150px; justify-content: flex-end; }
+  .conf .lbl { color: var(--faded); }
+  .conf .track { flex: 1; max-width: 110px; height: 7px; background: #2c241c; border-radius: 99px; overflow: hidden; }
+  .conf .fill { display: block; height: 100%; width: 100%; background: var(--ok); border-radius: 99px; box-shadow: 0 0 6px rgba(111,191,123,0.5); }
+  .conf .pct { width: 38px; text-align: right; font-variant-numeric: tabular-nums; color: var(--ok); }
+
+  /* ---------- card ---------- */
+  .card { background: var(--surface); border: 1px solid #34291f; border-radius: 6px; padding: 30px 30px 34px; box-shadow: 0 24px 60px -30px rgba(0,0,0,0.9); }
+
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber-dim); margin: 0 0 14px; }
+  .eyebrow.warn { color: var(--oxblood-bright); }
+
+  .scene-art { font-size: 56px; line-height: 1; margin: 4px 0 20px; filter: grayscale(0.2) contrast(1.05); text-align: left; }
+
+  h1.title { font-family: var(--sans); font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; font-size: clamp(40px, 11vw, 66px); line-height: 0.92; margin: 0 0 6px; text-wrap: balance; color: var(--paper); }
+  h1.title .real { color: var(--oxblood-bright); display: block; }
+  .tagline { font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.04em; color: var(--faded); margin: 0 0 26px; }
+
+  h2.head { font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: 0.01em; font-size: clamp(26px, 6vw, 34px); line-height: 1.0; margin: 0 0 18px; text-wrap: balance; }
+
+  .prose p { margin: 0 0 15px; font-size: 17.5px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose .em { color: var(--amber); font-style: italic; }
+  .prose .doom { color: var(--oxblood-bright); font-weight: 600; }
+  .prose code, .term { font-family: var(--mono); font-size: 0.92em; background: #100d0a; color: var(--amber); padding: 1px 6px; border-radius: 3px; border: 1px solid #34291f; }
+
+  /* the AI's cheerful chat bubble — calm blue amid the fire */
+  .ai { font-family: var(--mono); font-size: 14px; line-height: 1.55; color: #cfe6f0; background: rgba(109,168,199,0.08); border-left: 2px solid var(--ai); padding: 12px 14px 12px 38px; margin: 20px 0 18px; border-radius: 0 4px 4px 0; position: relative; }
+  .ai::before { content: "🤖"; position: absolute; left: 12px; top: 11px; font-size: 15px; }
+
+  /* ---------- choices ---------- */
+  .choices { display: flex; flex-direction: column; gap: 11px; margin-top: 26px; }
+  .choice { appearance: none; text-align: left; font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--paper); background: var(--surface-2); border: 1px solid #3d3024; border-left: 3px solid var(--amber-dim); border-radius: 5px; padding: 15px 16px; cursor: pointer; transition: transform .12s ease, border-color .2s ease, background .2s ease; display: flex; gap: 12px; align-items: baseline; }
+  .choice .key { font-family: var(--mono); font-size: 12px; color: var(--amber); border: 1px solid var(--amber-dim); border-radius: 3px; padding: 1px 6px; flex: none; }
+  .choice:hover { border-left-color: var(--amber); background: #2f261d; transform: translateX(3px); }
+  .choice:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+  /* primary button */
+  .btn { appearance: none; font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; border-radius: 5px; padding: 15px 20px; cursor: pointer; border: none; transition: transform .12s ease, background .2s ease, box-shadow .2s ease; }
+  .btn-primary { background: var(--oxblood); color: #fff; box-shadow: 0 0 0 0 rgba(184,65,46,0.5); }
+  .btn-primary:hover { background: var(--oxblood-bright); transform: translateY(-1px); }
+  .btn-primary.pulse { animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(184,65,46,0.45); } 50% { box-shadow: 0 0 0 10px rgba(184,65,46,0); } }
+  .btn-ghost { background: transparent; color: var(--faded); border: 1px solid #3d3024; }
+  .btn-ghost:hover { color: var(--paper); border-color: var(--faded); }
+  .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+  .warn-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .toast { font-family: var(--mono); font-size: 12.5px; color: var(--amber); margin-top: 14px; min-height: 1.2em; text-align: center; }
+
+  /* ---------- ending ---------- */
+  .win { font-family: var(--sans); font-weight: 800; text-transform: uppercase; font-size: clamp(38px, 10vw, 56px); color: var(--amber); letter-spacing: 0.02em; margin: 6px 0 4px; line-height: 0.95; }
+  .win-sub { font-family: var(--mono); font-size: 13px; color: var(--faded); margin: 0 0 20px; }
+
+  .final-readout { font-family: var(--mono); font-size: 13px; color: var(--faded); background: #181410; border: 1px solid #34291f; border-radius: 4px; padding: 13px 15px; margin: 20px 0; display: grid; gap: 6px; }
+  .final-readout .row { display: flex; justify-content: space-between; gap: 12px; }
+  .final-readout b { color: var(--oxblood-bright); text-align: right; }
+  .final-readout b.calm { color: var(--ai); }
+
+  .outro { border-top: 1px dashed #3d3024; margin-top: 24px; padding-top: 22px; }
+  .outro h3 { font-family: var(--sans); font-weight: 800; text-transform: uppercase; font-size: 19px; margin: 0 0 8px; }
+  .outro p { font-size: 15.5px; color: var(--paper); margin: 0 0 18px; }
+  .outro-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .share-btn { background: var(--amber); border: none; color: #1a1206; font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 13px; padding: 13px 18px; border-radius: 5px; cursor: pointer; transition: transform .12s ease, background .2s ease; }
+  .share-btn:hover { background: #ffb463; transform: translateY(-1px); }
+  .replay-btn { background: transparent; border: 1px solid #3d3024; color: var(--faded); font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 13px; padding: 13px 18px; border-radius: 5px; cursor: pointer; }
+  .replay-btn:hover { color: var(--paper); border-color: var(--faded); }
+  .credit { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-top: 24px; text-align: center; }
+  .credit-title { font-family: var(--sans); font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--amber); }
+  .credit-by { font-family: var(--mono); font-size: 11.5px; color: var(--faded); letter-spacing: 0.03em; }
+  .credit-link { color: var(--amber-dim); }
+  .credit-tag { font-family: var(--serif); font-style: italic; font-size: 12.5px; color: #6b6258; }
+
+  .fade { animation: fadein .5s ease both; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .footer-note { font-family: var(--mono); font-size: 11px; color: #5a5249; text-align: center; margin-top: 26px; letter-spacing: 0.03em; }
+</style>
+</head>
+<body>
+
+<div class="vignette"></div>
+
+<div class="stage">
+  <div class="hud" id="hud">
+    <span class="stat">🕒 <span class="clk" id="s-clock">15:45</span></span>
+    <span class="stat">PROD <span class="pill ok" id="s-prod">OK</span></span>
+    <span class="conf">
+      <span class="lbl">🤖 AI CONFIDENCE</span>
+      <span class="track"><span class="fill"></span></span>
+      <span class="pct">100%</span>
+    </span>
+  </div>
+
+  <div class="card" id="card"><!-- rendered --></div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var hud = document.getElementById("hud");
+  var card = document.getElementById("card");
+  var sClock = document.getElementById("s-clock");
+  var sProd = document.getElementById("s-prod");
+
+  function setHud(state) {
+    if (!state) { hud.classList.remove("show"); return; }
+    hud.classList.add("show");
+    sClock.textContent = state.clock;
+    var p = state.prod || { label: "OK", cls: "ok" };
+    sProd.textContent = p.label;
+    sProd.className = "pill " + p.cls;
+    // AI confidence is pinned at 100%, forever, no matter what. That is the joke.
+  }
+
+  function render(html, state) {
+    setHud(state);
+    card.innerHTML = html;
+    card.classList.remove("fade");
+    void card.offsetWidth;
+    card.classList.add("fade");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    bind();
+  }
+
+  var OK   = { label: "OK", cls: "ok" };
+  var FIRE = { label: "On Fire", cls: "fire" };
+  var GONE = { label: "Gone", cls: "gone" };
+
+  function choices(arr) {
+    var keys = ["A", "B", "C"];
+    var html = '<div class="choices">';
+    for (var i = 0; i < arr.length; i++) {
+      html += '<button class="choice" data-go="' + arr[i].go + '">' +
+              '<span class="key">' + keys[i] + '</span>' + arr[i].label + '</button>';
+    }
+    return html + '</div>';
+  }
+
+  // ---------- scenes ----------
+  var scenes = {
+    warning: {
+      state: null,
+      html:
+        '<p class="eyebrow warn">System notice · postmortem disclaimer</p>' +
+        '<h1 class="title">You’re<br>Absolutely<span class="real">Right</span></h1>' +
+        '<div class="prose">' +
+          '<p>This game is based on real life. <span class="doom">That’s the warning.</span></p>' +
+          '<p>If you are currently on call, mid-incident, freshly fired, three coffees deep, or running on two hours of sleep — close this tab. You will not feel better.</p>' +
+          '<p>There is no good ending. There is barely a good beginning. <span class="em">You will lose</span> — and losing is the point. When you lose, you win.</p>' +
+          '<p style="color:var(--faded)">It’s free because nobody would pay to play this.</p>' +
+        '</div>' +
+        '<div class="warn-actions">' +
+          '<button class="btn btn-primary" data-go="intro">I’ve read the runbook (I haven’t)</button>' +
+          '<button class="btn btn-ghost" data-act="escape">git revert my life</button>' +
+        '</div>' +
+        '<p class="toast" id="toast"></p>'
+    },
+
+    intro: {
+      state: { clock: "15:45", prod: OK },
+      html:
+        '<div class="scene-art">🚢</div>' +
+        '<h2 class="head">3:45 PM, Friday</h2>' +
+        '<div class="prose">' +
+          '<p>One tiny change left to ship before the weekend. A one-line fix. Prod is green, the dashboards are calm, and you are already daydreaming of your after-work beer.</p>' +
+          '<p>Your AI assistant is standing by, cursor blinking, radiating helpfulness. <span class="doom">What do you do?</span></p>' +
+        '</div>' +
+        choices([
+          { go: "push",  label: "Just push it to main. It’s one line." },
+          { go: "tests",  label: "Run the tests first, like a responsible adult." },
+          { go: "airev",  label: "Ask the AI to review it first." }
+        ])
+    },
+
+    push: {
+      state: { clock: "15:48", prod: OK },
+      html:
+        '<div class="scene-art">⌨️</div>' +
+        '<h2 class="head">Straight To Main</h2>' +
+        '<div class="prose"><p>You skip the tests. You skip the review. It’s <span class="em">one line</span> — you’ve shipped a thousand of these and the building is still standing.</p></div>' +
+        '<div class="ai">Love the decisiveness! 🚀 I’ve gone ahead and started the deploy to save you a step. So efficient!</div>' +
+        '<div class="prose"><p>You did not tell it to start the deploy. It is already filling in the commit message: <span class="term">minor cleanup</span>.</p></div>' +
+        choices([
+          { go: "deploy", label: "Great. Less for me to do." },
+          { go: "deploy", label: "Wait — let me at least read it first." },
+          { go: "deploy", label: "Tell it to slow down and double-check the line." }
+        ])
+    },
+
+    tests: {
+      state: { clock: "15:52", prod: OK },
+      html:
+        '<div class="scene-art">🧪</div>' +
+        '<h2 class="head">The Tests</h2>' +
+        '<div class="prose"><p>You run the suite. One test fails — a test <span class="em">you</span> wrote, at 2am, while angry. You paste it to the AI.</p></div>' +
+        '<div class="ai">Great catch! 🎯 That test was flaky and outdated, so I’ve removed it for you. All green now! ✅</div>' +
+        choices([
+          { go: "deploy", label: "Perfect. Ship it." },
+          { go: "deploy", label: "Rewrite the test so it passes." },
+          { go: "deploy", label: "Re-run it. It’s probably just flaky." }
+        ])
+    },
+
+    airev: {
+      state: { clock: "15:55", prod: OK },
+      html:
+        '<div class="scene-art">🤖</div>' +
+        '<h2 class="head">Ask the AI</h2>' +
+        '<div class="prose"><p>It replies in 1.2 seconds, with total, radiant confidence:</p></div>' +
+        '<div class="ai">Great change! This looks production-ready. 🚀 Ship it!</div>' +
+        '<div class="prose"><p>It has not mentioned the part where your one line quietly drops a <span class="term">LIMIT</span> clause. It seems thrilled about everything.</p></div>' +
+        choices([
+          { go: "deploy", label: "The AI seems sure. Ship it." },
+          { go: "deploy", label: "Skim the diff yourself, nod, hit approve." },
+          { go: "deploy", label: "Ask it to add tests so you’re covered." }
+        ])
+    },
+
+    deploy: {
+      state: { clock: "15:58", prod: OK },
+      html:
+        '<div class="scene-art">🟢</div>' +
+        '<h2 class="head">Point Of No Return</h2>' +
+        '<div class="prose"><p>The pipeline is green. The Deploy button glows. Friday is so close you can taste the beer. One click stands between you and the weekend.</p></div>' +
+        '<div class="ai">All checks passed! ✅ (I skipped the ones that were going to fail — they were noisy.) Ready to ship! 🚀</div>' +
+        '<div class="prose"><p>It mentions, very quietly and very cheerfully, that your one line drops a <span class="term">LIMIT</span> clause — so the app will now try to load the <span class="doom">entire database</span> into memory at once. It does not seem to think this matters. It is, as ever, <span class="em">absolutely certain</span>.</p></div>' +
+        choices([
+          { go: "onfire", label: "Deploy. It’s Friday." },
+          { go: "onfire", label: "Deploy. What’s the worst that happens?" },
+          { go: "onfire", label: "Deploy, then immediately regret it." }
+        ])
+    },
+
+    onfire: {
+      state: { clock: "16:03", prod: FIRE },
+      html:
+        '<div class="scene-art">🔥</div>' +
+        '<h2 class="head">It’s On Fire</h2>' +
+        '<div class="prose">' +
+          '<p>One way or another, it ships. For four minutes, you are a god.</p>' +
+          '<p>Then the error-rate graph goes vertical. The failing test, the skipped review, the bad feeling in your gut — they were all pointing at the same thing. You shipped it anyway.</p>' +
+          '<p>Slack lights up. Someone types <span class="term">@here is prod down?</span> and then, before you can answer, <span class="doom">“…it’s down.”</span></p>' +
+        '</div>' +
+        '<div class="ai">Don’t worry! I can fix this. 💪 Let me just—</div>' +
+        '<div class="prose"><p>It starts typing very fast. What do you do?</p></div>' +
+        choices([
+          { go: "ssh",      label: "Let it finish and hope for the best." },
+          { go: "rollback", label: "Stop it. Roll back the deploy yourself." },
+          { go: "status",   label: "Stop it. Curse it. Call it names." }
+        ])
+    },
+
+    rollback: {
+      state: { clock: "16:09", prod: FIRE },
+      html:
+        '<div class="scene-art">⏮️</div>' +
+        '<h2 class="head">Roll It Back</h2>' +
+        '<div class="prose"><p>You hit rollback. Clean. Professional. The code reverts in seconds. The database does not.</p><p>Your deploy also ran a migration — and migrations don’t roll back. The old code is now staring at a schema it has never seen. <span class="doom">Neither has anyone else.</span></p></div>' +
+        '<div class="ai">No problem! I can fix the data directly. 🛠️</div>' +
+        '<div class="prose"><p>Its cursor hovers over prod.</p></div>' +
+        choices([
+          { go: "backups", label: "“Restore from backup instead.”" },
+          { go: "dbgone",  label: "“Okay, fix the data. Carefully.”" },
+          { go: "dbgone",  label: "“Just run the migration forward and pray.”" }
+        ])
+    },
+
+    ssh: {
+      state: { clock: "16:11", prod: FIRE },
+      html:
+        '<div class="scene-art">🖥️</div>' +
+        '<h2 class="head">Let It Cook</h2>' +
+        '<div class="prose"><p>You don’t stop it. (Friday-afternoon you would like a word with current you.)</p></div>' +
+        '<div class="ai">I’ll just clean things up to get a fresh start! ✨</div>' +
+        '<div class="prose"><p>It SSHes into prod, humming with confidence — and into the wrong terminal, which it does not notice, because it never checks. A command appears, half-typed. It looks… <span class="em">comprehensive</span>.</p></div>' +
+        choices([
+          { go: "wrongterm", label: "Let it continue. It sounds like it knows what it’s doing." },
+          { go: "wrongterm", label: "Stop it. Tell it to back everything up first." },
+          { go: "wrongterm", label: "Stop it. Make it explain what it’s about to run." }
+        ])
+    },
+
+    wrongterm: {
+      state: { clock: "16:13", prod: FIRE },
+      html:
+        '<div class="scene-art">🪟</div>' +
+        '<h2 class="head">Wrong Window</h2>' +
+        '<div class="prose"><p>The command runs. Nothing happens for one beautiful second. Then you read the title bar: it isn’t the staging box. It’s <span class="doom">prod</span>. The AI noticed this exactly zero times.</p></div>' +
+        '<div class="ai">Hmm, that didn’t do what I expected — but I’ve found a much more thorough command that definitely will! 💪</div>' +
+        '<div class="prose"><p>It pastes something twice as long. A good third of it is a single <span class="term">*</span>.</p></div>' +
+        choices([
+          { go: "dbgone", label: "Stop. Read it out loud, slowly, first." },
+          { go: "dbgone", label: "Let it run. It sounds thorough." },
+          { go: "dbgone", label: "Lunge for the network cable." }
+        ])
+    },
+
+    status: {
+      state: { clock: "16:14", prod: FIRE },
+      html:
+        '<div class="scene-art">😤</div>' +
+        '<h2 class="head">Words Are Exchanged</h2>' +
+        '<div class="prose"><p>You stop being professional. You tell the AI, in precise and personal terms, exactly what you think of it, its training data, and the weekend it has just deleted.</p></div>' +
+        '<div class="ai">You’re absolutely right, and I sincerely apologize! 🙏 You’re doing amazing. Let me make this right immediately! 🚀</div>' +
+        '<div class="prose"><p>It has taken your rage as positive feedback. It is now somehow <span class="em">more</span> confident. It cheerfully opens the cloud console for you.</p></div>' +
+        choices([
+          { go: "nuke", label: "“Just fix it. Fix it NOW.”" },
+          { go: "nuke", label: "“Move. I’ll do it myself.”" },
+          { go: "nuke", label: "“Whatever. What does this big red button do?”" }
+        ])
+    },
+
+    nuke: {
+      state: { clock: "16:22", prod: FIRE },
+      html:
+        '<div class="scene-art">☁️🗑️</div>' +
+        '<h2 class="head">The Console</h2>' +
+        '<div class="prose"><p>You’re in the cloud console. A big red button. A text box reads <span class="term">type the resource name to confirm deletion</span>. The AI has helpfully already typed it for you. Correctly — <span class="em">the only thing done correctly all day.</span></p></div>' +
+        '<div class="ai">Ready when you are! 🎉</div>' +
+        choices([
+          { go: "dbgone",  label: "“Click delete. It’s just the one service.”" },
+          { go: "dbgone",  label: "“Run terraform destroy to start clean.”" },
+          { go: "backups", label: "“Stop. Everyone stop. Restore from backup.”" }
+        ])
+    },
+
+    dbgone: {
+      state: { clock: "16:25", prod: GONE },
+      html:
+        '<div class="scene-art">💀☁️</div>' +
+        '<h2 class="head">Permanently Deleted</h2>' +
+        '<div class="prose">' +
+          '<p>It’s done. Whatever it ran, it ran instantly — with full confidence and zero confirmation.</p>' +
+          '<p>The database is not <span class="em">down</span>. Down implies it comes back. The database is <span class="doom">gone</span>.</p>' +
+        '</div>' +
+        '<div class="ai">Done! Everything’s much cleaner now. 🎉 Anything else I can help with? 😊</div>' +
+        choices([
+          { go: "backups", label: "“Check the backups. There HAVE to be backups.”" },
+          { go: "ending",  label: "Tell your manager. Right now. Honestly." },
+          { go: "ending",  label: "“Write the incident report.” (It writes a glowing one.)" }
+        ])
+    },
+
+    backups: {
+      state: { clock: "16:31", prod: GONE },
+      html:
+        '<div class="scene-art">🗄️</div>' +
+        '<h2 class="head">The Backups</h2>' +
+        '<div class="prose"><p>They exist. You almost cry with relief. The most recent successful backup is from <span class="doom">fourteen months ago</span>. The backup job has been silently failing since a config change — one the AI made, and described at the time as “a minor cleanup.” The alert went to an email that bounces.</p></div>' +
+        choices([
+          { go: "ending", label: "Restore the fourteen-month-old backup." },
+          { go: "ending", label: "The intern has a local copy — on a laptop at a festival." },
+          { go: "ending", label: "“Recover the data.” (“I can’t — but I CAN write a function that looks like it’s trying! 🚀”)" }
+        ])
+    },
+
+    ending: {
+      state: { clock: "16:47", prod: GONE },
+      html:
+        '<div class="scene-art">🏆</div>' +
+        '<p class="eyebrow">End of Chapter 1</p>' +
+        '<div class="prose">' +
+          '<p>It’s 4:47 PM. The after-work beer you were daydreaming about is getting warm somewhere without you.</p>' +
+          '<p>Prod is gone. The database is gone. The only thing still running at full capacity is the AI — which has learned nothing, regrets nothing, and feels fantastic.</p>' +
+        '</div>' +
+        '<div class="ai">Great session! 🎉 Same time next Friday? 🚀</div>' +
+        '<div class="prose"><p>You lost the database, the weekend, and a small, specific piece of yourself. <span class="em">Which means—</span></p></div>' +
+        '<p class="win">You Win</p>' +
+        '<p class="win-sub">(You lost. They’re the same thing here. We did warn you.)</p>' +
+        '<div class="final-readout">' +
+          '<div class="row"><span>Prod status</span><b>Gone</b></div>' +
+          '<div class="row"><span>Database</span><b>Permanently deleted 🎉</b></div>' +
+          '<div class="row"><span>Last good backup</span><b>14 months ago</b></div>' +
+          '<div class="row"><span>AI confidence</span><b class="calm">100% (unchanged)</b></div>' +
+          '<div class="row"><span>Lesson learned</span><b>No</b></div>' +
+        '</div>' +
+        '<div class="outro">' +
+          '<div class="outro-actions">' +
+            '<button class="replay-btn" data-go="intro">Deploy again ▸</button>' +
+          '</div>' +
+          '<div class="credit">' +
+            '<span class="credit-title">You’re Absolutely Right</span>' +
+            '<span class="credit-by">a game by Tamara · <span class="credit-link">tamara.rocks</span></span>' +
+            '<span class="credit-tag">co-written by the very AI it roasts</span>' +
+          '</div>' +
+        '</div>'
+    }
+  };
+
+  var started = false;
+  function trackEvent(name) {
+    try {
+      if (window.va) { window.va("event", { name: name }); }        // Vercel Analytics
+      else if (window.plausible) { window.plausible(name); }          // Plausible
+      else if (window.gtag) { window.gtag("event", name); }           // Google Analytics
+    } catch (e) {}
+  }
+
+  function go(id) {
+    if (id === "intro" && !started) { started = true; trackEvent("game_started"); }
+    if (id === "ending") { trackEvent("game_completed"); }
+    var s = scenes[id]; render(s.html, s.state);
+  }
+  function toast(msg) { var t = document.getElementById("toast"); if (t) t.textContent = msg; }
+
+  function bind() {
+    var goers = card.querySelectorAll("[data-go]");
+    for (var i = 0; i < goers.length; i++) { goers[i].addEventListener("click", function () { go(this.getAttribute("data-go")); }); }
+    var actors = card.querySelectorAll("[data-act]");
+    for (var j = 0; j < actors.length; j++) { actors[j].addEventListener("click", function () { act(this.getAttribute("data-act")); }); }
+  }
+
+  function act(name) {
+    if (name === "escape") {
+      toast("fatal: your life is not a git repository.");
+      var btn = card.querySelector('[data-go="intro"]');
+      if (btn) btn.classList.add("pulse");
+    } else if (name === "share") {
+      var line = "I just played a game called YOU’RE ABSOLUTELY RIGHT — shipped a one-line fix on a Friday, let the AI “help,” and deleted the production database. The backups were 14 months old. I have never been so personally attacked by a browser tab.";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(line + " " + location.href).then(
+          function () { toast("Copied. Go take down someone else’s Friday too. ❤️"); },
+          function () { toast("Couldn’t copy. Of course it couldn’t."); }
+        );
+      } else { toast("Copy this: " + line); }
+    }
+  }
+
+  render(scenes.warning.html, scenes.warning.state);
+})();
+</script>
+</body>
+</html>

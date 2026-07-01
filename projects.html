@@ -40,77 +40,54 @@
             color: var(--text-mid);
         }
 
-        /* ── Project selector ── */
+        /* ── Project selector: a floating cloud of bubbles ── */
         .project-selector {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            padding: 2.5rem 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.6rem 1.6rem;
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 3rem 2rem 0;
+        }
+
+        .proj-card-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 148px;
+            text-align: center;
+            animation: bubble-bob 6.5s ease-in-out infinite;
+        }
+
+        .proj-card-wrap:hover { animation-play-state: paused; }
+
+        @keyframes bubble-bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
         }
 
         .proj-card {
-            border-radius: 16px;
-            padding: 1.7rem 1.8rem 1.8rem;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            flex-shrink: 0;
             cursor: pointer;
             border: 1.5px solid transparent;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-            text-align: left;
-            font-family: inherit;
+            transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            font-family: 'Fraunces', serif;
             display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem;
         }
-
-        .proj-card-01 { background: var(--card-01); }
-        .proj-card-02 { background: var(--card-02); }
-        .proj-card-03 { background: var(--card-03); }
-
-        .proj-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-        }
-
-        .proj-card-01.active { border-color: var(--mint-deep); box-shadow: 0 6px 20px rgba(59,173,130,0.15); transform: translateY(-2px); }
-        .proj-card-02.active { border-color: var(--pink-deep); box-shadow: 0 6px 20px rgba(232,99,126,0.15); transform: translateY(-2px); }
-        .proj-card-03.active { border-color: var(--lavender-deep); box-shadow: 0 6px 20px rgba(123,107,214,0.15); transform: translateY(-2px); }
-
-        .proj-card-04 { background: var(--card-04); }
-        .proj-card-04.active { border-color: var(--teal-deep); box-shadow: 0 6px 20px rgba(26,138,138,0.15); transform: translateY(-2px); }
-
-        .proj-card-05 { background: var(--card-05); }
-        .proj-card-05.active { border-color: var(--cyan-deep); box-shadow: 0 6px 20px rgba(8,145,178,0.15); transform: translateY(-2px); }
-
-        .proj-card-06 { background: var(--card-06); }
-        .proj-card-06.active { border-color: var(--sand-deep); box-shadow: 0 6px 20px rgba(194,132,62,0.15); transform: translateY(-2px); }
-
-        .proj-card-07 { background: var(--card-07); }
-        .proj-card-07.active { border-color: var(--peach-deep); box-shadow: 0 6px 20px rgba(224,123,58,0.15); transform: translateY(-2px); }
-
-        .proj-card-08 { background: var(--card-08); }
-        .proj-card-08.active { border-color: var(--red-deep); box-shadow: 0 6px 20px rgba(214,69,60,0.15); transform: translateY(-2px); }
-
-        .proj-card-num {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-        }
-
-        .proj-card-01 .proj-card-num { color: var(--mint-deep); }
-        .proj-card-02 .proj-card-num { color: var(--pink-deep); }
-        .proj-card-03 .proj-card-num { color: var(--lavender-deep); }
-        .proj-card-04 .proj-card-num { color: var(--teal-deep); }
-        .proj-card-05 .proj-card-num { color: var(--cyan-deep); }
-        .proj-card-06 .proj-card-num { color: var(--sand-deep); }
-        .proj-card-07 .proj-card-num { color: var(--peach-deep); }
-        .proj-card-08 .proj-card-num { color: var(--red-deep); }
 
         .proj-card-name {
-            font-family: 'Fraunces', serif;
-            font-size: 1.7rem;
+            font-size: 0.92rem;
             font-weight: 500;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
+            letter-spacing: -0.01em;
+            line-height: 1.18;
             color: var(--text);
         }
 
@@ -119,27 +96,57 @@
             font-weight: 300;
         }
 
+        .proj-card:hover { transform: scale(1.07); }
+        .proj-card:active { transform: scale(0.97); }
+
+        .proj-card-01 { background: var(--card-01); }
+        .proj-card-02 { background: var(--card-02); }
+        .proj-card-03 { background: var(--card-03); }
+        .proj-card-04 { background: var(--card-04); }
+        .proj-card-05 { background: var(--card-05); }
+        .proj-card-06 { background: var(--card-06); }
+        .proj-card-07 { background: var(--card-07); }
+        .proj-card-08 { background: var(--card-08); }
+        .proj-card-09 { background: var(--card-09); }
+
+        .proj-card-01.active { border-color: var(--mint-deep); box-shadow: 0 0 0 3px rgba(59,173,130,0.16), 0 0 22px 4px rgba(59,173,130,0.4); transform: scale(1.06); }
+        .proj-card-02.active { border-color: var(--pink-deep); box-shadow: 0 0 0 3px rgba(232,99,126,0.16), 0 0 22px 4px rgba(232,99,126,0.4); transform: scale(1.06); }
+        .proj-card-03.active { border-color: var(--lavender-deep); box-shadow: 0 0 0 3px rgba(123,107,214,0.16), 0 0 22px 4px rgba(123,107,214,0.4); transform: scale(1.06); }
+        .proj-card-04.active { border-color: var(--teal-deep); box-shadow: 0 0 0 3px rgba(26,138,138,0.16), 0 0 22px 4px rgba(26,138,138,0.4); transform: scale(1.06); }
+        .proj-card-05.active { border-color: var(--cyan-deep); box-shadow: 0 0 0 3px rgba(8,145,178,0.16), 0 0 22px 4px rgba(8,145,178,0.4); transform: scale(1.06); }
+        .proj-card-06.active { border-color: var(--sand-deep); box-shadow: 0 0 0 3px rgba(177,95,204,0.16), 0 0 22px 4px rgba(177,95,204,0.4); transform: scale(1.06); }
+        .proj-card-07.active { border-color: var(--peach-deep); box-shadow: 0 0 0 3px rgba(224,123,58,0.16), 0 0 22px 4px rgba(224,123,58,0.4); transform: scale(1.06); }
+        .proj-card-08.active { border-color: var(--red-deep); box-shadow: 0 0 0 3px rgba(214,69,60,0.16), 0 0 22px 4px rgba(214,69,60,0.4); transform: scale(1.06); }
+        .proj-card-09.active { border-color: var(--amber-deep); box-shadow: 0 0 0 3px rgba(193,91,140,0.16), 0 0 22px 4px rgba(193,91,140,0.4); transform: scale(1.06); }
+
         .proj-card-visit {
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
             text-decoration: none;
-            margin-top: 0.15rem;
-            transition: color 0.15s;
+            transition: opacity 0.15s;
         }
 
-        .proj-card-01 .proj-card-visit { color: var(--mint-deep); opacity: 0.7; }
-        .proj-card-02 .proj-card-visit { color: var(--pink-deep); opacity: 0.7; }
-        .proj-card-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
-        .proj-card-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
-        .proj-card-05 .proj-card-visit { color: var(--cyan-deep); opacity: 0.7; }
-        .proj-card-06 .proj-card-visit { color: var(--sand-deep); opacity: 0.7; }
-        .proj-card-07 .proj-card-visit { color: var(--peach-deep); opacity: 0.7; }
-        .proj-card-08 .proj-card-visit { color: var(--red-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-01 .proj-card-visit { color: var(--mint-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-02 .proj-card-visit { color: var(--pink-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-03 .proj-card-visit { color: var(--lavender-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-04 .proj-card-visit { color: var(--teal-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-05 .proj-card-visit { color: var(--cyan-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-06 .proj-card-visit { color: var(--sand-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-07 .proj-card-visit { color: var(--peach-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-08 .proj-card-visit { color: var(--red-deep); opacity: 0.7; }
+        .proj-card-wrap.proj-tint-09 .proj-card-visit { color: var(--amber-deep); opacity: 0.7; }
 
         .proj-card-visit:hover { opacity: 1; }
+
+        @media (max-width: 480px) {
+            .project-selector { gap: 1.6rem 1rem; padding-top: 2rem; }
+            .proj-card-wrap { width: 112px; }
+            .proj-card { width: 106px; height: 106px; }
+            .proj-card-name { font-size: 0.78rem; }
+        }
 
         /* ── Panel area ── */
         .panel-area {
@@ -218,6 +225,29 @@
         .cta-peach { color: var(--peach-deep); }
         .cta-red { color: var(--red-deep); }
         .cta-sand:hover { background: var(--sand-deep); color: #fff; }
+        .cta-amber { color: var(--amber-deep); }
+        .cta-amber:hover { background: var(--amber-deep); color: #fff; }
+
+        .game-embed {
+            width: 100%;
+            max-width: 620px;
+            margin: 0 0 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(160,152,144,0.15);
+            box-shadow: 0 12px 34px rgba(0,0,0,0.08);
+        }
+
+        .game-embed iframe {
+            width: 100%;
+            height: 640px;
+            border: none;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .game-embed iframe { height: 560px; }
+        }
 
         /* ── Metrics ── */
         .metrics-row {
@@ -322,12 +352,7 @@
         }
 
         /* ── Responsive ── */
-        @media (max-width: 1024px) {
-            .project-selector { grid-template-columns: repeat(3, 1fr); }
-        }
-
         @media (max-width: 860px) {
-            .project-selector { grid-template-columns: repeat(2, 1fr); padding-top: 2rem; }
             .panel-body { grid-template-columns: 1fr; }
             .content-block.full { grid-column: 1; }
             .page-hero, .project-selector, .panel-area { padding-left: 1.5rem; padding-right: 1.5rem; }
@@ -336,10 +361,7 @@
         }
 
         @media (max-width: 480px) {
-            .page-hero, .project-selector, .panel-area { padding-left: 1rem; padding-right: 1rem; }
-            .project-selector { gap: 0.85rem; }
-            .proj-card { padding: 1.25rem 1.25rem 1.35rem; border-radius: 14px; }
-            .proj-card-name { font-size: 1.35rem; }
+            .page-hero, .panel-area { padding-left: 1rem; padding-right: 1rem; }
             .metrics-row { gap: 0.6rem; }
             .metric-chip { min-width: 0; flex: 1 1 calc(50% - 0.3rem); }
             .panel-area { padding-bottom: 3rem; }
@@ -376,49 +398,63 @@
         <p class="page-subtitle" data-en="From idea to working product." data-hr="Od ideje do gotovog proizvoda.">From idea to working product.</p>
     </header>
 
-    <!-- ══ Project selector cards ══ -->
+    <!-- ══ Project selector: floating bubble cloud ══ -->
     <div class="project-selector">
 
-        <div class="proj-card proj-card-06" data-tab="welcome-book" role="button" tabindex="0">
-            <p class="proj-card-num">01</p>
-            <h2 class="proj-card-name">Welcome <em>Book</em></h2>
+        <div class="proj-card-wrap proj-tint-06" style="animation-delay:0s;animation-duration:6.5s">
+            <div class="proj-card proj-card-06" data-tab="welcome-book" role="button" tabindex="0">
+                <span class="proj-card-name">Welcome <em>Book</em></span>
+            </div>
             <a href="https://welcomebook.eu" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">welcomebook.eu ↗</a>
         </div>
 
-        <div class="proj-card proj-card-05" data-tab="vibeordev" role="button" tabindex="0">
-            <p class="proj-card-num">02</p>
-            <h2 class="proj-card-name" data-i18n-html data-en="Vibe Coder or <em>True Dev?</em>" data-hr="Vibe coder ili <em>pravi dev?</em>">Vibe Coder or <em>True Dev?</em></h2>
+        <div class="proj-card-wrap proj-tint-05" style="animation-delay:0.45s;animation-duration:7s">
+            <div class="proj-card proj-card-05" data-tab="vibeordev" role="button" tabindex="0">
+                <span class="proj-card-name" data-i18n-html data-en="Vibe Coder or <em>True Dev?</em>" data-hr="Vibe coder ili <em>pravi dev?</em>">Vibe Coder or <em>True Dev?</em></span>
+            </div>
             <a href="https://vibeordev.com" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">vibeordev.com ↗</a>
         </div>
 
-        <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
-            <p class="proj-card-num">03</p>
-            <h2 class="proj-card-name">Erin <em>AI</em></h2>
+        <div class="proj-card-wrap proj-tint-09" style="animation-delay:1.55s;animation-duration:6.5s">
+            <div class="proj-card proj-card-09" data-tab="youre-absolutely-right" role="button" tabindex="0">
+                <span class="proj-card-name" data-i18n-html data-en="You&rsquo;re Absolutely <em>Right</em>" data-hr="Potpuno Si <em>U Pravu</em>">You&rsquo;re Absolutely <em>Right</em></span>
+            </div>
         </div>
 
-        <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
-            <p class="proj-card-num">04</p>
-            <h2 class="proj-card-name">Ferros <em>AI</em></h2>
+        <div class="proj-card-wrap proj-tint-02" style="animation-delay:0.9s;animation-duration:7.5s">
+            <div class="proj-card proj-card-02" data-tab="erin-ai" role="button" tabindex="0">
+                <span class="proj-card-name">Erin <em>AI</em></span>
+            </div>
         </div>
 
-        <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
-            <p class="proj-card-num">05</p>
-            <h2 class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></h2>
+        <div class="proj-card-wrap proj-tint-01" style="animation-delay:1.35s;animation-duration:8s">
+            <div class="proj-card proj-card-01" data-tab="ferros-ai" role="button" tabindex="0">
+                <span class="proj-card-name">Ferros <em>AI</em></span>
+            </div>
         </div>
 
-        <div class="proj-card proj-card-04" data-tab="kompas-ai" role="button" tabindex="0">
-            <p class="proj-card-num">06</p>
-            <h2 class="proj-card-name">Kompas <em>AI</em></h2>
+        <div class="proj-card-wrap proj-tint-03" style="animation-delay:1.8s;animation-duration:6.5s">
+            <div class="proj-card proj-card-03" data-tab="legal-claims" role="button" tabindex="0">
+                <span class="proj-card-name" data-i18n-html data-en="Legal Claims <em>Automation</em>" data-hr="Automatizacija <em>pravnih zahtjeva</em>">Legal Claims <em>Automation</em></span>
+            </div>
         </div>
 
-        <div class="proj-card proj-card-07" data-tab="stack-digest" role="button" tabindex="0">
-            <p class="proj-card-num">07</p>
-            <h2 class="proj-card-name">Stack <em>Digest</em></h2>
+        <div class="proj-card-wrap proj-tint-04" style="animation-delay:0.2s;animation-duration:7s">
+            <div class="proj-card proj-card-04" data-tab="kompas-ai" role="button" tabindex="0">
+                <span class="proj-card-name">Kompas <em>AI</em></span>
+            </div>
         </div>
 
-        <div class="proj-card proj-card-08" data-tab="promptshot" role="button" tabindex="0">
-            <p class="proj-card-num">08</p>
-            <h2 class="proj-card-name">Prompt <em>Shot</em></h2>
+        <div class="proj-card-wrap proj-tint-07" style="animation-delay:0.65s;animation-duration:7.5s">
+            <div class="proj-card proj-card-07" data-tab="stack-digest" role="button" tabindex="0">
+                <span class="proj-card-name">Stack <em>Digest</em></span>
+            </div>
+        </div>
+
+        <div class="proj-card-wrap proj-tint-08" style="animation-delay:1.1s;animation-duration:8s">
+            <div class="proj-card proj-card-08" data-tab="promptshot" role="button" tabindex="0">
+                <span class="proj-card-name">Prompt <em>Shot</em></span>
+            </div>
             <a href="https://github.com/Tamara-Codes/promptshot" target="_blank" rel="noopener" class="proj-card-visit" onclick="event.stopPropagation()">GitHub ↗</a>
         </div>
 
@@ -920,6 +956,36 @@
             </div>
         </div>
 
+        <!-- TAB: You're Absolutely Right -->
+        <div class="tab-panel" id="tab-youre-absolutely-right" role="tabpanel">
+
+            <div class="panel-head">
+                <div>
+                    <h2 class="panel-title">You&rsquo;re Absolutely <em>Right</em></h2>
+                    <p class="panel-tagline" data-en="A choose-your-own-incident game. Ship a one-line fix on a Friday, let an AI assistant help, and find out how fast production can disappear." data-hr="Igra biraj-svoju-nesreću. Objavi jednu liniju popravka u petak, pusti AI asistenta da pomogne, i saznaj koliko brzo produkcija može nestati.">A choose-your-own-incident game. Ship a one-line fix on a Friday, let an AI assistant help, and find out how fast production can disappear.</p>
+                </div>
+                <a href="games/youre-absolutely-right.html" target="_blank" rel="noopener" class="panel-cta cta-amber" data-en="Play Fullscreen ↗" data-hr="Igraj Preko Cijelog Ekrana ↗">
+                    Play Fullscreen ↗
+                </a>
+            </div>
+
+            <div class="game-embed">
+                <iframe src="games/youre-absolutely-right.html" title="You're Absolutely Right game" loading="lazy"></iframe>
+            </div>
+
+            <div class="panel-body">
+                <div class="content-block full">
+                    <p class="block-label" data-en="Technical Stack" data-hr="Tehnologija">Technical Stack</p>
+                    <div class="stack-pills">
+                        <span class="pill">HTML</span>
+                        <span class="pill">CSS</span>
+                        <span class="pill">Vanilla JS</span>
+                        <span class="pill">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -963,7 +1029,7 @@
 
         function initFromHash() {
             const hash = window.location.hash.replace('#', '');
-            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book', 'stack-digest', 'promptshot'];
+            const valid = ['kompas-ai', 'vibeordev', 'erin-ai', 'ferros-ai', 'legal-claims', 'welcome-book', 'stack-digest', 'promptshot', 'youre-absolutely-right'];
             activateTab(valid.includes(hash) ? hash : 'welcome-book');
         }
 
