@@ -50,18 +50,22 @@ nav {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 1.75rem 6rem;
+    /* horizontal padding tracks the hero so the name lines up with the headline */
+    padding: clamp(1rem, 2.5vw, 1.75rem) clamp(1.25rem, 4.5vw, 6rem);
+    gap: clamp(0.75rem, 2vw, 2rem);
     position: relative;
     z-index: 10;
 }
 
 .nav-name {
     font-family: 'Fraunces', serif;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
     font-weight: 500;
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+    min-width: 0;
 }
 
 
@@ -69,14 +73,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: clamp(0.75rem, 2vw, 2rem);
 }
 
 .nav-right {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 1rem;
+    gap: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 .nav-lang {
@@ -84,7 +88,7 @@ nav {
     align-items: center;
     gap: 0.35rem;
     font-family: 'Nunito', sans-serif;
-    font-size: 0.85rem;
+    font-size: clamp(0.72rem, 1.15vw, 0.85rem);
     font-weight: 600;
     color: var(--text-mid);
     letter-spacing: 0.04em;
@@ -110,8 +114,9 @@ nav {
 }
 
 .nav-link {
-    font-size: 1rem;
+    font-size: clamp(0.78rem, 1.3vw, 1rem);
     font-weight: 600;
+    white-space: nowrap;
     color: var(--text-mid);
     text-decoration: none;
     letter-spacing: 0.02em;
@@ -125,7 +130,8 @@ nav {
     background: var(--pink-deep);
     color: #fff;
     font-family: 'Nunito', sans-serif;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.3vw, 1rem);
+    white-space: nowrap;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-decoration: none;
