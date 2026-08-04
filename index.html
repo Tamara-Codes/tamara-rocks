@@ -985,6 +985,8 @@
 </head>
 <body>
 
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <div class="blobs" aria-hidden="true">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -1008,7 +1010,7 @@
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="hero-content">
             <div class="hero-eyebrow" data-en="AI Solutions Engineer" data-hr="AI konzultant">AI Solutions Engineer</div>
             <h1 class="hero-name" data-i18n-html
@@ -1118,7 +1120,8 @@
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                    <input type="email" name="email" required placeholder="you@example.com" data-en-placeholder="you@example.com" data-hr-placeholder="ti@primjer.com">
+                    <label for="waitlist-email" class="sr-only" data-en="Email" data-hr="Email">Email</label>
+                    <input type="email" id="waitlist-email" name="email" required placeholder="you@example.com" data-en-placeholder="you@example.com" data-hr-placeholder="ti@primjer.com">
                     <button type="submit" class="course-cta" data-en="Join the waitlist →" data-hr="Pridruži se listi čekanja →">Join the waitlist →</button>
                 </form>
                 <p class="course-success" data-en="You're on the list ✦ I'll email you the moment early access opens." data-hr="Na listi si ✦ Javim ti se čim otvorim rani pristup.">You're on the list ✦ I'll email you the moment early access opens.</p>
@@ -1233,11 +1236,15 @@
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-row">
-                <input type="text" name="name" placeholder="Your name" required data-en-placeholder="Your name" data-hr-placeholder="Tvoje ime">
-                <input type="email" name="email" placeholder="Email" required data-en-placeholder="Email" data-hr-placeholder="Email">
+                <label for="contact-name" class="sr-only" data-en="Your name" data-hr="Tvoje ime">Your name</label>
+                <input type="text" id="contact-name" name="name" placeholder="Your name" required data-en-placeholder="Your name" data-hr-placeholder="Tvoje ime">
+                <label for="contact-email" class="sr-only" data-en="Email" data-hr="Email">Email</label>
+                <input type="email" id="contact-email" name="email" placeholder="Email" required data-en-placeholder="Email" data-hr-placeholder="Email">
             </div>
-            <input type="text" name="business" placeholder="What's your business?" required data-en-placeholder="What's your business?" data-hr-placeholder="Čime se baviš?">
-            <textarea name="message" placeholder="What are you hoping AI could help with?" rows="4" required data-en-placeholder="What are you hoping AI could help with?" data-hr-placeholder="S čim se nadaš da ti AI može pomoći?"></textarea>
+            <label for="contact-business" class="sr-only" data-en="What's your business?" data-hr="Čime se baviš?">What's your business?</label>
+            <input type="text" id="contact-business" name="business" placeholder="What's your business?" required data-en-placeholder="What's your business?" data-hr-placeholder="Čime se baviš?">
+            <label for="contact-message" class="sr-only" data-en="What are you hoping AI could help with?" data-hr="S čim se nadaš da ti AI može pomoći?">What are you hoping AI could help with?</label>
+            <textarea id="contact-message" name="message" placeholder="What are you hoping AI could help with?" rows="4" required data-en-placeholder="What are you hoping AI could help with?" data-hr-placeholder="S čim se nadaš da ti AI može pomoći?"></textarea>
 
             <button type="submit" class="form-submit" data-en="Send it →" data-hr="Pošalji →">Send it →</button>
         </form>
