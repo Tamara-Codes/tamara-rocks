@@ -1,0 +1,18 @@
+# Tamara Martinovic
+
+> Tamara Martinovic, PhD, is an AI Solutions Engineer building custom AI products for people tired of doing things manually. Background: a decade in biomedical research (pipettes, mass spectrometers) before moving into AI.
+
+Contact: codewithtamara@gmail.com
+LinkedIn: https://www.linkedin.com/in/tamaracodes
+X: https://x.com/codewithtamara
+
+## Projects
+
+- Kompas AI: scans Croatia's official gazette (Narodne novine) daily, classifies legal changes with AI, and lets accountants ask natural-language questions answered from actual law text and official interpretations.
+- LLM internals quiz: a viral quiz testing knowledge of LLM internals — tokenization, attention, RAG, agents. 20 questions, 30 seconds each, ranks the player against everyone else.
+- WhatsApp menu publisher: restaurant owners update their menu by sending a WhatsApp message; the system publishes it instantly, translated into every language their guests need.
+
+## Also building
+
+- Nos Astra (https://nosastra.co): a one-person software studio — Welcome Book, Maštograd, StackLight.
+- An AI-fundamentals course for non-technical people, explaining how LLMs actually work with zero jargon, then how to build simple useful things with them.
