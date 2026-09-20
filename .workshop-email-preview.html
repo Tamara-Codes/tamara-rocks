@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop confirmation email preview</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 36px 16px; background: #fffaf7; color: #211d1c; font-family: Arial, Helvetica, sans-serif; }
+      .email { max-width: 640px; margin: 0 auto; overflow: hidden; border: 1px solid #f2d2dc; border-radius: 24px; background: #fffdfb; }
+      .intro { padding: 48px 44px 34px; }
+      .eyebrow { margin: 0 0 22px; color: #c52d63; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+      h1 { margin: 0; color: #211d1c; font-family: Georgia, 'Times New Roman', serif; font-size: 42px; font-weight: 400; letter-spacing: -1.4px; line-height: 1.06; }
+      .intro p:last-child { margin: 24px 0 0; color: #746d6a; font-size: 16px; line-height: 1.55; }
+      .details-wrap { padding: 0 44px 44px; }
+      .details { padding: 26px 28px; border-radius: 16px; background: #f2e5f8; }
+      .details-label { margin: 0 0 13px; color: #c52d63; font-size: 11px; font-weight: 700; letter-spacing: 1.3px; text-transform: uppercase; }
+      .date { margin: 0; color: #211d1c; font-size: 16px; font-weight: 700; line-height: 1.45; }
+      hr { height: 1px; margin: 18px 0; border: 0; background: #d5c4dd; }
+      .detail-copy { margin: 0; color: #746d6a; font-size: 14px; line-height: 1.5; }
+      .signoff { margin: 26px 0 0; color: #211d1c; font-size: 16px; line-height: 1.55; }
+      .fine-print { margin: 18px auto 0; max-width: 640px; color: #8a827f; font-size: 12px; line-height: 1.5; text-align: center; }
+      @media (max-width: 520px) {
+        body { padding: 18px 12px; }
+        .email { border-radius: 18px; }
+        .intro { padding: 34px 26px 26px; }
+        h1 { font-size: 36px; }
+        .details-wrap { padding: 0 26px 28px; }
+        .details { padding: 22px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="email">
+      <section class="intro">
+        <p class="eyebrow">✦ Free live workshop</p>
+        <h1>You’re on the list.</h1>
+        <p>Your spot is saved for AI Demystified — a practical session on how modern AI systems actually work.</p>
+      </section>
+      <section class="details-wrap">
+        <div class="details">
+          <p class="details-label">Save your spot</p>
+          <p class="date">Thursday, 1 October<br>19:00 Croatia time</p>
+          <p class="detail-copy" style="margin-top:12px;">Your local time: <strong style="color:#211d1c;">13:00 EDT</strong></p>
+          <hr>
+          <a href="https://meet.google.com/abc-defg-hij" style="display:inline-block; padding:13px 18px; border-radius:8px; background:#211d1c; color:#fff; font-size:14px; font-weight:700; line-height:1; text-decoration:none;">Join Google Meet</a>
+          <p class="detail-copy" style="margin-top:14px;">I’ll send a reminder before we begin.</p>
+        </div>
+        <p class="signoff">See you there,<br><strong>Tamara</strong></p>
+      </section>
+    </main>
+    <p class="fine-print">You received this because you saved a workshop spot at tamara.rocks.</p>
+  </body>
+</html>
