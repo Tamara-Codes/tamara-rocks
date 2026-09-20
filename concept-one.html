@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept One Case Study — Tamara Martinovic</title>
+    <meta name="description" content="A website and offer system built for Concept One.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .case-nav { display:flex; justify-content:space-between; align-items:center; padding:1.5rem 6rem; }.case-nav a { color:var(--text); text-decoration:none; font-weight:600; }.case-nav .back { color:var(--text-mid); font-size:.88rem; }.case-hero { max-width:1000px; margin:2rem auto 0; min-height:470px; padding:4.5rem 3rem; border-radius:28px; position:relative; overflow:hidden; display:flex; align-items:end; }.case-hero:before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(14,15,14,.86),rgba(14,15,14,.15)),url('images/concept-one-hero.jpg') center/cover; }.case-copy { position:relative; z-index:1; max-width:620px; color:white; }.case-kicker { color:#d3ac70; text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; font-weight:700; }.case-hero h1 { font-family:'Fraunces',serif; font-size:clamp(3rem,8vw,6rem); line-height:.95; margin:1rem 0; letter-spacing:-.05em; }.case-hero p { color:rgba(255,255,255,.78); font-size:1.05rem; line-height:1.7; }.case-body { max-width:1000px; margin:0 auto; padding:5rem 3rem 7rem; }.case-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; }.case-block { padding:2rem; background:#fff; border-radius:20px; }.case-block.wide { grid-column:1 / -1; background:var(--card-03); }.case-label { color:var(--lavender-deep); text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; font-weight:700; margin:0 0 .75rem; }.case-block h2 { font-family:'Fraunces',serif; font-size:1.75rem; line-height:1.15; margin:0 0 1rem; }.case-block p, .case-block li { color:var(--text-mid); line-height:1.7; }.case-block ul { padding-left:1.2rem; margin:0; }.case-image { width:100%; max-height:360px; display:block; object-fit:cover; border-radius:14px; margin-top:1.25rem; }.stack { display:flex; flex-wrap:wrap; gap:.5rem; }.stack span { background:rgba(255,255,255,.75); border-radius:999px; padding:.4rem .75rem; font-size:.78rem; }@media(max-width:700px) { .case-nav { padding:1.25rem; }.case-hero { margin:0 1rem; min-height:410px; padding:2rem 1.5rem; }.case-body { padding:3rem 1rem 5rem; }.case-grid { grid-template-columns:1fr; }.case-block.wide { grid-column:auto; } }
+    </style>
+</head>
+<body>
+    <nav class="case-nav"><a href="index.html">Tamara Martinovic, PhD</a><a class="back" href="index.html#work">← Back to work</a></nav>
+    <main>
+        <header class="case-hero"><div class="case-copy"><p class="case-kicker">Client project</p><h1>Concept One</h1><p>A website and offer system that turns a broad construction offering into a clearer, more confident sales story.</p></div></header>
+        <section class="case-body"><div class="case-grid">
+            <article class="case-block"><p class="case-label">The problem</p><h2>One business, many services.</h2><p>Concept One needed a clearer way to present a wide range of building products and services, then guide prospective customers toward the right conversation.</p></article>
+            <article class="case-block"><p class="case-label">What I built</p><h2>A website plus sales toolkit.</h2><p>I created a focused marketing site with clear service paths, along with a custom offer presentation system to support sales conversations beyond the website.</p></article>
+            <article class="case-block wide"><p class="case-label">The website</p><h2>A stronger first impression.</h2><p>Each product category gets room to explain its value while the wider brand stays coherent and easy to navigate.</p><img class="case-image" src="images/concept-one-hero.jpg" alt="Concept One homepage design"></article>
+            <article class="case-block"><p class="case-label">My role</p><h2>Strategy, design, and build.</h2><p>I shaped the structure and visual direction, built the website, and designed the offer materials that make the service easier to explain and sell.</p></article>
+            <article class="case-block"><p class="case-label">What it changes</p><h2>Clarity at every step.</h2><ul><li>Clearer service categories</li><li>A polished first impression</li><li>A consistent offer for sales conversations</li></ul></article>
+            <article class="case-block wide"><p class="case-label">Technical foundation</p><div class="stack"><span>Next.js</span><span>React</span><span>TypeScript</span><span>Tailwind CSS</span><span>Responsive design</span></div></article>
+        </div></section>
+    </main>
+</body>
+</html>

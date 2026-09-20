@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EHI Babić Case Study — Tamara Martinovic</title>
+    <meta name="description" content="A private, mobile-first construction work diary built for EHI Babić.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .case-nav { display:flex; justify-content:space-between; align-items:center; padding:1.5rem 6rem; }
+        .case-nav a { color:var(--text); text-decoration:none; font-weight:600; }
+        .case-nav .back { color:var(--text-mid); font-size:.88rem; }
+        .case-hero { max-width:1000px; margin:2rem auto 0; padding:4.5rem 3rem; background:var(--card-01); border-radius:28px; text-align:center; }
+        .case-kicker { color:var(--mint-deep); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; font-weight:700; }
+        .case-hero h1 { font-family:'Fraunces',serif; font-size:clamp(3rem,8vw,6rem); line-height:.95; margin:1rem 0; letter-spacing:-.05em; }
+        .case-hero p { max-width:620px; margin:0 auto; color:var(--text-mid); font-size:1.05rem; line-height:1.7; }
+        .case-logo { width:120px; height:120px; object-fit:contain; background:white; border-radius:18px; margin:2rem auto 0; padding:1rem; }
+        .case-body { max-width:1000px; margin:0 auto; padding:5rem 3rem 7rem; }
+        .case-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; }
+        .case-block { padding:2rem; background:#fff; border-radius:20px; }
+        .case-block.wide { grid-column:1 / -1; background:var(--card-04); }
+        .case-label { color:var(--teal-deep); text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; font-weight:700; margin:0 0 .75rem; }
+        .case-block h2 { font-family:'Fraunces',serif; font-size:1.75rem; line-height:1.15; margin:0 0 1rem; }
+        .case-block p, .case-block li { color:var(--text-mid); line-height:1.7; }
+        .case-block ul { padding-left:1.2rem; margin:0; }
+        .flow { display:flex; flex-wrap:wrap; gap:.7rem; align-items:center; margin-top:1.25rem; }
+        .flow span { background:rgba(255,255,255,.7); border-radius:999px; padding:.55rem .9rem; font-size:.82rem; font-weight:600; }
+        .flow b { color:var(--teal-deep); }
+        .stack { display:flex; flex-wrap:wrap; gap:.5rem; }
+        .stack span { background:rgba(255,255,255,.75); border-radius:999px; padding:.4rem .75rem; font-size:.78rem; }
+        .privacy { border-left:3px solid var(--mint-deep); padding-left:1rem; font-size:.9rem; }
+        @media(max-width:700px) { .case-nav { padding:1.25rem 1.25rem; } .case-hero { margin:0 1rem; padding:3rem 1.5rem; } .case-body { padding:3rem 1rem 5rem; } .case-grid { grid-template-columns:1fr; } .case-block.wide { grid-column:auto; } }
+    </style>
+</head>
+<body>
+    <nav class="case-nav"><a href="index.html">Tamara Martinovic, PhD</a><a class="back" href="index.html#work">← Back to work</a></nav>
+    <main>
+        <header class="case-hero">
+            <p class="case-kicker">Client project · Private app</p>
+            <h1>EHI Babić</h1>
+            <p>A straightforward daily work diary that gives a construction team one reliable place to record progress, photos, and issues from the site.</p>
+            <img class="case-logo" src="images/ehi-logo.png" alt="EHI Babić logo">
+        </header>
+        <section class="case-body">
+            <div class="case-grid">
+                <article class="case-block">
+                    <p class="case-label">The problem</p>
+                    <h2>Important site updates were easy to lose.</h2>
+                    <p>Daily work, photos, missing materials, and delays needed a consistent record that was fast enough for the team to use on site.</p>
+                </article>
+                <article class="case-block">
+                    <p class="case-label">What I built</p>
+                    <h2>A mobile-first work log.</h2>
+                    <p>Workers choose the relevant site, add a daily update and photos, then flag practical follow-ups such as material shortages, extra work, or delays.</p>
+                </article>
+                <article class="case-block wide">
+                    <p class="case-label">How it works</p>
+                    <h2>One simple flow, designed for the working day.</h2>
+                    <div class="flow"><span>Choose site</span><b>→</b><span>Add photos &amp; update</span><b>→</b><span>Flag follow-ups</span><b>→</b><span>Review the record</span></div>
+                </article>
+                <article class="case-block">
+                    <p class="case-label">My role</p>
+                    <h2>From workflow to working app.</h2>
+                    <p>I translated the day-to-day workflow into a simple interface and built the application around the people who need to use it.</p>
+                </article>
+                <article class="case-block">
+                    <p class="case-label">Privacy</p>
+                    <h2>A private client system.</h2>
+                    <p class="privacy">The live app contains client data, so this case study shows the product concept and workflow rather than private entries or site information.</p>
+                </article>
+                <article class="case-block wide">
+                    <p class="case-label">Technical foundation</p>
+                    <div class="stack"><span>Next.js</span><span>TypeScript</span><span>Postgres</span><span>Drizzle ORM</span><span>NextAuth</span><span>Image uploads</span></div>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

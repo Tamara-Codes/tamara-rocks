@@ -16,6 +16,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.tamara.rocks/ehi-babic.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tamara.rocks/concept-one.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tamara.rocks/welcome-book.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.tamara.rocks/legal-monitor.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.tamara.rocks/blogs/blog.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
