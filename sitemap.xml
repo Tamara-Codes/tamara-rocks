@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.tamara.rocks/kerri.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.tamara.rocks/welcome-book.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

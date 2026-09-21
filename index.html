@@ -354,19 +354,6 @@
             padding-bottom: 0.15rem;
         }
 
-        /* ── Proof ── */
-        .proof-strip { padding: 0 6rem 6rem; }
-        .proof-inner { background: #fff; border-radius: 24px; padding: 2rem 2.25rem; }
-        .proof-heading { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 1.75rem; }
-        .proof-heading em { color: var(--pink-deep); }
-        .proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
-        .proof-item { border-left: 2px solid var(--mint); padding-left: 1rem; }
-        .proof-item:nth-child(2) { border-color: var(--lavender-deep); }
-        .proof-item:nth-child(3) { border-color: var(--pink-deep); }
-        .proof-item:nth-child(4) { border-color: var(--teal-deep); }
-        .proof-value { display: block; font-family: 'Fraunces', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 0.35rem; }
-        .proof-text { color: var(--text-mid); font-size: 0.82rem; line-height: 1.55; margin: 0; }
-
         /* ── About teaser ── */
         .about-teaser {
             padding: 0 6rem 6rem;
@@ -534,8 +521,6 @@
             .product-card { grid-template-columns: minmax(0, 1fr) 130px; }
             .client-card-visual { grid-template-columns: minmax(0, 1fr) 130px; }
             .card-preview { height: 150px; }
-            .proof-strip { padding: 0 1.5rem 5rem; }
-            .proof-grid { grid-template-columns: 1fr 1fr; }
             .paths-section { padding: 0 1.5rem 5rem; }
             .paths-grid { grid-template-columns: 1fr; }
         }
@@ -544,9 +529,6 @@
             .hero { gap: 2rem; }
             .photo-placeholder { max-width: min(260px, 72vw); }
             .work { padding: 1.5rem 1rem 4rem; }
-            .proof-strip { padding: 0 1rem 4rem; }
-            .proof-inner { padding: 1.5rem; }
-            .proof-grid { grid-template-columns: 1fr; gap: 1rem; }
             .paths-section { padding-inline: 1rem; }
             .about-teaser { padding: 0 1rem 4rem; }
             .about-inner { padding: 1.5rem; }
@@ -1114,7 +1096,6 @@
             <div class="hero-routes">
                 <a href="#learn" class="hero-route hero-route-primary">Join the free AI workshop</a>
                 <a href="#work" class="hero-route hero-route-secondary">See my work</a>
-                <a href="https://x.com/codewithtamara" target="_blank" rel="noopener" class="hero-route hero-route-tertiary">Follow on X</a>
             </div>
             <p class="hero-session">Next live session: Thursday, 1 October · 19:00 Croatia time</p>
         </div>
@@ -1241,30 +1222,6 @@
         </div>
     </section>
 
-    <section class="proof-strip" aria-labelledby="proof-heading">
-        <div class="proof-inner" data-observe>
-            <h2 class="proof-heading" id="proof-heading">Built for real businesses. Taught to real people. <em>Used by paying customers.</em></h2>
-            <div class="proof-grid">
-                <div class="proof-item">
-                    <span class="proof-value">2 custom websites</span>
-                    <p class="proof-text">Built for real businesses, from structure and messaging through delivery.</p>
-                </div>
-                <div class="proof-item">
-                    <span class="proof-value">2 custom apps</span>
-                    <p class="proof-text">Purpose-built tools created around actual business workflows.</p>
-                </div>
-                <div class="proof-item">
-                    <span class="proof-value">AI workshop</span>
-                    <p class="proof-text">Practical AI taught live to real participants.</p>
-                </div>
-                <div class="proof-item">
-                    <span class="proof-value">3 Welcome Book customers</span>
-                    <p class="proof-text">A product I built and sold to paying accommodation businesses.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="about-teaser">
         <div class="about-inner" data-observe>
             <div>
@@ -1340,7 +1297,7 @@
         </div>
     </section>
 
-    <section class="journey-section" hidden>
+    <section class="journey-section">
         <div class="section-header">
             <span class="section-title">My journey</span>
             <div class="section-line"></div>
@@ -2239,7 +2196,8 @@
                         method: 'POST',
                         body: JSON.stringify({
                             email: form.elements.email.value,
-                            localTime: window.workshopLocalTime || ''
+                            localTime: window.workshopLocalTime || '',
+                            _honey: form.elements._honey.value
                         }),
                         headers: {
                             'Accept': 'application/json',
