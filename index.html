@@ -1311,6 +1311,15 @@
             var output = document.getElementById('visitorCount');
             if (!output) return;
 
+            var savedCount = null;
+            try { savedCount = localStorage.getItem('visitorCount'); } catch (e) {}
+
+            if (/^\d+$/.test(savedCount || '')) {
+                output.textContent = String(Number(savedCount)).padStart(6, '0');
+                output.classList.add('is-ready');
+                return;
+            }
+
             fetch('/api/visitor-count', { credentials: 'same-origin' })
                 .then(function (response) {
                     if (!response.ok) throw new Error('Counter unavailable');
@@ -1319,8 +1328,10 @@
                 .then(function (data) {
                     var visits = Number(data.visits);
                     if (!Number.isFinite(visits) || visits < 0) throw new Error('Invalid count');
-                    output.textContent = String(Math.floor(visits)).padStart(6, '0');
+                    var displayCount = String(Math.floor(visits));
+                    output.textContent = displayCount.padStart(6, '0');
                     output.classList.add('is-ready');
+                    try { localStorage.setItem('visitorCount', displayCount); } catch (e) {}
                 })
                 .catch(function () {
                     output.textContent = 'offline';
