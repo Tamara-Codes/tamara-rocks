@@ -1003,10 +1003,9 @@
             <a href="cv.html" class="nav-link" data-en="CV" data-hr="Životopis">CV</a>
         </div>
         <div class="nav-right">
-            <div class="nav-lang" role="group" aria-label="Language">
-                <button type="button" class="lang-btn" data-lang-code="en" onclick="setLang('en')">EN</button>
-                <span class="lang-divider" aria-hidden="true">/</span>
-                <button type="button" class="lang-btn" data-lang-code="hr" onclick="setLang('hr')">HR</button>
+            <div class="visitor-counter" aria-live="polite">
+                <span class="visitor-counter-label">you are visitor</span>
+                <output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output>
             </div>
         </div>
     </nav>
@@ -1304,10 +1303,28 @@
             }
             window.setLang = applyLang;
 
-            let saved = null;
-            try { saved = localStorage.getItem('lang'); } catch (e) {}
-            const browserHr = navigator.language && navigator.language.toLowerCase().startsWith('hr');
-            applyLang(saved || (browserHr ? 'hr' : 'en'));
+            applyLang('en');
+        })();
+
+        // ── Visitor counter ──
+        (function () {
+            var output = document.getElementById('visitorCount');
+            if (!output) return;
+
+            fetch('/api/visitor-count', { credentials: 'same-origin' })
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Counter unavailable');
+                    return response.json();
+                })
+                .then(function (data) {
+                    var visits = Number(data.visits);
+                    if (!Number.isFinite(visits) || visits < 0) throw new Error('Invalid count');
+                    output.textContent = String(Math.floor(visits)).padStart(6, '0');
+                    output.classList.add('is-ready');
+                })
+                .catch(function () {
+                    output.textContent = 'offline';
+                });
         })();
 
         const observer = new IntersectionObserver((entries) => {
