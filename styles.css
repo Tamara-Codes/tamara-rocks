@@ -556,6 +556,50 @@ footer {
     color: var(--text-soft);
 }
 
+.visitor-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.34rem 0.5rem 0.34rem 0.68rem;
+    border: 1px solid var(--text);
+    border-radius: 5px;
+    background: var(--text);
+    color: #fff;
+    box-shadow: 3px 3px 0 var(--pink);
+    font-family: "Courier New", monospace;
+    line-height: 1;
+}
+
+.visitor-counter-label {
+    color: #d7d2cc;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.visitor-counter-number {
+    min-width: 5.4rem;
+    color: var(--mint);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.visitor-counter-number.is-ready {
+    animation: counter-flash 0.45s steps(2, end) 2;
+}
+
+.nav-right .visitor-counter {
+    box-shadow: 2px 2px 0 var(--pink);
+}
+
+@keyframes counter-flash {
+    50% { color: var(--pink); }
+}
+
 .footer-built {
     font-size: 0.75rem;
     color: var(--text-soft);
