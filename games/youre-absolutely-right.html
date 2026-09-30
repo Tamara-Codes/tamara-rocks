@@ -152,7 +152,6 @@
 
   .footer-note { font-family: var(--mono); font-size: 11px; color: #5a5249; text-align: center; margin-top: 26px; letter-spacing: 0.03em; }
 </style>
-<script defer data-site="ta_78fc7b6732a64cd6a20213b8" src="https://xpmetric.com/p.js"></script>
 </head>
 <body>
 
@@ -469,9 +468,7 @@
   var started = false;
   function trackEvent(name) {
     try {
-      if (window.va) { window.va("event", { name: name }); }        // Vercel Analytics
-      else if (window.plausible) { window.plausible(name); }          // Plausible
-      else if (window.gtag) { window.gtag("event", name); }           // Google Analytics
+      if (window.va) { window.va("event", { name: name }); }
     } catch (e) {}
   }
 
@@ -508,5 +505,6 @@
   render(scenes.warning.html, scenes.warning.state);
 })();
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
