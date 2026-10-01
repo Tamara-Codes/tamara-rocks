@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHI Babić Case Study — Tamara Martinovic</title>
-    <meta name="description" content="A private, mobile-first construction work diary built for EHI Babić.">
+    <title>Construction Site Diary — Tamara Martinovic</title>
+    <meta name="description" content="A private, mobile-first construction work diary web application.">
     <link rel="stylesheet" href="styles.css">
     <style>
-        .case-nav { display:flex; justify-content:space-between; align-items:center; padding:1.5rem 6rem; }
-        .case-nav a { color:var(--text); text-decoration:none; font-weight:600; }
-        .case-nav .back { color:var(--text-mid); font-size:.88rem; }
-        .case-hero { max-width:1000px; margin:2rem auto 0; padding:4.5rem 3rem; background:var(--card-01); border-radius:28px; text-align:center; }
+        .case-hero { max-width:1000px; margin:2rem auto 0; padding:3.5rem 4rem; background:var(--card-01); border-radius:28px; display:grid; grid-template-columns:minmax(0,1fr) 210px; gap:3rem; align-items:center; }
         .case-kicker { color:var(--mint-deep); text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; font-weight:700; }
-        .case-hero h1 { font-family:'Fraunces',serif; font-size:clamp(3rem,8vw,6rem); line-height:.95; margin:1rem 0; letter-spacing:-.05em; }
-        .case-hero p { max-width:620px; margin:0 auto; color:var(--text-mid); font-size:1.05rem; line-height:1.7; }
-        .case-logo { width:120px; height:120px; object-fit:contain; background:white; border-radius:18px; margin:2rem auto 0; padding:1rem; }
+        .case-hero h1 { font-family:'Fraunces',serif; font-size:clamp(2.35rem,4.8vw,4.4rem); line-height:1; margin:1rem 0; letter-spacing:-.045em; }
+        .case-hero p { max-width:620px; margin:0; color:var(--text-mid); font-size:1.05rem; line-height:1.7; }
+        .case-app-shot { display:block; width:100%; max-height:390px; object-fit:contain; border-radius:18px; box-shadow:0 16px 34px rgba(34,72,66,.14); }
         .case-body { max-width:1000px; margin:0 auto; padding:5rem 3rem 7rem; }
         .case-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.5rem; }
         .case-block { padding:2rem; background:#fff; border-radius:20px; }
@@ -28,18 +25,34 @@
         .flow b { color:var(--teal-deep); }
         .stack { display:flex; flex-wrap:wrap; gap:.5rem; }
         .stack span { background:rgba(255,255,255,.75); border-radius:999px; padding:.4rem .75rem; font-size:.78rem; }
-        .privacy { border-left:3px solid var(--mint-deep); padding-left:1rem; font-size:.9rem; }
-        @media(max-width:700px) { .case-nav { padding:1.25rem 1.25rem; } .case-hero { margin:0 1rem; padding:3rem 1.5rem; } .case-body { padding:3rem 1rem 5rem; } .case-grid { grid-template-columns:1fr; } .case-block.wide { grid-column:auto; } }
+        .privacy { font-size:.9rem; }
+        @media(max-width:700px) { .case-hero { margin:0 1rem; padding:2.5rem 1.5rem; grid-template-columns:1fr; gap:2rem; } .case-app-shot { max-width:185px; max-height:350px; margin:auto; order:-1; } .case-body { padding:3rem 1rem 5rem; } .case-grid { grid-template-columns:1fr; } .case-block.wide { grid-column:auto; } }
     </style>
 </head>
 <body>
-    <nav class="case-nav"><a href="index.html">Tamara Martinovic, PhD</a><a class="back" href="index.html#work">← Back to work</a></nav>
+    <nav>
+        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="projects.html" class="nav-link active">Work</a>
+            <a href="blogs/blog.html" class="nav-link">About</a>
+            <a href="cv.html" class="nav-link">CV</a>
+        </div>
+        <div class="nav-right">
+            <div class="visitor-counter" aria-live="polite">
+                <span class="visitor-counter-label">visitors</span>
+                <output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output>
+            </div>
+        </div>
+    </nav>
     <main>
         <header class="case-hero">
-            <p class="case-kicker">Client project · Private app</p>
-            <h1>EHI Babić</h1>
-            <p>A straightforward daily work diary that gives a construction team one reliable place to record progress, photos, and issues from the site.</p>
-            <img class="case-logo" src="images/ehi-logo.png" alt="EHI Babić logo">
+            <div>
+                <p class="case-kicker">Client project · Private app</p>
+                <h1>Construction site diary</h1>
+                <p>A private construction work diary for capturing site updates, photos, material needs, and delays as they happen.</p>
+            </div>
+            <img class="case-app-shot" src="images/ehi-work-diary.png" alt="Construction site diary on mobile">
         </header>
         <section class="case-body">
             <div class="case-grid">
@@ -75,5 +88,27 @@
             </div>
         </section>
     </main>
+    <script>
+        (function () {
+            var output = document.getElementById('visitorCount');
+            if (!output) return;
+
+            fetch('/api/visitor-count', { credentials: 'same-origin' })
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Counter unavailable');
+                    return response.json();
+                })
+                .then(function (data) {
+                    var visits = Number(data.visits);
+                    if (!Number.isFinite(visits) || visits < 0) throw new Error('Invalid count');
+                    output.textContent = String(Math.floor(visits)).padStart(6, '0');
+                    output.classList.add('is-ready');
+                })
+                .catch(function () {
+                    output.textContent = 'offline';
+                });
+        })();
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

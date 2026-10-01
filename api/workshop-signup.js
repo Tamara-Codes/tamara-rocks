@@ -138,7 +138,7 @@ module.exports = async function workshopSignup(req, res) {
                           <tr>
                             <td style="padding:26px 28px;">
                               <p style="margin:0 0 13px; color:#c52d63; font-size:11px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase;">Save your spot</p>
-                              <p style="margin:0; color:#211d1c; font-size:16px; font-weight:700; line-height:1.45;">Thursday, 1 October<br>19:00 Croatia time</p>
+                              <p style="margin:0; color:#211d1c; font-size:16px; font-weight:700; line-height:1.45;">Thursday, 15 October<br>19:00 Croatia time</p>
                               ${localTimeLine}
                               <div style="height:1px; margin:18px 0; background:#d5c4dd;"></div>
                               <table role="presentation" cellspacing="0" cellpadding="0" border="0">

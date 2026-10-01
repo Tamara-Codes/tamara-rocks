@@ -113,6 +113,46 @@ nav {
     gap: clamp(0.5rem, 1.5vw, 1rem);
 }
 
+.visitor-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.32rem 0.58rem;
+    border: 1px solid rgba(26,23,20,0.13);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.62);
+    color: var(--text-mid);
+    box-shadow: 2px 2px 0 var(--pink);
+    font-family: "Courier New", monospace;
+    line-height: 1;
+}
+
+.visitor-counter-label {
+    color: var(--text-soft);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.visitor-counter-number {
+    min-width: 5.4rem;
+    color: var(--mint-deep);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.visitor-counter-number.is-ready {
+    animation: counter-flash 0.45s steps(2, end) 2;
+}
+
+@keyframes counter-flash {
+    50% { color: var(--pink); }
+}
+
 .nav-link {
     font-size: clamp(0.78rem, 1.3vw, 1rem);
     font-weight: 600;
@@ -645,7 +685,10 @@ footer {
     .nav-name { font-size: 0.72rem; }
     .nav-links { gap: 0.6rem; }
     .nav-link { font-size: 0.72rem; }
-    .nav-right { display: flex; justify-content: flex-end; gap: 0.5rem; }
+    .nav-right { display: flex; width: 100%; justify-content: center; gap: 0.5rem; }
+    .visitor-counter { padding: 0.28rem 0.4rem 0.28rem 0.5rem; gap: 0.3rem; }
+    .visitor-counter-label { font-size: 0.5rem; }
+    .visitor-counter-number { min-width: 4.2rem; font-size: 0.68rem; }
     .nav-cta { display: none; }
     .contact { margin: 2rem 1.5rem; padding: 3.5rem 2rem; }
     footer { padding: 1.5rem; }
