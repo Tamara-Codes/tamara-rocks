@@ -3,8 +3,23 @@ const { Resend } = require('resend');
 const { createHash } = require('crypto');
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const workshopMeetLink = process.env.WORKSHOP_MEET_URL || 'https://meet.google.com/abc-defg-hij';
+const fallbackWorkshopMeetLink = 'https://meet.google.com/abc-defg-hij';
 let rateLimitTableReady = false;
+
+function getWorkshopMeetLink() {
+  const configuredLink = String(process.env.WORKSHOP_MEET_URL || '')
+    .trim()
+    .replace(/^['"]|['"]$/g, '');
+
+  if (!configuredLink) return fallbackWorkshopMeetLink;
+
+  try {
+    const link = new URL(configuredLink);
+    return ['http:', 'https:'].includes(link.protocol) ? link.toString() : fallbackWorkshopMeetLink;
+  } catch {
+    return fallbackWorkshopMeetLink;
+  }
+}
 
 function getClientIp(req) {
   const forwarded = req.headers['x-vercel-forwarded-for'] || req.headers['x-forwarded-for'];
@@ -103,6 +118,7 @@ module.exports = async function workshopSignup(req, res) {
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY);
+    const workshopMeetLink = getWorkshopMeetLink();
     const localTimeLine = localTime
       ? `<p style="margin:12px 0 0; color:#746d6a; font-size:14px; line-height:1.5;">Your local time: <strong style="color:#211d1c;">${escapeHtml(localTime)}</strong></p>`
       : '';
