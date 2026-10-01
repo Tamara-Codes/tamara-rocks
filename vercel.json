@@ -1,4 +1,8 @@
 {
+  "rewrites": [
+    { "source": "/work", "destination": "/projects.html" },
+    { "source": "/about", "destination": "/blogs/blog.html" }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
