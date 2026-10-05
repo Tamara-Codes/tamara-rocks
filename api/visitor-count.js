@@ -13,22 +13,21 @@ function visitorCookie(req) {
   return `${VISITOR_COOKIE}=1; Path=/; Max-Age=31536000; SameSite=Lax${isSecure ? '; Secure' : ''}`;
 }
 
-async function ensureCounterTable(sql) {
-  await sql`
-    CREATE TABLE IF NOT EXISTS site_counters (
-      name TEXT PRIMARY KEY,
-      visits BIGINT NOT NULL DEFAULT 0 CHECK (visits >= 0)
-    )
-  `;
-}
-
 module.exports = async function visitorCount(req, res) {
-  if (req.method !== 'GET') {
-    res.setHeader('Allow', 'GET');
+  // Errors and registration responses must never enter a shared cache.
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Vercel-CDN-Cache-Control', 'no-store');
+
+  if (req.method !== 'GET' && req.method !== 'POST') {
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ error: 'Method not allowed.' });
   }
 
-  res.setHeader('Cache-Control', 'no-store, max-age=0');
+  // Another page may already have registered this visitor. Do not query Neon
+  // again; the browser can read the public, cached total instead.
+  if (req.method === 'POST' && hasVisited(req.headers.cookie)) {
+    return res.status(204).end();
+  }
 
   if (!process.env.DATABASE_URL) {
     return res.status(503).json({ error: 'Visitor counter is not configured yet.' });
@@ -36,14 +35,13 @@ module.exports = async function visitorCount(req, res) {
 
   try {
     const sql = neon(process.env.DATABASE_URL);
-    await ensureCounterTable(sql);
-
-    const returningVisitor = hasVisited(req.headers.cookie);
     let rows;
 
-    if (returningVisitor) {
+    if (req.method === 'GET') {
+      // GET is identical for everyone and never increments or sets a cookie.
       rows = await sql`SELECT visits FROM site_counters WHERE name = ${COUNTER_NAME}`;
     } else {
+      // The existing table is provisioned outside the request handler.
       rows = await sql`
         INSERT INTO site_counters (name, visits)
         VALUES (${COUNTER_NAME}, 1)
@@ -54,6 +52,10 @@ module.exports = async function visitorCount(req, res) {
     }
 
     const visits = rows[0] ? Number(rows[0].visits) : 0;
+    if (req.method === 'GET') {
+      res.setHeader('Cache-Control', 'public, max-age=60');
+      res.setHeader('Vercel-CDN-Cache-Control', 'public, s-maxage=3600');
+    }
     return res.status(200).json({ visits });
   } catch (error) {
     console.error('Visitor counter failed:', error);
