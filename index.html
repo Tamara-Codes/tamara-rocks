@@ -769,10 +769,9 @@
                 I&rsquo;m an AI engineer, software developer and former scientist based in Croatia. I build software for real businesses, teach practical AI, and write about the things I&rsquo;m learning along the way.
             </p>
             <div class="hero-routes">
-                <a href="#learn" class="hero-route hero-route-primary">Join the free AI workshop</a>
+                <a href="#learn" class="hero-route hero-route-primary">Get the free AI course</a>
                 <a href="projects.html" class="hero-route hero-route-secondary">See my work</a>
             </div>
-            <p class="hero-session">Next live session: Thursday, 15 October · 19:00 Croatia time</p>
         </div>
         <div class="hero-photo">
             <picture>
@@ -789,7 +788,7 @@
                 <span class="path-label">For businesses</span><h3>Have something in your business that should work better?</h3><p>I build websites, custom tools and practical AI solutions through Nos Astra.</p><span class="path-link">Work with me</span>
             </a>
             <a class="path-card path-learn" href="#learn">
-                <span class="path-label">Free workshop</span><span class="path-next">Next: Thu 15 Oct · 19:00</span><h3>Want to understand AI better?</h3><p>Join my free live AI Demystified workshop and finally understand context windows, RAG, hallucinations and prompting.</p><span class="path-link">Save my spot</span>
+                <span class="path-label">Free video training</span><span class="path-next">Coming soon</span><h3>Want to understand AI better?</h3><p>Learn about prompting, hallucinations, memory, context windows, tools and RAG in AI Demystified. Leave your email and I&rsquo;ll send you the recording when it&rsquo;s ready.</p><span class="path-link">Join the list</span>
             </a>
             <a class="path-card path-follow" href="https://x.com/codewithtamara" target="_blank" rel="noopener">
                 <span class="path-label">Building in public</span><h3>Want to follow the chaos?</h3><p>I write about AI, software, client work, learning things late and changing careers.</p><span class="path-link">Find me on X</span>
@@ -806,27 +805,21 @@
         <div class="course-card" data-observe>
             <div class="course-inner">
                 <div class="course-copy">
-                    <p class="course-eyebrow">✦ Free live workshop</p>
+                    <p class="course-eyebrow">✦ Free video training · Coming soon</p>
                     <h2 class="course-heading">AI is less mysterious once someone explains what&rsquo;s <em>actually happening.</em></h2>
-                    <p class="course-desc">A practical 60-minute live session on context windows, RAG, hallucinations and prompting.</p>
+                    <p class="course-desc">I&rsquo;m creating AI Demystified: a practical, plain-English video on prompting, hallucinations, memory, context windows, tools and RAG. Leave your email and I&rsquo;ll send you the recording when it&rsquo;s ready. Then watch whenever suits you.</p>
                 </div>
                 <div class="course-signup">
-                    <p class="course-signup-label">Save your spot</p>
-                    <div class="course-details" aria-label="Workshop details">
-                        <div class="course-schedule">
-                            <span class="course-date">Thursday, 15 October<br>19:00 Croatia time</span>
-                            <span class="course-local-time" id="workshop-local-time">Your time: loading…</span>
-                        </div>
-                    </div>
+                    <p class="course-signup-label">Get the recording when it&rsquo;s ready</p>
 
                     <form class="course-form" action="/api/workshop-signup" method="POST">
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <label for="waitlist-email" class="sr-only">Email</label>
                         <input type="email" id="waitlist-email" name="email" required placeholder="you@example.com">
-                        <button type="submit" class="course-cta">Save my spot</button>
+                        <button type="submit" class="course-cta">Join the list</button>
                     </form>
-                    <p class="course-reassurance">Free · 60 minutes · 15 spots</p>
-                    <p class="course-success">You&rsquo;re in ✦ I&rsquo;ll email you the Google Meet link and reminder soon.</p>
+                    <p class="course-reassurance">Free · Recording coming soon · No spam</p>
+                    <p class="course-success">You&rsquo;re on the list. I&rsquo;ll email you the recording when it&rsquo;s ready.</p>
                 </div>
             </div>
         </div>
@@ -948,23 +941,6 @@
     </footer>
 
     <script>
-        // Render the workshop time in the visitor's own browser timezone.
-        (function () {
-            const localTime = document.getElementById('workshop-local-time');
-            if (!localTime || !Intl.DateTimeFormat) return;
-
-            const workshopDate = new Date('2026-10-15T17:00:00Z');
-            const formatted = new Intl.DateTimeFormat(undefined, {
-                hour: '2-digit',
-                minute: '2-digit',
-                timeZoneName: 'short',
-                hourCycle: 'h23'
-            }).format(workshopDate);
-
-            localTime.textContent = `Your time: ${formatted}`;
-            window.workshopLocalTime = formatted;
-        })();
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
