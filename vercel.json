@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/unsubscribe", "destination": "/api/workshop-unsubscribe" },
     { "source": "/work", "destination": "/projects.html" },
     { "source": "/about", "destination": "/blogs/blog.html" }
   ],

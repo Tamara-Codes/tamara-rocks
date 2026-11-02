@@ -1,6 +1,8 @@
 const { neon } = require('@neondatabase/serverless');
 const { Resend } = require('resend');
 const { createHash } = require('crypto');
+const { renderEmail } = require('./_email');
+const { unsubscribeUrl } = require('./_unsubscribe');
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 let rateLimitTableReady = false;
@@ -107,7 +109,17 @@ module.exports = async function workshopSignup(req, res) {
         to: [email],
         replyTo: 'codewithtamara@gmail.com',
         subject: "Your spot is saved — AI Demystified workshop",
-        html: "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Your workshop spot is saved</title>\n  </head>\n  <body style=\"margin:0; padding:0; background:#fffaf7; color:#211d1c; font-family:Arial, Helvetica, sans-serif;\">\n    <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background:#fffaf7;\">\n      <tr>\n        <td align=\"center\" style=\"padding:36px 16px;\">\n          <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"max-width:640px; border:1px solid #f2d2dc; border-radius:24px; overflow:hidden; background:#fffdfb;\">\n            <tr>\n              <td style=\"padding:48px 44px 34px;\">\n                <p style=\"margin:0 0 22px; color:#c52d63; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase;\">✦ Free live AI workshop</p>\n                <h1 style=\"margin:0; color:#211d1c; font-family:Georgia, 'Times New Roman', serif; font-size:42px; font-weight:400; letter-spacing:-1.4px; line-height:1.06;\">Thanks for joining!</h1>\n                <p style=\"margin:24px 0 0; color:#746d6a; font-size:16px; line-height:1.55;\">Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.</p>\n              </td>\n            </tr>\n            <tr>\n              <td style=\"padding:0 44px 44px;\">\n                <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"background:#f2e5f8; border-radius:16px;\">\n                  <tr>\n                    <td style=\"padding:26px 28px;\">\n                      <p style=\"margin:0 0 13px; color:#c52d63; font-size:11px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase;\">Save the date</p>\n                      <p style=\"margin:0; color:#211d1c; font-size:16px; font-weight:700; line-height:1.45;\">Thursday, 12 November 2026 at 18:00 CET (Central European Time).</p>\n                      <p style=\"margin:14px 0 0; color:#746d6a; font-size:13px; line-height:1.5;\">I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!</p>\n                    </td>\n                  </tr>\n                </table>\n                <p style=\"margin:26px 0 0; color:#211d1c; font-size:16px; line-height:1.55;\">Talk soon,<br><strong>Tamara</strong></p>\n              </td>\n            </tr>\n          </table>\n          <p style=\"margin:18px 0 0; color:#8a827f; font-size:12px; line-height:1.5;\">You received this because you signed up for the AI workshop at tamara.rocks.</p>\n        </td>\n      </tr>\n    </table>\n  </body>\n</html>",
+        html: renderEmail({
+          title: 'Your workshop spot is saved',
+          eyebrow: '✦ Free live AI workshop',
+          heading: 'Thanks for joining!',
+          intro: 'Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.',
+          panelLabel: 'Save the date',
+          panelText: 'Thursday, 12 November 2026 at 18:00 CET (Central European Time).',
+          panelNote: 'I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!',
+          footer: 'You received this because you signed up for the AI workshop at tamara.rocks.',
+          unsubscribeUrl: unsubscribeUrl(email, process.env),
+        }),
       });
 
       if (error) {
