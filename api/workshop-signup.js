@@ -4,7 +4,21 @@ const { createHash } = require('crypto');
 const { renderEmail } = require('./_email');
 const { unsubscribeUrl } = require('./_unsubscribe');
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function isValidEmail(email) {
+  if (email.length > 254 || /\s/.test(email)) return false;
+  const at = email.lastIndexOf('@');
+  if (at <= 0 || at !== email.indexOf('@')) return false;
+
+  const local = email.slice(0, at);
+  const domain = email.slice(at + 1);
+  if (local.length > 64 || local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
+  if (domain.length > 253 || domain.includes('..')) return false;
+
+  const labels = domain.split('.');
+  return labels.length >= 2 && labels.every((label) =>
+    /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i.test(label)
+  );
+}
 let rateLimitTableReady = false;
 
 function getClientIp(req) {
@@ -69,7 +83,7 @@ module.exports = async function workshopSignup(req, res) {
     return res.status(200).json({ ok: true });
   }
 
-  if (!emailPattern.test(email)) {
+  if (!isValidEmail(email)) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
 
