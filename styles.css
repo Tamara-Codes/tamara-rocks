@@ -483,6 +483,31 @@ nav {
     margin-bottom: 1.1rem;
 }
 
+.course-points {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.course-points li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.course-points li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--pink-deep);
+    font-size: 0.72rem;
+    top: 0.14rem;
+}
+
 .course-details {
     display: flex;
     flex-wrap: wrap;

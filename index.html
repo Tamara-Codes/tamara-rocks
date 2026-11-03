@@ -769,7 +769,7 @@
                 I&rsquo;m an AI engineer, software developer and former scientist based in Croatia. I build software for real businesses, teach practical AI, and write about the things I&rsquo;m learning along the way.
             </p>
             <div class="hero-routes">
-                <a href="#learn" class="hero-route hero-route-primary">Join the free AI workshop</a>
+                <a href="#learn" class="hero-route hero-route-primary" data-workshop-cta="hero">Join the free AI workshop</a>
                 <a href="projects.html" class="hero-route hero-route-secondary">See my work</a>
             </div>
             <p class="hero-session">Next live session: Thursday, 12 November 2026 · 18:00 CET</p>
@@ -788,8 +788,8 @@
             <a class="path-card path-build" href="https://nosastra.co" target="_blank" rel="noopener">
                 <span class="path-label">For businesses</span><h3>Have something in your business that should work better?</h3><p>I build websites, custom tools and practical AI solutions through Nos Astra.</p><span class="path-link">Work with me</span>
             </a>
-            <a class="path-card path-learn" href="#learn">
-                <span class="path-label">Free workshop</span><span class="path-next">Next: Thu 12 Nov · 18:00 CET</span><h3>Want to understand AI better?</h3><p>Join my free live AI Demystified workshop and finally understand context windows, RAG, hallucinations and prompting.</p><span class="path-link">Save my spot</span>
+            <a class="path-card path-learn" href="#learn" data-workshop-cta="path">
+                <span class="path-label">Free workshop</span><span class="path-next">Next: Thu 12 Nov · 18:00 CET</span><h3>Want AI to feel less confusing—and more useful?</h3><p>Whether you use it every day or have barely started, learn how it works and how to get better results from it.</p><span class="path-link">Save my spot</span>
             </a>
             <a class="path-card path-follow" href="https://x.com/codewithtamara" target="_blank" rel="noopener">
                 <span class="path-label">Building in public</span><h3>Want to follow the chaos?</h3><p>I write about AI, software, client work, learning things late and changing careers.</p><span class="path-link">Find me on X</span>
@@ -803,12 +803,17 @@
             <div class="section-line"></div>
         </div>
 
-        <div class="course-card" data-observe>
+        <div class="course-card" data-observe id="workshop-card">
             <div class="course-inner">
                 <div class="course-copy">
                     <p class="course-eyebrow">✦ Free live workshop</p>
-                    <h2 class="course-heading">AI is less mysterious once someone explains what&rsquo;s <em>actually happening.</em></h2>
-                    <p class="course-desc">A practical 60-minute live session on context windows, RAG, hallucinations and prompting.</p>
+                    <h2 class="course-heading">Make AI make more sense &mdash; and more <em>useful.</em></h2>
+                    <p class="course-desc">Whether you&rsquo;re curious, confused, or already using ChatGPT every day, this practical session will help you understand what AI is doing and use it with more confidence.</p>
+                    <ul class="course-points">
+                        <li>How models, prediction, tokens, context and memory fit together</li>
+                        <li>What tools, RAG and the &ldquo;harness&rdquo; actually do &mdash; without the jargon</li>
+                        <li>Useful ways to apply AI in your own work, team or business</li>
+                    </ul>
                 </div>
                 <div class="course-signup">
                     <p class="course-signup-label">Save your spot</p>
@@ -826,7 +831,7 @@
                         <input type="email" id="waitlist-email" name="email" required placeholder="you@example.com">
                         <button type="submit" class="course-cta">Save my spot</button>
                     </form>
-                    <p class="course-reassurance">Free · 60 minutes · 15 spots</p>
+                    <p class="course-reassurance">Free · 60 minutes · For complete beginners and regular AI users</p>
                     <p class="course-success">Thanks for joining! Check your inbox for your workshop confirmation. I&rsquo;ll send another email with the joining link soon.</p>
                 </div>
             </div>
@@ -976,16 +981,47 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
 
+        // Anonymous workshop-funnel events. No email addresses or form values are tracked.
+        function trackWorkshopEvent(name) {
+            if (typeof window.va === 'function') window.va('event', { name: name });
+        }
+
+        document.querySelectorAll('[data-workshop-cta]').forEach(function (cta) {
+            cta.addEventListener('click', function () { trackWorkshopEvent('workshop_cta_clicked'); });
+        });
+
+        var workshopCard = document.getElementById('workshop-card');
+        if (workshopCard && 'IntersectionObserver' in window) {
+            var workshopSeen = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        trackWorkshopEvent('workshop_seen');
+                        workshopSeen.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+            workshopSeen.observe(workshopCard);
+        }
+
     </script>
     <script>
         // ── Course waitlists (FormSubmit AJAX) ──
         (function () {
             document.querySelectorAll('.course-form').forEach(function (form) {
                 var success = form.parentElement.querySelector('.course-success');
+                var emailInput = form.elements.email;
+                var emailFocused = false;
+                emailInput.addEventListener('focus', function () {
+                    if (!emailFocused) {
+                        emailFocused = true;
+                        trackWorkshopEvent('workshop_email_focused');
+                    }
+                });
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
                     var btn = form.querySelector('.course-cta');
                     btn.disabled = true;
+                    trackWorkshopEvent('workshop_submit_attempt');
                     fetch(form.action, {
                         method: 'POST',
                         body: JSON.stringify({
@@ -1007,9 +1043,11 @@
                         .then(function () {
                             form.style.display = 'none';
                             if (success) success.classList.add('show');
+                            trackWorkshopEvent('workshop_signup_success');
                         })
                         .catch(function (error) {
                             btn.disabled = false;
+                            trackWorkshopEvent('workshop_signup_failed');
                             alert(error.message || 'Something went wrong — please try again, or email codewithtamara@gmail.com');
                         });
                 });
@@ -1017,6 +1055,7 @@
         })();
     </script>
     <script defer src="/visitor-counter.js"></script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
