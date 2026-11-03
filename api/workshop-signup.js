@@ -122,12 +122,11 @@ module.exports = async function workshopSignup(req, res) {
         }),
       });
 
-      if (error) {
-        throw new Error(error.message || 'Resend could not send the confirmation email.');
-      }
+      if (error) throw new Error(error.message || 'Resend could not send the confirmation email.');
     } catch (error) {
-      await sql`DELETE FROM workshop_signups WHERE email = ${email}`;
-      throw error;
+      // A mailing-provider outage must never erase a workshop registration.
+      // The signup is already persisted and can be retried or contacted manually.
+      console.error('Workshop acknowledgement email failed:', error);
     }
 
     return res.status(200).json({ ok: true });
