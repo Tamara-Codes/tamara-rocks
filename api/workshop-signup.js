@@ -129,7 +129,7 @@ module.exports = async function workshopSignup(req, res) {
           heading: 'Thanks for joining!',
           intro: 'Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.',
           panelLabel: 'Save the date',
-          panelText: 'Thursday, 12 November 2026 at 18:00 CET (Central European Time).',
+          panelText: 'Thursday, 19 November 2026 at 18:00 CET (Central European Time).',
           panelNote: 'I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!',
           footer: 'You received this because you signed up for the AI workshop at tamara.rocks.',
           unsubscribeUrl: unsubscribeUrl(email, process.env),
