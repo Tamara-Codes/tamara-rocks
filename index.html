@@ -1020,7 +1020,10 @@
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
                     var btn = form.querySelector('.course-cta');
+                    var buttonLabel = btn.textContent;
                     btn.disabled = true;
+                    btn.textContent = 'Saving your spot…';
+                    btn.setAttribute('aria-busy', 'true');
                     trackWorkshopEvent('workshop_submit_attempt');
                     fetch(form.action, {
                         method: 'POST',
@@ -1041,12 +1044,15 @@
                             });
                         })
                         .then(function () {
+                            btn.removeAttribute('aria-busy');
                             form.style.display = 'none';
                             if (success) success.classList.add('show');
                             trackWorkshopEvent('workshop_signup_success');
                         })
                         .catch(function (error) {
                             btn.disabled = false;
+                            btn.textContent = buttonLabel;
+                            btn.removeAttribute('aria-busy');
                             trackWorkshopEvent('workshop_signup_failed');
                             alert(error.message || 'Something went wrong — please try again, or email codewithtamara@gmail.com');
                         });

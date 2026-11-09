@@ -1,5 +1,6 @@
 const { neon } = require('@neondatabase/serverless');
 const { Resend } = require('resend');
+const { waitUntil } = require('@vercel/functions');
 const { createHash } = require('crypto');
 const { renderEmail } = require('./_email');
 const { unsubscribeUrl } = require('./_unsubscribe');
@@ -19,7 +20,6 @@ function isValidEmail(email) {
     /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/i.test(label)
   );
 }
-let rateLimitTableReady = false;
 
 function getClientIp(req) {
   const forwarded = req.headers['x-vercel-forwarded-for'] || req.headers['x-forwarded-for'];
@@ -32,34 +32,49 @@ function rateLimitKey(scope, value) {
   return createHash('sha256').update(`${scope}:${value}:${secret}`).digest('hex');
 }
 
-async function ensureRateLimitTable(sql) {
-  if (rateLimitTableReady) return;
-  await sql`
-    CREATE TABLE IF NOT EXISTS workshop_signup_rate_limits (
-      key TEXT PRIMARY KEY,
-      window_started_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      attempts INTEGER NOT NULL DEFAULT 0 CHECK (attempts >= 0)
-    )
-  `;
-  rateLimitTableReady = true;
-}
-
-async function consumeRateLimit(sql, key, limit, windowSeconds) {
+// The rate-limit table is created by migration, never in the signup request.
+// RETURNING links each step so blocked requests cannot insert a signup.
+async function saveSignup(sql, email, ip) {
   const rows = await sql`
-    INSERT INTO workshop_signup_rate_limits (key, window_started_at, attempts)
-    VALUES (${key}, NOW(), 1)
-    ON CONFLICT (key) DO UPDATE SET
-      window_started_at = CASE
-        WHEN workshop_signup_rate_limits.window_started_at < NOW() - (${windowSeconds} * INTERVAL '1 second') THEN NOW()
-        ELSE workshop_signup_rate_limits.window_started_at
-      END,
-      attempts = CASE
-        WHEN workshop_signup_rate_limits.window_started_at < NOW() - (${windowSeconds} * INTERVAL '1 second') THEN 1
-        ELSE workshop_signup_rate_limits.attempts + 1
-      END
-    RETURNING attempts
+    WITH ip_limit AS (
+      INSERT INTO workshop_signup_rate_limits (key, window_started_at, attempts)
+      VALUES (${rateLimitKey('ip', ip)}, NOW(), 1)
+      ON CONFLICT (key) DO UPDATE SET
+        window_started_at = CASE
+          WHEN workshop_signup_rate_limits.window_started_at < NOW() - INTERVAL '15 minutes' THEN NOW()
+          ELSE workshop_signup_rate_limits.window_started_at
+        END,
+        attempts = CASE
+          WHEN workshop_signup_rate_limits.window_started_at < NOW() - INTERVAL '15 minutes' THEN 1
+          ELSE workshop_signup_rate_limits.attempts + 1
+        END
+      RETURNING attempts
+    ), email_limit AS (
+      INSERT INTO workshop_signup_rate_limits (key, window_started_at, attempts)
+      SELECT ${rateLimitKey('email', email)}, NOW(), 1
+      FROM ip_limit WHERE attempts <= 5
+      ON CONFLICT (key) DO UPDATE SET
+        window_started_at = CASE
+          WHEN workshop_signup_rate_limits.window_started_at < NOW() - INTERVAL '1 hour' THEN NOW()
+          ELSE workshop_signup_rate_limits.window_started_at
+        END,
+        attempts = CASE
+          WHEN workshop_signup_rate_limits.window_started_at < NOW() - INTERVAL '1 hour' THEN 1
+          ELSE workshop_signup_rate_limits.attempts + 1
+        END
+      RETURNING attempts
+    ), signup AS (
+      INSERT INTO workshop_signups (email)
+      SELECT ${email} FROM email_limit WHERE attempts <= 3
+      ON CONFLICT (email) DO NOTHING
+      RETURNING email
+    )
+    SELECT
+      (SELECT attempts <= 5 FROM ip_limit) AS ip_allowed,
+      COALESCE((SELECT attempts <= 3 FROM email_limit), FALSE) AS email_allowed,
+      EXISTS(SELECT 1 FROM signup) AS inserted
   `;
-  return rows[0].attempts <= limit;
+  return rows[0];
 }
 
 function escapeHtml(value) {
@@ -93,55 +108,43 @@ module.exports = async function workshopSignup(req, res) {
 
   try {
     const sql = neon(process.env.DATABASE_URL);
-    await ensureRateLimitTable(sql);
-
-    const withinIpLimit = await consumeRateLimit(sql, rateLimitKey('ip', getClientIp(req)), 5, 15 * 60);
-    if (!withinIpLimit) {
+    const signup = await saveSignup(sql, email, getClientIp(req));
+    if (!signup.ip_allowed || !signup.email_allowed) {
       return res.status(429).json({ error: 'Please wait a little before trying again.' });
     }
 
-    const withinEmailLimit = await consumeRateLimit(sql, rateLimitKey('email', email), 3, 60 * 60);
-    if (!withinEmailLimit) {
-      return res.status(429).json({ error: 'Please wait a little before trying again.' });
-    }
-
-    const signup = await sql`
-      INSERT INTO workshop_signups (email)
-      VALUES (${email})
-      ON CONFLICT (email) DO NOTHING
-      RETURNING email
-    `;
-
-    if (signup.length === 0) {
+    if (!signup.inserted) {
       return res.status(200).json({ ok: true, alreadyRegistered: true });
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    try {
-      const { error } = await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL,
-        to: [email],
-        replyTo: 'codewithtamara@gmail.com',
-        subject: "Your spot is saved — AI Demystified workshop",
-        html: renderEmail({
-          title: 'Your workshop spot is saved',
-          eyebrow: '✦ Free live AI workshop',
-          heading: 'Thanks for joining!',
-          intro: 'Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.',
-          panelLabel: 'Save the date',
-          panelText: 'Thursday, 19 November 2026 at 18:00 CET (Central European Time).',
-          panelNote: 'I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!',
-          footer: 'You received this because you signed up for the AI workshop at tamara.rocks.',
-          unsubscribeUrl: unsubscribeUrl(email, process.env),
-        }),
-      });
+    // Keep email delivery alive after responding, without delaying the saved signup.
+    waitUntil((async () => {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        const { error } = await resend.emails.send({
+          from: process.env.RESEND_FROM_EMAIL,
+          to: [email],
+          replyTo: 'codewithtamara@gmail.com',
+          subject: "Your spot is saved — AI Demystified workshop",
+          html: renderEmail({
+            title: 'Your workshop spot is saved',
+            eyebrow: '✦ Free live AI workshop',
+            heading: 'Thanks for joining!',
+            intro: 'Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.',
+            panelLabel: 'Save the date',
+            panelText: 'Thursday, 19 November 2026 at 18:00 CET (Central European Time).',
+            panelNote: 'I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!',
+            footer: 'You received this because you signed up for the AI workshop at tamara.rocks.',
+            unsubscribeUrl: unsubscribeUrl(email, process.env),
+          }),
+        });
 
-      if (error) throw new Error(error.message || 'Resend could not send the confirmation email.');
-    } catch (error) {
-      // A mailing-provider outage must never erase a workshop registration.
-      // The signup is already persisted and can be retried or contacted manually.
-      console.error('Workshop acknowledgement email failed:', error);
-    }
+        if (error) throw new Error(error.message || 'Resend could not send the confirmation email.');
+      } catch (error) {
+        // The signup remains saved even if the email provider fails.
+        console.error('Workshop acknowledgement email failed:', error);
+      }
+    })());
 
     return res.status(200).json({ ok: true });
   } catch (error) {

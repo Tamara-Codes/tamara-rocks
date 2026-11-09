@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/workshop-signup.js": { "regions": ["fra1"], "maxDuration": 60 }
+  },
   "rewrites": [
     { "source": "/unsubscribe", "destination": "/api/workshop-unsubscribe" },
     { "source": "/work", "destination": "/projects.html" },
