@@ -62,7 +62,7 @@ test('responds after one database call while email delivery is still pending', {
     assert.doesNotMatch(f.queries[0].query, /CREATE TABLE|DELETE FROM/);
     assert.equal(f.pending.length, 1, 'Vercel must keep the email task alive');
     assert.equal(f.sent.length, 1);
-    assert.match(f.sent[0].html, /19 November 2026/);
+    assert.match(f.sent[0].html, /26 November 2026/);
     assert.match(f.sent[0].html, /unsubscribe\?token=/);
   } finally {
     finishDelivery({ error: null });
