@@ -124,7 +124,7 @@ module.exports = async function workshopSignup(req, res) {
         const { error } = await resend.emails.send({
           from: process.env.RESEND_FROM_EMAIL,
           to: [email],
-          replyTo: 'codewithtamara@gmail.com',
+          replyTo: 'tamara@nosastra.co',
           subject: "Your spot is saved — AI Demystified workshop",
           html: renderEmail({
             title: 'Your workshop spot is saved',
