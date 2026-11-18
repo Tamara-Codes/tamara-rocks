@@ -73,6 +73,29 @@ test('opening the email link only renders the confirmation form', async () => {
   assert.equal(response.headers['Referrer-Policy'], 'no-referrer');
 });
 
+test('a dedicated unsubscribe key signs new links and preserves existing Resend-signed links', () => {
+  const dedicatedEnv = { ...env, UNSUBSCRIBE_SECRET: 'dedicated-unsubscribe-key' };
+  const newToken = new URL(unsubscribeUrl(email, dedicatedEnv)).searchParams.get('token');
+  assert.notEqual(newToken, token);
+  assert.equal(readUnsubscribeToken(newToken, dedicatedEnv), email);
+  assert.equal(readUnsubscribeToken(token, dedicatedEnv), email);
+  assert.equal(readUnsubscribeToken(newToken, env), null);
+  const forged = `${Buffer.from('other@example.com').toString('base64url')}.${newToken.split('.')[1]}`;
+  assert.equal(readUnsubscribeToken(forged, dedicatedEnv), null);
+});
+
+test('both old and new unsubscribe links still require confirmation before deletion', async () => {
+  for (const useOldToken of [true, false]) {
+    const f = fixture();
+    f.env.UNSUBSCRIBE_SECRET = 'dedicated-unsubscribe-key';
+    const value = useOldToken ? token : new URL(unsubscribeUrl(email, f.env)).searchParams.get('token');
+    assert.equal((await f.request(value, 'GET')).code, 200);
+    assert.equal(f.queries.length, 0);
+    assert.equal((await f.request(value, 'POST')).code, 200);
+    assert.equal(f.queries[0].values[0], email);
+  }
+});
+
 test('confirming deletes only the signed email and notifies Tamara', async () => {
   const f = fixture();
   const response = await f.request(token, 'POST');
