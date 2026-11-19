@@ -13,7 +13,7 @@
 .feedback-workshop span:first-child { font-weight: 800; background: #e5f2e9; color: var(--feedback-green); padding: .4rem .8rem; border: 1px solid #c7ddcd; border-radius: 7px; font-size: .9375rem; }
 .feedback-workshop span:last-child { padding-left: .15rem; color: var(--feedback-muted); font-size: .875rem; }
 .feedback-host { display: flex; gap: 1rem; align-items: center; }
-.feedback-host img { width: 88px; height: 96px; object-fit: cover; object-position: 50% 32%; border-radius: 50% 50% 44% 44%; transform: rotate(-5deg); background: #eadff0; border: 4px solid white; box-shadow: 0 3px 0 #dfd0e6; }
+.feedback-host img { display: block; flex: 0 0 auto; width: 112px; height: 112px; object-fit: cover; object-position: 50% 32%; border-radius: 50%; background: #eadff0; border: 4px solid white; box-shadow: 0 3px 0 #dfd0e6; }
 .feedback-host p { color: var(--feedback-muted); font-size: .9375rem; line-height: 1.6; }
 .feedback-signature { display: block; font-family: 'Caveat', cursive; font-size: 1.8rem; line-height: 1.3; color: #854562; margin-top: .35rem; }
 .feedback-time { display: flex; align-items: center; gap: .5rem; color: var(--feedback-muted); font-size: .875rem; margin-top: 2.5rem; }
@@ -63,7 +63,7 @@
     .feedback-lead br { display: none; }
     .feedback-workshop { margin: 1.15rem 0; }
     .feedback-host { margin-top: 1.5rem; }
-    .feedback-host img { width: 66px; height: 72px; }
+    .feedback-host img { width: 88px; height: 88px; }
     .feedback-host p br { display: none; }
     .feedback-time { margin-top: 1.4rem; }
 }
