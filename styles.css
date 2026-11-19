@@ -67,6 +67,7 @@ a, button { cursor: default; }
 }
 
 body {
+    isolation: isolate;
     background: var(--bg);
     color: var(--text);
     font-family: 'Nunito', sans-serif;
@@ -190,11 +191,11 @@ nav {
     position: absolute;
     top: 0;
     right: 0;
-    width: 50vw;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
 }
 
 .blob {
@@ -483,31 +484,6 @@ nav {
     margin-bottom: 1.1rem;
 }
 
-.course-points {
-    display: grid;
-    gap: 0.55rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: var(--text-mid);
-    font-size: 0.9rem;
-    line-height: 1.45;
-}
-
-.course-points li {
-    position: relative;
-    padding-left: 1.2rem;
-}
-
-.course-points li::before {
-    content: '✦';
-    position: absolute;
-    left: 0;
-    color: var(--pink-deep);
-    font-size: 0.72rem;
-    top: 0.14rem;
-}
-
 .course-details {
     display: flex;
     flex-wrap: wrap;
@@ -733,3 +709,29 @@ footer {
     .form-submit { align-self: stretch; text-align: center; }
     .chatbot-btn-wrap { bottom: 1rem; right: 1rem; }
 }
+
+.course-points {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: var(--text-mid);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.course-points li {
+    position: relative;
+    padding-left: 1.2rem;
+}
+
+.course-points li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--pink-deep);
+    font-size: 0.72rem;
+    top: 0.14rem;
+}
+

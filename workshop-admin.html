@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+    <title>Workshop bookings | Tamara Martinović</title>
+    <link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/site-shell.css"><link rel="stylesheet" href="/workshop-admin.css">
+    <script defer src="/workshop-admin.js"></script>
+</head>
+<body>
+    <main class="booking-admin">
+        <a class="admin-back" href="/workshops">← Back to workshops</a>
+        <p class="admin-eyebrow">Private · Tamara Rocks</p>
+        <h1 class="site-title">Workshop <em>bookings.</em></h1>
+        <p class="admin-intro">Your sessions, participants and next steps, in one place.</p>
+        <form id="admin-login" class="admin-panel">
+            <h2>Welcome back, Tamara.</h2>
+            <label for="admin-secret">Your private access key</label>
+            <input id="admin-secret" name="secret" type="password" autocomplete="current-password" required>
+            <button type="submit">Open my bookings</button>
+            <button type="button" id="local-login" hidden>Open test bookings locally</button>
+        </form>
+        <p id="admin-message" role="status" aria-live="polite"></p>
+        <section id="admin-workspace" hidden>
+            <p id="admin-dev-note" class="admin-dev-note" hidden>Test database · Changes are saved, but no emails are sent.</p>
+            <div id="session-overview" class="session-overview"></div>
+            <div class="admin-toolbar">
+                <label>Session <select id="session-filter"><option value="">All sessions</option></select></label>
+                <label>Status <select id="status-filter"><option value="">All statuses</option><option value="reserved">Reserved</option><option value="payment_pending">Payment requested</option><option value="paid">Paid</option><option value="waitlisted">Waiting list</option><option value="cancelled">Cancelled</option><option value="expired">Expired</option></select></label>
+                <button id="refresh-bookings" type="button">Refresh</button>
+                <button id="export-bookings" type="button">Download CSV</button>
+                <button id="retry-emails" type="button">Retry queued emails</button>
+                <button id="admin-logout" type="button" class="quiet">Sign out</button>
+            </div>
+            <p class="admin-help">A reservation holds a place. The 48-hour payment deadline starts only after the payment email is sent. Mark a booking paid after checking Stripe.</p>
+            <div id="bookings-list" class="bookings-list"></div>
+        </section>
+    </main>
+    <dialog id="admin-action-dialog" class="admin-action-dialog">
+        <form id="admin-action-form">
+            <h2 id="admin-action-title"></h2><p id="admin-action-copy"></p>
+            <div id="payment-link-field" hidden><label for="payment-link">Stripe Payment Link</label><input id="payment-link" name="paymentLink" type="url" placeholder="https://buy.stripe.com/…"></div>
+            <p id="admin-action-error" role="alert"></p>
+            <div class="admin-actions"><button type="button" id="admin-action-close" class="quiet">Go back</button><button type="submit" id="admin-action-submit">Confirm</button></div>
+        </form>
+    </dialog>
+</body>
+</html>

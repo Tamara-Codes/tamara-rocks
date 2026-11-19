@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — Tamara</title>
-    <meta name="description" content="Blog by Tamara Martinovic — personal essays and reflections on AI, software engineering, remote work, and life as a developer.">
+    <meta name="description" content="Blog by Tamara Martinović — personal essays and reflections on AI, software engineering, remote work, and life as a developer.">
     <link rel="canonical" href="https://www.tamara.rocks/blogs/blog.html">
     <meta property="og:title" content="About — Tamara">
-    <meta property="og:description" content="Blog by Tamara Martinovic — personal essays and reflections on AI, software engineering, remote work, and life as a developer.">
+    <meta property="og:description" content="Blog by Tamara Martinović — personal essays and reflections on AI, software engineering, remote work, and life as a developer.">
     <meta property="og:url" content="https://www.tamara.rocks/blogs/blog.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="About — Tamara">
-    <meta name="twitter:description" content="Blog by Tamara Martinovic — personal essays on AI, software, and life as a developer.">
+    <meta name="twitter:description" content="Blog by Tamara Martinović — personal essays on AI, software, and life as a developer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -111,8 +111,8 @@
         }
 
         .post-pullquote {
-            border-left: 3px solid var(--lavender);
-            padding: 0.25rem 0 0.25rem 1.5rem;
+            border-left: none;
+            padding: 0.25rem 0;
             margin: 2.5rem 0;
             font-family: 'Fraunces', serif;
             font-size: 1.35rem;
@@ -200,6 +200,9 @@
             .author-card { flex-direction: column; gap: 1rem; }
         }
     </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
 
@@ -211,20 +214,20 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <nav>
-        <a href="../index.html" class="nav-name">Tamara Martinovic, PhD</a>
-        <div class="nav-links">
-            <a href="../index.html" class="nav-link">Home</a>
-            <a href="../projects.html" class="nav-link">Work</a>
-            <a href="blog.html" class="nav-link active">About</a>
-            <a href="../cv.html" class="nav-link">CV</a>
-        </div>
-        <div class="nav-right">
-        </div>
-    </nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link active" aria-current="page">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
 
     <header class="post-hero" id="main-content">
-        <h1 class="post-title">I took the <em>scenic route</em> into tech.</h1>
+        <h1 class="post-title site-title">I took the <em>scenic route into tech.</em></h1>
     </header>
 
     <div class="post-hero-img">
@@ -235,7 +238,7 @@
         <article class="post-content">
 
             <p>
-                I&rsquo;m Tamara — an AI engineer, software developer, former scientist, teacher, builder and chronic starter of new things. I spent around a decade in biomedical research and teaching before moving into software. This is the longer version of how that happened.
+                I&rsquo;m Tamara, an AI engineer, software developer, former scientist, teacher, builder and chronic starter of new things. I spent around a decade in biomedical research and teaching before moving into software. This is the longer version of how that happened.
             </p>
 
             <p>
@@ -312,10 +315,10 @@
 
         <div class="author-card">
             <div class="author-avatar">
-                <img src="../images/tamara.jpg" alt="Tamara Martinovic">
+                <img src="../images/tamara-portrait-nov-2026.jpg" alt="Tamara Martinović" width="1000" height="880">
             </div>
             <div>
-                <p class="author-name">Tamara Martinovic, PhD</p>
+                <p class="author-name">Tamara Martinović, PhD</p>
                 <p class="author-bio">AI engineer · builder · teacher. Still learning in public.</p>
                 <a href="../index.html#contact" class="author-cta">Get in touch →</a>
             </div>
@@ -323,9 +326,34 @@
 
     </div>
 
-    <footer>
-        <span class="footer-text">&copy; 2025 Tamara Martinovic</span>
-    </footer>
+    <footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>

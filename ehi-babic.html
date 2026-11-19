@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construction Site Diary — Tamara Martinovic</title>
+    <title>Construction Site Diary — Tamara Martinović</title>
     <meta name="description" content="A private, mobile-first construction work diary web application.">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -28,28 +28,27 @@
         .privacy { font-size:.9rem; }
         @media(max-width:700px) { .case-hero { margin:0 1rem; padding:2.5rem 1.5rem; grid-template-columns:1fr; gap:2rem; } .case-app-shot { max-width:185px; max-height:350px; margin:auto; order:-1; } .case-body { padding:3rem 1rem 5rem; } .case-grid { grid-template-columns:1fr; } .case-block.wide { grid-column:auto; } }
     </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="projects.html" class="nav-link active">Work</a>
-            <a href="blogs/blog.html" class="nav-link">About</a>
-            <a href="cv.html" class="nav-link">CV</a>
-        </div>
-        <div class="nav-right">
-            <div class="visitor-counter" aria-live="polite">
-                <span class="visitor-counter-label">visitors</span>
-                <output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output>
-            </div>
-        </div>
-    </nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link active" aria-current="page">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
     <main>
         <header class="case-hero">
             <div>
                 <p class="case-kicker">Client project · Private app</p>
-                <h1>Construction site diary</h1>
+                <h1 class="site-title">Construction <em>site diary</em></h1>
                 <p>A private construction work diary for capturing site updates, photos, material needs, and delays as they happen.</p>
             </div>
             <img class="case-app-shot" src="images/ehi-work-diary.png" alt="Construction site diary on mobile">
@@ -88,7 +87,34 @@
             </div>
         </section>
     </main>
-    <script defer src="/visitor-counter.js"></script>
     <script defer src="/_vercel/insights/script.js"></script>
+<footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

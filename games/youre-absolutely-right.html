@@ -158,16 +158,21 @@
 
   .footer-note { font-family: var(--mono); font-size: 11px; color: #5a5249; text-align: center; margin-top: 26px; letter-spacing: 0.03em; }
 </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
-<body>
-<nav class="site-nav">
-  <a href="../index.html">Tamara Martinovic, PhD</a>
-  <div class="site-nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../projects.html">Work</a>
-    <a href="../blogs/blog.html">About</a>
-    <a href="../cv.html">CV</a>
-  </div>
+<body class="site-game">
+<nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link active" aria-current="page">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
 </nav>
 
 <div class="vignette"></div>
@@ -521,5 +526,33 @@
 })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

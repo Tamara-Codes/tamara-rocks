@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work — Tamara</title>
-    <meta name="description" content="Client work, products and selected experiments by Tamara Martinovic, AI engineer, builder and teacher.">
+    <meta name="description" content="Client work, products and selected experiments by Tamara Martinović, AI engineer, builder and teacher.">
     <link rel="canonical" href="https://www.tamara.rocks/projects.html">
     <meta property="og:title" content="Work — Tamara">
-    <meta property="og:description" content="Projects by Tamara Martinovic. AI tools, apps, and experiments built with LLMs and modern web technologies.">
+    <meta property="og:description" content="Projects by Tamara Martinović. AI tools, apps, and experiments built with LLMs and modern web technologies.">
     <meta property="og:url" content="https://www.tamara.rocks/projects.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@codewithtamara">
     <meta name="twitter:creator" content="@codewithtamara">
     <meta name="twitter:title" content="Work — Tamara">
-    <meta name="twitter:description" content="Projects by Tamara Martinovic. AI tools, apps, and experiments.">
+    <meta name="twitter:description" content="Projects by Tamara Martinović. AI tools, apps, and experiments.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
@@ -423,6 +423,9 @@
         @media (max-width: 760px) { .work-index { padding:3rem 1.5rem 5rem; }.work-index-grid { grid-template-columns:1fr; }.experiment-grid { grid-template-columns:1fr 1fr; }.index-card { grid-template-columns:minmax(0,1fr) 130px; }.index-card-image { height:140px; } }
         @media (max-width: 480px) { .work-index { padding:2.5rem 1rem 4rem; }.work-index-title { font-size:3rem; }.experiment-grid { grid-template-columns:1fr; }.index-card { padding:1.5rem; grid-template-columns:minmax(0,1fr) 100px; gap:1rem; }.index-card h3 { font-size:1.5rem; }.index-card-image { height:120px; } }
     </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
 
@@ -434,15 +437,17 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="projects.html" class="nav-link active">Work</a>
-            <a href="blogs/blog.html" class="nav-link">About</a>
-            <a href="cv.html" class="nav-link">CV</a>
-        </div>
-    </nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link active" aria-current="page">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
 
     <div class="legacy-work" aria-hidden="true">
     <header class="page-hero" id="legacy-main-content">
@@ -1061,7 +1066,7 @@
     <main class="work-index" id="main-content">
         <header class="work-index-hero">
             <p class="work-index-kicker">Selected work</p>
-            <h1 class="work-index-title">Work that made it <span style="color:var(--pink-deep);">into the world.</span></h1>
+            <h1 class="work-index-title site-title">Work that made it <em>into the world.</em></h1>
             <p class="work-index-intro">Things I&rsquo;ve built for clients, products I&rsquo;ve launched, and experiments that taught me something along the way.</p>
         </header>
 
@@ -1099,9 +1104,34 @@
         </section>
     </main>
 
-    <footer>
-        <span class="footer-text">&copy; 2025 Tamara Martinovic</span>
-    </footer>
+    <footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 
     <script>
         // The former selector-and-panel interface is retained only in the

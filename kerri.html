@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio KERRI Design Case Study — Tamara Martinovic</title>
+    <title>Studio KERRI Design Case Study — Tamara Martinović</title>
     <meta name="description" content="A visual catalogue website built for Studio KERRI Design in Matulji.">
     <link rel="stylesheet" href="styles.css">
     <style>
         .case-nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 6rem}.case-nav a{color:var(--text);text-decoration:none;font-weight:600}.case-nav .back{color:var(--text-mid);font-size:.88rem}.case-hero{max-width:1000px;min-height:470px;margin:2rem auto 0;padding:4.5rem 3rem;border-radius:28px;position:relative;overflow:hidden;display:flex;align-items:end}.case-hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,18,18,.88),rgba(18,18,18,.2)),url('images/kerri-hero.jpg') center/cover}.case-copy{position:relative;z-index:1;max-width:620px;color:#fff}.case-kicker{color:#e59e99;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:700}.case-hero h1{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,6rem);line-height:.95;margin:1rem 0;letter-spacing:-.05em}.case-hero p{color:rgba(255,255,255,.8);font-size:1.05rem;line-height:1.7}.case-cta{display:inline-flex;margin-top:1rem;padding:.72rem 1rem;border:1px solid rgba(255,255,255,.55);border-radius:999px;color:#fff;text-decoration:none;font-size:.82rem;font-weight:700;transition:background .2s ease,color .2s ease}.case-cta:hover{background:#fff;color:var(--text)}.case-body{max-width:1000px;margin:0 auto;padding:5rem 3rem 7rem}.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}.case-block{padding:2rem;background:#fff;border-radius:20px}.case-block.wide{grid-column:1/-1;background:var(--card-02)}.case-label{color:var(--pink-deep);text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;font-weight:700;margin:0 0 .75rem}.case-block h2{font-family:'Fraunces',serif;font-size:1.75rem;line-height:1.15;margin:0 0 1rem}.case-block p,.case-block li{color:var(--text-mid);line-height:1.7}.case-block ul{padding-left:1.2rem;margin:0}.flow{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.25rem}.flow span{background:rgba(255,255,255,.75);border-radius:999px;padding:.55rem .9rem;font-size:.82rem;font-weight:600}.stack{display:flex;flex-wrap:wrap;gap:.5rem}.stack span{background:rgba(255,255,255,.75);border-radius:999px;padding:.4rem .75rem;font-size:.78rem}@media(max-width:700px){.case-nav{padding:1.25rem}.case-hero{margin:0 1rem;min-height:410px;padding:2rem 1.5rem}.case-body{padding:3rem 1rem 5rem}.case-grid{grid-template-columns:1fr}.case-block.wide{grid-column:auto}}
     </style>
-    <script defer src="shared-nav.js"></script>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
-    <nav class="case-nav"><a href="index.html">Tamara Martinovic, PhD</a><a class="back" href="projects.html">← Back to work</a></nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link active" aria-current="page">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
     <main>
-        <header class="case-hero"><div class="case-copy"><p class="case-kicker">Client project</p><h1>Studio KERRI Design</h1><p>A visual catalogue website that brings a long-established Matulji showroom&rsquo;s tile, bathroom, and interior collection online.</p><a class="case-cta" href="https://www.kerri.hr/" target="_blank" rel="noopener">Visit Studio KERRI Design ↗</a></div></header>
+        <header class="case-hero"><div class="case-copy case-copy-light"><p class="case-kicker">Client project</p><h1 class="site-title">Studio KERRI <em>Design</em></h1><p>A visual catalogue website that brings a long-established Matulji showroom&rsquo;s tile, bathroom, and interior collection online.</p><a class="case-cta" href="https://www.kerri.hr/" target="_blank" rel="noopener">Visit Studio KERRI Design ↗</a></div></header>
         <section class="case-body"><div class="case-grid">
             <article class="case-block"><p class="case-label">The problem</p><h2>A rich showroom needed a clearer online home.</h2><p>Studio KERRI represents dozens of brands across tiles, sanitaryware, furniture, baths, and shower cabins. Visitors needed a more direct way to explore that range before they came to the showroom.</p></article>
             <article class="case-block"><p class="case-label">What I built</p><h2>A visual catalogue, not a brochure.</h2><p>I built a polished website that leads with the products, makes categories easy to explore, and gives every represented brand room to feel considered.</p></article>
@@ -25,5 +37,33 @@
         </div></section>
     </main>
     <script defer src="/_vercel/insights/script.js"></script>
+<footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

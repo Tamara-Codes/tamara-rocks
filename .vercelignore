@@ -1,0 +1,10 @@
+.env*
+.git
+node_modules
+tests
+scripts
+migrations
+docs
+*.md
+workshop-signups*.txt
+.workshop-email-preview.html

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV — Tamara Martinovic</title>
-    <meta name="description" content="The CV of Tamara Martinovic, AI Solutions Engineer. Experience, skills, and background in AI, LLMs, and software engineering.">
+    <title>CV — Tamara Martinović</title>
+    <meta name="description" content="The CV of Tamara Martinović, AI Solutions Engineer. Experience, skills, and background in AI, LLMs, and software engineering.">
     <link rel="canonical" href="https://www.tamara.rocks/cv.html">
-    <meta property="og:title" content="CV — Tamara Martinovic">
-    <meta property="og:description" content="The CV of Tamara Martinovic, AI Solutions Engineer. Experience, skills, and background in AI, LLMs, and software engineering.">
+    <meta property="og:title" content="CV — Tamara Martinović">
+    <meta property="og:description" content="The CV of Tamara Martinović, AI Solutions Engineer. Experience, skills, and background in AI, LLMs, and software engineering.">
     <meta property="og:url" content="https://www.tamara.rocks/cv.html">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@codewithtamara">
     <meta name="twitter:creator" content="@codewithtamara">
-    <meta name="twitter:title" content="CV — Tamara Martinovic">
-    <meta name="twitter:description" content="The CV of Tamara Martinovic, AI Solutions Engineer.">
+    <meta name="twitter:title" content="CV — Tamara Martinović">
+    <meta name="twitter:description" content="The CV of Tamara Martinović, AI Solutions Engineer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -558,6 +558,9 @@
             .edu-lang-grid > div:nth-child(3) { width: 100%; }
         }
     </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
 
@@ -569,20 +572,22 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="projects.html" class="nav-link">Work</a>
-            <a href="blogs/blog.html" class="nav-link">About</a>
-            <a href="cv.html" class="nav-link active">CV</a>
-        </div>
-    </nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link active" aria-current="page">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
 
     <header class="page-hero" id="main-content">
         <div>
             <div class="page-eyebrow">✦ Résumé</div>
-            <h1 class="page-title">Tamara <span style="color:var(--pink-deep);">Martinovic</span></h1>
+            <h1 class="page-title site-title">Tamara <em>Martinović</em></h1>
             <p class="page-subtitle">
                 <span>AI Engineer · Software Developer</span>
                 <span class="dot"></span>
@@ -812,9 +817,34 @@
 
     </div><!-- end cv-body -->
 
-    <footer>
-        <span class="footer-text">&copy; 2025 Tamara Martinovic</span>
-    </footer>
+    <footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {

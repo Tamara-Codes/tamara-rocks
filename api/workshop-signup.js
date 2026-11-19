@@ -130,7 +130,7 @@ module.exports = async function workshopSignup(req, res) {
             title: 'Your workshop spot is saved',
             eyebrow: '✦ Free live AI workshop',
             heading: 'Thanks for joining!',
-            intro: 'Your spot is saved for AI Demystified — a free, practical 60-minute live workshop on context windows, RAG, hallucinations and prompting.',
+            intro: 'Your spot is saved for AI Demystified — a free, practical 45-minute live workshop on context windows, RAG, hallucinations and prompting.',
             panelLabel: 'Save the date',
             panelText: 'Thursday, 26 November 2026 at 18:00 CET (Central European Time).',
             panelNote: 'I’ll send you another email with the joining link before the workshop. Looking forward to seeing you there!',

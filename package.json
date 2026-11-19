@@ -6,5 +6,11 @@
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/functions": "3.11.0",
     "resend": "^6.28.1"
+  },
+  "scripts": {
+    "test:bookings": "node --test --test-isolation=none tests/workshop-bookings.test.cjs tests/workshop-booking-routes.test.cjs",
+    "test:signup": "node --test --test-isolation=none tests/workshop-signup-latency.test.cjs tests/workshop-unsubscribe.test.cjs tests/workshop-feedback.test.cjs",
+    "dev": "node --env-file-if-exists=.env.bookings.local scripts/local-preview.cjs",
+    "migrate:bookings": "node --env-file-if-exists=.env.bookings.local scripts/migrate-bookings.cjs"
   }
 }

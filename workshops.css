@@ -1,0 +1,178 @@
+.workshops-page { --body-muted: #514c47; }
+.workshops-page a, .workshops-page button, .workshops-page summary { cursor: pointer; }
+.workshops-page [hidden] { display: none !important; }
+.workshops-main { max-width: 1300px; padding: 0 clamp(1.25rem, 4.5vw, 6rem); margin: 0 auto; }
+.workshops-hero { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2rem; padding: 3.5rem 0 3rem; }
+.workshops-hero > div:first-child { min-width: 0; }
+.eyebrow { font-size: .875rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.workshops-hero .eyebrow { margin-bottom: 1.4rem; }
+.workshops-hero .eyebrow span { color: #b93154; margin-right: .35rem; }
+.workshops-page h1, .workshops-page h2, .workshops-page h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; letter-spacing: -.04em; }
+.workshops-page h1 { font-size: clamp(2.8rem, 5.5vw, 4.7rem); line-height: 1.06; }
+.workshops-page h1 em { color: #ba3657; font-weight: 300; }
+.hero-intro { max-width: 600px; color: var(--body-muted); margin-top: 1.4rem; font-size: 1.125rem; line-height: 1.7; }
+.host-note { display: flex; align-items: center; gap: 1rem; padding-bottom: .4rem; }
+.host-note img { display: block; width: 144px; height: 160px; flex-shrink: 0; object-fit: cover; object-position: center 32%; border-radius: 45% 45% 40% 40%; }
+.host-note p { font-size: .875rem; line-height: 1.5; color: var(--body-muted); }
+.host-note span { display: block; color: #a82b4b; font: 1.8rem 'Caveat', cursive; transform: rotate(-5deg); margin-top: .25rem; }
+.workshop-choices { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(6, auto); column-gap: 1.4rem; row-gap: 0; }
+.workshop-card { border: 1px solid rgba(26,23,20,.12); border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.5rem); display: grid; grid-template-rows: subgrid; grid-row: span 6; align-items: start; }
+.workshop-card-free { background: #e7dff7; }
+.workshop-card-paid { background: #d9efe5; }
+.card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; margin-bottom: 1.8rem; }
+.card-topline .eyebrow { max-width: 230px; font-size: .875rem; letter-spacing: .045em; }
+.price-tag { background: rgba(255,255,255,.65); padding: .4rem .8rem; border: 1px solid rgba(26,23,20,.11); border-radius: 999px; font-size: 1.1rem; font-weight: 800; white-space: nowrap; }
+.price-tag span { font-size: .875rem; font-weight: 600; }
+.workshop-card h2 { font-size: clamp(2rem, 3.1vw, 2.65rem); line-height: 1.12; margin-bottom: 1rem; }
+.workshop-card h2 em { font-weight: 300; }
+.card-intro { width: 100%; }
+.card-intro > p { font-size: 1rem; color: var(--body-muted); max-width: 430px; margin-bottom: 1.3rem; }
+.quick-details { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem 1rem; color: var(--body-muted); font-size: .875rem; margin-bottom: 1rem; }
+.quick-details li { white-space: nowrap; }
+.quick-details li::before { content: '·'; font-weight: 800; margin-right: .4rem; }
+.workshop-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; list-style: none; width: 100%; margin: .25rem 0 1.5rem; }
+.workshop-facts li { display: flex; align-items: flex-start; gap: .65rem; padding: .9rem; background: rgba(255,255,255,.5); border: 1px solid rgba(38,94,71,.15); border-radius: 12px; }
+.workshop-facts svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: .15rem; color: #265e47; }
+.workshop-facts strong { display: block; font-size: 1.125rem; font-weight: 800; line-height: 1.35; }
+.workshop-facts span { display: block; font-size: .875rem; line-height: 1.45; color: var(--body-muted); margin-top: .2rem; }
+.workshop-card-free .workshop-facts li { border-color: rgba(92,65,131,.15); }
+.workshop-card-free .workshop-facts svg { color: #624784; }
+.card-syllabus { width: 100%; border-top: 1px solid rgba(92,65,131,.18); padding-top: 1.1rem; margin-bottom: 1.5rem; }
+.card-syllabus > p { font-size: .875rem; font-weight: 800; margin-bottom: .7rem; }
+.card-syllabus ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem 1rem; list-style: none; }
+.card-syllabus li { display: flex; align-items: baseline; gap: .45rem; font-size: .9375rem; color: var(--body-muted); }
+.card-syllabus li span { color: #624784; font-weight: 800; }
+.workshop-card-paid .card-syllabus { border-color: rgba(38,94,71,.18); }
+.workshop-card-paid .card-syllabus li span { color: #265e47; }
+.session-date { font-size: .9375rem; font-weight: 800; margin-top: 0; margin-bottom: 1.25rem; padding-top: .5rem; }
+.card-local-time { display: block; font-size: .875rem; font-weight: 400; color: var(--body-muted); margin-top: .3rem; }
+.card-footer { width: 100%; }
+.workshop-button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .85rem 1.4rem; border: 1px solid var(--text); border-radius: 10px; font: 800 1rem 'Nunito', sans-serif; text-decoration: none; transition: background .18s, transform .18s, box-shadow .18s; }
+.button-dark { color: #fff; background: var(--text); }
+.button-dark:hover { background: #36312c; box-shadow: 3px 3px 0 rgba(26,23,20,.2); transform: translate(-1px,-1px); }
+.button-light { color: var(--text); background: rgba(255,255,255,.75); }
+.button-light:hover { background: #fff; box-shadow: 3px 3px 0 rgba(26,23,20,.2); transform: translate(-1px,-1px); }
+.workshop-button:disabled { opacity: .6; cursor: wait; transform: none; }
+.card-footnote { font-size: .875rem; color: var(--body-muted); margin-top: .75rem; }
+.workflow-section { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr); gap: clamp(2rem, 5vw, 5rem); padding: 5.5rem 0; align-items: start; }
+.workflow-copy > .eyebrow { margin-bottom: 1.3rem; }
+.workflow-copy > h2 { font-size: clamp(2rem, 3.2vw, 2.8rem); line-height: 1.13; }
+.workflow-copy > h2 em { font-weight: 300; }
+.section-intro { color: var(--body-muted); margin: 1.3rem 0 2rem; }
+.workflow-list { display: grid; gap: 1.5rem; }
+.workflow-step { display: flex; gap: 1rem; }
+.step-mark { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; background: #d9efe5; color: #265e47; }
+.workflow-step h3 { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 800; letter-spacing: 0; margin-bottom: .35rem; }
+.workflow-step p { color: var(--body-muted); font-size: 1rem; line-height: 1.65; }
+.takeaways { border-left: 3px solid var(--pink); padding-left: 1.25rem; margin: 2rem 0 1.5rem; }
+.takeaways h3 { font-size: 1.4rem; margin-bottom: .4rem; }
+.takeaways p { color: var(--body-muted); }
+.format-note { color: var(--body-muted); font-size: .875rem; }
+.session-panel > .eyebrow { margin-bottom: .6rem; }
+.session-panel > h2 { font-size: 2rem; line-height: 1.15; margin-bottom: .8rem; }
+.session-panel-intro { color: var(--body-muted); margin-bottom: 1.5rem; }
+.session-option { background: #fffefa; border: 1px solid #c5d7cb; border-radius: 18px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 4px 4px 0 #e4eedd; }
+.session-option-top { display: flex; gap: 1rem; align-items: center; }
+.date-tile { width: 57px; min-width: 57px; padding: .4rem .2rem; background: #d9efe5; border-radius: 10px; text-align: center; line-height: 1.15; }
+.date-tile span { font-size: .875rem; font-weight: 800; }
+.date-tile strong { display: block; font-family: 'Fraunces', serif; font-size: 1.85rem; font-weight: 500; }
+.session-day { font-family: 'Fraunces', serif; font-size: 1.5rem; line-height: 1.3; }
+.session-option time { font-size: .875rem; font-weight: 700; }
+.session-local-time { font-size: .875rem; color: var(--body-muted); margin-top: 1rem; }
+.seats-remaining { color: #265e47; font-size: .9375rem; font-weight: 800; border-top: 1px solid #e4e8df; margin-top: 1rem; padding-top: .75rem; margin-bottom: .75rem; }
+.seats-remaining.is-full { color: #845722; }
+.session-option .workshop-button { width: 100%; }
+.session-payment-note { font-size: .875rem; color: var(--body-muted); padding: .3rem .2rem 0; }
+.dialog-open { overflow: hidden; }
+.reservation-dialog { position: fixed; inset: 0; margin: auto; padding: 2rem; width: min(510px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); border: 1px solid #cec8bd; border-radius: 22px; background: var(--bg); color: var(--text); box-shadow: 0 20px 100px #1a171438; overflow-y: auto; overscroll-behavior: contain; }
+.reservation-dialog::backdrop { background: rgba(26,23,20,.48); backdrop-filter: blur(4px); }
+.dialog-close { position: absolute; top: .7rem; right: .7rem; border: none; border-radius: 50%; background: #eee8df; color: var(--text); width: 36px; height: 36px; font-size: 1.6rem; line-height: 1; }
+.reservation-dialog .eyebrow { font-size: .875rem; max-width: 340px; padding-right: 1.3rem; margin-bottom: 1rem; }
+.reservation-dialog h2 { font-size: 2.2rem; line-height: 1.1; margin-bottom: .8rem; }
+#reservation-description { color: var(--body-muted); }
+.selected-session { background: #e2f0e8; border: 1px solid #c5d7cb; border-radius: 12px; padding: 1rem; margin: 1.2rem 0 1.4rem; font-size: .875rem; }
+.selected-session > span, .selected-session > strong { display: block; }
+.selected-session > strong { font-size: 1rem; margin-bottom: .25rem; }
+.selected-session > div { display: flex; justify-content: space-between; gap: .5rem; flex-wrap: wrap; border-top: 1px solid #c5d7cb; padding-top: .6rem; margin-top: .7rem; }
+#selected-session-seats { font-weight: 800; color: #265e47; }
+#selected-session-local { color: var(--body-muted); margin-top: .25rem; }
+.reservation-dialog .booking-note { color: var(--body-muted); font-size: .875rem; line-height: 1.6; margin-top: 1rem; }
+.reservation-success { padding-top: .75rem; }
+.success-symbol { display: flex; width: 52px; height: 52px; align-items: center; justify-content: center; font-size: 1.75rem; background: #d9efe5; color: #265e47; border-radius: 50%; margin-bottom: 1.25rem; }
+.result-session { font-size: .9375rem; font-weight: 800; border-bottom: 1px solid #d9d3cb; padding-bottom: 1rem; margin-bottom: 1rem; }
+#reservation-result-copy { color: var(--body-muted); }
+.preview-feedback { color: #6a5427; background: #fff0c5; padding: .8rem; border-radius: 8px; font-size: .875rem; margin: 1.25rem 0; }
+.reservation-success .workshop-button { width: 100%; }
+.workshop-form { display: flex; flex-direction: column; }
+.workshop-form > label:not(.consent) { font-size: .875rem; font-weight: 800; margin-bottom: .35rem; }
+.optional { font-weight: 400; color: var(--body-muted); }
+.workshop-form input:not([type="checkbox"]) { min-width: 0; width: 100%; border: 1px solid #9a958d; background: #fff; color: var(--text); border-radius: 8px; font: 400 1rem 'Nunito', sans-serif; padding: .8rem .9rem; min-height: 48px; margin-bottom: 1rem; }
+.workshop-form input::placeholder { color: #736d66; opacity: 1; }
+.workshops-page :focus-visible { outline: 3px solid #7b4aab; outline-offset: 4px; }
+.consent { display: flex; align-items: flex-start; gap: .6rem; font-size: .875rem; color: var(--body-muted); margin: .1rem 0 1.2rem; line-height: 1.5; cursor: pointer; }
+.consent input { margin-top: .25rem; flex-shrink: 0; width: 17px; height: 17px; accent-color: #265e47; }
+.honey { position: absolute; left: -10000px; height: 1px; width: 1px; overflow: hidden; }
+.form-error { font-size: .9375rem; color: #a21c36; padding-top: .8rem; }
+.form-result { border: 1px solid #7a9f85; background: #e8f5eb; border-radius: 10px; padding: 1.1rem; font-size: 1rem; }
+.form-result strong { display: block; font-size: 1.05rem; margin-bottom: .4rem; }
+.free-session-summary { background: #eee7f8; border: 1px solid #d9cce8; border-radius: 16px; padding: 1.15rem; margin: 1.4rem 0; }
+.free-summary-top { display: flex; align-items: center; gap: 1rem; }
+.free-calendar { width: 62px; flex-shrink: 0; border: 1px solid #d5c8e4; border-radius: 12px; overflow: hidden; text-align: center; background: #fffdfb; }
+.free-calendar-month { display: block; padding: .3rem .4rem; background: #dfd2ee; color: #533772; font-size: .875rem; font-weight: 800; letter-spacing: .07em; line-height: 1.3; }
+.free-calendar-day { display: block; padding: .3rem .4rem .4rem; font-family: 'Fraunces', Georgia, serif; font-size: 2.1rem; font-weight: 500; line-height: 1.1; }
+.free-summary-when { min-width: 0; }
+.free-summary-date { display: block; font-size: .9375rem; font-weight: 800; line-height: 1.45; }
+.free-summary-time { display: block; font-size: 1.4rem; font-weight: 800; line-height: 1.3; margin-top: .25rem; }
+.free-summary-time-label { display: block; font-size: .875rem; color: var(--body-muted); margin-top: .1rem; }
+.free-summary-badges { display: flex; flex-wrap: wrap; gap: .6rem; list-style: none; border-top: 1px solid #d9cce8; margin-top: 1rem; padding-top: .9rem; }
+.free-summary-badges li { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .65rem; border: 1px solid #d9cce8; border-radius: 999px; background: #ffffff99; font-size: .875rem; font-weight: 700; line-height: 1.4; }
+.free-summary-badges svg { width: 17px; height: 17px; flex-shrink: 0; color: #624784; }
+.free-workshop-dialog > .eyebrow { color: #624784; }
+#free-dialog-description { color: var(--body-muted); }
+#free-dialog-done { margin-top: 1rem; width: 100%; }
+.workshop-faq { display: grid; grid-template-columns: .85fr 1.15fr; gap: 3rem; padding: 4.5rem 0 3rem; }
+.workshop-faq h2 { font-size: 2rem; line-height: 1.2; max-width: 310px; }
+.faq-items details { padding: 1rem 0; border-bottom: 1px solid #d9d3cb; }
+.faq-items details:first-child { padding-top: 0; }
+.faq-items summary { font-weight: 800; font-size: 1rem; padding-right: .5rem; }
+.faq-items p { color: var(--body-muted); margin-top: .8rem; font-size: 1rem; }
+.workshops-signoff { padding: 1.2rem 0 3rem; color: var(--body-muted); text-align: center; }
+.workshops-signoff a { color: var(--text); text-underline-offset: 4px; }
+#request-a-place { scroll-margin-top: 1.5rem; }
+@media (max-width: 1050px) {
+    .host-note { flex-direction: column; width: 160px; text-align: center; gap: .75rem; }
+    .card-topline { align-items: flex-start; }
+    .card-topline .eyebrow { max-width: 170px; }
+    .workflow-section { gap: 2rem; }
+    .session-option { padding: 1.25rem; }
+}
+@media (max-width: 740px) {
+    .workshops-hero { padding: 2rem 0; }
+    .hero-intro { font-size: 1rem; }
+    .workshop-choices, .workflow-section, .workshop-faq { grid-template-columns: 1fr; }
+    .workshop-choices { grid-template-rows: none; row-gap: 1.4rem; }
+    .workshop-card { padding: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; grid-row: auto; grid-template-rows: none; }
+    .workshop-card h2 { font-size: 2.3rem; }
+    .card-topline .eyebrow { max-width: none; }
+    .workflow-section { padding: 3.5rem 0; gap: 2rem; }
+    .session-panel { margin-right: 4px; }
+    .reservation-dialog { padding: 1.5rem; }
+    .workshop-faq { gap: 1.5rem; padding: 3rem 0 2rem; }
+    .workshop-faq h2 { max-width: none; font-size: 1.75rem; }
+}
+@media (max-width: 380px) {
+    .card-topline .eyebrow { font-size: .875rem; max-width: 135px; }
+    .card-topline { gap: .5rem; }
+    .price-tag { padding: .35rem .5rem; }
+    .price-tag span { font-size: .875rem; }
+    .workshop-card h2 { font-size: 2rem; }
+}
+@media (max-width: 640px) {
+    .workshops-hero { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .host-note { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .workshops-page *, .workshops-page *::before, .workshops-page *::after { animation: none !important; transition: none !important; }
+}
+.workshop-button:disabled { opacity: .55; cursor: wait; transform: none; }

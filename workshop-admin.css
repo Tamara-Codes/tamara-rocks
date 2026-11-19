@@ -1,0 +1,29 @@
+.booking-admin { max-width: 1200px; padding: 2.5rem 1.5rem 5rem; margin: auto; }
+.admin-back { color: #655d58; font-size: .9rem; }
+.admin-eyebrow { margin: 2.5rem 0 1rem; color: #8c4d67; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: 800; }
+.booking-admin h1 { margin: 0 0 1rem; }
+.admin-intro { margin-bottom: 2rem; color: #655d58; }
+.admin-panel, .booking-row, .session-summary { background: #fff; border: 1px solid #e5ddd6; border-radius: 20px; padding: 1.5rem; }
+.admin-panel { max-width: 470px; display: grid; gap: 1rem; }
+.booking-admin h2, .admin-action-dialog h2 { font-family: Fraunces, Georgia, serif; font-size: 1.65rem; font-weight: 500; }
+.booking-admin button, .admin-action-dialog button { border: 1px solid #1a1714; background: #1a1714; color: white; font: 700 .85rem Nunito, sans-serif; border-radius: 10px; padding: .75rem 1rem; cursor: pointer; }
+.booking-admin button:disabled, .admin-action-dialog button:disabled { opacity: .5; cursor: wait; }
+.booking-admin .quiet, .admin-action-dialog .quiet { background: transparent; color: #1a1714; border-color: #ddd4ca; }
+.booking-admin input, .booking-admin select, .admin-action-dialog input { min-height: 44px; padding: .65rem; border: 1px solid #b9aba0; background: #fff; border-radius: 8px; font: inherit; max-width: 100%; }
+.booking-admin label, .admin-action-dialog label { display: grid; gap: .4rem; font-size: .85rem; font-weight: 700; }
+.session-overview { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+.session-summary:first-child { background: #e7def6; }.session-summary:last-child { background: #dbf0e7; }
+.session-summary h2 { margin: 0 0 1rem; }.session-summary p { margin: .25rem 0; }.session-summary strong { font-size: 1.15rem; }
+.admin-toolbar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: .75rem; }
+.admin-help { margin: 1.5rem 0; max-width: 820px; color: #655d58; font-size: .9rem; }
+.admin-dev-note { background: #fff0cf; border-radius: 10px; padding: .75rem 1rem; }
+.bookings-list { display: grid; gap: 1rem; }.booking-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) auto; gap: 1rem; align-items: start; }
+.booking-row h3 { font-size: 1.05rem; margin: 0 0 .3rem; }.booking-row p { margin: .25rem 0; font-size: .88rem; overflow-wrap: anywhere; }.booking-row small { color: #6a615a; }
+.booking-status { display: inline-block; font-size: .75rem; padding: .3rem .65rem; border-radius: 999px; background: #ece7f4; margin-bottom: .5rem; font-weight: 800; }
+.status-paid { background: #caf0df; }.status-waitlisted { background: #fff0cf; }.status-cancelled,.status-expired { background: #eee; }
+.admin-actions { display: flex; gap: .5rem; flex-wrap: wrap; }.booking-row .admin-actions { max-width: 240px; justify-content: flex-end; }
+#admin-message { min-height: 1.5em; color: #9f2849; margin: 1rem 0; }
+.admin-action-dialog { border: 1px solid #e5ddd6; border-radius: 22px; padding: 2rem; width: min(500px, calc(100% - 2rem)); background: #fffbf6; color: #1a1714; margin: auto; }
+.admin-action-dialog::backdrop { background: #1a171466; backdrop-filter: blur(4px); }.admin-action-dialog h2 { margin: 0 0 1rem; }.admin-action-dialog p { margin: 1rem 0; }.admin-action-dialog input { width: 100%; }#admin-action-error { color: #a02746; }
+[hidden] { display: none !important; }
+@media(max-width:700px) { .session-overview { grid-template-columns: 1fr; }.booking-row { grid-template-columns: 1fr; }.booking-row .admin-actions { justify-content: flex-start; max-width: none; }.booking-admin { padding: 1.5rem 1rem 3rem; } }

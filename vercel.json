@@ -1,20 +1,117 @@
 {
   "functions": {
-    "api/workshop-feedback.js": { "regions": ["fra1"], "maxDuration": 30 },
-    "api/workshop-signup.js": { "regions": ["fra1"], "maxDuration": 60 }
+    "api/workshop-feedback.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 30
+    },
+    "api/workshop-signup.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 60
+    },
+    "api/workshop-bookings.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 60
+    },
+    "api/workshop-booking-admin.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 60
+    },
+    "api/workshop-booking-cancel.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 60
+    },
+    "api/workshop-booking-jobs.js": {
+      "regions": [
+        "fra1"
+      ],
+      "maxDuration": 120
+    }
   },
   "rewrites": [
-    { "source": "/workshop-feedback", "destination": "/workshop-feedback.html" },
-    { "source": "/unsubscribe", "destination": "/api/workshop-unsubscribe" },
-    { "source": "/work", "destination": "/projects.html" },
-    { "source": "/about", "destination": "/blogs/blog.html" }
+    {
+      "source": "/workshops",
+      "destination": "/workshops.html"
+    },
+    {
+      "source": "/workshop-feedback",
+      "destination": "/workshop-feedback.html"
+    },
+    {
+      "source": "/unsubscribe",
+      "destination": "/api/workshop-unsubscribe"
+    },
+    {
+      "source": "/work",
+      "destination": "/projects.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/blogs/blog.html"
+    }
   ],
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "tamara.rocks" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "tamara.rocks"
+        }
+      ],
       "destination": "https://www.tamara.rocks/$1",
       "permanent": true
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/workshop-booking-jobs",
+      "schedule": "*/10 * * * *"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/workshop-admin.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    },
+    {
+      "source": "/workshop-reservation.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
     }
   ]
 }

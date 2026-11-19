@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamara Martinovic | AI Engineer, Builder &amp; Teacher</title>
+    <title>Tamara Martinović | AI Engineer, Builder &amp; Teacher</title>
     <meta name="description" content="I'm Tamara, an AI engineer and software developer in Croatia. I build software for businesses, teach practical AI and write about what I learn along the way.">
     <link rel="canonical" href="https://www.tamara.rocks/">
-    <meta property="og:title" content="Tamara Martinovic | AI Engineer">
+    <meta property="og:title" content="Tamara Martinović | AI Engineer">
     <meta property="og:description" content="I build software for businesses and teach practical AI.">
     <meta property="og:url" content="https://www.tamara.rocks/">
     <meta property="og:type" content="website">
@@ -14,19 +14,19 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="600">
-    <meta property="og:image:alt" content="Portrait of Tamara Martinovic, AI engineer, builder and teacher.">
+    <meta property="og:image:alt" content="Portrait of Tamara Martinović, AI engineer, builder and teacher.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@codewithtamara">
     <meta name="twitter:creator" content="@codewithtamara">
-    <meta name="twitter:title" content="Tamara Martinovic | AI Engineer">
+    <meta name="twitter:title" content="Tamara Martinović | AI Engineer">
     <meta name="twitter:description" content="I build software for businesses and teach practical AI.">
     <meta name="twitter:image" content="https://www.tamara.rocks/images/tamara-social-card.jpg">
-    <meta name="twitter:image:alt" content="Portrait of Tamara Martinovic, AI engineer, builder and teacher.">
+    <meta name="twitter:image:alt" content="Portrait of Tamara Martinović, AI engineer, builder and teacher.">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Tamara Martinovic",
+      "name": "Tamara Martinović",
       "url": "https://www.tamara.rocks",
       "jobTitle": "AI Engineer, Builder and Teacher",
       "sameAs": [
@@ -149,6 +149,11 @@
         .hero-route-secondary:hover { transform: translateY(-2px); background: #c6f0dc; box-shadow: 0 8px 18px rgba(59,173,130,.15); }
         .hero-route-tertiary { background: rgba(255,255,255,.58); border-color: rgba(26,23,20,.14); }
         .hero-route-tertiary:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 8px 18px rgba(26,23,20,.08); }
+        .workshops-link-wrap { text-align: center; margin: -2rem 1.25rem 4rem; }
+        .workshops-link { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 58px; padding: 1rem 1.8rem; border: 1.5px solid var(--text); border-radius: 14px; background: var(--lavender); color: var(--text); box-shadow: 5px 5px 0 var(--pink); font-size: 1rem; font-weight: 800; text-decoration: none; cursor: pointer; transition: transform .2s, box-shadow .2s, background .2s; }
+        .workshops-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+        .workshops-link:hover { background: #dacdf8; transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--pink); }
+        .workshops-link:focus-visible { outline: 3px solid var(--lavender-deep); outline-offset: 6px; }
         .hero-session { margin: 1rem 0 0; color: var(--text-mid); font-size: .78rem; font-weight: 700; letter-spacing: .02em; }
 
         .paths-section { padding: 0 6rem 6rem; position: relative; z-index: 1; }
@@ -739,6 +744,9 @@
             .path-next { font-size: 0.56rem; }
         }
     </style>
+    <link rel="stylesheet" href="/site-shell.css">
+    <script defer src="/shared-nav.js"></script>
+    <script defer src="/visitor-counter.js"></script>
 </head>
 <body>
 
@@ -750,33 +758,29 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <nav>
-        <a href="index.html" class="nav-name">Tamara Martinovic, PhD</a>
-        <div class="nav-links">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="projects.html" class="nav-link">Work</a>
-            <a href="blogs/blog.html" class="nav-link">About</a>
-            <a href="cv.html" class="nav-link">CV</a>
-        </div>
-        <div class="nav-right">
-            <div class="visitor-counter" aria-live="polite">
-                <span class="visitor-counter-label">visitors</span>
-                <output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output>
-            </div>
-        </div>
-    </nav>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link active" aria-current="page">Home</a>
+        <a href="/projects.html" class="nav-link">Work</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
 
     <section class="hero" id="main-content">
         <div class="hero-content">
             <div class="hero-eyebrow">AI engineer · builder · teacher</div>
-            <h1 class="hero-name">
-                Hi, I&rsquo;m <span style="color: var(--pink-deep);">Tamara.</span><br>I solve problems and build useful things with AI.
+            <h1 class="hero-name site-title">
+                Hi, I&rsquo;m Tamara.<br>I solve problems and build <em>useful things with AI.</em>
             </h1>
             <p class="hero-tagline">
                 I&rsquo;m an AI engineer, software developer and former scientist based in Croatia. I build software for real businesses, teach practical AI, and write about the things I&rsquo;m learning along the way.
             </p>
             <div class="hero-routes">
-                <a href="#learn" class="hero-route hero-route-primary" data-workshop-cta="hero">Join the free AI workshop</a>
+                <a href="#learn" class="hero-route hero-route-primary">Join the free AI workshop</a>
                 <a href="projects.html" class="hero-route hero-route-secondary">See my work</a>
             </div>
             <p class="hero-session">Next live session: Thursday, 26 November 2026 · 18:00 CET</p>
@@ -784,7 +788,7 @@
         <div class="hero-photo">
             <picture>
                 <source srcset="images/tamara-portrait-nov-2026.webp" type="image/webp">
-                <img src="images/tamara-portrait-nov-2026.jpg" width="1000" height="880" alt="Tamara Martinovic" class="photo-placeholder">
+                <img src="images/tamara-portrait-nov-2026.jpg" width="1000" height="880" alt="Tamara Martinović" class="photo-placeholder">
             </picture>
         </div>
     </section>
@@ -795,8 +799,8 @@
             <a class="path-card path-build" href="https://nosastra.co" target="_blank" rel="noopener">
                 <span class="path-label">For businesses</span><h3>Have something in your business that should work better?</h3><p>I build websites, custom tools and practical AI solutions through Nos Astra.</p><span class="path-link">Work with me</span>
             </a>
-            <a class="path-card path-learn" href="#learn" data-workshop-cta="path">
-                <span class="path-label">Free workshop</span><span class="path-next">Next: Thu 26 Nov · 18:00 CET</span><h3>Want AI to feel less confusing and more useful?</h3><p>Whether you use it every day or have barely started, learn how it works and how to get better results from it.</p><span class="path-link">Save my spot</span>
+            <a class="path-card path-learn" href="/workshops">
+                <span class="path-label">Live AI workshops</span><h3>Want to put AI to work?</h3><p>Start with the free AI Demystified introduction, or join a small group for lead generation and cold outreach with AI.</p><span class="path-link">Explore workshops</span>
             </a>
             <a class="path-card path-follow" href="https://x.com/codewithtamara" target="_blank" rel="noopener">
                 <span class="path-label">Building in public</span><h3>Want to follow the chaos?</h3><p>I write about AI, software, client work, learning things late and changing careers.</p><span class="path-link">Find me on X</span>
@@ -810,17 +814,12 @@
             <div class="section-line"></div>
         </div>
 
-        <div class="course-card" data-observe id="workshop-card">
+        <div class="course-card" data-observe>
             <div class="course-inner">
                 <div class="course-copy">
                     <p class="course-eyebrow">✦ Free live workshop</p>
-                    <h2 class="course-heading">Make AI make more sense, and more <em>useful.</em></h2>
-                    <p class="course-desc">Whether you&rsquo;re curious, confused, or already using AI every day, this practical session will help you understand what AI is doing and use it with more confidence.</p>
-                    <ul class="course-points">
-                        <li>How models, prediction, tokens, context and memory fit together</li>
-                        <li>What tools, RAG and the &ldquo;harness&rdquo; actually do, without the jargon</li>
-                        <li>Useful ways to apply AI in your own work, team or business</li>
-                    </ul>
+                    <h2 class="course-heading">AI is less mysterious once someone explains what&rsquo;s <em>actually happening.</em></h2>
+                    <p class="course-desc">A practical 45-minute live session on context windows, RAG, hallucinations and prompting.</p>
                 </div>
                 <div class="course-signup">
                     <p class="course-signup-label">Save your spot</p>
@@ -836,14 +835,17 @@
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <label for="waitlist-email" class="sr-only">Email</label>
                         <input type="email" id="waitlist-email" name="email" required placeholder="you@example.com">
+                        <div class="turnstile-slot"></div>
                         <button type="submit" class="course-cta">Save my spot</button>
                     </form>
-                    <p class="course-reassurance">Free · 60 minutes · For complete beginners and regular AI users</p>
+                    <p class="course-reassurance">Free · 45 minutes</p>
                     <p class="course-success">Thanks for joining! Check your inbox for your workshop confirmation. I&rsquo;ll send another email with the joining link soon.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="workshops-link-wrap"><a href="/workshops" class="workshops-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M16 3v4M8 3v4M3 11h18M8 15h2M14 15h2"></path></svg>Explore all workshops</a></div>
 
     <section class="about-teaser">
         <div class="about-inner" data-observe>
@@ -956,12 +958,62 @@
         </div>
     </section>
 
-    <footer>
-        <span class="footer-text">&copy; 2025 Tamara Martinovic</span>
-    </footer>
+    <footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/workshops">Workshops</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span><div class="visitor-counter" aria-live="polite"><span class="visitor-counter-label">visitors</span><output class="visitor-counter-number" id="visitorCount" aria-label="Visitor count">••••••</output></div></div>
+        </div>
+    </div>
+</footer>
 
     <script>
-        // Render the workshop time in the visitor's own browser timezone.
+        // Anonymous workshop-funnel events. No email addresses or form values are tracked.
+        function trackWorkshopEvent(name) {
+            if (typeof window.va === 'function') window.va('event', { name: name });
+        }
+
+        document.querySelectorAll('[data-workshop-cta]').forEach(function (cta) {
+            cta.addEventListener('click', function () { trackWorkshopEvent('workshop_cta_clicked'); });
+        });
+
+        var workshopCard = document.getElementById('workshop-card');
+        if (workshopCard && 'IntersectionObserver' in window) {
+            var workshopSeen = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        trackWorkshopEvent('workshop_seen');
+                        workshopSeen.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+            workshopSeen.observe(workshopCard);
+        }
+
+
+</script>
+<script>
+// Render the workshop time in the visitor's own browser timezone.
         (function () {
             const localTime = document.getElementById('workshop-local-time');
             if (!localTime || !Intl.DateTimeFormat) return;
@@ -987,28 +1039,6 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
-
-        // Anonymous workshop-funnel events. No email addresses or form values are tracked.
-        function trackWorkshopEvent(name) {
-            if (typeof window.va === 'function') window.va('event', { name: name });
-        }
-
-        document.querySelectorAll('[data-workshop-cta]').forEach(function (cta) {
-            cta.addEventListener('click', function () { trackWorkshopEvent('workshop_cta_clicked'); });
-        });
-
-        var workshopCard = document.getElementById('workshop-card');
-        if (workshopCard && 'IntersectionObserver' in window) {
-            var workshopSeen = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        trackWorkshopEvent('workshop_seen');
-                        workshopSeen.disconnect();
-                    }
-                });
-            }, { threshold: 0.5 });
-            workshopSeen.observe(workshopCard);
-        }
 
     </script>
     <script>
@@ -1067,7 +1097,6 @@
             });
         })();
     </script>
-    <script defer src="/visitor-counter.js"></script>
     <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
