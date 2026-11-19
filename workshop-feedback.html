@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Workshop feedback | Tamara Martinović</title>
+    <meta name="description" content="Share your experience of AI Demystified with Tamara. A little feedback goes a long way.">
+    <link rel="canonical" href="https://www.tamara.rocks/workshop-feedback">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/workshop-feedback-shell.css">
+    <link rel="stylesheet" href="/workshop-feedback.css">
+    <script defer src="/workshop-feedback.js"></script>
+</head>
+<body class="feedback-page">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <nav class="site-header" aria-label="Main navigation">
+    <a href="/" class="nav-name">Tamara Martinović, PhD</a>
+    <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/projects.html" class="nav-link">Work</a>
+        <a href="/blogs/blog.html" class="nav-link">About</a>
+        <a href="/cv.html" class="nav-link">CV</a>
+    </div>
+    <div class="nav-right" aria-hidden="true"></div>
+</nav>
+    <div class="feedback-preview" id="feedback-preview" role="note" hidden>Local preview · Try the form freely. Test responses are not saved.</div>
+    <main class="feedback-main" id="main-content">
+        <header class="feedback-intro">
+            <p class="feedback-eyebrow"><span class="feedback-spark" aria-hidden="true">✦</span> A little reflection</p>
+            <h1 class="site-title">What clicked<br> <em>for you?</em></h1>
+            <p class="feedback-lead">Thank you for joining me.<br> I’d love to hear what you’re taking away.</p>
+            <div class="feedback-workshop"><span>AI Demystified</span><span>Free introductory workshop</span></div>
+            <div class="feedback-host">
+                <img src="/images/tamara-portrait-nov-2026.webp" alt="Tamara Martinović" width="112" height="112">
+                <div><p>Your honest feedback helps me<br> make the next workshop better.</p><span class="feedback-signature">Thank you, Tamara</span></div>
+            </div>
+            <p class="feedback-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg> About a minute. In your own words.</p>
+        </header>
+
+        <section class="feedback-card" aria-labelledby="feedback-form-heading">
+            <form id="feedback-form" action="/api/workshop-feedback" method="post">
+                <div class="feedback-card-heading"><h2 id="feedback-form-heading">Your experience</h2><span aria-hidden="true">✦</span></div>
+                <div class="feedback-field">
+                    <label for="takeaway">What’s one thing that clicked for you today?</label>
+                    <p class="feedback-hint" id="takeaway-hint">An idea, a useful example, or something you feel ready to try.</p>
+                    <textarea id="takeaway" name="takeaway" rows="4" maxlength="2000" required aria-describedby="takeaway-hint" placeholder="I finally understood…"></textarea>
+                </div>
+                <div class="feedback-field">
+                    <label for="improvement">What could I explain better or do differently next time? <span class="feedback-optional">Optional</span></label>
+                    <textarea id="improvement" name="improvement" rows="3" maxlength="2000" placeholder="I would have liked…"></textarea>
+                </div>
+                <div class="feedback-field feedback-name-field">
+                    <label for="first-name">Your first name <span class="feedback-optional" id="name-optional">Optional</span></label>
+                    <input id="first-name" name="firstName" type="text" autocomplete="given-name" maxlength="80" aria-describedby="name-hint" placeholder="What should I call you?">
+                    <p class="feedback-hint" id="name-hint">You’re welcome to leave this blank.</p>
+                </div>
+                <fieldset class="feedback-permission" aria-describedby="permission-hint">
+                    <legend>May I share a quote from your feedback?</legend>
+                    <p class="feedback-hint" id="permission-hint">On tamara.rocks and in workshop promotional materials. You choose how it’s shared.</p>
+                    <label class="feedback-choice"><input type="radio" name="publicationPermission" value="named"><span>Yes, with my first name.</span></label>
+                    <label class="feedback-choice"><input type="radio" name="publicationPermission" value="anonymous"><span>Yes, anonymously.</span></label>
+                    <label class="feedback-choice"><input type="radio" name="publicationPermission" value="private" checked><span>Please keep my feedback private.</span></label>
+                </fieldset>
+                <div class="feedback-honey" aria-hidden="true"><label for="feedback-website">Website</label><input id="feedback-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+                <p class="feedback-error" id="feedback-error" role="alert" hidden></p>
+                <button class="feedback-submit" id="feedback-submit" type="submit">Send feedback</button>
+                <p class="feedback-privacy">Only I’ll review your response. I’ll share a quote publicly only with your permission. To change your sharing choice later, <a href="mailto:tamara@nosastra.co?subject=Workshop%20feedback">email me</a>.</p>
+                <noscript><p class="feedback-error">Please enable JavaScript to send this form, or email your feedback to <a href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>.</p></noscript>
+            </form>
+            <div class="feedback-thanks" id="feedback-thanks" tabindex="-1" role="status" hidden>
+                <span class="feedback-thanks-symbol" aria-hidden="true">✦</span>
+                <p class="feedback-eyebrow">A little feedback. A big help.</p>
+                <h2>Thank you for<br><em>sharing.</em></h2>
+                <p>I hope you leave feeling more confident exploring AI. Your feedback helps me make the next workshop even more useful.</p>
+                <p class="feedback-permission-summary" id="permission-summary"></p>
+                <p class="feedback-test-result" id="feedback-test-result" hidden>Preview complete. This test response was not saved.</p>
+                <a class="feedback-home" href="/">Back to tamara.rocks</a>
+                <button class="feedback-test-again" id="feedback-test-again" type="button" hidden>Try the form again</button>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer" id="site-footer" aria-label="Site footer">
+    <div class="site-footer-inner">
+        <div class="site-footer-main">
+            <div class="site-footer-brand">
+                <a class="site-footer-name" href="/">Tamara Martinović<span>, PhD</span></a>
+                <p>AI engineering, software development and practical AI workshops.</p>
+                <a class="site-footer-email" href="mailto:tamara@nosastra.co">tamara@nosastra.co</a>
+            </div>
+            <section class="site-footer-column" aria-labelledby="footer-explore">
+                <h2 id="footer-explore">Explore</h2>
+                <ul><li><a href="/">Home</a></li><li><a href="/projects.html">Work</a></li><li><a href="/blogs/blog.html">About</a></li><li><a href="/cv.html">CV</a></li></ul>
+            </section>
+            <section class="site-footer-column" aria-labelledby="footer-connect">
+                <h2 id="footer-connect">Connect</h2>
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/tamaracodes/" target="_blank" rel="noopener">LinkedIn</a></li>
+                    <li><a href="https://x.com/codewithtamara" target="_blank" rel="noopener">X / Twitter</a></li>
+                    <li><a href="https://github.com/Tamara-Codes" target="_blank" rel="noopener">GitHub</a></li>
+                    <li><a href="https://nosastra.co" target="_blank" rel="noopener">Nos Astra</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="site-footer-bottom">
+            <p>© 2025 Tamara Martinović</p>
+            <div class="site-footer-meta"><span>Based in Croatia</span></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

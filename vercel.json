@@ -1,8 +1,10 @@
 {
   "functions": {
+    "api/workshop-feedback.js": { "regions": ["fra1"], "maxDuration": 30 },
     "api/workshop-signup.js": { "regions": ["fra1"], "maxDuration": 60 }
   },
   "rewrites": [
+    { "source": "/workshop-feedback", "destination": "/workshop-feedback.html" },
     { "source": "/unsubscribe", "destination": "/api/workshop-unsubscribe" },
     { "source": "/work", "destination": "/projects.html" },
     { "source": "/about", "destination": "/blogs/blog.html" }
